@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_about"
+        android:title="About"
+        android:icon="@drawable/about_vector" />
+
+    <item
+        android:id="@+id/item_fitness"
+        android:title="Fitness"
+
+        android:icon="@drawable/fitness_vector" />
+
+    <item
+        android:id="@+id/item_nutrition"
+        android:title="Nutrition"
+        android:icon="@drawable/nutrition_vector" />
+
+    <item
+        android:id="@+id/item_wellness"
+        android:title="Wellness"
+        android:icon="@drawable/wellness_vector" />
+
+
+
+</menu>

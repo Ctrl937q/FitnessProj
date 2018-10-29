@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_start"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+
+   <android.support.v7.widget.RecyclerView
+       android:id="@+id/recycler_view_fitness_fragment"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+
+       android:foregroundGravity="center"
+       >
+
+   </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
