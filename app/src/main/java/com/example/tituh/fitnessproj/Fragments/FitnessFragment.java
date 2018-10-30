@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -40,11 +41,17 @@ public class FitnessFragment extends Fragment {
         recyclerView_fitness_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView_fitness_fragment.setAdapter(new FitnessFragmentStartRecyclerViewAdapter(listFitStarModel));
 
-
         recyclerView_fitness_fragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 recyclerView_fitness_fragment, new RecyclerTouchListenerStart.ClickListener() {
             @Override
             public void onClick(View view, final int position) {
+                if(position == 1) {
+                    WeekWorkoutFragment workoutFragment = new WeekWorkoutFragment();
+                    FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, workoutFragment);
+                    fragmentTransaction.commit();
+                    Log.d("TAG_PRESS", "+");
+                }
             }
 
             @Override

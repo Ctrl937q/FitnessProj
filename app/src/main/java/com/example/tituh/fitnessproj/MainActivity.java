@@ -6,13 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.example.tituh.fitnessproj.Adapters.FitnessFragmentStartRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.Adapters.ViewPagerAdapter;
 import com.example.tituh.fitnessproj.Fragments.AboutFragment;
 import com.example.tituh.fitnessproj.Fragments.FitnessFragment;
@@ -35,17 +31,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.app_bar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        TextView textViewActionBar = (TextView)findViewById(R.id.action_bar_text_view);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new AboutFragment()).commit();
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation_bar);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
-        TextView textViewActionBar = (TextView)findViewById(R.id.action_bar_text_view);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
         textViewActionBar.setText("SKINNY GUIDE");
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -71,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupViewPager(viewPager);
-
-
 
     }
 

@@ -51,23 +51,23 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
+
         FitnessStartModel model = list.get(position);
 
         switch (model.getType()){
             case ONE_TYPE:
             if(position == 0){
-                Picasso.get().load(R.drawable.prepare_image).into(((OneViewHolder)holder).imageView_first_item);
-                ((OneViewHolder)holder).headline_1.setText(model.getHeadline_1());
-                ((OneViewHolder)holder).headline_2.setText(model.getHeadline_2());
+                Picasso.get().load(R.drawable.prepare_image).into(((OneViewHolder)holder).imageViewFirstItem);
+                ((OneViewHolder)holder).headline1.setText(model.getHeadline_1());
+                ((OneViewHolder)holder).headline2.setText(model.getHeadline_2());
             }if(position == 1){
-                Picasso.get().load(R.drawable.week_workout_image).into(((OneViewHolder)holder).imageView_first_item);
-                ((OneViewHolder)holder).headline_1.setText(model.getHeadline_1());
-                ((OneViewHolder)holder).headline_2.setText(model.getHeadline_2());
+                Picasso.get().load(R.drawable.week_workout_image).into(((OneViewHolder)holder).imageViewFirstItem);
+                ((OneViewHolder)holder).headline1.setText(model.getHeadline_1());
+                ((OneViewHolder)holder).headline2.setText(model.getHeadline_2());
             }
-
                 break;
             case TWO_TYPE:
-                ((TwoViewHolder)holder).headline_3.setText(model.getHeadline_1());
+                ((TwoViewHolder)holder).headline3.setText(model.getHeadline_1());
                 break;
         }
     }
@@ -79,28 +79,27 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
     class OneViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imageView_first_item;
-        TextView headline_1;
-        TextView headline_2;
-
+        ImageView imageViewFirstItem;
+        TextView headline1;
+        TextView headline2;
 
         public OneViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView_first_item = itemView.findViewById(R.id.image_view_recycler_view_start);
-            headline_1 = itemView.findViewById(R.id.textViewFitnessStartLayout_1);
-            headline_2 = itemView.findViewById(R.id.textViewFitnessStartLayout_2);
+            imageViewFirstItem = itemView.findViewById(R.id.image_view_recycler_view_start);
+            headline1 = itemView.findViewById(R.id.textViewFitnessStartLayout_1);
+            headline2 = itemView.findViewById(R.id.textViewFitnessStartLayout_2);
         }
     }
 
     class TwoViewHolder extends RecyclerView.ViewHolder{
 
         ImageView imageView;
-        TextView headline_3;
+        TextView headline3;
 
         public TwoViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image_view_fitness_start2);
-            headline_3 = itemView.findViewById(R.id.text_view_fitness_start_3);
+            headline3 = itemView.findViewById(R.id.text_view_fitness_start_3);
         }
     }
 }

@@ -53,8 +53,8 @@ public class RecyclerTouchListenerStart implements RecyclerView.OnItemTouchListe
 
     public interface ClickListener {
 
-        public void onClick(View view, int position);
-        public void onLongClick(View view,int position);
+         void onClick(View view, int position);
+         void onLongClick(View view,int position);
     }
 }
 
