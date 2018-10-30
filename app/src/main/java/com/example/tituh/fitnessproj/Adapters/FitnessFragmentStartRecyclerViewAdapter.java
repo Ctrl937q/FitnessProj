@@ -45,14 +45,14 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
             case TWO_TYPE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_layout2, parent,false);
                 return new TwoViewHolder(view);
-
         }
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
         FitnessStartModel model = list.get(position);
+
         switch (model.getType()){
             case ONE_TYPE:
             if(position == 0){

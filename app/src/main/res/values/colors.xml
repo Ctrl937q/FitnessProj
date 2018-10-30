@@ -7,4 +7,8 @@
 
     <color name="color_bnv_unchecked">#000000</color>
     <color name="color_bnv_checked">#8cff3177</color>
+
+
+    <color name="shadow_color">#41000000</color>
+
 </resources>

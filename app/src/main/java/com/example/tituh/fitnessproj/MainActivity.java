@@ -82,12 +82,10 @@ public class MainActivity extends AppCompatActivity {
         fitnessFragment = new FitnessFragment();
         nutritionFramgment = new NutritionFramgment();
         wellnessFragment = new WellnessFragment();
-
         viewPagerAdapter.addFragment(aboutFragment);
         viewPagerAdapter.addFragment(fitnessFragment);
         viewPagerAdapter.addFragment(nutritionFramgment);
         viewPagerAdapter.addFragment(wellnessFragment);
-
         viewPager.setAdapter(viewPagerAdapter);
     }
 
@@ -120,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
                     selectFragment).commit();
 
             return true;
-
         }
     };
 }

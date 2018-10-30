@@ -6,11 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tituh.fitnessproj.Adapters.FitnessFragmentStartRecyclerViewAdapter;
+import com.example.tituh.fitnessproj.Adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.Model.FitnessStartModel;
 import com.example.tituh.fitnessproj.R;
 
@@ -27,7 +29,7 @@ public class FitnessFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fitness_fragment, container, false);
-        recyclerView_fitness_fragment = (RecyclerView)rootView.findViewById(R.id.recycler_view_fitness_fragment);
+        recyclerView_fitness_fragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_fitness_fragment);
 
         listFitStarModel = new ArrayList<>();
 
@@ -37,6 +39,18 @@ public class FitnessFragment extends Fragment {
 
         recyclerView_fitness_fragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView_fitness_fragment.setAdapter(new FitnessFragmentStartRecyclerViewAdapter(listFitStarModel));
+
+
+        recyclerView_fitness_fragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
+                recyclerView_fitness_fragment, new RecyclerTouchListenerStart.ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+            }
+        }));
 
         return rootView;
     }
