@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.Fragments;
+package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.tituh.fitnessproj.R;
 
-public class WellnessFragment extends Fragment {
+public class NutritionFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.wellness_fragment, container, false);
+        return inflater.inflate(R.layout.nutrition_fragment, container, false);
     }
 }

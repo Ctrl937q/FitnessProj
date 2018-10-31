@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.Model;
+package com.example.tituh.fitnessproj.model;
 
 public class FitnessStartModel {
 

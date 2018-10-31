@@ -1,26 +1,24 @@
-package com.example.tituh.fitnessproj.Fragments;
+package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tituh.fitnessproj.Adapters.FitnessFragmentStartRecyclerViewAdapter;
-import com.example.tituh.fitnessproj.Adapters.RecyclerTouchListenerStart;
-import com.example.tituh.fitnessproj.Model.FitnessStartModel;
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.adapters.FitnessFragmentStartRecyclerViewAdapter;
+import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
+import com.example.tituh.fitnessproj.model.FitnessStartModel;
+import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FitnessFragment extends Fragment {
+public class FitnessFragment extends BaseFragment{
 
     RecyclerView recyclerView_fitness_fragment;
     List<FitnessStartModel> listFitStarModel;
@@ -46,11 +44,9 @@ public class FitnessFragment extends Fragment {
             @Override
             public void onClick(View view, final int position) {
                 if(position == 1) {
-                    WeekWorkoutFragment workoutFragment = new WeekWorkoutFragment();
-                    FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.fragment_container, workoutFragment);
-                    fragmentTransaction.commit();
-                    Log.d("TAG_PRESS", "+");
+                    if (null != fragmentInteractionListener) {
+                        fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true);
+                    }
                 }
             }
 

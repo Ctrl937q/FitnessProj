@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.Adapters;
+package com.example.tituh.fitnessproj.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tituh.fitnessproj.Model.FitnessStartModel;
+import com.example.tituh.fitnessproj.model.FitnessStartModel;
 import com.example.tituh.fitnessproj.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static com.example.tituh.fitnessproj.Model.FitnessStartModel.ONE_TYPE;
-import static com.example.tituh.fitnessproj.Model.FitnessStartModel.TWO_TYPE;
+import static com.example.tituh.fitnessproj.model.FitnessStartModel.ONE_TYPE;
+import static com.example.tituh.fitnessproj.model.FitnessStartModel.TWO_TYPE;
 
 public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/shadow_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cornerRadius="8dp"
+        app:shadowMarginLeft="10dp"
+        app:shadowMarginRight="10dp"
+        app:shadowMarginTop="7dp"
+        app:shadowMarginBottom="5dp"
+        app:shadowColor="@color/shadow_color"
+        app:shadowRadius="10dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:id="@+id/card_view_recyclerView_start_2"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/image_view_week_workout_progress"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/progress_bar_week_rv"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/text_view_week_workout_week"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/color_bnv_unchecked"
+                    android:textStyle="normal"
+                    android:textSize="19sp"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/image_view_week_workout_arrow"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:src="@drawable/arrow_right_black_vector" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </com.loopeer.shadow.ShadowView>
+
+</RelativeLayout>

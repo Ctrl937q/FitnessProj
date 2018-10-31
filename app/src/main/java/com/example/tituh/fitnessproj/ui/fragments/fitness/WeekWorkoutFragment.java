@@ -1,20 +1,20 @@
-package com.example.tituh.fitnessproj.Fragments;
+package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
-public class AboutFragment extends Fragment {
+public class WeekWorkoutFragment extends BaseFragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.about_fragment, container, false);
+        return inflater.inflate(R.layout.week_workout_activity, container, false);
     }
 }

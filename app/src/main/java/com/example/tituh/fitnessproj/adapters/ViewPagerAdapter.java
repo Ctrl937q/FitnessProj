@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.Adapters;
+package com.example.tituh.fitnessproj.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

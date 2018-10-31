@@ -10,5 +10,6 @@
 
 
     <color name="shadow_color">#41000000</color>
+    <color name="color_white">#daffffff</color>
 
 </resources>
