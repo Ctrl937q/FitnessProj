@@ -16,4 +16,8 @@ public interface OnFragmentInteractionListener {
     void showSnackMessage(String message);
     void showSnackMessage(int stringResId);
     void updateActionBarTitle(String title);
+    void goneIconBacktActionBar();
+    void goneIconAbouttActionBar();
+    void visibleIconBacktActionBar();
+    void visibleIconAboutActionBar();
 }

@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
@@ -19,7 +20,11 @@ import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
+
     private TextView mActionBarTitle;
+    private ImageView mImageViewBackActionBar;
+    private ImageView mImageViewAboutActionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,9 +33,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         Toolbar toolbar = findViewById(R.id.app_bar);
 
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
+        mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
+        mImageViewAboutActionBar = findViewById(R.id.action_bar_about);
 
         setSupportActionBar(toolbar);
-        mActionBarTitle.setText("SKINNY GUIDE");
+        getSupportActionBar().setTitle("");
+        mActionBarTitle.setText("TSC BODY");
 
         pushFragment(new MainTabLayoutFragment(), false);
 
@@ -129,5 +137,26 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 mActionBarTitle.setText(title);
             }
         });
+    }
+
+    @Override
+    public void goneIconBacktActionBar() {
+        mImageViewBackActionBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void goneIconAbouttActionBar() {
+        mImageViewAboutActionBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void visibleIconBacktActionBar() {
+        mImageViewBackActionBar.setVisibility(View.VISIBLE);
+
+    }
+
+    @Override
+    public void visibleIconAboutActionBar() {
+        mImageViewAboutActionBar.setVisibility(View.VISIBLE);
     }
 }

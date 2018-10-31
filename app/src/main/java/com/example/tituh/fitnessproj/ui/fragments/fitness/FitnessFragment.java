@@ -13,6 +13,7 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.FitnessFragmentStartRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.model.FitnessStartModel;
+import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
@@ -28,6 +29,9 @@ public class FitnessFragment extends BaseFragment{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fitness_fragment, container, false);
+        ((MainActivity)getActivity()).updateActionBarTitle("TSC BODY");
+        ((MainActivity)getActivity()).visibleIconAboutActionBar();
+        ((MainActivity)getActivity()).goneIconBacktActionBar();
         recyclerView_fitness_fragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_fitness_fragment);
 
         listFitStarModel = new ArrayList<>();
