@@ -19,11 +19,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="26" />
-                            <entry key="outputName" value="about_vector" />
+                            <entry key="height" value="59" />
+                            <entry key="outputName" value="progress_bar_vector" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\assets\baba.svg" />
-                            <entry key="width" value="26" />
+                            <entry key="sourceFile" value="C:\assets\progress_bar.svg" />
+                            <entry key="width" value="143" />
                           </map>
                         </option>
                       </PersistentState>

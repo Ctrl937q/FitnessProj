@@ -1,0 +1,15 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@android:id/background"
+
+
+
+        android:drawable="@drawable/exercise_choose_background"/>
+
+    <item android:id="@android:id/progress">
+        <clip>
+            <color android:color="#ff0000" />
+        </clip>
+    </item>
+
+</layer-list>

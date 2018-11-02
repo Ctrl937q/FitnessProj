@@ -28,8 +28,8 @@
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="8dp"
-        android:paddingTop="8dp"
+        android:paddingBottom="11dp"
+        android:paddingTop="11dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
         android:layout_marginBottom="20dp"
@@ -41,6 +41,5 @@
         fancy:fb_focusColor="#ca838383"
         fancy:fb_textSize="10sp"
         fancy:fb_radius="7dp"
-        fancy:fb_text="REST WORKOUTS"
         fancy:fb_textColor="#000000" />
 </LinearLayout>

@@ -32,4 +32,5 @@ dependencies {
     compile 'com.loopeer.lib:shadow:0.0.4-beta3'
     implementation 'com.github.medyo:fancybuttons:1.9.0'
 
+
 }

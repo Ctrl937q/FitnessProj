@@ -14,6 +14,8 @@ import com.example.tituh.fitnessproj.R;
 
 import java.util.List;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final String TAG = WeekWorkoutFragmentRecyclerViewAdapter.class.getSimpleName();
@@ -44,6 +46,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
         if (holder instanceof HeaderViewHolder) {
             ((HeaderViewHolder) holder).headerTitle1.setText(weekWorkoutModel.getHeader_1());
             ((HeaderViewHolder) holder).headerTitle2.setText(weekWorkoutModel.getHeader_2());
+            ((HeaderViewHolder)holder).button.setText("REST WORKOUTS");
         } else if (holder instanceof ItemViewHolder) {
             ((ItemViewHolder) holder).textView_week.setText(weekWorkoutModel.getHeader_1());
         }
@@ -69,13 +72,13 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
 
         public TextView headerTitle1;
         public TextView headerTitle2;
-        public Button button;
+        public FancyButton button;
 
         public HeaderViewHolder(@NonNull View itemView) {
             super(itemView);
             headerTitle1 = (TextView) itemView.findViewById(R.id.text_view_quantity_week);
             headerTitle2 = (TextView) itemView.findViewById(R.id.text_view_all_week);
-            //button = (Button) itemView.findViewById(R.id.btn_button_rest_workout);
+            button = (FancyButton) itemView.findViewById(R.id.btn_button_rest_workout);
         }
     }
 

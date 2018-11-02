@@ -5,12 +5,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.adapters.WeekWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
@@ -48,6 +50,23 @@ public class WeekWorkoutFragment extends BaseFragment {
         ((MainActivity)getActivity()).updateActionBarTitle("INTERMEDIATE");
         ((MainActivity)getActivity()).goneIconAbouttActionBar();
         ((MainActivity)getActivity()).visibleIconBacktActionBar();
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
+                recyclerView, new RecyclerTouchListenerStart.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {          //TODO disabled 0 item click
+                if(position == 3){
+                    if (null != fragmentInteractionListener) {
+                        fragmentInteractionListener.pushFragment(new ExerciseChooseFragment(), true);
+                    }
+                }
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
 
         return rootView;
     }
