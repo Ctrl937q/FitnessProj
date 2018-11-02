@@ -115,11 +115,14 @@
             android:layout_width="match_parent"
             android:layout_height="50dp" />
 
-        <com.example.tituh.fitnessproj.ui.activities.MaterialPlayPauseButton
-            android:layout_width="20dp"
+        <com.ohoussein.playpause.PlayPauseView
             android:id="@+id/button_test_start_exercise"
+            android:layout_width="50dp"
             android:layout_gravity="center"
-            android:layout_height="20dp" />
+            android:layout_height="50dp"
+            app:fill_color="#000000"
+            app:pause_bg="#00001721"
+            app:play_bg="#00001eff" />
 
 
     </android.support.design.widget.CoordinatorLayout>

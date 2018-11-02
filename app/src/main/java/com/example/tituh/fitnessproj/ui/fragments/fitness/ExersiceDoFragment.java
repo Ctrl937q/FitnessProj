@@ -1,24 +1,17 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.ui.activities.MaterialPlayPauseButton;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
-import org.w3c.dom.Text;
+import com.ohoussein.playpause.PlayPauseView;
 
 import java.util.Locale;
 
@@ -28,7 +21,6 @@ public class ExersiceDoFragment extends BaseFragment {
     CountDownTimer mCountDownTimer;
     long mTimeLeftInills = startTimeills;
     boolean mTimerRunning;
-
     TextView textViewTime;
 
     @Nullable
@@ -37,14 +29,15 @@ public class ExersiceDoFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.workout_start_layout, container, false);
 
         textViewTime = (TextView)rootView.findViewById(R.id.text_view_time);
-        MaterialPlayPauseButton buttonPlayPause = (MaterialPlayPauseButton) rootView.findViewById(R.id.button_test_start_exercise);
+        final PlayPauseView buttonPlayPause = (PlayPauseView) rootView.findViewById(R.id.button_test_start_exercise);
 
-        buttonPlayPause.setColor(Color.BLACK);
-        buttonPlayPause.setAnimDuration(300);
+        startTimer();
+        buttonPlayPause.change(false);
 
         buttonPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                buttonPlayPause.toggle();
                 if (mTimerRunning) {
                     pauseTimer();
                 } else {
@@ -54,7 +47,6 @@ public class ExersiceDoFragment extends BaseFragment {
         });
         return rootView;
     }
-
 
     private void startTimer() {
         mCountDownTimer = new CountDownTimer(mTimeLeftInills, 1000) {
@@ -67,17 +59,14 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onFinish() {
                 mTimerRunning = false;
-    //            buttonStartPause.setText("Start");
             }
         }.start();
         mTimerRunning = true;
-    //    buttonStartPause.setText("pause");
     }
 
     private void pauseTimer() {
         mCountDownTimer.cancel();
         mTimerRunning = false;
-    //    buttonStartPause.setText("Start");
 
     }
 
