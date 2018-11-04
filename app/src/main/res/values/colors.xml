@@ -7,13 +7,16 @@
 
     <color name="color_bnv_unchecked">#000000</color>
     <color name="color_bnv_checked">#8cff3177</color>
-
     <color name="color_pink">#8cff3e80</color>
+
     <color name="color_light_pink">#53ff377b</color>
 
     <color name="pink_background_progressbar">#FFEFF3</color>
     <color name="shadow_color">#182f2f2f</color>
     <color name="shadow_color1">#000000</color>
     <color name="color_white">#daffffff</color>
+
+    <color name="color_wite_for_dialog">#ffffff</color>
+    <color name="pink_for_button">#FFD7DE</color>
 
 </resources>

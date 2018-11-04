@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
         mImageViewAboutActionBar = findViewById(R.id.action_bar_about);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
+        mActionBarTitle.setText("TSC BODY");
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,9 +46,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             }
         });
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-        mActionBarTitle.setText("TSC BODY");
 
         pushFragment(new MainTabLayoutFragment(), false);
 
@@ -99,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             dialog.show();
         }
     }
+
+
 
     @Override
     public void showAlertDialog(@NonNull AlertDialog dialog) {
@@ -166,4 +168,5 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     public void visibleIconAboutActionBar() {
         mImageViewAboutActionBar.setVisibility(View.VISIBLE);
     }
+
 }
