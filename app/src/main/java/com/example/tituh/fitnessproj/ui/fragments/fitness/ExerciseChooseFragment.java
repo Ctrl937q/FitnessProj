@@ -14,6 +14,7 @@ import android.widget.Button;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ExerciseRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.FitnessFragmentStartRecyclerViewAdapter;
+import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
@@ -30,17 +31,21 @@ public class ExerciseChooseFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.exercise_choose_fragment, container, false);
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_exercise_choose);
-        FancyButton fancyButton = (FancyButton)rootView.findViewById(R.id.button_start_workout);
+        Button buttonStart = (Button) rootView.findViewById(R.id.button_start_workout);
 
-        fancyButton.setOnClickListener(new View.OnClickListener() {
+        buttonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
             }
         });
 
+
+        ((MainActivity)getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
         arrayList = new ArrayList<>();
         arrayList.add("Warm Up 1");
+        arrayList.add("CIRCUIT 1 | CIRCUIT 3");
+        arrayList.add("CIRCUIT 1 | CIRCUIT 3");
         arrayList.add("CIRCUIT 1 | CIRCUIT 3");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

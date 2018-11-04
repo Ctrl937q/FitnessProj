@@ -36,6 +36,13 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
         mImageViewAboutActionBar = findViewById(R.id.action_bar_about);
 
+        mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                popFragment();
+            }
+        });
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         mActionBarTitle.setText("TSC BODY");

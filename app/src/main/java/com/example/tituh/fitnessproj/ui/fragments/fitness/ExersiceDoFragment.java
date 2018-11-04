@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.ohoussein.playpause.PlayPauseView;
 
@@ -22,6 +26,9 @@ public class ExersiceDoFragment extends BaseFragment {
     long mTimeLeftInills = startTimeills;
     boolean mTimerRunning;
     TextView textViewTime;
+    ProgressBar progressBarExersice;
+    Button btn_back;
+    Button btn_next;
 
     @Nullable
     @Override
@@ -30,6 +37,27 @@ public class ExersiceDoFragment extends BaseFragment {
 
         textViewTime = (TextView)rootView.findViewById(R.id.text_view_time);
         final PlayPauseView buttonPlayPause = (PlayPauseView) rootView.findViewById(R.id.button_test_start_exercise);
+        progressBarExersice = (ProgressBar)rootView.findViewById(R.id.progressBar_exersice);
+        btn_back = (Button)rootView.findViewById(R.id.btn_back_exersice);
+        btn_next = (Button)rootView.findViewById(R.id.btn_next_exersice);
+
+        ((MainActivity)getActivity()).updateActionBarTitle("WORKOUT NAME");
+
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((MainActivity)getActivity()).popFragment();
+            }
+        });
+
+        progressBarExersice.setMax(45);
 
         startTimer();
         buttonPlayPause.change(false);
@@ -54,6 +82,8 @@ public class ExersiceDoFragment extends BaseFragment {
             public void onTick(long l) {
                 mTimeLeftInills = l;
                 updateCountDownText();
+                long valueProgressBar = 45 - mTimeLeftInills/1000;
+                progressBarExersice.setProgress((int)valueProgressBar);
             }
 
             @Override

@@ -44,6 +44,7 @@ public class WeekWorkoutFragment extends BaseFragment {
         list.add(new WeekWorkoutModel("Week 12"));
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_workout_week);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new WeekWorkoutFragmentRecyclerViewAdapter(list));
 

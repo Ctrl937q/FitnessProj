@@ -13,15 +13,18 @@
         android:layout_width="wrap_content"
         android:id="@+id/action_bar_arrow"
         android:layout_gravity="left"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+
         android:src="@drawable/arrow_left_vector"
-        android:visibility="gone"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/action_bar_text_view"
         android:layout_width="wrap_content"
         android:textSize="20dp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         android:textColor="#000000"
         android:textAlignment="center"
         android:layout_gravity="center"
