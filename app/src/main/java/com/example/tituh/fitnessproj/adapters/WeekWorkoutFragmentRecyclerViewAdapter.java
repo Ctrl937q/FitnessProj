@@ -18,13 +18,12 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final String TAG = WeekWorkoutFragmentRecyclerViewAdapter.class.getSimpleName();
-    public static final int TYPE_HEADER = 0;
-    public static final int TYPE_ITEM = 1;
-    private List<WeekWorkoutModel> itemObjects;
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
+    private List<WeekWorkoutModel> mItemObjects;
 
     public WeekWorkoutFragmentRecyclerViewAdapter(List<WeekWorkoutModel> itemObjects) {
-        this.itemObjects = itemObjects;
+        this.mItemObjects = itemObjects;
     }
 
     @NonNull
@@ -42,19 +41,19 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        WeekWorkoutModel weekWorkoutModel = itemObjects.get(position);
+        WeekWorkoutModel weekWorkoutModel = mItemObjects.get(position);
         if (holder instanceof HeaderViewHolder) {
-            ((HeaderViewHolder) holder).headerTitle1.setText(weekWorkoutModel.getHeader_1());
-            ((HeaderViewHolder) holder).headerTitle2.setText(weekWorkoutModel.getHeader_2());
-            ((HeaderViewHolder)holder).button.setText("REST WORKOUTS");
+            ((HeaderViewHolder) holder).mHeaderTitle1.setText(weekWorkoutModel.getHeader1());
+            ((HeaderViewHolder) holder).mHeaderTitle2.setText(weekWorkoutModel.getHeader2());
+            ((HeaderViewHolder)holder).mButton.setText("REST WORKOUTS");
         } else if (holder instanceof ItemViewHolder) {
-            ((ItemViewHolder) holder).textView_week.setText(weekWorkoutModel.getHeader_1());
+            ((ItemViewHolder) holder).mTextViewWeek.setText(weekWorkoutModel.getHeader1());
         }
     }
 
     @Override
     public int getItemCount() {
-        return itemObjects.size();
+        return mItemObjects.size();
     }
 
     @Override
@@ -68,31 +67,31 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
         return position == 0;
     }
 
-     class HeaderViewHolder extends RecyclerView.ViewHolder {
+     private class HeaderViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView headerTitle1;
-        public TextView headerTitle2;
-        public FancyButton button;
+        private TextView mHeaderTitle1;
+        private TextView mHeaderTitle2;
+        private FancyButton mButton;
 
-        public HeaderViewHolder(@NonNull View itemView) {
+        private HeaderViewHolder(@NonNull View itemView) {
             super(itemView);
-            headerTitle1 = (TextView) itemView.findViewById(R.id.text_view_quantity_week);
-            headerTitle2 = (TextView) itemView.findViewById(R.id.text_view_all_week);
-            button = (FancyButton) itemView.findViewById(R.id.btn_button_rest_workout);
+            mHeaderTitle1 = (TextView) itemView.findViewById(R.id.text_view_quantity_week);
+            mHeaderTitle2 = (TextView) itemView.findViewById(R.id.text_view_all_week);
+            mButton = (FancyButton) itemView.findViewById(R.id.btn_button_rest_workout);
         }
     }
 
-     class ItemViewHolder extends RecyclerView.ViewHolder {
+     private class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView imageView_progress;
-        TextView textView_week;
-        ImageView imageView_arrow;
+        ImageView mImageViewProgress;
+        TextView mTextViewWeek;
+        ImageView mImageViewArrow;
 
-        public ItemViewHolder(@NonNull View itemView) {
+        private ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView_progress = (ImageView)itemView.findViewById(R.id.image_view_week_workout_progress);
-            textView_week = (TextView) itemView.findViewById(R.id.text_view_week_workout_week);
-            imageView_arrow = (ImageView)itemView.findViewById(R.id.image_view_week_workout_arrow);
+            mImageViewProgress = (ImageView)itemView.findViewById(R.id.image_view_week_workout_progress);
+            mTextViewWeek = (TextView) itemView.findViewById(R.id.text_view_week_workout_week);
+            mImageViewArrow = (ImageView)itemView.findViewById(R.id.image_view_week_workout_arrow);
         }
     }
 }

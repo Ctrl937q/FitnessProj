@@ -23,7 +23,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class ExerciseChooseFragment extends BaseFragment {
 
-    ArrayList<String>arrayList;
+    private ArrayList<String>mArrayList;
 
     @Nullable
     @Override
@@ -31,9 +31,9 @@ public class ExerciseChooseFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.exercise_choose_fragment, container, false);
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_exercise_choose);
-        Button buttonStart = (Button) rootView.findViewById(R.id.button_start_workout);
+        Button mButtonStart = (Button) rootView.findViewById(R.id.button_start_workout);
 
-        buttonStart.setOnClickListener(new View.OnClickListener() {
+        mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
@@ -42,14 +42,14 @@ public class ExerciseChooseFragment extends BaseFragment {
 
 
         ((MainActivity)getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
-        arrayList = new ArrayList<>();
-        arrayList.add("Warm Up 1");
-        arrayList.add("CIRCUIT 1 | CIRCUIT 3");
-        arrayList.add("CIRCUIT 1 | CIRCUIT 3");
-        arrayList.add("CIRCUIT 1 | CIRCUIT 3");
+        mArrayList = new ArrayList<>();
+        mArrayList.add("Warm Up 1");
+        mArrayList.add("CIRCUIT 1 | CIRCUIT 3");
+        mArrayList.add("CIRCUIT 1 | CIRCUIT 3");
+        mArrayList.add("CIRCUIT 1 | CIRCUIT 3");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new ExerciseRecyclerViewAdapter(arrayList));
+        recyclerView.setAdapter(new ExerciseRecyclerViewAdapter(mArrayList));
 
         return rootView;
     }

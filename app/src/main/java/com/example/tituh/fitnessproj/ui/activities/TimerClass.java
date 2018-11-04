@@ -1,15 +1,8 @@
 package com.example.tituh.fitnessproj.ui.activities;
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.example.tituh.fitnessproj.ui.fragments.DialogFragmentExersice;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.ExersiceDoFragment;
-
 import java.util.Locale;
 
 public class TimerClass {
@@ -72,7 +65,7 @@ public class TimerClass {
         mTimerRunningDialog = false;
     }
 
-    public void updateCountDownText(TextView textView) {
+    private void updateCountDownText(TextView textView) {
         //int minutes = (int) (mTimeLeftInills / 1000) / 60;
         int seconds = (int) (mTimeLeftInMills / 1000) % 60;
         //String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds); - with minutes
@@ -81,7 +74,7 @@ public class TimerClass {
     }
 
 
-    public void updateCountDownTextDialog(TextView textView) {
+    private void updateCountDownTextDialog(TextView textView) {
         //int minutes = (int) (mTimeLeftInills / 1000) / 60;
         int seconds = (int) (mTimeLeftInMillsDialog / 1000) % 60;
         //String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds); - with minutes

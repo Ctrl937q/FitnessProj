@@ -2,31 +2,31 @@ package com.example.tituh.fitnessproj.model;
 
 public class WeekWorkoutModel {
 
-    String header_1;
-    String header_2;
+    private String mHeader1;
+    private String mHeader2;
 
-    public WeekWorkoutModel(String header_1, String header_2) {
-        this.header_1 = header_1;
-        this.header_2 = header_2;
+    public WeekWorkoutModel(String header1, String header2) {
+        this.mHeader1 = header1;
+        this.mHeader2 = header2;
     }
 
-    public WeekWorkoutModel(String header_1) {
-        this.header_1 = header_1;
+    public WeekWorkoutModel(String header1) {
+        this.mHeader1 = header1;
     }
 
-    public String getHeader_1() {
-        return header_1;
+    public String getHeader1() {
+        return mHeader1;
     }
 
-    public void setHeader_1(String header_1) {
-        this.header_1 = header_1;
+    public void setHeader1(String header1) {
+        this.mHeader1 = header1;
     }
 
-    public String getHeader_2() {
-        return header_2;
+    public String getHeader2() {
+        return mHeader2;
     }
 
-    public void setHeader_2(String header_2) {
-        this.header_2 = header_2;
+    public void setHeader2(String header2) {
+        this.mHeader2 = header2;
     }
 }

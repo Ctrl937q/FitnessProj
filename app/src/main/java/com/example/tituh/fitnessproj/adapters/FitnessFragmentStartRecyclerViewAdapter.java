@@ -19,15 +19,15 @@ import static com.example.tituh.fitnessproj.model.FitnessStartModel.TWO_TYPE;
 
 public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    List<FitnessStartModel> list;
+    private List<FitnessStartModel> mList;
 
     public FitnessFragmentStartRecyclerViewAdapter(List<FitnessStartModel> list){
-        this.list = list;
+        this.mList = list;
     }
 
     @Override
     public int getItemViewType(int position) {
-        FitnessStartModel model = list.get(position);
+        FitnessStartModel model = mList.get(position);
         if(model != null){
             return model.getType();
         }
@@ -52,54 +52,54 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
     @Override
     public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
 
-        FitnessStartModel model = list.get(position);
+        FitnessStartModel model = mList.get(position);
 
         switch (model.getType()){
             case ONE_TYPE:
             if(position == 0){
-                Picasso.get().load(R.drawable.prepare_image).into(((OneViewHolder)holder).imageViewFirstItem);
-                ((OneViewHolder)holder).headline1.setText(model.getHeadline_1());
-                ((OneViewHolder)holder).headline2.setText(model.getHeadline_2());
+                Picasso.get().load(R.drawable.prepare_image).into(((OneViewHolder)holder).mImageViewFirstItem);
+                ((OneViewHolder)holder).mTextViewHeadline1.setText(model.getHeadline_1());
+                ((OneViewHolder)holder).mTextViewHeadline2.setText(model.getHeadline_2());
             }if(position == 1){
-                Picasso.get().load(R.drawable.week_workout_image).into(((OneViewHolder)holder).imageViewFirstItem);
-                ((OneViewHolder)holder).headline1.setText(model.getHeadline_1());
-                ((OneViewHolder)holder).headline2.setText(model.getHeadline_2());
+                Picasso.get().load(R.drawable.week_workout_image).into(((OneViewHolder)holder).mImageViewFirstItem);
+                ((OneViewHolder)holder).mTextViewHeadline1.setText(model.getHeadline_1());
+                ((OneViewHolder)holder).mTextViewHeadline2.setText(model.getHeadline_2());
             }
                 break;
             case TWO_TYPE:
-                ((TwoViewHolder)holder).headline3.setText(model.getHeadline_1());
+                ((TwoViewHolder)holder).mTextViewHeadline3.setText(model.getHeadline_1());
                 break;
         }
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return mList.size();
     }
 
-    class OneViewHolder extends RecyclerView.ViewHolder{
+    private class OneViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imageViewFirstItem;
-        TextView headline1;
-        TextView headline2;
+        ImageView mImageViewFirstItem;
+        TextView mTextViewHeadline1;
+        TextView mTextViewHeadline2;
 
-        public OneViewHolder(@NonNull View itemView) {
+        private OneViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageViewFirstItem = itemView.findViewById(R.id.image_view_recycler_view_start);
-            headline1 = itemView.findViewById(R.id.textViewFitnessStartLayout_1);
-            headline2 = itemView.findViewById(R.id.textViewFitnessStartLayout_2);
+            mImageViewFirstItem = itemView.findViewById(R.id.image_view_recycler_view_start);
+            mTextViewHeadline1 = itemView.findViewById(R.id.textViewFitnessStartLayout_1);
+            mTextViewHeadline2 = itemView.findViewById(R.id.textViewFitnessStartLayout_2);
         }
     }
 
-    class TwoViewHolder extends RecyclerView.ViewHolder{
+    private class TwoViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView imageView;
-        TextView headline3;
+        ImageView mImageViewLastItemIcon;
+        TextView mTextViewHeadline3;
 
-        public TwoViewHolder(@NonNull View itemView) {
+        private TwoViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.image_view_fitness_start2);
-            headline3 = itemView.findViewById(R.id.text_view_fitness_start_3);
+            mImageViewLastItemIcon = itemView.findViewById(R.id.image_view_fitness_start2);
+            mTextViewHeadline3 = itemView.findViewById(R.id.text_view_fitness_start_3);
         }
     }
 }

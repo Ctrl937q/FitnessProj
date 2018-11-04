@@ -1,22 +1,15 @@
 package com.example.tituh.fitnessproj.ui.fragments;
 
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.activities.TimerClass;
-
 import java.util.Timer;
 import java.util.TimerTask;
-
 import mehdi.sakout.fancybuttons.FancyButton;
 
 public class DialogFragmentExersice extends Dialog {

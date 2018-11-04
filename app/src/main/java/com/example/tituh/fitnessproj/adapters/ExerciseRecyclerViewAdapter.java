@@ -7,21 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
-
 import java.util.ArrayList;
-
 import mehdi.sakout.fancybuttons.FancyButton;
 
-//recyclerView_exercise_choose id
 public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<ExerciseRecyclerViewAdapter.ViewHolder> {
 
-    ArrayList<String>arrayList;
+    private ArrayList<String> mArrayList;
 
     public ExerciseRecyclerViewAdapter(ArrayList<String> arrayList) {
-        this.arrayList = arrayList;
-
+        this.mArrayList = arrayList;
     }
 
     @NonNull
@@ -33,32 +28,32 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<ExerciseRe
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textViewWarmUpName.setText(arrayList.get(position));
+        holder.mTextViewWarmUpName.setText(mArrayList.get(position));
     }
 
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return mArrayList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewExerciseTitle;
-        ImageView imageViewExercise;
-        TextView textViewWarmUpName;
-        TextView textViewTimeExersice1;
-        TextView textViewTimeExersice2;
-        FancyButton fancyButtonStartWorkout;
+        TextView mTextViewExerciseTitle;
+        ImageView mImageViewExercise;
+        TextView mTextViewWarmUpName;
+        TextView mTextViewTimeExersice1;
+        TextView mTextViewTimeExersice2;
+        FancyButton mFancyButtonStartWorkout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textViewExerciseTitle = itemView.findViewById(R.id.text_view_title_exercise);
-            imageViewExercise = itemView.findViewById(R.id.imageView_exercise);
-            textViewWarmUpName = itemView.findViewById(R.id.warm_up_name);
-            textViewTimeExersice1 = itemView.findViewById(R.id.textView_time_exercise_1);
-            textViewTimeExersice2 = itemView.findViewById(R.id.textView_time_exercise_2);
-            fancyButtonStartWorkout = itemView.findViewById(R.id.button_start_workout);
+            mTextViewExerciseTitle = itemView.findViewById(R.id.text_view_title_exercise);
+            mImageViewExercise = itemView.findViewById(R.id.imageView_exercise);
+            mTextViewWarmUpName = itemView.findViewById(R.id.warm_up_name);
+            mTextViewTimeExersice1 = itemView.findViewById(R.id.textView_time_exercise_1);
+            mTextViewTimeExersice2 = itemView.findViewById(R.id.textView_time_exercise_2);
+            mFancyButtonStartWorkout = itemView.findViewById(R.id.button_start_workout);
         }
     }
 }
