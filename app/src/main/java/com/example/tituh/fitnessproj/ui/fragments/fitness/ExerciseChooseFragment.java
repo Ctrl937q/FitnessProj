@@ -5,21 +5,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ExerciseRecyclerViewAdapter;
-import com.example.tituh.fitnessproj.adapters.FitnessFragmentStartRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.ArrayList;
-
-import mehdi.sakout.fancybuttons.FancyButton;
 
 public class ExerciseChooseFragment extends BaseFragment {
 
@@ -36,7 +30,8 @@ public class ExerciseChooseFragment extends BaseFragment {
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
+            //    fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
+                fragmentInteractionListener.pushFragment(new GetReadyFragment(), true);
             }
         });
 

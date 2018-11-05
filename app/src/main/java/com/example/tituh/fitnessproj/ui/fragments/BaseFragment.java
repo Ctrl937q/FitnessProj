@@ -68,4 +68,6 @@ public class BaseFragment extends Fragment {
     public void showSnackMessage(int stringResId) {
         if (null!=fragmentInteractionListener && isActivityAvailable()) fragmentInteractionListener.showSnackMessage(stringResId);
     }
+
+
 }
