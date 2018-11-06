@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
 
         pushFragment(new MainTabLayoutFragment(), false);
-
     }
 
     @Override
@@ -60,6 +59,20 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             FragmentTransaction ft = manager.beginTransaction();
             //ft.setCustomAnimations(R.animator.slide_in_left, 0);
             ft.replace(R.id.fragment_container, fragment, tag);
+            if (shouldAddToBackstack) ft.addToBackStack(tag);
+            ft.commit();
+        }
+    }
+
+    @Override
+    public void pushFragmentGlossary(BaseFragment fragment, boolean shouldAddToBackstack) {
+        if (!isFinishing()) {
+            String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
+            Log.v(tag, tag);
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction ft = manager.beginTransaction();
+            //ft.setCustomAnimations(R.animator.slide_in_left, 0);
+            ft.replace(R.id.fragment_container_glossary, fragment, tag);
             if (shouldAddToBackstack) ft.addToBackStack(tag);
             ft.commit();
         }

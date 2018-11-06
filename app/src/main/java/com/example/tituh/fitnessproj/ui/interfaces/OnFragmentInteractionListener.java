@@ -8,6 +8,7 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public interface OnFragmentInteractionListener {
     void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack);
+    void pushFragmentGlossary(BaseFragment fragment, boolean shouldAddToBackstack);
     void popFragment();
     void runUiTask(Runnable task);
     void showAlertDialog(View view, boolean atBottom);

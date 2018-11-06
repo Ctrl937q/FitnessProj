@@ -18,5 +18,9 @@
 
     <color name="color_wite_for_dialog">#ffffff</color>
     <color name="pink_for_button">#FFD7DE</color>
+    <color name="color_shadow_level">#0a000000</color>
+    <color name="color_background_card_view_gloccary">#FFEFF2</color>
+
+
 
 </resources>

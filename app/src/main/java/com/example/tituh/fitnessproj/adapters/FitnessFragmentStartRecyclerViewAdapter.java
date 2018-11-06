@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 import static com.example.tituh.fitnessproj.model.FitnessStartModel.ONE_TYPE;
 import static com.example.tituh.fitnessproj.model.FitnessStartModel.TWO_TYPE;
 
@@ -59,11 +61,11 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
             if(position == 0){
                 Picasso.get().load(R.drawable.prepare_image).into(((OneViewHolder)holder).mImageViewFirstItem);
                 ((OneViewHolder)holder).mTextViewHeadline1.setText(model.getHeadline_1());
-                ((OneViewHolder)holder).mTextViewHeadline2.setText(model.getHeadline_2());
+                ((OneViewHolder)holder).fancyButton.setText(model.getmTextButton());
             }if(position == 1){
                 Picasso.get().load(R.drawable.week_workout_image).into(((OneViewHolder)holder).mImageViewFirstItem);
+                ((OneViewHolder)holder).fancyButton.setText(model.getmTextButton());
                 ((OneViewHolder)holder).mTextViewHeadline1.setText(model.getHeadline_1());
-                ((OneViewHolder)holder).mTextViewHeadline2.setText(model.getHeadline_2());
             }
                 break;
             case TWO_TYPE:
@@ -81,13 +83,13 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
         ImageView mImageViewFirstItem;
         TextView mTextViewHeadline1;
-        TextView mTextViewHeadline2;
+        FancyButton fancyButton;
 
         private OneViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageViewFirstItem = itemView.findViewById(R.id.image_view_recycler_view_start);
             mTextViewHeadline1 = itemView.findViewById(R.id.textViewFitnessStartLayout_1);
-            mTextViewHeadline2 = itemView.findViewById(R.id.textViewFitnessStartLayout_2);
+            fancyButton = itemView.findViewById(R.id.fancy_button_start);
         }
     }
 

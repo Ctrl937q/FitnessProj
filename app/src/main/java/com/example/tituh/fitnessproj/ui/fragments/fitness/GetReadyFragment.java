@@ -2,7 +2,6 @@ package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,24 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.activities.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
-import org.w3c.dom.Text;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class GetReadyFragment extends BaseFragment {
 
     TextView textViewTime;
-    TimerClass timerClass;
-    CountDownTimer yourCountDownTimer;
+    CountDownTimer mCountDownTimer;
     long sec;
 
     @Nullable
@@ -40,8 +30,7 @@ public class GetReadyFragment extends BaseFragment {
 
         ((MainActivity) getActivity()).updateActionBarTitle("ASS | LEGS");
 
-        timerClass = new TimerClass();
-        yourCountDownTimer = new CountDownTimer(10000, 1000) {
+        mCountDownTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
                 sec = (millisUntilFinished / 1000) % 60;
                 textViewTime.setText("" + sec);
@@ -65,7 +54,7 @@ public class GetReadyFragment extends BaseFragment {
 
     @Override
     public void onPause() {
-        yourCountDownTimer.cancel();
+        mCountDownTimer.cancel();
         Log.d("onP", "onPause |" + sec);
         super.onPause();
     }

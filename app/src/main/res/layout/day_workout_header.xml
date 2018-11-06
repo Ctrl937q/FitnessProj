@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/color_bnv_unchecked"
         android:textSize="50dp"
-        android:textStyle="bold" />
+         />
 
     <TextView
         android:id="@+id/text_view_all_day"

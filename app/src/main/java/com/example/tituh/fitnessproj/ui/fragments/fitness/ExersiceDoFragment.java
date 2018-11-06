@@ -1,9 +1,10 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.activities.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+import com.example.tituh.fitnessproj.ui.fragments.DialogFragmentExersice;
 import com.ohoussein.playpause.PlayPauseView;
 
 public class ExersiceDoFragment extends BaseFragment {
@@ -46,16 +48,16 @@ public class ExersiceDoFragment extends BaseFragment {
         mButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
-                //dialogFragmentExersice.show();
-                //dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                //timerClass.pauseTimer();
-                //buttonPlayPause.change(true);
+                timerClass.pauseTimerDialog();
                 fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
+                /*DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
+                dialogFragmentExersice.show();
+                dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));*/
+                buttonPlayPause.change(true);
+                //fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
 
             }
         });
-
 
         buttonPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override

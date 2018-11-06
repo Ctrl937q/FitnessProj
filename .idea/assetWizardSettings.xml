@@ -19,11 +19,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="59" />
-                            <entry key="outputName" value="progress_bar_vector" />
+                            <entry key="height" value="28" />
+                            <entry key="outputName" value="light_bulb_vector" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\assets\progress_bar.svg" />
-                            <entry key="width" value="143" />
+                            <entry key="sourceFile" value="C:\assets\light_bulb_vector.svg" />
+                            <entry key="width" value="19" />
                           </map>
                         </option>
                       </PersistentState>

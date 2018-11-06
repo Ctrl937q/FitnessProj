@@ -30,7 +30,6 @@ public class ExerciseChooseFragment extends BaseFragment {
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            //    fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
                 fragmentInteractionListener.pushFragment(new GetReadyFragment(), true);
             }
         });
