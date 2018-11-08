@@ -13,11 +13,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
+
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.app_bar);
+
 
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             dialog.show();
         }
     }
-
 
 
     @Override

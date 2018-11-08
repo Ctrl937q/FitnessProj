@@ -36,6 +36,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="20dp"
+                    android:visibility="gone"
                     android:src="@drawable/progress_bar_week_rv"
                     android:layout_height="wrap_content" />
 
@@ -47,19 +48,21 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:id="@+id/text_view_day_workout"
+                        android:fontFamily="@font/reg_font"
                         android:text="Day 1"
                         android:layout_marginStart="20dp"
                         android:textColor="@color/color_bnv_unchecked"
-                        android:textStyle="normal"
+                        android:layout_marginTop="10dp"
                         android:textSize="19sp"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="ASS | LEGGS"
-                        android:textColor="@color/color_bnv_unchecked"
-                        android:textStyle="normal"
+                        android:fontFamily="@font/reg_font"
+                        android:text="Ass | legs"
+                        android:layout_marginBottom="10dp"
+                        android:textColor="@color/color_for_text_day"
                         android:id="@+id/text_view_what_exersice"
                         android:textSize="11sp"
                         android:layout_height="wrap_content" />

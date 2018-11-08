@@ -34,9 +34,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/reg_font"
+
                     android:textColor="@color/color_bnv_unchecked"
                     android:id="@+id/warm_up_name_glossary"
-                    android:text="WARM UP NAME" />
+                    android:text="Warm Up Name" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -52,6 +54,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/reg_font"
+
                         android:layout_marginStart="10dp"
                         android:id="@+id/textView_time_exercise_2_glossary"
                         android:text="5 MIN"
@@ -61,6 +65,8 @@
                         android:layout_width="wrap_content"
                         android:text="#REPS"
                         android:textSize="12sp"
+                        android:fontFamily="@font/reg_font"
+
                         android:layout_marginLeft="15dp"
                         android:textColor="@color/color_light_pink"
                         android:layout_height="wrap_content" />

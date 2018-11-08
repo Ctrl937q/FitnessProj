@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/daily_habits_vector" />
+
+        </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/medium_font"
+                android:lineSpacingExtra="6dp"
+                android:textColor="@color/color_bnv_unchecked"
+                android:gravity="center"
+                android:text="Fill out the Daily Life Chart each day to track your wellness habits!"
+                android:textSize="18sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/btn_start_workout"
+                android:fontFamily="@font/medium_font"
+                android:text="DOWNLOAD YOUR DAILY HABITS CHART"
+                android:textColor="@color/color_bnv_unchecked"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="1dp"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/picture_daily_habits_1" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Breakfast"
+                android:textSize="25sp"
+                 />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="KIM &amp; LAURYN NEVER SKIP BREAKFAST. Two &amp; half hours later is always a snack. They both love fiber, protein, greens, &amp; LIGHT, healthy fat. Make sure you\'re eating enough to rev up your metabolism. When you go long stretches of time without food, you're slowing down your metabolism. You don't want to train your body to store fat. SO eat. Especially breakfast. It sets the tone of the day."
+                android:textSize="19sp" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/picture_daily_habits_2" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Self-Care"
+                android:textSize="25sp"
+                />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="Lauryn &amp; Kim LOVE SELF-CARE. This can be anything from meditation, chiropractor, acupuncture, cupping, massage, facials, hot bath, aromatherapy, rosé (HAHA), listening podcasts, reading, etc. When you're your best self, you can show up for other's better. Self-care is SO IMPORTANT."
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Sleep"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="Lauryn likes to aim for 7 to 9 and Kim likes to get 7 to 8 hours. Sleep is SO IMPORTANT. Get in bed &amp; unplug at least an hour before. Lauryn likes to read a hard-cover book before bed &amp; Kim likes to listen to music or meditate. They both like noise-canceling headphones too (so Lauryn can avoid Michael's 384732 questions)."
+                android:textSize="19sp" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/picture_daily_habits_3" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Water"
+                android:textSize="25sp"
+                />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="We know, we know- this is what everyone tells you BUT it's important. Aim for half your body weight in ounces. Kim &amp; Lauryn carry around a
+Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep the water cold which is ideal. Get creative with your water- use non-caffeinated tea, add mint, lemon, berries, or basil (Lauryn loves basil in her water, Kim loves basil &amp; strawberries in her water). Even freezing berries in ice &amp; adding them to your water feels special. If you're not into water, set alarms in your phone to remind you to GULPY-GULP. If you're drinking, have a glass of water for every cocktail! ALWAYS. Try for non-bubbly if you're drinking alcohol. Lauryn LOVES PEPPERMINT TEA. Lately she's been doing mint leaves in hot water. This soothes the digestive system. Kim loves a straw because it's easier to drink. The Hydroflask has a straw built in
+&amp; Lauryn loves SoftyStraws too. Water-based foods like cucumber, lettuce, &amp; watermelon are great too."
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Sex"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="Sex is a mood-lifting hormone! Get in sex when you can- HA. It's your feel good hormone. If you can't have sex, 2018 is all about the self-love. Have some fun. We both love coconut oil based lube like
+ WOO FOR PLAY."
+                android:textSize="19sp" />     <!--TODO: word-->
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="1dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/picture_daily_habits_4" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Steps"
+                android:textSize="25sp"
+                />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="Lauryn likes to count her steps on the PACER APP. Kim likes her Apple watch. Both are great. They both like to aim for 10k minimum a day, but 15k is a goal (very ideal!). Lauryn likes to get her steps in on the Treadmill while returning e-mails. Kim likes to park far away from where she has to go. Kim also likes to walk her dog while on a conference call. Be resourceful!"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Sweat"
+                android:layout_marginTop="20dp"
+                android:textSize="25sp"
+                />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:justificationMode="inter_word"
+                android:text="This is obvious. TRY TO BREAK A SWEAT ONCE A DAY. 7 minute workouts count!"
+                android:textSize="19sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_marginTop="35dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/medium_font"
+                android:lineSpacingExtra="6dp"
+                android:textColor="@color/color_bnv_unchecked"
+                android:text="Fill out the Daily Life Chart each day to track your wellness habits!"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/btn_start_workout"
+            android:fontFamily="@font/medium_font"
+            android:text="DOWNLOAD YOUR DAILY HABITS CHART"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
+
+    <!--&amp;-->

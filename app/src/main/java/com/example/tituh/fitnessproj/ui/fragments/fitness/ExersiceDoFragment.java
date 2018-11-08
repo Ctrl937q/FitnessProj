@@ -49,10 +49,10 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 timerClass.pauseTimerDialog();
-                fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
-                /*DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
+                //fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
+                DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
                 dialogFragmentExersice.show();
-                dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));*/
+                dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 buttonPlayPause.change(true);
                 //fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
 

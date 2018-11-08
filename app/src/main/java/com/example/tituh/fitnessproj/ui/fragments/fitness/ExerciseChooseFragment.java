@@ -37,10 +37,9 @@ public class ExerciseChooseFragment extends BaseFragment {
 
         ((MainActivity)getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
         mArrayList = new ArrayList<>();
-        mArrayList.add("Warm Up 1");
+        mArrayList.add("Warm Up Name");
         mArrayList.add("CIRCUIT 1 | CIRCUIT 3");
-        mArrayList.add("CIRCUIT 1 | CIRCUIT 3");
-        mArrayList.add("CIRCUIT 1 | CIRCUIT 3");
+
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new ExerciseRecyclerViewAdapter(mArrayList));

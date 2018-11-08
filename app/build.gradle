@@ -33,9 +33,6 @@ dependencies {
     compile 'com.loopeer.lib:shadow:0.0.4-beta3'
     implementation 'com.github.medyo:fancybuttons:1.9.0'
     compile 'com.github.ohoussein.playpauseview:playpauseview:1.0.2'
-
     compile 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
-
-
-
+    compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
 }

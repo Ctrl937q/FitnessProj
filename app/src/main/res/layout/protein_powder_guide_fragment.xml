@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/protein_powder_guide_vector" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/background_protein_powder_guide">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="60dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_font"
+                    android:text="15 BEST PLANT-BASED PROTEIN SOURCES"
+                    android:textSize="19sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Green Peace"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Quinoa"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Nuts and Butters"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Beans"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Checkpeas"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Tempeh and Tofu"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Edamame"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Leafy Greens"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Hemp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Chia Seeds"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Sesamr, Sunflower, and Poppy Seeds"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Seitan"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Non-Dairy milk"
+                    android:textSize="18sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:fontFamily="@font/reg_font"
+                    android:text="Unsweetened Cocoa Powder"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Avoid"
+                android:textSize="25sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ soy - full of GOs linked to disease"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ dairy,if vegan"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ addivives and processed ingredients"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ whey that is pasteurized and heat \ntreated - disruptive to health"
+                android:textSize="19sp" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Look for"
+                android:textSize="25sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ building muscle = whey &amp; whey isolates, BCAAs"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ lose weight = no added sugars or maldextrons, no BCAAs"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ vegan - use plant proteins such as hemp or pea"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ a brand that tests for level of poisons"
+                android:textSize="19sp" />
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="How &amp; Why"
+                android:textSize="25sp" />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ post workout = consume protein within 30 minutes"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ muscles are most responsive for growth and repair during that time."
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ protein keeps body filled longer and doesn’t turn to fat."
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="+ spread out throughout the day - your body breaks down 25 g per meal"
+                android:textSize="19sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/medium_font"
+                android:text="Example:"
+                android:textSize="22sp" />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium_font"
+                android:text="If you’re beginning to workout &amp; weigh 125 lbs (~60 g protein / day)"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium_font"
+                android:text="+ Green smoothie ( 20 g )"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium_font"
+                android:text="+ Turkey salad lunch ( 25 g )"
+                android:textSize="19sp" />
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/medium_font"
+                android:text="+ Chicken breast dinner ( 20 g )"
+                android:layout_marginBottom="30dp"
+                android:textSize="19sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

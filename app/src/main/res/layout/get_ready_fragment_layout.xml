@@ -1,87 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_start">
+    android:fillViewport="true">
 
-
-    <ImageView
-        android:id="@+id/image_view_center_circle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/circle_center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_get_ready"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_horizontal"
-        android:text="GET READY WORKOUT"
-        android:textColor="@color/color_bnv_unchecked"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/text_view_start_in" />
-
-    <TextView
-        android:id="@+id/text_view_start_in"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:gravity="center_horizontal"
-        android:text="START IN 10 SECONDS"
-        android:textColor="@color/color_bnv_unchecked"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/image_view_center_circle" />
+        android:background="@drawable/background_get_ready">
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/text_view_timer"
-        android:gravity="center"
-        android:textSize="64sp"
-        android:textStyle="bold"
-        android:text="10"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/color_bnv_unchecked"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/image_view_center_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="70dp"
+            android:src="@drawable/center_circle_timer"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/text_view_you_got_this"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center_horizontal"
-        android:text="YOU GOT THIS"
-        android:textColor="@color/color_bnv_unchecked"
-        android:textSize="19sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_center_circle" />
+        <TextView
+            android:id="@+id/text_view_get_ready"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/reg_font"
+            android:gravity="center_horizontal"
+            android:text="Gready warm up"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/text_view_start_in" />
+
+        <TextView
+            android:id="@+id/text_view_start_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/reg_font"
+            android:gravity="center_horizontal"
+            android:text="Start in 10 seconds"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/image_view_center_circle" />
 
 
-    <Button
-        android:id="@+id/button_start_workout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/btn_start_circuit"
-        android:text="START CIRCUIT 1 NOW"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        <TextView
+            android:id="@+id/text_view_timer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="85dp"
+            android:fontFamily="@font/reg_font"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textSize="64sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/text_view_you_got_this"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/reg_font"
+            android:gravity="center_horizontal"
+            android:text="You got this"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@+id/image_view_center_circle" />
+
+        <LinearLayout
+            android:id="@+id/linear_layout_bot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_you_got_this">
+
+            <mehdi.sakout.fancybuttons.FancyButton
+                android:id="@+id/btn_skip_warm_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/reg_font"
+                android:gravity="center_horizontal"
+                android:paddingBottom="11dp"
+                android:paddingEnd="12dp"
+                android:paddingStart="12dp"
+                android:paddingTop="11dp"
+                android:text="Skip don't want to warm up"
+                android:textStyle="bold"
+                fancy:fb_borderColor="#FFFFFF"
+                fancy:fb_borderWidth="1dp"
+                fancy:fb_defaultColor="@color/pink_for_button"
+                fancy:fb_focusColor="#ca838383"
+                fancy:fb_radius="7dp"
+                fancy:fb_textColor="#000000"
+                fancy:fb_textSize="10sp"
+                fancy:fb_useSystemFont="false" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/button_start_workout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_start_circuit"
+            android:fontFamily="@font/reg_font"
+            android:text="START WARM UP"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_bot" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>

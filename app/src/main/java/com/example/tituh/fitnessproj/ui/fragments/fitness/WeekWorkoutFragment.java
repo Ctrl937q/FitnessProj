@@ -29,7 +29,7 @@ public class WeekWorkoutFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.week_workout_activity, container, false);
 
         List<WeekWorkoutModel> list = new ArrayList<>();
-        list.add(new WeekWorkoutModel("3", "OUT OF 12 WEEKS"));
+        list.add(new WeekWorkoutModel("3", "Out of 12 weeks"));
         list.add(new WeekWorkoutModel("Week 1"));
         list.add(new WeekWorkoutModel("Week 2"));
         list.add(new WeekWorkoutModel("Week 3"));

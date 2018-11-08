@@ -42,10 +42,12 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
         View view;
         switch (viewType){
             case ONE_TYPE:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_layout, parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_item1,
+                        parent,false);
                 return new OneViewHolder(view);
             case TWO_TYPE:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_layout2, parent,false);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_item2,
+                        parent,false);
                 return new TwoViewHolder(view);
         }
         return null;

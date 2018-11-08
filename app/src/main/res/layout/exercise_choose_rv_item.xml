@@ -18,13 +18,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:id="@+id/text_view_title_exercise"
+                android:fontFamily="@font/reg_font"
                 android:layout_height="wrap_content"
-                android:text="WARM UP"
-                android:textColor="@color/color_bnv_unchecked"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:text="Warm Up"
+                android:textColor="@color/color_for_text_day"
+                android:textSize="15sp" />
 
         </LinearLayout>
+
+        <!--
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,6 +50,8 @@
 
         </LinearLayout>
 
+        -->
+
 
     </LinearLayout>
 
@@ -69,7 +73,7 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/imageView_exercise"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/exsercise_image1" />
+                    android:src="@drawable/test_picture" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -80,10 +84,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:fontFamily="@font/reg_font"
                         android:textColor="@color/color_bnv_unchecked"
-
                         android:id="@+id/warm_up_name"
-                        android:text="WARM UP NAME" />
+                        android:text="Warm Up Name" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -100,9 +105,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/reg_font"
                             android:id="@+id/textView_time_exercise_2"
                             android:text="5 MIN"
                             android:textColor="@color/color_light_pink" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:text="#REPS"
+                            android:textColor="@color/color_light_pink"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/reg_font"
+                            android:layout_height="wrap_content" />
 
 
                     </LinearLayout>
@@ -117,7 +133,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="25dp"
-                        android:src="@drawable/ic_info_vector" />
+                        android:src="@drawable/info_vector_new" />
 
                 </LinearLayout>
 

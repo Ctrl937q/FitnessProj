@@ -33,8 +33,7 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:id="@+id/image_view_week_workout_progress"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:visibility="gone"
                     android:layout_marginStart="20dp"
                     android:src="@drawable/progress_bar_week_rv"
                     android:layout_height="wrap_content" />
@@ -43,9 +42,11 @@
                     android:layout_width="wrap_content"
                     android:id="@+id/text_view_week_workout_week"
                     android:layout_marginStart="20dp"
+                    android:fontFamily="@font/reg_font"
                     android:textColor="@color/color_bnv_unchecked"
-                    android:textStyle="normal"
-                    android:textSize="19sp"
+                    android:textSize="17sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_height="wrap_content" />
 
 
