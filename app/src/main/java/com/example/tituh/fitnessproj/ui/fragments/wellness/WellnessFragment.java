@@ -57,7 +57,12 @@ public class WellnessFragment extends BaseFragment {
                 if (position == 1) {
                     if (null != fragmentInteractionListener) {
                         fragmentInteractionListener.pushFragment(new ProteinPowderGuideFragment(), true);
+                    }
+                }
 
+                if(position == 2){
+                    if (null != fragmentInteractionListener) {
+                        fragmentInteractionListener.pushFragment(new TipsForYourSuccess(), true);
                     }
                 }
             }

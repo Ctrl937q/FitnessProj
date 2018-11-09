@@ -21,6 +21,29 @@
     <color name="color_shadow_level">#0a000000</color>
     <color name="color_background_card_view_gloccary">#FFEFF2</color>
     <color name="color_for_text_day">#E9A5BB</color>
+    <color name="color_background_card_view_tips">#ff748e</color>
+
+
+
+
+
+
+    <!-- dots inactive colors -->
+    <array name="array_dot_inactive">
+        <item>#ffc2cc</item>
+        <item>#ffc2cc</item>
+
+    </array>
+
+    <!-- dots active colors -->
+    <array name="array_dot_active">
+        <item>#ff77a3</item>
+        <item>#ff77a3</item>
+
+    </array>
+
+
+
 
 
 
