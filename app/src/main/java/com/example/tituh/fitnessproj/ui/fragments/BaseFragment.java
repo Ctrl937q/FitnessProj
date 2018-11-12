@@ -8,6 +8,7 @@ import android.view.View;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 public class BaseFragment extends Fragment {
+
     protected OnFragmentInteractionListener fragmentInteractionListener;
     protected View view;
 

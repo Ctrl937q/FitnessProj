@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ViewPagerAdapter;
 import com.example.tituh.fitnessproj.ui.fragments.about.AboutFragment;
+import com.example.tituh.fitnessproj.ui.fragments.community.CommunityFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.FitnessFragment;
 import com.example.tituh.fitnessproj.ui.fragments.nutrition.NutritionFragment;
 import com.example.tituh.fitnessproj.ui.fragments.wellness.WellnessFragment;
 
 public class MainTabLayoutFragment extends BaseFragment {
+
     private BottomNavigationView mBottomNavigationView;
     private ViewPager mViewPager;
     private MenuItem mPrevMenuItem;
@@ -25,6 +27,7 @@ public class MainTabLayoutFragment extends BaseFragment {
     private FitnessFragment mFitnessFragment;
     private NutritionFragment mNutritionFragment;
     private WellnessFragment mWellnessFragment;
+    private CommunityFragment mCommunityFragment;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -72,10 +75,13 @@ public class MainTabLayoutFragment extends BaseFragment {
         mFitnessFragment = new FitnessFragment();
         mNutritionFragment = new NutritionFragment();
         mWellnessFragment = new WellnessFragment();
+        mCommunityFragment = new CommunityFragment();
+
         viewPagerAdapter.addFragment(mAboutFragment);
         viewPagerAdapter.addFragment(mFitnessFragment);
         viewPagerAdapter.addFragment(mNutritionFragment);
         viewPagerAdapter.addFragment(mWellnessFragment);
+        viewPagerAdapter.addFragment(mCommunityFragment);
         viewPager.setAdapter(viewPagerAdapter);
     }
 
@@ -94,6 +100,9 @@ public class MainTabLayoutFragment extends BaseFragment {
                     break;
                 case R.id.item_wellness:
                     mViewPager.setCurrentItem(3);
+                    break;
+                case R.id.item_comminity:
+                    mViewPager.setCurrentItem(4);
                     break;
             }
             return true;

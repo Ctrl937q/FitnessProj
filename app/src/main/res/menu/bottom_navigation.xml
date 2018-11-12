@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/item_about"
+        
         android:title="About"
         android:icon="@drawable/about_vector" />
 
     <item
         android:id="@+id/item_fitness"
         android:title="Fitness"
-
         android:icon="@drawable/fitness_vector" />
 
     <item
@@ -21,6 +21,12 @@
         android:id="@+id/item_wellness"
         android:title="Wellness"
         android:icon="@drawable/wellness_vector" />
+
+
+    <item
+        android:id="@+id/item_comminity"
+        android:title="Community"
+        android:icon="@drawable/community_vector" />
 
 
 

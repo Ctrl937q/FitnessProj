@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.ui.fragments.fitness;
+package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
-import com.example.tituh.fitnessproj.ui.activities.TimerClass;
+import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.DialogFragmentExersice;
 import com.ohoussein.playpause.PlayPauseView;
@@ -39,6 +39,7 @@ public class ExersiceDoFragment extends BaseFragment {
         mButtonNext = (Button) rootView.findViewById(R.id.btn_next_exersice);
         mProgressBarExersice.setMax(timerValue);
         timerClass = new TimerClass();
+
 
         ((MainActivity) getActivity()).updateActionBarTitle("WORKOUT NAME");
 
@@ -75,6 +76,7 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).popFragment();
+
 
             }
         });

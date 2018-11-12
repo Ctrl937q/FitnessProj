@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         Toolbar toolbar = findViewById(R.id.app_bar);
 
-
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
         mImageViewAboutActionBar = findViewById(R.id.action_bar_about);
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 popFragment();
             }
         });
-
 
         pushFragment(new MainTabLayoutFragment(), false);
     }

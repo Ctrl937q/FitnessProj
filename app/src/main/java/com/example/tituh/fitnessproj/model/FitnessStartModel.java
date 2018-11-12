@@ -6,10 +6,12 @@ public class FitnessStartModel {
     public static final int TWO_TYPE = 2;
     private String mHeadline1;
     private String mTextButton;
+    private int[]drawableassive;
 
     private int type;
 
-    public FitnessStartModel(String headline_1,String mTextButton, int type) {
+    public FitnessStartModel(String headline_1,String mTextButton, int type, int[]drawableassive) {
+        this.drawableassive = drawableassive;
         this.mHeadline1 = headline_1;
         this.mTextButton = mTextButton;
         this.type = type;
@@ -38,5 +40,13 @@ public class FitnessStartModel {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int[] getDrawableassive() {
+        return drawableassive;
+    }
+
+    public void setDrawableassive(int[] drawableassive) {
+        this.drawableassive = drawableassive;
     }
 }

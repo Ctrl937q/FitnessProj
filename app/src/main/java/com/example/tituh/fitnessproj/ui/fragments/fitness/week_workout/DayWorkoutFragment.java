@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.ui.fragments.fitness;
+package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +13,6 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.DayWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.model.DayWorkoutModel;
-import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 

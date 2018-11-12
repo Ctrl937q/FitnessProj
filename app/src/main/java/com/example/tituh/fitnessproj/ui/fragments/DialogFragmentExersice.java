@@ -9,9 +9,8 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.ui.activities.TimerClass;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.ExersiceDoFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.GroceryListFragment;
+import com.example.tituh.fitnessproj.helpers.TimerClass;
+import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.ExersiceDoFragment;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 

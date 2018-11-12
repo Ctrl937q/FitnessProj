@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.ui.activities;
+package com.example.tituh.fitnessproj.helpers;
 
 import android.os.CountDownTimer;
 import android.widget.ProgressBar;
@@ -12,11 +12,9 @@ public class TimerClass  {
 
     private long startTimeInMills = 46000;
     private long startTimeInMillsDialog = 10000;
-    private long startTimeInMillsTest = 10000;
 
     private long mTimeLeftInMills = startTimeInMills;
     private long mTimeLeftInMillsDialog = startTimeInMillsDialog;
-    private long mTimeLeftInMillsTest = startTimeInMillsTest;
 
     private boolean mTimerRunning;
     private boolean mTimerRunningDialog;

@@ -3,10 +3,8 @@ package com.example.tituh.fitnessproj.ui.fragments.wellness;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +52,6 @@ public class TipsForYourSuccess extends BaseFragment {
         return rootView;
     }
 
-
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
@@ -72,7 +69,6 @@ public class TipsForYourSuccess extends BaseFragment {
 
         }
     };
-
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];

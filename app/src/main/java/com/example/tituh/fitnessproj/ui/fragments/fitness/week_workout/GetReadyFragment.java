@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.ui.fragments.fitness;
+package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
-import com.example.tituh.fitnessproj.ui.activities.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public class GetReadyFragment extends BaseFragment {

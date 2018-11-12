@@ -5,27 +5,31 @@
     android:fillViewport="true"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/view_pager"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
-        </android.support.v4.view.ViewPager>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v4.view.ViewPager>
 
 
-        <LinearLayout
-            android:id="@+id/layoutDots"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center|center_vertical"
-            android:orientation="horizontal">
+                <LinearLayout
+                    android:id="@+id/layoutDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center|center_vertical"
+                    android:orientation="horizontal">
 
-        </LinearLayout>
+                </LinearLayout>
 
-    </RelativeLayout>
+        </RelativeLayout>
+
 </ScrollView>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_checked="true"
-        android:color="@color/color_bnv_checked" />
+        android:color="#FFA9C5" />
 
-    <item android:color="@color/color_bnv_unchecked"  />
+    <item android:color="@color/color_wite_for_dialog"  />
+
 </selector>

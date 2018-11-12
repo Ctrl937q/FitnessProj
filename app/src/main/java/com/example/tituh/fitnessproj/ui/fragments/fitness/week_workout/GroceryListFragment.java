@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.ui.fragments.fitness;
+package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

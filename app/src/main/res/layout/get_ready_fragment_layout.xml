@@ -110,21 +110,29 @@
 
         </LinearLayout>
 
-
-        <Button
-            android:id="@+id/button_start_workout"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/btn_start_circuit"
-            android:fontFamily="@font/reg_font"
-            android:text="START WARM UP"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@+id/linear_layout_bot" />
+            app:layout_constraintTop_toBottomOf="@+id/linear_layout_bot"
+
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_start_workout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="28dp"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/btn_start_circuit"
+                android:fontFamily="@font/reg_font"
+                android:text="START WARM UP"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 
