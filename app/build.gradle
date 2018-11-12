@@ -35,4 +35,8 @@ dependencies {
     compile 'com.github.ohoussein.playpauseview:playpauseview:1.0.2'
     compile 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
+    compile 'com.kishan.wrapcontentviewpager:wc-viewpager:1.0'
+
+
+
 }

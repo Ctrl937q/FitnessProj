@@ -16,6 +16,7 @@
 
     <color name="pink_background_progressbar">#FFEFF3</color>
     <color name="shadow_color">#182f2f2f</color>
+    <color name="shadow_color2">#22000000</color>
     <color name="shadow_color1">#000000</color>
     <color name="color_white">#daffffff</color>
 

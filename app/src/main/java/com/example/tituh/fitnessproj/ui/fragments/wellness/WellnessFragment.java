@@ -37,7 +37,6 @@ public class WellnessFragment extends BaseFragment {
         mListWellnessModel = new ArrayList<>();
         drawableMassive = new int[]{R.drawable.wellness_protein_vector, R.drawable.wellness_tips_vector};
 
-
         mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits", WellnessModel.ONE_TYPE));
         mListWellnessModel.add(new WellnessModel("Protein Powder Guide",WellnessModel.TWO_TYPE, drawableMassive));
         mListWellnessModel.add(new WellnessModel("8 Tips for your success",WellnessModel.TWO_TYPE, drawableMassive));

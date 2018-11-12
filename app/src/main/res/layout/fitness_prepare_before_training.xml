@@ -1,13 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:text="12 week fragment"
-        android:textSize="30dp"
-        android:gravity="center"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="275dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/prepare_image_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/prepare_image_top" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="19dp"
+                    android:src="@drawable/prepare_image_vector" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text="LET'S SWEET" />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="35dp"
+                android:src="@drawable/prepare_swimsuit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/reg_font"
+                android:text="Your workouts can be invigorating, fun, challenging and rewarding in short amounts of time. Many of you have watched Lauryn’s Instagram &amp; Snapchat stories regarding her weekly workouts. Kim has been training Lauryn for over a year now, and they both understand and relate to BUSY LIVES! We wanted to be able to share these creative, effective workouts with the entire community. NOW, you can do them with her. LET’S DO THIS!"
+                android:textSize="19sp" />
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_start_workout"
+                android:fontFamily="@font/medium_font"
+                android:text="WORKOUTS"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="13dp"
+                android:background="@drawable/fitness_prepare_frame"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="22dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="You will workout 3 days a week. There will be 2 different circuits in EACH workout. Each circuit will have a stated number of reps to be done in 7 minutes. TRY NOT TO STOP for breaks during the 7 minutes. You may take 30-60 seconds rest before starting the circuit over again. Move on to Circuit 2 after you have completed Circuit 1 twice."
+                    android:textSize="19sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="22dp"
+                    android:fontFamily="@font/medium_font"
+                    android:justificationMode="inter_word"
+                    android:text="DAY ONE we will focus on Legs &amp; Ass \nDAY TWO we will focus on Arms &amp; Back  \nDAY THREE we will do Full Shebang \n*don’t fret — every workout includes ABS + CARDIO."
+                    android:textSize="19sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="22dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="We have also included TWO BONUS MINUTES for every workout. You will have a ONE MINUTE CARDIO burst choice and a ONE MINUTE PLANK VARIATION choice. "
+                    android:textSize="19sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="22dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="These workouts will be 28 minutes in total. You do Circuit One 2X at 7 min each and Circuit Two 2X at 7 min each. THEN, if you take the Cardio &amp; Core challenge it will equal 30 MINUTES."
+                    android:textSize="19sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="If you are tight on time on a particular day, we encourage you NOT TO SKIP your workout! You could always do one round of each circuit, which of course would total 14 minutes. We bet you can find at least 14 minutes in your busy day."
+                    android:textSize="19sp" />
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/btn_start_workout"
+                android:fontFamily="@font/medium_font"
+                android:text="WORKOUTS"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFEFF2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/medium_font"
+                    android:gravity="center"
+                    android:text="WHAT DO I DO ON DAYS I'M NOT DOING TSC WORKOUT?"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
+                android:id="@+id/fitness_prepare_view_pager_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/fitness_prepare_tabDots_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TRACK YOUR PROGRESS" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="HOW &amp; WHEN TO TAKE PHOTOS &amp; MEASUREMENTS" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Lauryn &amp; Kim recommend taking your photos every 2 weeks. This will help you track your gradual progression." />
+
+    </LinearLayout>
+
+
+</ScrollView>
