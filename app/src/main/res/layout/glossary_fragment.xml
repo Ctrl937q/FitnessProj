@@ -40,7 +40,7 @@
                         android:layout_gravity="center"
                         android:id="@+id/image_view_warm_up"
                         android:layout_marginTop="20dp"
-                        android:src="@drawable/warm_up_pink_vector" />
+                        android:src="@drawable/vector_warm_up_pink" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -84,7 +84,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="20dp"
                         android:id="@+id/image_view_workouts"
-                        android:src="@drawable/workouts_pink_vector" />
+                        android:src="@drawable/vector_workouts_pink" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -131,7 +131,7 @@
                         android:layout_gravity="center"
                         android:id="@+id/image_view_stretching"
                         android:layout_marginTop="20dp"
-                        android:src="@drawable/stretching_pink_vector" />
+                        android:src="@drawable/vector_stretching_pink" />
 
                     <TextView
                         android:layout_width="match_parent"

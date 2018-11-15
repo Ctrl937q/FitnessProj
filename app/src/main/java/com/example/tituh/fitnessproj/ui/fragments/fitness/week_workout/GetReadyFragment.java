@@ -36,7 +36,7 @@ public class GetReadyFragment extends BaseFragment {
             }
 
             public void onFinish() {
-                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
+                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false);
 
             }
         }.start();
@@ -44,7 +44,7 @@ public class GetReadyFragment extends BaseFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), true);
+                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false);
             }
         });
 

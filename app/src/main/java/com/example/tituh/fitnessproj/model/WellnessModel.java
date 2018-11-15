@@ -7,7 +7,7 @@ public class WellnessModel {
     private String mTitleText;
     private String mButtonText;
     private int type;
-    private int[] drawableMassive;
+    private int drawable;
 
     public WellnessModel(String mTitleText, String mButtonText, int type) {
         this.mTitleText = mTitleText;
@@ -15,8 +15,8 @@ public class WellnessModel {
         this.type = type;
     }
 
-    public WellnessModel(String mTitleText, int type, int[]drawableMassive) {
-        this.drawableMassive = drawableMassive;
+    public WellnessModel(String mTitleText, int type, int drawable) {
+        this.drawable = drawable;
         this.mTitleText = mTitleText;
         this.type = type;
 
@@ -46,11 +46,11 @@ public class WellnessModel {
         this.type = type;
     }
 
-    public int[] getDrawableMassive() {
-        return drawableMassive;
+    public int getDrawableMassive() {
+        return drawable;
     }
 
-    public void setDrawableMassive(int[] drawableMassive) {
-        this.drawableMassive = drawableMassive;
+    public void setDrawableMassive(int drawableMassive) {
+        this.drawable = drawable;
     }
 }

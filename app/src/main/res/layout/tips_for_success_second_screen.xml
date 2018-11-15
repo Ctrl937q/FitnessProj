@@ -7,8 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="7dp"
-        android:layout_marginStart="7dp">
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp">
 
 
         <LinearLayout
@@ -21,7 +21,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/tips_for_your_success_vector" />
+                android:src="@drawable/vector_tips_for_your_success" />
 
 
             <android.support.v7.widget.CardView
@@ -34,10 +34,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -56,7 +56,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="YES — talking positively to yourself. Celebrate your victories — tiny ones AND large ones. &quot;I feel great! This is going to be awesome! I can’t wait to feel and looHave everything ready to go! Try laying out your workout clothes the night before or even sleeping in them for those early mornings. Pack your gym bag and place it by the door. You can even text a friend to see if she can join. Give her the exact time and location. Go REGARDLESS of who else is joining!k even more amazing! I got this!&quot; Keep pushing and FINISH! The way we talk to ourselves matters. MAKE IT ALL INSANELY POSITIVE. Remember your thoughts become your actions!"
+                        android:text="Have everything ready to go! Try laying out your workout clothes the night before or even sleeping in them for those early mornings. Pack your gym bag and place it by the door. You can even text a friend to see if she can join. Give her the exact time and location. Go REGARDLESS of who else is joining!"
                         android:textSize="19sp" />
                 </LinearLayout>
 
@@ -73,10 +73,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -113,10 +113,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <TextView
@@ -135,7 +135,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="There will be MANY obstacles — get ready to hurdle them. Some days you may be exhausted, not feeling so great, upset, sad, anxious... guess what? Skipping the workout or eating a bunch of cookies won’t make those feelings better, most likely it will make them worse. What is your WHY? Why are you committing to this program. What do you want from it? Where are you going? There’s got to be something in you that WANTS a change. Some kind of change. It doesn’t have to be physique — wise. Write it down &amp; put it on your mirror. Maybe even make a vision board. VISUALIZE and COMMIT! REALISTIC Be realistic"
+                        android:text="There will be MANY obstacles — get ready to hurdle them. Some days you may be exhausted, not feeling so great, upset, sad, anxious... guess what? Skipping the workout or eating a bunch of cookies won’t make those feelings better, most likely it will make them worse."
                         android:textSize="19sp" />
 
 
@@ -147,18 +147,18 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
                 app:cardBackgroundColor="#FFEFF2"
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginEnd="15dp"
                     android:layout_marginStart="15dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <TextView

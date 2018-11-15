@@ -23,7 +23,6 @@ public class WellnessFragment extends BaseFragment {
 
     RecyclerView mRecyclerViewWellnessFragment;
     private List<WellnessModel> mListWellnessModel;
-    int[]drawableMassive;
 
     @Nullable
     @Override
@@ -35,14 +34,13 @@ public class WellnessFragment extends BaseFragment {
         mRecyclerViewWellnessFragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_wellness);
 
         mListWellnessModel = new ArrayList<>();
-        drawableMassive = new int[]{R.drawable.wellness_protein_vector, R.drawable.wellness_tips_vector};
-
         mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits", WellnessModel.ONE_TYPE));
-        mListWellnessModel.add(new WellnessModel("Protein Powder Guide",WellnessModel.TWO_TYPE, drawableMassive));
-        mListWellnessModel.add(new WellnessModel("8 Tips for your success",WellnessModel.TWO_TYPE, drawableMassive));
+        mListWellnessModel.add(new WellnessModel("Protein Powder Guide",WellnessModel.TWO_TYPE, R.drawable.vector_wellness_protein));
+        mListWellnessModel.add(new WellnessModel("8 Tips for your success",WellnessModel.TWO_TYPE, R.drawable.vector_wellness_tips));
 
         mRecyclerViewWellnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerViewWellnessFragment.setAdapter(new WellnessFragmentRecyclerViewAdapter(mListWellnessModel));
+
 
         mRecyclerViewWellnessFragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 mRecyclerViewWellnessFragment, new RecyclerTouchListenerStart.ClickListener() {

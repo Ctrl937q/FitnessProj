@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/prepare_increase_the_burn_background"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+  plank holds — try lifting one leg off ground half the time then switch sides." />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ LUNGES — 90 degree angle lunge on every rep." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ SQUATS —90 degree bend in knee or even lower if knees permit." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ TAKE LESS BREAKS in between sets — CONTINUOUS MOVEMENT!" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ gauge your intensity by the ability to answer a question. MOST of this workout you should be able to answer with 1 word MAX! KEEP IT INTENSE!" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ ATTITUDE is FIRED UP and you ARE MENTALLY READY TO GO!" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ airplane mode for phone. only use technology for timing the workout. take pics and send to Lauryn &amp; Kim AFTER you've finished."/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/prepare_increase_the_burn_background"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ adding weights to basically any exercise will increase the intensity." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ add a Versa Loop band on the thighs to any squat type of exercise." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ add a Versa Loop band over wrists during step ups, knee ups, jacknives (any situation where you don't have weights in your hands)." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ add a push up to any type of burpee." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ come off your knees during any push up variation." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ go ALL THE WAY to the ground with your chest during any push up variation." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ for plyometrics: push off the ground with more intensity (go higher) and land lower in your position." />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ if you're nailing all exercises in time frame easily, then increase the rep count." />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:text="+ straighten your legs during tricep dips." />
+
+    </LinearLayout>
+</LinearLayout>

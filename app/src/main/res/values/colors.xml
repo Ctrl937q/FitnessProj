@@ -11,12 +11,14 @@
 
 
     <color name="color_pink">#8cff3e80</color>
+    <color name="color_pink_for_text_prepare">#FEA7C4</color>
 
     <color name="color_light_pink">#53ff377b</color>
 
     <color name="pink_background_progressbar">#FFEFF3</color>
     <color name="shadow_color">#182f2f2f</color>
     <color name="shadow_color2">#22000000</color>
+    <color name="shadow_color3">#33ff96d3</color>
     <color name="shadow_color1">#000000</color>
     <color name="color_white">#daffffff</color>
 

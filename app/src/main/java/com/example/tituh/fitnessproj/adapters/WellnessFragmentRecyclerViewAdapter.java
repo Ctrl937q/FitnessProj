@@ -64,7 +64,7 @@ public class WellnessFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Re
                 ((OneViewHolder) holder).fancyButton.setText(model.getmButtonText());
                 break;
             case TWO_TYPE:
-                ((TwoViewHolder) holder).mImageView.setImageResource(model.getDrawableMassive()[position - 1]);
+                ((TwoViewHolder) holder).mImageView.setImageResource(model.getDrawableMassive());
                 ((TwoViewHolder) holder).mTextViewHeadline3.setText(model.getmTitleText());
                 break;
         }

@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="19dp"
-                    android:src="@drawable/prepare_image_vector" />
+                    android:src="@drawable/vector_prepare_image" />
 
 
                 <TextView
@@ -89,7 +89,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/btn_start_workout"
                 android:fontFamily="@font/medium_font"
-                android:text="WORKOUTS"
+                android:text="START WORKOUT"
                 android:textColor="@color/color_bnv_unchecked"
                 android:textStyle="bold" />
 
@@ -175,10 +175,10 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/btn_start_workout"
                 android:fontFamily="@font/medium_font"
-                android:text="WORKOUTS"
+                android:text="START WORKOUT"
                 android:textColor="@color/color_bnv_unchecked"
                 android:textStyle="bold" />
 
@@ -235,24 +235,387 @@
 
 
         <TextView
+            style="@style/MyTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/medium_font"
             android:gravity="center"
-            android:text="TRACK YOUR PROGRESS" />
+            android:text="TRACK YOUR PROGRESS"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
             android:gravity="center"
-            android:text="HOW &amp; WHEN TO TAKE PHOTOS &amp; MEASUREMENTS" />
+            android:text="HOW &amp; WHEN TO TAKE PHOTOS &amp; MEASUREMENTS"
+            android:textColor="@color/color_bnv_unchecked" />
 
         <TextView
+            style="@style/MyTextViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
             android:gravity="center"
             android:text="Lauryn &amp; Kim recommend taking your photos every 2 weeks. This will help you track your gradual progression." />
 
-    </LinearLayout>
 
+        <com.loopeer.shadow.ShadowView
+            android:id="@+id/shadow_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="5dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cornerRadius="7dp"
+            app:shadowColor="@color/shadow_color3"
+            app:shadowMargin="10dp"
+            app:shadowRadius="10dp">
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView_test_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_test"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:fontFamily="@font/medium_font"
+                        android:text="WHEN TAKING PHOTOS"
+                        android:textColor="@color/color_pink_for_text_prepare"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:justificationMode="inter_word"
+                        android:text="1. Same setting each time and similar lighting" />
+
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:justificationMode="inter_word"
+                        android:text="2. Same clothing (either bikini or jog bra and shorts)" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"
+                        android:justificationMode="inter_word"
+                        android:text="3. Chin up, chest up &amp; let hands naturally fall to your sides" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"
+                        android:justificationMode="inter_word"
+                        android:text="4. Full length body shot" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="12dp"
+                        android:justificationMode="inter_word"
+                        android:text="5. Shoot front, side and back (if possible)" />
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </com.loopeer.shadow.ShadowView>
+
+
+        <com.loopeer.shadow.ShadowView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="20dp"
+            android:foreground="?attr/selectableItemBackground"
+            app:cornerRadius="7dp"
+            app:shadowColor="@color/shadow_color3"
+            app:shadowMargin="10dp"
+            app:shadowRadius="10dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="7dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:fontFamily="@font/medium_font"
+                        android:text="WHEN TAKING MEASUREMENTS"
+                        android:textColor="@color/color_pink_for_text_prepare"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:justificationMode="inter_word"
+                        android:text="*Use a loose measuring tape." />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:justificationMode="inter_word"
+                        android:text="1. Wear either super tight fitted tank and leggings or bra and underwear, bathing suit or nothing at all!" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="12dp"
+                        android:justificationMode="inter_word"
+
+                        android:text="2. Stand with feet together, chin up, chest up" />
+
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </com.loopeer.shadow.ShadowView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/prepare_chest_background">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text="CHEST"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:justificationMode="inter_word"
+                    android:text="Wrap the tape around biggest part of the chest (right at center nipple)." />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text="WAIST"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:justificationMode="inter_word"
+                    android:text="Wrap the tape around mid-waist so it wraps over belly button." />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text="HIPS"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:justificationMode="inter_word"
+                    android:text="Wrap the tape around the hips so it wraps around center of the buttocks." />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text="THIGHS"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:justificationMode="inter_word"
+                    android:text="You can do just one side. Separate legs apart, let your hands fall naturally at your sides, stand tall. Measure the circumference of your thigh wherever your thumb is naturally hitting your leg" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_start_workout"
+            android:fontFamily="@font/medium_font"
+            android:text="START WORKOUT"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textStyle="bold" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="INCREASE THE BURN"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:text="Well, here are some tips to BUMP UP YOUR BURN:" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:text="Want to make your workout more challenging, or maybe you're in week 3 or 4, feeling darn good and you're ready for more? " />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
+                android:id="@+id/fitness_prepare_view_pager_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/fitness_prepare_tabDots_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_start_workout"
+            android:fontFamily="@font/medium_font"
+            android:text="START WORKOUT"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textStyle="bold" />
+
+
+
+    </LinearLayout>
 
 </ScrollView>

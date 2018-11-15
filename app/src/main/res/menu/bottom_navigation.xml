@@ -5,28 +5,28 @@
         android:id="@+id/item_about"
         
         android:title="About"
-        android:icon="@drawable/about_vector" />
+        android:icon="@drawable/vector_about" />
 
     <item
         android:id="@+id/item_fitness"
         android:title="Fitness"
-        android:icon="@drawable/fitness_vector" />
+        android:icon="@drawable/vector_fitness" />
 
     <item
         android:id="@+id/item_nutrition"
         android:title="Nutrition"
-        android:icon="@drawable/nutrition_vector" />
+        android:icon="@drawable/vector_nutrition" />
 
     <item
         android:id="@+id/item_wellness"
         android:title="Wellness"
-        android:icon="@drawable/wellness_vector" />
+        android:icon="@drawable/vector_wellness" />
 
 
     <item
         android:id="@+id/item_comminity"
         android:title="Community"
-        android:icon="@drawable/community_vector" />
+        android:icon="@drawable/vector_community" />
 
 
 

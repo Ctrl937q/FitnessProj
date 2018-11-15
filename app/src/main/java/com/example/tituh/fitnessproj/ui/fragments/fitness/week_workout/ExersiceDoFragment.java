@@ -76,10 +76,13 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 ((MainActivity) getActivity()).popFragment();
-
-
+                //((MainActivity)getActivity()).pushFragment(new ExerciseChooseFragment(), false);
             }
         });
+
+
+
+
         return rootView;
     }
 }

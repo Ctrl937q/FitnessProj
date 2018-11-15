@@ -70,11 +70,11 @@ public class GlossaryFragment extends BaseFragment {
                 false);
 
         mImageViewWarmUp.setImageDrawable(getResources().
-                getDrawable(R.drawable.warm_up_black_vector));
+                getDrawable(R.drawable.vector_warm_up_black));
         mImageViewStretching.setImageDrawable(getResources().
-                getDrawable(R.drawable.stretching_pink_vector));
+                getDrawable(R.drawable.vector_stretching_pink));
         mImageViewWorkouts.setImageDrawable(getResources().
-                getDrawable(R.drawable.workouts_pink_vector));
+                getDrawable(R.drawable.vector_workouts_pink));
 
         mCardViewWarmUp.setCardBackgroundColor(getResources()
                 .getColor(R.color.color_wite_for_dialog));
@@ -90,11 +90,11 @@ public class GlossaryFragment extends BaseFragment {
                 false);
 
         mImageViewWarmUp.setImageDrawable(getResources().
-                getDrawable(R.drawable.warm_up_pink_vector));
+                getDrawable(R.drawable.vector_warm_up_pink));
         mImageViewStretching.setImageDrawable(getResources().
-                getDrawable(R.drawable.stretching_pink_vector));
+                getDrawable(R.drawable.vector_stretching_pink));
         mImageViewWorkouts.setImageDrawable(getResources().
-                getDrawable(R.drawable.workouts_black_vector));
+                getDrawable(R.drawable.vector_workouts_black));
 
         mCardViewWorkouts.setCardBackgroundColor(getResources()
                 .getColor(R.color.color_wite_for_dialog));
@@ -110,11 +110,11 @@ public class GlossaryFragment extends BaseFragment {
                 false);
 
         mImageViewWarmUp.setImageDrawable(getResources().
-                getDrawable(R.drawable.warm_up_pink_vector));
+                getDrawable(R.drawable.vector_warm_up_pink));
         mImageViewStretching.setImageDrawable(getResources().
-                getDrawable(R.drawable.stretching_black_vector));
+                getDrawable(R.drawable.vector_stretching_black));
         mImageViewWorkouts.setImageDrawable(getResources().
-                getDrawable(R.drawable.workouts_pink_vector));
+                getDrawable(R.drawable.vector_workouts_pink));
 
         mCardViewWorkouts.setCardBackgroundColor(getResources()
                 .getColor(R.color.color_background_card_view_gloccary));

@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/protein_powder_guide_vector" />
+                android:src="@drawable/vector_protein_powder_guide" />
 
         </LinearLayout>
 

@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/info_vector_new" />
+                    android:src="@drawable/vector_info" />
 
 
                 <LinearLayout
@@ -65,13 +65,13 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/sound_vector" />
+                        android:src="@drawable/vector_sound" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="7dp"
-                        android:src="@drawable/note_vector" />
+                        android:src="@drawable/vector_note" />
                 </LinearLayout>
 
             </LinearLayout>

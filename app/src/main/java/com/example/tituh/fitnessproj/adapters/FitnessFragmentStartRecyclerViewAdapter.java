@@ -2,11 +2,14 @@ package com.example.tituh.fitnessproj.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tituh.fitnessproj.model.FitnessStartModel;
 import com.example.tituh.fitnessproj.R;
@@ -45,6 +48,7 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_item1,
                         parent, false);
                 return new OneViewHolder(view);
+
             case TWO_TYPE:
                 view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_fitness_start_item2,
                         parent, false);
@@ -54,9 +58,10 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
 
         FitnessStartModel model = mListFitnessStartModel.get(position);
+
 
         switch (model.getType()) {
             case ONE_TYPE:
@@ -79,7 +84,7 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
         ImageView mImageViewItem;
         TextView mTextViewHeadline1;
-        FancyButton fancyButton;
+        Button fancyButton;
 
         private OneViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +92,9 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
             mTextViewHeadline1 = itemView.findViewById(R.id.textViewFitnessStartLayout_1);
             fancyButton = itemView.findViewById(R.id.fancy_button_start);
         }
+
     }
+
 
     private class TwoViewHolder extends RecyclerView.ViewHolder {
 
