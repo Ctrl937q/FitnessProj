@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:background="@drawable/background_start"
+    android:gravity="center_horizontal"
     android:layout_height="match_parent">
 
-
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_nutrition"
         android:layout_width="match_parent"
-        android:text="Nutrition Fragment"
-        android:textSize="40dp"
-        android:gravity="center_horizontal"
-        android:layout_height="match_parent" />
+        android:clipToPadding="false"
+        android:paddingTop="20dp"
+        android:layout_height="match_parent"
+        android:foregroundGravity="center">
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

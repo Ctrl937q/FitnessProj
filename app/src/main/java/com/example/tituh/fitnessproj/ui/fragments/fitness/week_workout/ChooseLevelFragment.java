@@ -55,4 +55,10 @@ public class ChooseLevelFragment extends BaseFragment {
         }));
         return rootView;
     }
+
+    @Override
+    public void onDestroy() {
+        ((MainActivity) getActivity()).updateActionBarTitle("TSC BODY");
+        super.onDestroy();
+    }
 }

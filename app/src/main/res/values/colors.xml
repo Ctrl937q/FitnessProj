@@ -28,6 +28,7 @@
     <color name="color_background_card_view_gloccary">#FFEFF2</color>
     <color name="color_for_text_day">#E9A5BB</color>
     <color name="color_background_card_view_tips">#ff748e</color>
+    <color name="color_grocery_list_card_view_checked">#FFD6DD</color>
 
 
 

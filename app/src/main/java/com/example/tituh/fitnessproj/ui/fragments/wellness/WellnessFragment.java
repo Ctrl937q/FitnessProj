@@ -28,15 +28,17 @@ public class WellnessFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.wellness_fragment, container, false);
-        ((MainActivity) getActivity()).updateActionBarTitle("Wellness");
         ((MainActivity) getActivity()).visibleIconAboutActionBar();
         ((MainActivity) getActivity()).goneIconBacktActionBar();
         mRecyclerViewWellnessFragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_wellness);
 
         mListWellnessModel = new ArrayList<>();
-        mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits", WellnessModel.ONE_TYPE));
-        mListWellnessModel.add(new WellnessModel("Protein Powder Guide",WellnessModel.TWO_TYPE, R.drawable.vector_wellness_protein));
-        mListWellnessModel.add(new WellnessModel("8 Tips for your success",WellnessModel.TWO_TYPE, R.drawable.vector_wellness_tips));
+        mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits",
+                WellnessModel.ONE_TYPE));
+        mListWellnessModel.add(new WellnessModel("Protein Powder Guide",WellnessModel.TWO_TYPE,
+                R.drawable.vector_wellness_protein));
+        mListWellnessModel.add(new WellnessModel("8 Tips for your success",WellnessModel.TWO_TYPE,
+                R.drawable.vector_wellness_tips));
 
         mRecyclerViewWellnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerViewWellnessFragment.setAdapter(new WellnessFragmentRecyclerViewAdapter(mListWellnessModel));

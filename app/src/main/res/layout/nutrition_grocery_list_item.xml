@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:id="@+id/text_view_week_workout_week"
+            android:fontFamily="@font/reg_font"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textSize="17sp"
+            android:text="Apple"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="right"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:id="@+id/image_view_delete_item_grocery_list"
+                android:layout_height="wrap_content"
+                android:src="@drawable/vector_grocery_delete_item" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

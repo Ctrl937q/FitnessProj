@@ -34,7 +34,6 @@ public class FitnessFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fitness_fragment, container, false);
-        ((MainActivity) getActivity()).updateActionBarTitle("TSC BODY");
         ((MainActivity) getActivity()).visibleIconAboutActionBar();
         ((MainActivity) getActivity()).goneIconBacktActionBar();
         mRecyclerViewFitnessFragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_fitness_fragment);
@@ -78,4 +77,5 @@ public class FitnessFragment extends BaseFragment {
 
         return rootView;
     }
+
 }

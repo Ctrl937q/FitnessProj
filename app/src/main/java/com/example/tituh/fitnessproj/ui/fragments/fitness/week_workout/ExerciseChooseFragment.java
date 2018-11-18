@@ -1,5 +1,4 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,6 +35,7 @@ public class ExerciseChooseFragment extends BaseFragment {
             }
         });
 
+
         ((MainActivity)getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
         mArrayList = new ArrayList<>();
         mArrayList.add("Warm Up Name");
@@ -62,7 +62,6 @@ public class ExerciseChooseFragment extends BaseFragment {
 
             }
         }));
-
         return rootView;
     }
 }

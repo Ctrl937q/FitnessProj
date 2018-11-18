@@ -3,6 +3,7 @@ package com.example.tituh.fitnessproj.ui.activities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
-        mActionBarTitle.setText("TSC BODY");
+        mActionBarTitle.setText("ABOUT");
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,4 +182,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewAboutActionBar.setVisibility(View.VISIBLE);
     }
 
+    @Override
+    public void pushFragmentTest(BaseFragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, fragment)
+                .commit();
+
+    }
 }

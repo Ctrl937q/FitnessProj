@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ViewPagerAdapter;
+import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.about.AboutFragment;
 import com.example.tituh.fitnessproj.ui.fragments.community.CommunityFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.FitnessFragment;
@@ -48,6 +49,24 @@ public class MainTabLayoutFragment extends BaseFragment {
 
                 @Override
                 public void onPageSelected(int i) {
+                    switch (i) {
+                        case 0:
+                            ((MainActivity) getActivity()).updateActionBarTitle("ABOUT");
+                            break;
+                        case 1:
+                            ((MainActivity) getActivity()).updateActionBarTitle("TSC BODY");
+                            break;
+                        case 2:
+                            ((MainActivity) getActivity()).updateActionBarTitle("NUTRITION");
+                            break;
+                        case 3:
+                            ((MainActivity) getActivity()).updateActionBarTitle("WELLNESS");
+                            break;
+                        case 4:
+                            ((MainActivity) getActivity()).updateActionBarTitle("COMMUNITY");
+                            break;
+                    }
+
                     if (mPrevMenuItem != null) {
                         mPrevMenuItem.setChecked(false);
                     } else {

@@ -21,4 +21,9 @@ public interface OnFragmentInteractionListener {
     void goneIconAbouttActionBar();
     void visibleIconBacktActionBar();
     void visibleIconAboutActionBar();
+
+
+
+
+    void pushFragmentTest(BaseFragment fragment);
 }
