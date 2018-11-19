@@ -78,7 +78,9 @@ public class GroceryListFragment extends BaseFragment {
             @Override
             public void onClick(View view) {
                 if (!textTitle.equals(" ")) {
+                    textTitle = textTitle.replaceFirst("^ *", "");
                     arrayListGroceryList.add(textTitle);
+                    Collections.sort(arrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
                     adapter.notifyDataSetChanged();
                     SharedPreferencesUtil.pushStringList(sharedPref, arrayListGroceryList, "key");
                     mEditTextAdd.getText().clear();
@@ -109,7 +111,8 @@ public class GroceryListFragment extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-
+                if (mEditTextAdd.getText().toString().startsWith(" "))
+                    mEditTextAdd.setText("");
             }
         });
 

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,9 +28,9 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
 
     public RecipesInfoRecyclerViewAdapter(ArrayList<String> mListTitle,SharedPreferences sharedPref, Activity activity) {
         this.sharedPref = sharedPref;
-        sharedPref = activity.getPreferences(Context.MODE_PRIVATE);
         this.mListTitle = mListTitle;
         this.activity = activity;
+        arrayListFromPreference = new ArrayList<>();
     }
 
     @NonNull
@@ -49,14 +50,11 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
                 String mTitleWithoutNumber = mListTitle.get(i);
                 mTitleWithoutNumber = mTitleWithoutNumber.replaceAll("[^A-Za-z ()]", "");
                 mTitleWithoutNumber = mTitleWithoutNumber.replaceFirst("^ *", "");
-                arrayListFromPreference = new ArrayList<>();
                 arrayListFromPreference = (ArrayList<String>) SharedPreferencesUtil.pullStringList(sharedPref, "key");
-                //String title1 = ((TextView) recyclerView.findViewHolderForAdapterPosition(i).itemView.findViewById(R.id.title)).getText().toString();
                 arrayListFromPreference.add(mTitleWithoutNumber);
                 SharedPreferencesUtil.pushStringList(sharedPref, arrayListFromPreference, "key");
-                Log.d("dddssa", " " + (ArrayList<String>) SharedPreferencesUtil.pullStringList(sharedPref, "key"));
-
-
+                viewHolder.imageViewPlus.setEnabled(false);
+                viewHolder.imageViewPlus.setImageResource(R.drawable.vector_add_grocery_list_empty_small);
             }
         });
     }
