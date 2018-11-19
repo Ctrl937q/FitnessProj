@@ -1,5 +1,7 @@
 package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,18 +10,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.GroceryHorizontalRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.NutritionGroceryListVerticalAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.ArrayList;
 
 public class GroceryListFragment extends BaseFragment {
@@ -32,38 +35,53 @@ public class GroceryListFragment extends BaseFragment {
     ArrayList<String> arrayListGroceryList;
     String textTitle = " ";
     NutritionGroceryListVerticalAdapter adapter;
-    ArrayList <String> arrayListHorRecyclerView;
+    ArrayList<String> arrayListHorRecyclerView;
+    SharedPreferences sharedPref;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.grocery_list_fragment, container, false);
         ((MainActivity) getActivity()).updateActionBarTitle("GROCERY LIST");
-
+        ((MainActivity) getActivity()).goneIconAbouttActionBar();
+        ((MainActivity) getActivity()).visibleIconBacktActionBar();
         mHorizontalRecyclerView = (RecyclerView) rootView.findViewById(R.id.horizontal_recyclerView_grocery_list);
         mVerticalRecyclerViewGrocery = (RecyclerView) rootView.findViewById(R.id.recyclerView_grocery_list_vertical);
         mEditTextAdd = (EditText) rootView.findViewById(R.id.edit_text_add_grocery_list);
         mImageViewAdd = (ImageView) rootView.findViewById(R.id.image_view_add_grocery_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.HORIZONTAL, false);
-        ((MainActivity) getActivity()).goneIconAbouttActionBar();
-        ((MainActivity) getActivity()).visibleIconBacktActionBar();
+        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        arrayListGroceryList = (ArrayList<String>) SharedPreferencesUtil.pullStringList(sharedPref, "key");
 
-        arrayListGroceryList = new ArrayList<>();
+        mVerticalRecyclerViewGrocery.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new NutritionGroceryListVerticalAdapter(arrayListGroceryList, sharedPref);
+        mVerticalRecyclerViewGrocery.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
+        mHorizontalRecyclerView.setLayoutManager(layoutManager);
         mArrayListCategory = new ArrayList();
+        if(arrayListGroceryList==null){
+            arrayListGroceryList = new ArrayList<>();
+        }
+
+
+
+
         mArrayListCategory.add("Fruits and veggies");
         mArrayListCategory.add("Nuts,sweet and snuck");
         mArrayListCategory.add("Proteins");
-        mVerticalRecyclerViewGrocery.setLayoutManager(new LinearLayoutManager(getActivity()));
+
 
         mImageViewAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!textTitle.equals(" ")){
-                    adapter = new NutritionGroceryListVerticalAdapter(arrayListGroceryList);
+                if (!textTitle.equals(" ")) {
                     arrayListGroceryList.add(textTitle);
-                    mVerticalRecyclerViewGrocery.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
+                    SharedPreferencesUtil.pushStringList(sharedPref, arrayListGroceryList, "key");
+                    mEditTextAdd.getText().clear();
                 }
             }
         });
@@ -96,8 +114,6 @@ public class GroceryListFragment extends BaseFragment {
         });
 
 
-        mHorizontalRecyclerView.setLayoutManager(layoutManager);
-
 
         mHorizontalRecyclerView.setAdapter(new GroceryHorizontalRecyclerViewAdapter(mArrayListCategory));
         mHorizontalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
@@ -108,15 +124,14 @@ public class GroceryListFragment extends BaseFragment {
                     //TODO: ?
                     final CardView cardView = view.findViewById(R.id.card_view_horizontal_recycler_view_grocery_list);
                     cardView.setCardBackgroundColor(getResources().getColor(R.color.color_grocery_list_card_view_checked));
-                    if(position == 0){
+                    if (position == 0) {
                         arrayListHorRecyclerView = new ArrayList<>();
                         arrayListHorRecyclerView.add("Apple");
                         arrayListHorRecyclerView.add("Cheese");
                         arrayListHorRecyclerView.add("Chips");
                         arrayListGroceryList.addAll(arrayListHorRecyclerView);
-                        adapter = new NutritionGroceryListVerticalAdapter(arrayListGroceryList);
-                        mVerticalRecyclerViewGrocery.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+                        SharedPreferencesUtil.pushStringList(sharedPref, arrayListGroceryList, "key");
 
                     }
                 }
@@ -126,7 +141,6 @@ public class GroceryListFragment extends BaseFragment {
             public void onLongClick(View view, int position) {
             }
         }));
-
         return rootView;
     }
 }

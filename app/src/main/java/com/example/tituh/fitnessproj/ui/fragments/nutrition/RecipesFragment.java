@@ -6,12 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecipesHorizontalRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecipesVerticalRecyclerViewAdapter;
@@ -30,13 +27,13 @@ public class RecipesFragment extends BaseFragment {
     ArrayList<String> arrayListRecipesCategory;
     ArrayList<RecipesModel> arrayListRecipes;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.recipes_fragment, container, false);
         ((MainActivity) getActivity()).updateActionBarTitle("RECIPES");
+        ((MainActivity) getActivity()).visibleIconBacktActionBar();
         mHorizontalRecyclerView = (RecyclerView) rootView.findViewById(R.id.horizontal_recyclerView_recipes);
         mVerticalRecyclerView = (RecyclerView) rootView.findViewById(R.id.vertical_recyclerView_recipes);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
@@ -62,7 +59,6 @@ public class RecipesFragment extends BaseFragment {
         mHorizontalRecyclerView.setLayoutManager(layoutManager);
         mVerticalRecyclerView.setLayoutManager(gridLayoutManager);
         mHorizontalRecyclerView.setAdapter(new RecipesHorizontalRecyclerViewAdapter(arrayListRecipesCategory));
-
 
         mVerticalRecyclerView.setAdapter(new RecipesVerticalRecyclerViewAdapter(arrayListRecipes, getActivity()));
         mVerticalRecyclerView.addItemDecoration(new SpacesItemDecoration(getActivity(), R.dimen.column_spacing));

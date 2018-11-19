@@ -1,5 +1,6 @@
 package com.example.tituh.fitnessproj.adapters;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,21 +11,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.ui.fragments.nutrition.GroceryListFragment;
+import com.example.tituh.fitnessproj.ui.fragments.nutrition.SharedPreferencesUtil;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class NutritionGroceryListVerticalAdapter  extends RecyclerView.Adapter<NutritionGroceryListVerticalAdapter.ViewHolder> {
+public class NutritionGroceryListVerticalAdapter extends RecyclerView.Adapter<NutritionGroceryListVerticalAdapter.ViewHolder> {
 
     ArrayList<String> mArrayListTitle;
+    SharedPreferences sharedPref;
 
-    public NutritionGroceryListVerticalAdapter(ArrayList<String> mArrayListTitle) {
+    public NutritionGroceryListVerticalAdapter(ArrayList<String> mArrayListTitle, SharedPreferences sharedPref) {
         this.mArrayListTitle = mArrayListTitle;
+        this.sharedPref = sharedPref;
     }
 
     public void titleChange(ArrayList<String> titleArray) {
         this.mArrayListTitle = titleArray;
+    }
+
+    public void updateReceiptsList(ArrayList<String> newlist) {
+        mArrayListTitle.clear();
+        mArrayListTitle.addAll(newlist);
+        this.notifyDataSetChanged();
     }
 
     @NonNull
@@ -40,8 +51,12 @@ public class NutritionGroceryListVerticalAdapter  extends RecyclerView.Adapter<N
         viewHolder.mImageViewDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                GroceryListFragment groceryListFragment = new GroceryListFragment();
                 mArrayListTitle.remove(i);
                 notifyDataSetChanged();
+                SharedPreferencesUtil.pushStringList(sharedPref, mArrayListTitle, "key");
+
+                //groceryListFragment.saveArrayString(mArrayListTitle);
             }
         });
 
@@ -49,7 +64,10 @@ public class NutritionGroceryListVerticalAdapter  extends RecyclerView.Adapter<N
 
     @Override
     public int getItemCount() {
-        return mArrayListTitle.size();
+        if (mArrayListTitle != null) {
+            return mArrayListTitle.size();
+        }
+        return 0;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

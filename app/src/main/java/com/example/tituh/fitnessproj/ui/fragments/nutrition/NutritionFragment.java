@@ -64,6 +64,7 @@ public class NutritionFragment extends BaseFragment {
 
                 if(position == 2){
                     if (null != fragmentInteractionListener) {
+                        fragmentInteractionListener.pushFragment(new SevenDayMealPlanFragment(), true);
                     }
                 }
             }

@@ -45,11 +45,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="51" />
-                            <entry key="outputName" value="image_for_top_recipes" />
+                            <entry key="height" value="16" />
+                            <entry key="outputName" value="vector_arrow_right_black" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\assets\image_for_top_recipes.svg" />
-                            <entry key="width" value="212" />
+                            <entry key="sourceFile" value="C:\assets\Vector.svg" />
+                            <entry key="width" value="10" />
                           </map>
                         </option>
                       </PersistentState>
