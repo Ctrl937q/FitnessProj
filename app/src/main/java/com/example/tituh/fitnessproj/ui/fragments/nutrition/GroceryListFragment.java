@@ -23,7 +23,10 @@ import com.example.tituh.fitnessproj.adapters.NutritionGroceryListVerticalAdapte
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class GroceryListFragment extends BaseFragment {
 
@@ -53,21 +56,18 @@ public class GroceryListFragment extends BaseFragment {
                 LinearLayoutManager.HORIZONTAL, false);
         sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         arrayListGroceryList = (ArrayList<String>) SharedPreferencesUtil.pullStringList(sharedPref, "key");
+        Collections.sort(arrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
 
         mVerticalRecyclerViewGrocery.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new NutritionGroceryListVerticalAdapter(arrayListGroceryList, sharedPref);
         mVerticalRecyclerViewGrocery.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-
         mHorizontalRecyclerView.setLayoutManager(layoutManager);
         mArrayListCategory = new ArrayList();
-        if(arrayListGroceryList==null){
+        if (arrayListGroceryList == null) {
             arrayListGroceryList = new ArrayList<>();
         }
-
-
-
 
         mArrayListCategory.add("Fruits and veggies");
         mArrayListCategory.add("Nuts,sweet and snuck");
@@ -114,7 +114,6 @@ public class GroceryListFragment extends BaseFragment {
         });
 
 
-
         mHorizontalRecyclerView.setAdapter(new GroceryHorizontalRecyclerViewAdapter(mArrayListCategory));
         mHorizontalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -130,6 +129,8 @@ public class GroceryListFragment extends BaseFragment {
                         arrayListHorRecyclerView.add("Cheese");
                         arrayListHorRecyclerView.add("Chips");
                         arrayListGroceryList.addAll(arrayListHorRecyclerView);
+                        Collections.sort(arrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
+
                         adapter.notifyDataSetChanged();
                         SharedPreferencesUtil.pushStringList(sharedPref, arrayListGroceryList, "key");
 

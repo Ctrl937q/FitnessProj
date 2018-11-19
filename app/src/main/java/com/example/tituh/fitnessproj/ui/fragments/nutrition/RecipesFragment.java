@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,10 +69,27 @@ public class RecipesFragment extends BaseFragment {
             @Override
             public void onClick(View view, final int position) {
                 if (null != fragmentInteractionListener) {
-
-
                     }
                 }
+
+
+            @Override
+            public void onLongClick(View view, int position) {
+            }
+        }));
+
+
+
+
+        mVerticalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
+                mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+                if (null != fragmentInteractionListener) {
+                    Log.d("asdfsd", " " + position);
+                    fragmentInteractionListener.pushFragment(new RecipesInfoFragment(), true);
+                }
+            }
 
 
             @Override

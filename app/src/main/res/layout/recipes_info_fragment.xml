@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/vector_nutrition_breakfast" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/color_background_card_view_gloccary">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:fontFamily="@font/medium_font"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:text="GG French Toast" />
+
+            <TextView
+                android:text="Ingredients"
+                android:fontFamily="@font/reg_font"
+                android:textColor="@color/color_light_pink_1"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:id="@+id/recyclerView_recipes_info"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+
+            <TextView
+                android:text="* optional: berries"
+                android:fontFamily="@font/reg_font"
+                android:textColor="@color/color_light_pink_1"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:text="1. mix eggs, cinnamon, sweetener, almond milk, &amp; a pinch of salt" />
+
+
+            <TextView
+                android:text="2. dip GGs into egg mix until absorbed but not soggy"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="16sp"
+                android:layout_marginTop="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="3. place into hot pan and cook until brown"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="16sp"
+                android:layout_marginTop="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:text="4. add berries on top for an extra treat"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="16sp"
+                android:layout_marginTop="7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_start_workout"
+            android:fontFamily="@font/medium_font"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:text="SHOP INGREDIENTS"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>

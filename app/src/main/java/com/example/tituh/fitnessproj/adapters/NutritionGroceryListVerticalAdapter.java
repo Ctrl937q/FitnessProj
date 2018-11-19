@@ -51,7 +51,6 @@ public class NutritionGroceryListVerticalAdapter extends RecyclerView.Adapter<Nu
         viewHolder.mImageViewDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                GroceryListFragment groceryListFragment = new GroceryListFragment();
                 mArrayListTitle.remove(i);
                 notifyDataSetChanged();
                 SharedPreferencesUtil.pushStringList(sharedPref, mArrayListTitle, "key");

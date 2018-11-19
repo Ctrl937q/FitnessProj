@@ -12,6 +12,7 @@
     <dimen name="slide_desc">16dp</dimen>
     <dimen name="desc_padding">40dp</dimen>
     <dimen name="column_spacing">10dp</dimen>
+    <dimen name="recipes_info_item_dimen">20dp</dimen>
 
 
 
