@@ -50,9 +50,9 @@
         android:layout_height="wrap_content"
         android:paddingBottom="11dp"
         android:paddingTop="11dp"
-        android:paddingStart="12dp"
-        android:fontFamily="@font/reg_font"
-        android:paddingEnd="12dp"
+        android:paddingStart="16dp"
+        android:fontFamily="@font/medium_font"
+        android:paddingEnd="16dp"
         android:layout_marginBottom="20dp"
         fancy:fb_useSystemFont="false"
         android:textStyle="bold"
@@ -63,4 +63,5 @@
         fancy:fb_textSize="10sp"
         fancy:fb_radius="7dp"
         fancy:fb_textColor="#000000" />
+
 </LinearLayout>

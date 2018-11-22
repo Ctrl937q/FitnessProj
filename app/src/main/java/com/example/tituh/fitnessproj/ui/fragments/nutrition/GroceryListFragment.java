@@ -5,12 +5,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +22,11 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.GroceryHorizontalRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.NutritionGroceryListVerticalAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
+import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 public class GroceryListFragment extends BaseFragment {
@@ -61,6 +62,14 @@ public class GroceryListFragment extends BaseFragment {
         mVerticalRecyclerViewGrocery.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new NutritionGroceryListVerticalAdapter(arrayListGroceryList, sharedPref);
         mVerticalRecyclerViewGrocery.setAdapter(adapter);
+        mVerticalRecyclerViewGrocery.addItemDecoration(new MarginItemDecoration(1, 40, 40, 0 ,0));
+
+
+        DividerItemDecoration divider = new DividerItemDecoration(mVerticalRecyclerViewGrocery.getContext(), DividerItemDecoration.VERTICAL);
+        divider.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.horizontal_divider));
+        mVerticalRecyclerViewGrocery.addItemDecoration(divider);
+
+
         adapter.notifyDataSetChanged();
 
         mHorizontalRecyclerView.setLayoutManager(layoutManager);

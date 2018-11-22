@@ -48,13 +48,14 @@
         android:id="@+id/btn_button_rest_workout"
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:paddingBottom="11dp"
-        android:fontFamily="@font/reg_font"
 
+        android:fontFamily="@font/medium_font"
         android:paddingTop="11dp"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         android:layout_marginBottom="20dp"
         fancy:fb_useSystemFont="false"
         android:textStyle="bold"
@@ -65,4 +66,6 @@
         fancy:fb_textSize="10sp"
         fancy:fb_radius="7dp"
         fancy:fb_textColor="#000000" />
+
+
 </LinearLayout>

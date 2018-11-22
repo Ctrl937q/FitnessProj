@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/medium_font"
-                        android:text="Breakfast"
+                        android:text=""
                         android:textColor="@color/color_bnv_unchecked"
                         android:textSize="17sp"
                         android:textStyle="bold" />
@@ -142,7 +142,7 @@
                         android:layout_gravity="center"
                         android:id="@+id/text_week_day"
                         android:fontFamily="@font/medium_font"
-                        android:text="Monday"
+                        android:text=""
                         android:textColor="@color/color_bnv_unchecked"
                         android:textSize="17sp"
                         android:textStyle="bold" />

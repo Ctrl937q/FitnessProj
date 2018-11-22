@@ -28,14 +28,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="15dp"
                 android:orientation="vertical">
 
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
+
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -43,7 +46,7 @@
                         android:id="@+id/image_view_level_choose_medal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
+
                         android:src="@drawable/vector_medal_advanced" />
 
 
@@ -69,21 +72,21 @@
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="wrap_content"
                                 android:id="@+id/image_view_level_choose_star1"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@drawable/vector_medal_star" />
 
                             <ImageView
-                                android:layout_width="wrap_content"
                                 android:id="@+id/image_view_level_choose_star2"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="3dp"
                                 android:src="@drawable/vector_medal_star" />
 
                             <ImageView
-                                android:layout_width="wrap_content"
                                 android:id="@+id/image_view_level_choose_star3"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="3dp"
                                 android:src="@drawable/vector_medal_star" />
@@ -103,22 +106,20 @@
                             android:id="@+id/image_view_week_workout_arrow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="20dp"
-                            android:src="@drawable/vector_arrow_right_black" />
+                            android:src="@drawable/vector_arrow_right_pink_" />
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/progress_bar_level_choose_item"
+                    style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginEnd="25dp"
-                    android:background="@color/pink_for_button"
-                    android:layout_height="5dp">
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
 
-                </LinearLayout>
+                     />
 
 
             </LinearLayout>

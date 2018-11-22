@@ -5,12 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
+import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
         if (holder instanceof HeaderViewHolder) {
             ((HeaderViewHolder) holder).mHeaderTitle1.setText(weekWorkoutModel.getHeader1());
             ((HeaderViewHolder) holder).mHeaderTitle2.setText(weekWorkoutModel.getHeader2());
-            ((HeaderViewHolder)holder).mButton.setText("REST WORKOUTS");
+            ((HeaderViewHolder)holder).mButton.setText("RESET");
         } else if (holder instanceof ItemViewHolder) {
             ((ItemViewHolder) holder).mTextViewWeek.setText(weekWorkoutModel.getHeader1());
         }
@@ -83,15 +84,19 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
 
      private class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mImageViewProgress;
         TextView mTextViewWeek;
         ImageView mImageViewArrow;
+         ProgressBar progressBar;
 
         private ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            mImageViewProgress = (ImageView)itemView.findViewById(R.id.image_view_week_workout_progress);
+            //mImageViewProgress = (ImageView)itemView.findViewById(R.id.image_view_week_workout_progress);
             mTextViewWeek = (TextView) itemView.findViewById(R.id.text_view_week_workout_week);
             mImageViewArrow = (ImageView)itemView.findViewById(R.id.image_view_week_workout_arrow);
+            progressBar = (ProgressBar)itemView.findViewById(R.id.progress_bar_week);
+            ProgressBarDrawable bgProgress= new ProgressBarDrawable(6);
+            progressBar.setProgressDrawable(bgProgress);
+            progressBar.setProgress(40);
         }
     }
 }

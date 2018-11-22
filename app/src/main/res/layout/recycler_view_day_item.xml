@@ -61,6 +61,7 @@
                         android:layout_marginStart="20dp"
                         android:fontFamily="@font/reg_font"
                         android:text="Ass | legs"
+                        android:layout_marginTop="3dp"
                         android:layout_marginBottom="10dp"
                         android:textColor="@color/color_for_text_day"
                         android:id="@+id/text_view_what_exersice"

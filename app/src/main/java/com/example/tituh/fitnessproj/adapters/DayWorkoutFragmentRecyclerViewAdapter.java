@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.model.DayWorkoutModel;
 
@@ -43,7 +44,7 @@ public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<
         if (holder instanceof DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) {
             ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle1.setText(dayWorkoutModel.getmHeader1());
             ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle2.setText(dayWorkoutModel.getmHeader2());
-            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder)holder).mButton.setText("REST WORKOUTS");
+            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder)holder).mButton.setText("RESET");
         } else if (holder instanceof DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) {
             ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder).mTextViewDay.setText(dayWorkoutModel.getmHeader1());
             ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder).mTextViewExercise.setText(dayWorkoutModel.getmHeader2());

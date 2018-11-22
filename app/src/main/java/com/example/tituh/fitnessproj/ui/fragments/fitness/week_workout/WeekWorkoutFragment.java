@@ -27,19 +27,19 @@ public class WeekWorkoutFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.week_workout_activity, container, false);
 
         List<WeekWorkoutModel> list = new ArrayList<>();
-        list.add(new WeekWorkoutModel("3", "Out of 12 weeks"));
-        list.add(new WeekWorkoutModel("Week 1"));
-        list.add(new WeekWorkoutModel("Week 2"));
-        list.add(new WeekWorkoutModel("Week 3"));
-        list.add(new WeekWorkoutModel("Week 4"));
-        list.add(new WeekWorkoutModel("Week 5"));
-        list.add(new WeekWorkoutModel("Week 6"));
-        list.add(new WeekWorkoutModel("Week 7"));
-        list.add(new WeekWorkoutModel("Week 8"));
-        list.add(new WeekWorkoutModel("Week 9"));
-        list.add(new WeekWorkoutModel("Week 10"));
-        list.add(new WeekWorkoutModel("Week 11"));
-        list.add(new WeekWorkoutModel("Week 12"));
+        list.add(new WeekWorkoutModel("3", "OUT OF 12 WEEKS"));
+        list.add(new WeekWorkoutModel("WEEK 1"));
+        list.add(new WeekWorkoutModel("WEEK 2"));
+        list.add(new WeekWorkoutModel("WEEK 3"));
+        list.add(new WeekWorkoutModel("WEEK 4"));
+        list.add(new WeekWorkoutModel("WEEK 5"));
+        list.add(new WeekWorkoutModel("WEEK 6"));
+        list.add(new WeekWorkoutModel("WEEK 7"));
+        list.add(new WeekWorkoutModel("WEEK 8"));
+        list.add(new WeekWorkoutModel("WEEK 9"));
+        list.add(new WeekWorkoutModel("WEEK 10"));
+        list.add(new WeekWorkoutModel("WEEK 11"));
+        list.add(new WeekWorkoutModel("WEEK 12"));
 
         RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_workout_week);
 
