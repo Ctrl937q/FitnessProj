@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
+import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.DayWorkoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private TextView mActionBarTitle;
     private ImageView mImageViewBackActionBar;
     private ImageView mImageViewAboutActionBar;
+    private ImageView mImageHomeActionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
         mImageViewAboutActionBar = findViewById(R.id.action_bar_about);
-
+        mImageHomeActionBar = findViewById(R.id.action_bar_home);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
         mActionBarTitle.setText("ABOUT");
@@ -47,7 +49,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 popFragment();
             }
         });
+        mImageHomeActionBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+            }
+        });
         pushFragment(new MainTabLayoutFragment(), false);
     }
 
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         if (!isFinishing()) {
             String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
             Log.v(tag, tag);
+            Log.d("tagtag", "" + tag);
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
             //ft.setCustomAnimations(R.animator.slide_in_left, 0);
@@ -161,6 +169,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         });
     }
 
+
     @Override
     public void goneIconBacktActionBar() {
         mImageViewBackActionBar.setVisibility(View.GONE);
@@ -174,7 +183,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     public void visibleIconBacktActionBar() {
         mImageViewBackActionBar.setVisibility(View.VISIBLE);
-
     }
 
     @Override
@@ -183,10 +191,15 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public void pushFragmentTest(BaseFragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.fragment_container, fragment)
-                .commit();
-
+    public void visibilityIconHomeActionBar() {
+        mImageHomeActionBar.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    public void goneIconHomeActionBar() {
+        mImageHomeActionBar.setVisibility(View.GONE);
+    }
+
+
+
 }

@@ -14,9 +14,21 @@
         android:id="@+id/action_bar_arrow"
         android:layout_gravity="left"
         android:paddingEnd="20dp"
+        android:visibility="gone"
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:src="@drawable/vector_arrow_left"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/action_bar_home"
+        android:visibility="gone"
+        android:layout_gravity="left"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:src="@drawable/vector_home"
         android:layout_height="wrap_content" />
 
     <TextView
@@ -33,6 +45,7 @@
         android:layout_width="wrap_content"
         android:id="@+id/action_bar_about"
         android:layout_gravity="right"
+        android:visibility="gone"
         android:layout_marginRight="20dp"
         android:src="@drawable/vector_about"
         android:layout_height="wrap_content" />

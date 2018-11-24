@@ -3,8 +3,10 @@ package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +21,7 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
 
-public class ExerciseChooseFragment extends BaseFragment {
+public class ExerciseInfoFragment extends BaseFragment {
 
     private ArrayList<String>mArrayList;
 
@@ -34,12 +36,15 @@ public class ExerciseChooseFragment extends BaseFragment {
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentInteractionListener.pushFragment(new GetReadyFragment(), true);
+                fragmentInteractionListener.pushFragment(new GetReadyFragment(), false);
             }
         });
 
 
         ((MainActivity)getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
+        ((MainActivity)getActivity()).visibleIconBacktActionBar();
+        ((MainActivity)getActivity()).goneIconHomeActionBar();
+
         mArrayList = new ArrayList<>();
         mArrayList.add("Warm Up Name");
         mArrayList.add("CIRCUIT 1 | CIRCUIT 3");

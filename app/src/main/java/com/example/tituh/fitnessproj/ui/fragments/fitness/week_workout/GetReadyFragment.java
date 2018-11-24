@@ -28,6 +28,9 @@ public class GetReadyFragment extends BaseFragment {
         textViewTime = (TextView) rootView.findViewById(R.id.text_view_timer);
 
         ((MainActivity) getActivity()).updateActionBarTitle("ASS | LEGS");
+        ((MainActivity) getActivity()).visibleIconBacktActionBar();
+        ((MainActivity)getActivity()).goneIconHomeActionBar();
+
 
         mCountDownTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
@@ -37,7 +40,6 @@ public class GetReadyFragment extends BaseFragment {
 
             public void onFinish() {
                 fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false);
-                //fragmentInteractionListener.pushFragmentTest(new ExersiceDoFragment());
 
             }
         }.start();
@@ -45,8 +47,8 @@ public class GetReadyFragment extends BaseFragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mCountDownTimer.cancel();
                 fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false);
-                //fragmentInteractionListener.pushFragmentTest(new ExersiceDoFragment());
             }
         });
 
