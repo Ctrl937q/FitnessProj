@@ -87,7 +87,7 @@ public class RecipesFragment extends BaseFragment {
             public void onClick(View view, final int position) {
                 if (null != fragmentInteractionListener) {
                     Log.d("asdfsd", " " + position);
-                    fragmentInteractionListener.pushFragment(new RecipesInfoFragment(), true);
+                    fragmentInteractionListener.pushFragment(new RecipesInfoFragment(), true,  getClass().getName());
                 }
             }
 

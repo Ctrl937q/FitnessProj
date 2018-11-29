@@ -30,7 +30,7 @@ public class NutritionFragment extends BaseFragment {
 
         ((MainActivity) getActivity()).visibleIconAboutActionBar();
         ((MainActivity) getActivity()).goneIconBacktActionBar();
-        ((MainActivity) getActivity()).updateActionBarTitle("NUTRITION");
+        //((MainActivity) getActivity()).updateActionBarTitle("NUTRITION");
 
         mRecyclerViewNutritionFragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_nutrition);
 
@@ -52,19 +52,19 @@ public class NutritionFragment extends BaseFragment {
             public void onClick(View view, final int position) {
                 if (position == 0) {
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new RecipesFragment(),true);
+                        fragmentInteractionListener.pushFragment(new RecipesFragment(),true,  getClass().getName());
                     }
                 }
 
                 if (position == 1) {
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
+                        fragmentInteractionListener.pushFragment(new GroceryListFragment(), true,  getClass().getName());
                     }
                 }
 
                 if(position == 2){
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new SevenDayMealPlanFragment(), true);
+                        fragmentInteractionListener.pushFragment(new SevenDayMealPlanFragment(), true, getClass().getName());
                     }
                 }
             }

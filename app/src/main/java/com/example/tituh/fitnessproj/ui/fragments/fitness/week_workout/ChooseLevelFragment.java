@@ -33,10 +33,12 @@ public class ChooseLevelFragment extends BaseFragment {
 
 
         ((MainActivity) getActivity()).updateActionBarTitle("12 WEEK");
+
         ((MainActivity) getActivity()).visibleIconBacktActionBar();
         ((MainActivity) getActivity()).visibleIconAboutActionBar();
-        ((MainActivity)getActivity()).goneIconHomeActionBar();
-
+        ((MainActivity) getActivity()).goneIconHomeActionBar();
+        ((MainActivity) getActivity()).goneIconInfoActionBar();
+        ((MainActivity) getActivity()).goneIconShareActionBar();
 
         modelLevel = new ArrayList<>();
 
@@ -53,7 +55,7 @@ public class ChooseLevelFragment extends BaseFragment {
             public void onClick(View view, int position) {
                 if (position == 1) {
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true);
+                        fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true, getClass().getName());
                     }
                 }
             }
@@ -71,4 +73,13 @@ public class ChooseLevelFragment extends BaseFragment {
         ((MainActivity) getActivity()).updateActionBarTitle("TSC BODY");
         super.onDestroy();
     }
+
+
+    @Override
+    public void onResume() {
+        FragmentManager fragmentManager = getFragmentManager();
+        Log.d("dasdaf32rdfge", "" + fragmentManager.getBackStackEntryCount());
+        super.onResume();
+    }
+
 }

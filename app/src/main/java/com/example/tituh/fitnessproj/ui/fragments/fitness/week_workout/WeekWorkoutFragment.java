@@ -52,6 +52,11 @@ public class WeekWorkoutFragment extends BaseFragment {
         ((MainActivity)getActivity()).goneIconAbouttActionBar();
         ((MainActivity)getActivity()).visibleIconBacktActionBar();
         ((MainActivity)getActivity()).goneIconHomeActionBar();
+        ((MainActivity)getActivity()).goneIconInfoActionBar();
+        ((MainActivity) getActivity()).goneIconShareActionBar();
+
+        Log.d("aaaaaasdsa", " " + getClass().getName());
+
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 recyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -59,7 +64,7 @@ public class WeekWorkoutFragment extends BaseFragment {
             public void onClick(View view, int position) {          //TODO disabled 0 item click
                 if(position == 3){
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new DayWorkoutFragment(), true);
+                        fragmentInteractionListener.pushFragment(new DayWorkoutFragment(), true,  getClass().getName());
                     }
                 }
             }
@@ -72,4 +77,13 @@ public class WeekWorkoutFragment extends BaseFragment {
 
         return rootView;
     }
+
+
+    @Override
+    public void onResume() {
+        FragmentManager fragmentManager = getFragmentManager();
+        Log.d("dasdaf32rdfge", "" + fragmentManager.getBackStackEntryCount());
+        super.onResume();
+    }
+
 }

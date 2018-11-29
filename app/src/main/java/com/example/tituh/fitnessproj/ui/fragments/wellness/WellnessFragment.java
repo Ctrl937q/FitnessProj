@@ -50,19 +50,19 @@ public class WellnessFragment extends BaseFragment {
             public void onClick(View view, final int position) {
                 if (position == 0) {
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new DailyHabitsFragment(), true);
+                        fragmentInteractionListener.pushFragment(new DailyHabitsFragment(), true,  getClass().getName());
                     }
                 }
 
                 if (position == 1) {
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new ProteinPowderGuideFragment(), true);
+                        fragmentInteractionListener.pushFragment(new ProteinPowderGuideFragment(), true,  getClass().getName());
                     }
                 }
 
                 if(position == 2){
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new TipsForYourSuccess(), true);
+                        fragmentInteractionListener.pushFragment(new TipsForYourSuccess(), true,  getClass().getName());
                     }
                 }
             }

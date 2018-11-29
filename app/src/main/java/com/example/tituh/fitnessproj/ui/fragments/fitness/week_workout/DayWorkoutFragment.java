@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.DayWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
+import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.model.DayWorkoutModel;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DayWorkoutFragment extends BaseFragment{
+
+    TimerClass timerClass;
 
     @Nullable
     @Override
@@ -38,14 +41,15 @@ public class DayWorkoutFragment extends BaseFragment{
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new DayWorkoutFragmentRecyclerViewAdapter(list));
+        timerClass = new TimerClass();
 
         ((MainActivity)getActivity()).updateActionBarTitle("WEEK 3");
+        ((MainActivity)getActivity()).goneIconAbouttActionBar();
         ((MainActivity)getActivity()).visibleIconBacktActionBar();
         ((MainActivity)getActivity()).goneIconHomeActionBar();
-
-
-
-
+        ((MainActivity)getActivity()).goneIconInfoActionBar();
+        ((MainActivity) getActivity()).goneIconShareActionBar();
+        Log.d("fragmentCount : " , "" + getFragmentManager().getBackStackEntryCount());
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 recyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -53,7 +57,9 @@ public class DayWorkoutFragment extends BaseFragment{
             public void onClick(View view, int position) {          //TODO disabled 0 item click
                 if(position == 3){
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new ExerciseInfoFragment(), true);
+                        fragmentInteractionListener.pushFragment(new ExerciseInfoFragment(), true, getClass().getName());
+
+                        Log.d("asdafejhi32543", "| + " + getClass().getName());
                     }
                 }
             }
@@ -64,10 +70,8 @@ public class DayWorkoutFragment extends BaseFragment{
             }
         }));
 
-
         return rootView;
     }
-
 
 
 

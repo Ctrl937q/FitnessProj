@@ -7,7 +7,7 @@ import android.view.View;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public interface OnFragmentInteractionListener {
-    void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack);
+    void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack, String name);
 
     void pushFragmentGlossary(BaseFragment fragment, boolean shouldAddToBackstack);
 
@@ -37,7 +37,19 @@ public interface OnFragmentInteractionListener {
 
     void visibilityIconHomeActionBar();
 
+    void visibilityIconInfoActionBar();
+
+    void visibilityIconShareActionBar();
+
+    void visibilityIconBackGetReadyActionBar();
+
     void goneIconHomeActionBar();
+
+    void goneIconInfoActionBar();
+
+    void goneIconShareActionBar();
+
+    void goneIconBackGetReadyActionBar();
 
 
 }

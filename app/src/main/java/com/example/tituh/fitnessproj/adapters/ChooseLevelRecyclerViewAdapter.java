@@ -17,10 +17,10 @@ import java.util.ArrayList;
 
 public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseLevelRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<ChooseLevelModel> mArrayListChooseLevelodel;
+    private ArrayList<ChooseLevelModel> mArrayListChooseLevelModel;
 
     public ChooseLevelRecyclerViewAdapter(ArrayList<ChooseLevelModel> mArrayListChooseLevelodel) {
-        this.mArrayListChooseLevelodel = mArrayListChooseLevelodel;
+        this.mArrayListChooseLevelModel = mArrayListChooseLevelodel;
     }
 
     @NonNull
@@ -32,7 +32,7 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ChooseLevelModel model = mArrayListChooseLevelodel.get(position);
+        ChooseLevelModel model = mArrayListChooseLevelModel.get(position);
         holder.mImageViewLevel.setImageResource(model.getImageInt());
         holder.mTextViewTitle.setText("" + model.getTitle());
         if(position == 0){
@@ -47,7 +47,7 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
 
     @Override
     public int getItemCount() {
-        return mArrayListChooseLevelodel.size();
+        return mArrayListChooseLevelModel.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

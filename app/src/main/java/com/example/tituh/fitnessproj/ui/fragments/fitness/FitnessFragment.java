@@ -28,14 +28,18 @@ public class FitnessFragment extends BaseFragment {
     private List<FitnessStartModel> mListFitStarModel;
     int[]drawableMassive;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fitness_fragment, container, false);
+
         ((MainActivity) getActivity()).visibleIconAboutActionBar();
         ((MainActivity) getActivity()).goneIconBacktActionBar();
+        ((MainActivity) getActivity()).goneIconHomeActionBar();
+        ((MainActivity) getActivity()).goneIconShareActionBar();
+        ((MainActivity) getActivity()).goneIconInfoActionBar();
+
         mRecyclerViewFitnessFragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_fitness_fragment);
 
         mListFitStarModel = new ArrayList<>();
@@ -56,16 +60,15 @@ public class FitnessFragment extends BaseFragment {
             @Override
             public void onClick(View view, final int position) {
                 if(position == 0){
-                    fragmentInteractionListener.pushFragment(new PrepareBeforeTrainingFragment(), true);
+                    fragmentInteractionListener.pushFragment(new PrepareBeforeTrainingFragment(), true, getClass().getName());
                 }
                 if (position == 1) {
-                    //fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true);
-                    fragmentInteractionListener.pushFragment(new ChooseLevelFragment(), true);
+                    fragmentInteractionListener.pushFragment(new ChooseLevelFragment(), true, getClass().getName());
                 }
 
                 if (position == 2) {
                     if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new GlossaryFragment(), true);
+                        fragmentInteractionListener.pushFragment(new GlossaryFragment(), true, getClass().getName());
                     }
                 }
             }
@@ -77,5 +80,4 @@ public class FitnessFragment extends BaseFragment {
 
         return rootView;
     }
-
 }

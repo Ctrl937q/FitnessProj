@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.ExersiceDoFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.RestFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.WeekWorkoutFragment;
@@ -29,9 +28,7 @@ public class DialogFragmentExersice extends Dialog {
 
     public DialogFragmentExersice(Activity activity) {
         super(activity);
-
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +38,8 @@ public class DialogFragmentExersice extends Dialog {
         exersiceDoFragment = new ExersiceDoFragment();
         mButtonSkip = (FancyButton) findViewById(R.id.btn_skip_workout);
         mTextViewTest = (TextView) findViewById(R.id.text_view_seconds_left);
-        timerClass = new TimerClass();
-        timerClass.startTimerDialog(mTextViewTest);
+        //timerClass = new TimerClass();
+        //timerClass.startTimerDialog(mTextViewTest);
         setCancelable(false);
         mCountDownTimer = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {

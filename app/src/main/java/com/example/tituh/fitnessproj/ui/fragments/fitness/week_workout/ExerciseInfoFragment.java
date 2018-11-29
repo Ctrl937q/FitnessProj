@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -23,27 +24,30 @@ import java.util.ArrayList;
 
 public class ExerciseInfoFragment extends BaseFragment {
 
-    private ArrayList<String>mArrayList;
+    private ArrayList<String> mArrayList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.exercise_choose_fragment, container, false);
 
-        RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_exercise_choose);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView_exercise_choose);
         Button mButtonStart = (Button) rootView.findViewById(R.id.button_start_workout);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fragmentInteractionListener.pushFragment(new GetReadyFragment(), false);
+                fragmentInteractionListener.pushFragment(new GetReadyFragment(), false, getClass().getName());
             }
         });
 
+        ((MainActivity) getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
+        ((MainActivity) getActivity()).goneIconAbouttActionBar();
+        ((MainActivity) getActivity()).visibleIconBacktActionBar();
+        ((MainActivity) getActivity()).goneIconHomeActionBar();
+        ((MainActivity) getActivity()).goneIconInfoActionBar();
+        ((MainActivity) getActivity()).goneIconShareActionBar();
 
-        ((MainActivity)getActivity()).updateActionBarTitle("WEEK 2 - DAY 3");
-        ((MainActivity)getActivity()).visibleIconBacktActionBar();
-        ((MainActivity)getActivity()).goneIconHomeActionBar();
 
         mArrayList = new ArrayList<>();
         mArrayList.add("Warm Up Name");
@@ -55,7 +59,7 @@ public class ExerciseInfoFragment extends BaseFragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new ExerciseRecyclerViewAdapter(mArrayList));
-        recyclerView.addItemDecoration(new MarginItemDecoration(1, 30, 0, 10 ,10));
+        recyclerView.addItemDecoration(new MarginItemDecoration(1, 30, 0, 10, 10));
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 recyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -71,5 +75,13 @@ public class ExerciseInfoFragment extends BaseFragment {
             }
         }));
         return rootView;
+    }
+
+
+    @Override
+    public void onResume() {
+        FragmentManager fragmentManager = getFragmentManager();
+        Log.d("dasdaf32rdfge", "" + fragmentManager.getBackStackEntryCount());
+        super.onResume();
     }
 }

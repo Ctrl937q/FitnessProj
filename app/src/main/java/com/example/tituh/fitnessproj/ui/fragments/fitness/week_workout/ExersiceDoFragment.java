@@ -1,12 +1,10 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
-import android.content.DialogInterface;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
+import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-import com.example.tituh.fitnessproj.ui.fragments.DialogFragmentExersice;
 import com.ohoussein.playpause.PlayPauseView;
 
 public class ExersiceDoFragment extends BaseFragment {
@@ -51,28 +48,45 @@ public class ExersiceDoFragment extends BaseFragment {
         mProgressBarExersice.setMax(timerValue);
         timerClass = new TimerClass();
 
+
         ((MainActivity) getActivity()).updateActionBarTitle("WORKOUT NAME");
         ((MainActivity) getActivity()).visibilityIconHomeActionBar();
         ((MainActivity) getActivity()).goneIconBacktActionBar();
+        ((MainActivity) getActivity()).visibilityIconInfoActionBar();
+        ((MainActivity) getActivity()).goneIconAbouttActionBar();
+        ((MainActivity) getActivity()).goneIconShareActionBar();
 
-
-        timerClass.startTimer(timerValue, mTextViewTime, mProgressBarExersice);
+        //((MainActivity)getActivity()).startTimerExerciseDo(timerValue, mTextViewTime, mProgressBarExersice);
         buttonPlayPause.change(false);
+        timerClass.startTimer(timerValue, mTextViewTime, mProgressBarExersice);
 
         mButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*timerClass.pauseTimerDialog();
-                DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
-                dialogFragmentExersice.show();
-                dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                buttonPlayPause.change(true);*/
-                fragmentInteractionListener.pushFragment(new RestFragment(), true);
-
-
+                //timerClass.pauseTimerDialog();
+                //DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
+                //dialogFragmentExersice.show();
+                //dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                buttonPlayPause.change(true);
+                ((MainActivity)getActivity()).stopTimerEnd();
+                fragmentInteractionListener.pushFragment(new AwardFragment(), true, getClass().getName());
 
             }
         });
+
+   /*     buttonPlayPause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                buttonPlayPause.toggle();
+                //((MainActivity)getActivity()).stopTimerDo(timerValue, mTextViewTime, mProgressBarExersice);
+                if (timerClass.ismTimerExerciseDoRunning()) {
+                    timerClass.pauseTimer();
+                } else {
+                    ((MainActivity)getActivity()).startTimerExerciseDo(timerValue, mTextViewTime, mProgressBarExersice);
+                }
+                Log.d("asdsadq212", " " + timerValue);
+            }
+        });*/
 
         buttonPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +100,7 @@ public class ExersiceDoFragment extends BaseFragment {
             }
         });
 
+
         mButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,8 +111,10 @@ public class ExersiceDoFragment extends BaseFragment {
         return rootView;
     }
 
-    public void pushNext(){
-        fragmentInteractionListener.pushFragment(new RestFragment(), true);
+    @Override
+    public void onResume() {
+        FragmentManager fragmentManager = getFragmentManager();
+        Log.d("dasdaf32rdfgeааааааааааа", "" + fragmentManager.getBackStackEntryCount());
+        super.onResume();
     }
-
 }

@@ -14,11 +14,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="height" value="26" />
-                            <entry key="outputName" value="vector_home" />
+                            <entry key="outputName" value="vector_share" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\assets\vector_home.svg" />
-                            <entry key="width" value="26" />
+                            <entry key="sourceFile" value="C:\assets\vector_share.svg" />
                           </map>
                         </option>
                       </PersistentState>

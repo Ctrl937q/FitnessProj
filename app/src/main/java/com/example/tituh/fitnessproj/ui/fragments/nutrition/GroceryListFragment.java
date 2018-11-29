@@ -73,7 +73,7 @@ public class GroceryListFragment extends BaseFragment {
         adapter.notifyDataSetChanged();
 
         mHorizontalRecyclerView.setLayoutManager(layoutManager);
-        mArrayListCategory = new ArrayList();
+        mArrayListCategory = new ArrayList<String>();
         if (arrayListGroceryList == null) {
             arrayListGroceryList = new ArrayList<>();
         }
