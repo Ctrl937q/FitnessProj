@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +47,6 @@ public class ExersiceDoFragment extends BaseFragment {
         mProgressBarExersice.setMax(timerValue);
         timerClass = new TimerClass();
 
-
         ((MainActivity) getActivity()).updateActionBarTitle("WORKOUT NAME");
         ((MainActivity) getActivity()).visibilityIconHomeActionBar();
         ((MainActivity) getActivity()).goneIconBacktActionBar();
@@ -58,7 +56,8 @@ public class ExersiceDoFragment extends BaseFragment {
 
         //((MainActivity)getActivity()).startTimerExerciseDo(timerValue, mTextViewTime, mProgressBarExersice);
         buttonPlayPause.change(false);
-        timerClass.startTimer(timerValue, mTextViewTime, mProgressBarExersice);
+
+        timerClass.startTimerExercise(timerValue, mTextViewTime, mProgressBarExersice, getFragmentManager());
 
         mButtonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,42 +67,27 @@ public class ExersiceDoFragment extends BaseFragment {
                 //dialogFragmentExersice.show();
                 //dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 buttonPlayPause.change(true);
-                ((MainActivity)getActivity()).stopTimerEnd();
+                timerClass.pauseTimerExercise();
                 fragmentInteractionListener.pushFragment(new AwardFragment(), true, getClass().getName());
-
             }
         });
-
-   /*     buttonPlayPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonPlayPause.toggle();
-                //((MainActivity)getActivity()).stopTimerDo(timerValue, mTextViewTime, mProgressBarExersice);
-                if (timerClass.ismTimerExerciseDoRunning()) {
-                    timerClass.pauseTimer();
-                } else {
-                    ((MainActivity)getActivity()).startTimerExerciseDo(timerValue, mTextViewTime, mProgressBarExersice);
-                }
-                Log.d("asdsadq212", " " + timerValue);
-            }
-        });*/
 
         buttonPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 buttonPlayPause.toggle();
-                if (timerClass.ismTimerRunning()) {
-                    timerClass.pauseTimer();
+                if (timerClass.ismTimerRunningExercise()) {
+                    timerClass.pauseTimerExercise();
                 } else {
-                    timerClass.startTimer(timerValue, mTextViewTime, mProgressBarExersice);
+                    timerClass.startTimerExercise(timerValue, mTextViewTime, mProgressBarExersice, getFragmentManager());
                 }
             }
         });
 
-
         mButtonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                timerClass.pauseTimerExercise();
                 ((MainActivity) getActivity()).popFragment();
             }
         });

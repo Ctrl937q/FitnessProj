@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "";
+    public static final String BASE_URL = "http://18.215.141.14:8000/";
     //public static final String BASE_URL = "http://api.themoviedb.org/3/";
     private static Retrofit retrofit;
 

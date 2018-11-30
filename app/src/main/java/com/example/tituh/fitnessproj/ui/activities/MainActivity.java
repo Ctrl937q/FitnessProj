@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewInfo;
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
-
+    GetReadyFragment getReadyFragment;
+    long sec;
+    CountDownTimer mCountDownTimerGetReady;
+    boolean mTimerRunning;
 
 
     TimerClass timerClass;
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewBackActionBarGetReady = findViewById(R.id.action_bar_arrow_get_ready);
         setSupportActionBar(toolbar);
         timerClass = new TimerClass();
+        getReadyFragment = new GetReadyFragment();
         //getSupportActionBar().setTitle("");
         //mActionBarTitle.setText("ABOUT");
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
@@ -283,7 +287,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         timerClass.pauseTimerGetReady();
     }*/
 
-    public void stopTimerEnd() {
-        timerClass.pauseTimer();
+    public void stopTimerGetReady() {
+        timerClass.pauseTimerGetReady();
+    }
+
+    public void stopTimerExercise() {
+        timerClass.pauseTimerExercise();
     }
 }

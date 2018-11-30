@@ -1,18 +1,14 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
@@ -22,8 +18,6 @@ public class GetReadyFragment extends BaseFragment {
 
     TextView textViewTime;
     TimerClass timerClass;
-    long sec;
-    CountDownTimer mCountDownTimerGetReady;
 
     @Nullable
     @Override
@@ -41,24 +35,15 @@ public class GetReadyFragment extends BaseFragment {
         ((MainActivity) getActivity()).goneIconShareActionBar();
 
         //((MainActivity) getActivity()).startTimerGetReady(textViewTime);
-        mCountDownTimerGetReady = new CountDownTimer(10000, 1000) {
-            public void onTick(long millisUntilFinished) {
-                sec = (millisUntilFinished / 1000) % 60;
-                textViewTime.setText("" + sec);
-            }
-
-            public void onFinish() {
-                mCountDownTimerGetReady.cancel();
-                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false, getClass().getName());
-            }
-        }.start();
+        timerClass.startTimerGetReady(textViewTime, getFragmentManager());
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //mCountDownTimer.cancel();
                 //timerClass.pauseTimerGetReady();
-                mCountDownTimerGetReady.cancel();
+                //mCountDownTimerGetReady.cancel();
+                timerClass.pauseTimerGetReady();
                 fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false, "asdas");
             }
         });

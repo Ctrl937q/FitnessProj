@@ -55,8 +55,6 @@ public class WeekWorkoutFragment extends BaseFragment {
         ((MainActivity)getActivity()).goneIconInfoActionBar();
         ((MainActivity) getActivity()).goneIconShareActionBar();
 
-        Log.d("aaaaaasdsa", " " + getClass().getName());
-
 
         recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                 recyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -77,13 +75,4 @@ public class WeekWorkoutFragment extends BaseFragment {
 
         return rootView;
     }
-
-
-    @Override
-    public void onResume() {
-        FragmentManager fragmentManager = getFragmentManager();
-        Log.d("dasdaf32rdfge", "" + fragmentManager.getBackStackEntryCount());
-        super.onResume();
-    }
-
 }
