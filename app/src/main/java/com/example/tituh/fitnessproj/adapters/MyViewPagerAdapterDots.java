@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 
 public class MyViewPagerAdapterDots extends PagerAdapter {
 
-    LayoutInflater layoutInflater_l;
-    Context context;
-    int[] layouts;
+    private LayoutInflater layoutInflater_l;
+    private Context context;
+    private int[] layouts;
 
     public MyViewPagerAdapterDots(int[] layouts, Context context) {
         this.layouts = layouts;

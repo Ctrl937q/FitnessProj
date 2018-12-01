@@ -4,22 +4,22 @@ import java.util.ArrayList;
 
 public class SevenDayMealPlanModel {
 
-    ArrayList<String> mondayBreakfast = new ArrayList<>();
-    ArrayList<String> tuesdaySnack = new ArrayList<>();
+    private ArrayList<String> mMondayBreakfast = new ArrayList<>();
+    private ArrayList<String> mTuesdaySnack = new ArrayList<>();
 
     public ArrayList<String> getMondayBreakfast() {
-        return mondayBreakfast;
+        return mMondayBreakfast;
     }
 
     public void setMondayBreakfast(ArrayList<String> mondayBreakfast) {
-        this.mondayBreakfast = mondayBreakfast;
+        this.mMondayBreakfast = mondayBreakfast;
     }
 
     public ArrayList<String> getTuesdaySnack() {
-        return tuesdaySnack;
+        return mTuesdaySnack;
     }
 
     public void setTuesdaySnack(ArrayList<String> tuesdaySnack) {
-        this.tuesdaySnack = tuesdaySnack;
+        this.mTuesdaySnack = tuesdaySnack;
     }
 }

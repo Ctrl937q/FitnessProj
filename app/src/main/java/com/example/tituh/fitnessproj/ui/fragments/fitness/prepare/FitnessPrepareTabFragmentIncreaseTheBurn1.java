@@ -15,7 +15,9 @@ public class FitnessPrepareTabFragmentIncreaseTheBurn1 extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fitness_prepare_before_training_cardview_fragment_3, container, false);
-        return rootView;
+        if(view == null) {
+            view = inflater.inflate(R.layout.fitness_prepare_before_training_cardview_fragment_3, container, false);
+        }
+        return view;
     }
 }

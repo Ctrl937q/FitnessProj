@@ -16,64 +16,66 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public class PrepareBeforeTrainingFragment extends BaseFragment {
 
-    FitnessPrepareTabFragmentStretch mFirstStretchFragment;
-    FitnessPrepareTabFragmentYoga mSecondYogaFragment;
-    FitnessPrepareTabFragmentIncreaseTheBurn1 mFirstIncreaseTheBurnFragment;
-    FitnessPrepareTabFragmentIncreaseTheBurn2 mSecondIncreaseTheBurnFragment;
+    private FitnessPrepareTabFragmentStretch mFirstStretchFragment;
+    private FitnessPrepareTabFragmentYoga mSecondYogaFragment;
+    private FitnessPrepareTabFragmentIncreaseTheBurn1 mFirstIncreaseTheBurnFragment;
+    private FitnessPrepareTabFragmentIncreaseTheBurn2 mSecondIncreaseTheBurnFragment;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fitness_prepare_before_training, container, false);
-        ((MainActivity) getActivity()).updateActionBarTitle("PREPARE");
-        ((MainActivity) getActivity()).visibleIconBacktActionBar();
-        ((MainActivity) getActivity()).goneIconAbouttActionBar();
+        if (view == null) {
+            view = inflater.inflate(R.layout.fitness_prepare_before_training, container, false);
+            ((MainActivity) getActivity()).updateActionBarTitle("PREPARE");
+            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            ((MainActivity) getActivity()).goneIconAbouttActionBar();
 
-        ViewPager mViewPagerFirst = rootView.findViewById(R.id.fitness_prepare_view_pager_1);
-        ViewPager mViewPagerSecond = rootView.findViewById(R.id.fitness_prepare_view_pager_2);
-        TabLayout tabLayoutFirst = (TabLayout)rootView.findViewById(R.id.fitness_prepare_tabDots_1);
-        TabLayout tabLayoutSecond = (TabLayout)rootView.findViewById(R.id.fitness_prepare_tabDots_2);
-        tabLayoutFirst.setupWithViewPager(mViewPagerFirst, true);
-        tabLayoutSecond.setupWithViewPager(mViewPagerSecond, true);
+            ViewPager mViewPagerFirst = view.findViewById(R.id.fitness_prepare_view_pager_1);
+            ViewPager mViewPagerSecond = view.findViewById(R.id.fitness_prepare_view_pager_2);
+            TabLayout tabLayoutFirst = view.findViewById(R.id.fitness_prepare_tabDots_1);
+            TabLayout tabLayoutSecond = view.findViewById(R.id.fitness_prepare_tabDots_2);
+            tabLayoutFirst.setupWithViewPager(mViewPagerFirst, true);
+            tabLayoutSecond.setupWithViewPager(mViewPagerSecond, true);
 
-        mViewPagerFirst.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
+            mViewPagerFirst.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int i, float v, int i1) {
 
-            }
+                }
 
-            @Override
-            public void onPageSelected(int i) {
+                @Override
+                public void onPageSelected(int i) {
 
-            }
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+                @Override
+                public void onPageScrollStateChanged(int i) {
 
-            }
-        });
+                }
+            });
 
 
-        mViewPagerSecond.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
+            mViewPagerSecond.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int i, float v, int i1) {
 
-            }
+                }
 
-            @Override
-            public void onPageSelected(int i) {
+                @Override
+                public void onPageSelected(int i) {
 
-            }
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+                @Override
+                public void onPageScrollStateChanged(int i) {
 
-            }
-        });
+                }
+            });
 
-        setupViewPagerFirst(mViewPagerFirst);
-        setupViewPagerSecond(mViewPagerSecond);
-        return rootView;
+            setupViewPagerFirst(mViewPagerFirst);
+            setupViewPagerSecond(mViewPagerSecond);
+        }
+        return view;
     }
 
 
@@ -95,6 +97,4 @@ public class PrepareBeforeTrainingFragment extends BaseFragment {
         viewPagerAdapter.addFragment(mSecondIncreaseTheBurnFragment);
         viewPager.setAdapter(viewPagerAdapter);
     }
-
-
 }

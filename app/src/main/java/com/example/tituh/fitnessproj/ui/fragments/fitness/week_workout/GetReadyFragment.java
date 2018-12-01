@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.activities.MainActivity;
@@ -22,31 +23,35 @@ public class GetReadyFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.get_ready_fragment_layout, container, false);
-        Button button = (Button) rootView.findViewById(R.id.button_start_workout);
-        textViewTime = (TextView) rootView.findViewById(R.id.text_view_timer);
-        timerClass = new TimerClass();
+        if (view == null) {
+            view = inflater.inflate(R.layout.get_ready_fragment_layout, container, false);
+            Button button = view.findViewById(R.id.button_start_workout);
+            textViewTime = view.findViewById(R.id.text_view_timer);
+            timerClass = new TimerClass();
 
-        ((MainActivity) getActivity()).updateActionBarTitle("ASS | LEGS");
-        ((MainActivity) getActivity()).goneIconAbouttActionBar();
-        ((MainActivity) getActivity()).visibleIconBacktActionBar();
-        ((MainActivity) getActivity()).goneIconHomeActionBar();
-        ((MainActivity) getActivity()).goneIconInfoActionBar();
-        ((MainActivity) getActivity()).goneIconShareActionBar();
+            ((MainActivity) getActivity()).updateActionBarTitle("ASS | LEGS");
+            ((MainActivity) getActivity()).goneIconAbouttActionBar();
+            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            ((MainActivity) getActivity()).goneIconHomeActionBar();
+            ((MainActivity) getActivity()).goneIconInfoActionBar();
+            ((MainActivity) getActivity()).goneIconShareActionBar();
 
-        //((MainActivity) getActivity()).startTimerGetReady(textViewTime);
-        timerClass.startTimerGetReady(textViewTime, getFragmentManager());
+            //((MainActivity) getActivity()).startTimerGetReady(textViewTime);
+            //timerClass.startTimerGetReady(textViewTime, getFragmentManager());
+            fragmentInteractionListener.startTimerGetReady(textViewTime, getFragmentManager());
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //mCountDownTimer.cancel();
-                //timerClass.pauseTimerGetReady();
-                //mCountDownTimerGetReady.cancel();
-                timerClass.pauseTimerGetReady();
-                fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false, "asdas");
-            }
-        });
-        return rootView;
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //mCountDownTimer.cancel();
+                    //timerClass.pauseTimerGetReady();
+                    //mCountDownTimerGetReady.cancel();
+                    //timerClass.pauseTimerGetReady();
+                    fragmentInteractionListener.stopTimerGetReady();
+                    fragmentInteractionListener.pushFragment(new ExersiceDoFragment(), false);
+                }
+            });
+        }
+        return view;
     }
 }

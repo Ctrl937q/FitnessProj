@@ -2,16 +2,11 @@ package com.example.tituh.fitnessproj.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.tituh.fitnessproj.R;
-
 import java.util.ArrayList;
 
 public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<ExerciseRecyclerViewAdapter.ViewHolder> {
@@ -42,7 +37,7 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<ExerciseRe
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewWarmUpName;
+        private TextView mTextViewWarmUpName;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

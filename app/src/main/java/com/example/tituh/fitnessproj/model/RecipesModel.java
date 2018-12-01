@@ -2,17 +2,17 @@ package com.example.tituh.fitnessproj.model;
 
 public class RecipesModel {
 
-    String titleButton;
+    private String mTitleButton;
 
     public RecipesModel(String titleButton) {
-        this.titleButton = titleButton;
+        this.mTitleButton = titleButton;
     }
 
     public String getTitleButton() {
-        return titleButton;
+        return mTitleButton;
     }
 
     public void setTitleButton(String titleButton) {
-        this.titleButton = titleButton;
+        this.mTitleButton = titleButton;
     }
 }

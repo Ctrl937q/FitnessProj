@@ -7,12 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.model.WellnessModel;
-
 import java.util.List;
-
 import mehdi.sakout.fancybuttons.FancyButton;
 
 import static com.example.tituh.fitnessproj.model.WellnessModel.ONE_TYPE;
@@ -77,8 +74,8 @@ public class WellnessFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Re
 
     private class OneViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewHeadline1;
-        FancyButton fancyButton;
+        private TextView mTextViewHeadline1;
+        private FancyButton fancyButton;
 
         private OneViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,8 +86,8 @@ public class WellnessFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Re
 
     private class TwoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewHeadline3;
-        ImageView mImageView;
+        private TextView mTextViewHeadline3;
+        private ImageView mImageView;
 
         private TwoViewHolder(@NonNull View itemView) {
             super(itemView);

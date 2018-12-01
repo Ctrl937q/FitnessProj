@@ -7,19 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.model.NutritionModel;
-
 import java.util.List;
-
 import mehdi.sakout.fancybuttons.FancyButton;
 
 import static com.example.tituh.fitnessproj.model.NutritionModel.ONE_TYPE;
 import static com.example.tituh.fitnessproj.model.NutritionModel.TWO_TYPE;
 
 public class NutritionFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
 
     private List<NutritionModel> mList;
 
@@ -77,8 +73,8 @@ public class NutritionFragmentRecyclerViewAdapter extends RecyclerView.Adapter<R
 
     private class OneViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewHeadline1;
-        FancyButton fancyButton;
+        private TextView mTextViewHeadline1;
+        private FancyButton fancyButton;
 
         private OneViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -89,8 +85,8 @@ public class NutritionFragmentRecyclerViewAdapter extends RecyclerView.Adapter<R
 
     private class TwoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewHeadline3;
-        ImageView mImageView;
+        private TextView mTextViewHeadline3;
+        private ImageView mImageView;
 
         private TwoViewHolder(@NonNull View itemView) {
             super(itemView);

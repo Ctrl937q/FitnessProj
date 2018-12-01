@@ -9,7 +9,6 @@ import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import java.util.ArrayList;
 
-
 public class GroceryHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<GroceryHorizontalRecyclerViewAdapter.ViewHolder> {
 
     private ArrayList<String> mListHorizontal;
@@ -32,7 +31,6 @@ public class GroceryHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<G
     }
 
 
-
     @Override
     public int getItemCount() {
         return mListHorizontal.size();
@@ -41,7 +39,7 @@ public class GroceryHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<G
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewHorizontalRecyclerView;
+        private TextView mTextViewHorizontalRecyclerView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

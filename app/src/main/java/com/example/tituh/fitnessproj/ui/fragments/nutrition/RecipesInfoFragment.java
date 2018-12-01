@@ -20,24 +20,24 @@ import java.util.ArrayList;
 
 public class RecipesInfoFragment extends BaseFragment {
 
-    ArrayList<String>arrayListTitle;
-    SharedPreferences sharedPref;
+    private ArrayList<String> mArrayListTitle;
+    private SharedPreferences mSharedPref;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.recipes_info_fragment, container, false);
-        sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        arrayListTitle = new ArrayList<>();
-        arrayListTitle.add("4 GG crackers (raisin preferred)");
-        arrayListTitle.add("2 eggs");
-        arrayListTitle.add("1 tsp Stevia or whatever sweetener you likes");
-        RecyclerView recyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerView_recipes_info);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new RecipesInfoRecyclerViewAdapter(arrayListTitle, sharedPref, getActivity()));
-        recyclerView.addItemDecoration(new MarginItemDecoration(1, 20, 20 ,0 ,0));
-
-        return rootView;
+        if (view == null) {
+            view = inflater.inflate(R.layout.recipes_info_fragment, container, false);
+            mSharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+            mArrayListTitle = new ArrayList<>();
+            mArrayListTitle.add("4 GG crackers (raisin preferred)");
+            mArrayListTitle.add("2 eggs");
+            mArrayListTitle.add("1 tsp Stevia or whatever sweetener you likes");
+            RecyclerView recyclerView = view.findViewById(R.id.recyclerView_recipes_info);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setAdapter(new RecipesInfoRecyclerViewAdapter(mArrayListTitle, mSharedPref));
+            recyclerView.addItemDecoration(new MarginItemDecoration(1, 20, 20, 0, 0));
+        }
+        return view;
     }
 }

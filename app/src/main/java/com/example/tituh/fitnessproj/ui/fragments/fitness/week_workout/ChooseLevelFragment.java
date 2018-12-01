@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ChooseLevelRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
@@ -22,50 +21,50 @@ import java.util.ArrayList;
 
 public class ChooseLevelFragment extends BaseFragment {
 
-    ArrayList<ChooseLevelModel> modelLevel;
+    private ArrayList<ChooseLevelModel> mModelLevel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.week_workout_choose_level_fragment, container, false);
+        if(view == null) {
+            view = inflater.inflate(R.layout.week_workout_choose_level_fragment, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_choose_level);
+            RecyclerView recyclerView =  view.findViewById(R.id.recycler_view_choose_level);
 
+            fragmentInteractionListener.updateActionBarTitle("12 WEEK");
+            fragmentInteractionListener.visibleIconBacktActionBar();
+            fragmentInteractionListener.visibleIconAboutActionBar();
+            fragmentInteractionListener.goneIconHomeActionBar();
+            fragmentInteractionListener.goneIconInfoActionBar();
+            fragmentInteractionListener.goneIconShareActionBar();
 
-        ((MainActivity) getActivity()).updateActionBarTitle("12 WEEK");
+            mModelLevel = new ArrayList<>();
 
-        ((MainActivity) getActivity()).visibleIconBacktActionBar();
-        ((MainActivity) getActivity()).visibleIconAboutActionBar();
-        ((MainActivity) getActivity()).goneIconHomeActionBar();
-        ((MainActivity) getActivity()).goneIconInfoActionBar();
-        ((MainActivity) getActivity()).goneIconShareActionBar();
+            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_beginner, "BEGINNER"));
+            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_intermediate, "INTERMEDIATE"));
+            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_advanced, "ADVANCED"));
 
-        modelLevel = new ArrayList<>();
+            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            recyclerView.setAdapter(new ChooseLevelRecyclerViewAdapter(mModelLevel));
 
-        modelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_beginner, "BEGINNER"));
-        modelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_intermediate, "INTERMEDIATE"));
-        modelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_advanced, "ADVANCED"));
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(new ChooseLevelRecyclerViewAdapter(modelLevel));
-
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
-                recyclerView, new RecyclerTouchListenerStart.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                if (position == 1) {
-                    if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true, getClass().getName());
+            recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
+                    recyclerView, new RecyclerTouchListenerStart.ClickListener() {
+                @Override
+                public void onClick(View view, int position) {
+                    if (position == 1) {
+                        if (null != fragmentInteractionListener) {
+                            fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true);
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onLongClick(View view, int position) {
+                @Override
+                public void onLongClick(View view, int position) {
 
-            }
-        }));
-        return rootView;
+                }
+            }));
+        }
+        return view;
     }
 
     @Override

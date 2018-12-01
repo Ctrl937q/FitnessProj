@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
@@ -26,73 +27,71 @@ public class ExersiceDoFragment extends BaseFragment {
     private Button mButtonBack;
     private Button mButtonNext;
     private TimerClass timerClass;
-    private int timerValue = 45;
+    private int timerValue = 20;
     private ProgressBar progressBarAllProgress;
     ImageView imageView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstanceState) {
-        final View rootView = inflater.inflate(R.layout.workout_start_layout, container, false);
-        imageView = (ImageView)rootView.findViewById(R.id.image_view_exercise_do);
-        mTextViewTime = (TextView) rootView.findViewById(R.id.text_view_time);
-        final PlayPauseView buttonPlayPause = (PlayPauseView) rootView.findViewById(R.id.button_test_start_exercise);
-        mProgressBarExersice = (ProgressBar) rootView.findViewById(R.id.progressBar_exersice);
-        mButtonBack = (Button) rootView.findViewById(R.id.btn_back_exersice);
-        mButtonNext = (Button) rootView.findViewById(R.id.btn_next_exersice);
-        progressBarAllProgress = (ProgressBar)rootView.findViewById(R.id.progress_bar_do_exercise);
-        ProgressBarDrawable bgProgress= new ProgressBarDrawable(6);
-        progressBarAllProgress.setProgressDrawable(bgProgress);
-        progressBarAllProgress.setProgress(55);
-        mProgressBarExersice.setMax(timerValue);
-        timerClass = new TimerClass();
+        if (view == null) {
+            view = inflater.inflate(R.layout.workout_start_layout, container, false);
+            imageView = view.findViewById(R.id.image_view_exercise_do);
+            mTextViewTime = view.findViewById(R.id.text_view_time);
+            final PlayPauseView buttonPlayPause = view.findViewById(R.id.button_test_start_exercise);
+            mProgressBarExersice = view.findViewById(R.id.progressBar_exersice);
+            mButtonBack = view.findViewById(R.id.btn_back_exersice);
+            mButtonNext = view.findViewById(R.id.btn_next_exersice);
+            progressBarAllProgress = view.findViewById(R.id.progress_bar_do_exercise);
+            ProgressBarDrawable bgProgress = new ProgressBarDrawable(6);
+            progressBarAllProgress.setProgressDrawable(bgProgress);
+            progressBarAllProgress.setProgress(55);
+            mProgressBarExersice.setMax(timerValue);
+            timerClass = new TimerClass();
 
-        ((MainActivity) getActivity()).updateActionBarTitle("WORKOUT NAME");
-        ((MainActivity) getActivity()).visibilityIconHomeActionBar();
-        ((MainActivity) getActivity()).goneIconBacktActionBar();
-        ((MainActivity) getActivity()).visibilityIconInfoActionBar();
-        ((MainActivity) getActivity()).goneIconAbouttActionBar();
-        ((MainActivity) getActivity()).goneIconShareActionBar();
+            ((MainActivity) getActivity()).updateActionBarTitle("WORKOUT NAME");
+            ((MainActivity) getActivity()).visibilityIconHomeActionBar();
+            ((MainActivity) getActivity()).goneIconBacktActionBar();
+            ((MainActivity) getActivity()).visibilityIconInfoActionBar();
+            ((MainActivity) getActivity()).goneIconAbouttActionBar();
+            ((MainActivity) getActivity()).goneIconShareActionBar();
 
-        //((MainActivity)getActivity()).startTimerExerciseDo(timerValue, mTextViewTime, mProgressBarExersice);
-        buttonPlayPause.change(false);
+            buttonPlayPause.change(false);
 
-        timerClass.startTimerExercise(timerValue, mTextViewTime, mProgressBarExersice, getFragmentManager());
 
-        mButtonNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //timerClass.pauseTimerDialog();
-                //DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
-                //dialogFragmentExersice.show();
-                //dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                buttonPlayPause.change(true);
-                timerClass.pauseTimerExercise();
-                fragmentInteractionListener.pushFragment(new AwardFragment(), true, getClass().getName());
-            }
-        });
+            fragmentInteractionListener.startTimerExerciseDo(mTextViewTime, mProgressBarExersice, getFragmentManager());
 
-        buttonPlayPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                buttonPlayPause.toggle();
-                if (timerClass.ismTimerRunningExercise()) {
-                    timerClass.pauseTimerExercise();
-                } else {
-                    timerClass.startTimerExercise(timerValue, mTextViewTime, mProgressBarExersice, getFragmentManager());
+            mButtonNext.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //timerClass.pauseTimerDialog();
+                    //DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
+                    //dialogFragmentExersice.show();
+                    //dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    buttonPlayPause.change(true);
+                    fragmentInteractionListener.stopTimerExerciseDo();
+                    fragmentInteractionListener.pushFragment(new AwardFragment(), true);
                 }
-            }
-        });
+            });
 
-        mButtonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                timerClass.pauseTimerExercise();
-                ((MainActivity) getActivity()).popFragment();
-            }
-        });
+            buttonPlayPause.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    buttonPlayPause.toggle();
+                    fragmentInteractionListener.btnPlayPause(timerValue, mTextViewTime,
+                            mProgressBarExersice, getFragmentManager());
+                }
+            });
 
-        return rootView;
+            mButtonBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+        }
+
+        return view;
     }
 
     @Override

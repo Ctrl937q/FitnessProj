@@ -22,52 +22,51 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 public class TipsForYourSuccess extends BaseFragment {
 
     private ViewPager mViewPager;
-    private WellnessTipsForSuccessFirstScreen firstFragmentTips;
-    private WellnessTipsForSuccessSecondScreen secondFragemntTips;
-    TabLayout tabDotLayout;
+    private WellnessTipsForSuccessFirstScreen mFirstFragmentTips;
+    private WellnessTipsForSuccessSecondScreen mSecondFragemntTips;
+    private TabLayout mTabDotLayout;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.wellness_tips_tab_layout, container, false);
-        ((MainActivity) getActivity()).updateActionBarTitle("8 TIPS FOR YOUR SUCCESS");
-        ((MainActivity) getActivity()).visibleIconBacktActionBar();
 
-        mViewPager = (ViewPager)rootView.findViewById(R.id.view_pager_tips);
-        tabDotLayout = (TabLayout)rootView.findViewById(R.id.tabDots);
+        if(view == null) {
+            view = inflater.inflate(R.layout.wellness_tips_tab_layout, container, false);
+            ((MainActivity) getActivity()).updateActionBarTitle("8 TIPS FOR YOUR SUCCESS");
+            ((MainActivity) getActivity()).visibleIconBacktActionBar();
 
-        tabDotLayout.setupWithViewPager(mViewPager, true);
+            mViewPager = view.findViewById(R.id.view_pager_tips);
+            mTabDotLayout = view.findViewById(R.id.tabDots);
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int i, float v, int i1) {
+            mTabDotLayout.setupWithViewPager(mViewPager, true);
 
-            }
+            mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int i, float v, int i1) {
 
-            @Override
-            public void onPageSelected(int i) {
+                }
 
-            }
+                @Override
+                public void onPageSelected(int i) {
 
-            @Override
-            public void onPageScrollStateChanged(int i) {
+                }
 
-            }
-        });
+                @Override
+                public void onPageScrollStateChanged(int i) {
 
-        setupViewPager(mViewPager);
-
-        return rootView;
+                }
+            });
+            setupViewPager(mViewPager);
+        }
+        return view;
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapterForTips viewPagerAdapter = new ViewPagerAdapterForTips(getChildFragmentManager());
-        firstFragmentTips = new WellnessTipsForSuccessFirstScreen();
-        secondFragemntTips = new WellnessTipsForSuccessSecondScreen();
-        viewPagerAdapter.addFragment(firstFragmentTips);
-        viewPagerAdapter.addFragment(secondFragemntTips);
+        mFirstFragmentTips = new WellnessTipsForSuccessFirstScreen();
+        mSecondFragemntTips = new WellnessTipsForSuccessSecondScreen();
+        viewPagerAdapter.addFragment(mFirstFragmentTips);
+        viewPagerAdapter.addFragment(mSecondFragemntTips);
         viewPager.setAdapter(viewPagerAdapter);
     }
-
-
 }

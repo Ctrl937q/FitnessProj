@@ -15,7 +15,9 @@ public class WellnessTipsForSuccessFirstScreen extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tips_for_success_first_screen, container, false);
-        return rootView;
+        if (view == null) {
+            view = inflater.inflate(R.layout.tips_for_success_first_screen, container, false);
+        }
+        return view;
     }
 }

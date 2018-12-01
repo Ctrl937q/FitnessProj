@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
-
 import java.util.ArrayList;
 
 public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<GlossaryWorkoutsRecyclerViewAdapter.ViewHolder> {
@@ -38,7 +36,7 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewWarmUpNameGlossary;
+        private TextView mTextViewWarmUpNameGlossary;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

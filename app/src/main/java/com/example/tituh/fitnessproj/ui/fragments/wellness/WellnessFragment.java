@@ -21,57 +21,59 @@ import java.util.List;
 
 public class WellnessFragment extends BaseFragment {
 
-    RecyclerView mRecyclerViewWellnessFragment;
+    private RecyclerView mRecyclerViewWellnessFragment;
     private List<WellnessModel> mListWellnessModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.wellness_fragment, container, false);
-        ((MainActivity) getActivity()).visibleIconAboutActionBar();
-        ((MainActivity) getActivity()).goneIconBacktActionBar();
-        mRecyclerViewWellnessFragment = (RecyclerView) rootView.findViewById(R.id.recycler_view_wellness);
+        if (view == null) {
+            view = inflater.inflate(R.layout.wellness_fragment, container, false);
+            ((MainActivity) getActivity()).visibleIconAboutActionBar();
+            ((MainActivity) getActivity()).goneIconBacktActionBar();
+            mRecyclerViewWellnessFragment = view.findViewById(R.id.recycler_view_wellness);
 
-        mListWellnessModel = new ArrayList<>();
-        mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits",
-                WellnessModel.ONE_TYPE));
-        mListWellnessModel.add(new WellnessModel("Protein Powder Guide",WellnessModel.TWO_TYPE,
-                R.drawable.vector_wellness_protein));
-        mListWellnessModel.add(new WellnessModel("8 Tips for your success",WellnessModel.TWO_TYPE,
-                R.drawable.vector_wellness_tips));
+            mListWellnessModel = new ArrayList<>();
+            mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits",
+                    WellnessModel.ONE_TYPE));
+            mListWellnessModel.add(new WellnessModel("Protein Powder Guide", WellnessModel.TWO_TYPE,
+                    R.drawable.vector_wellness_protein));
+            mListWellnessModel.add(new WellnessModel("8 Tips for your success", WellnessModel.TWO_TYPE,
+                    R.drawable.vector_wellness_tips));
 
-        mRecyclerViewWellnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mRecyclerViewWellnessFragment.setAdapter(new WellnessFragmentRecyclerViewAdapter(mListWellnessModel));
+            mRecyclerViewWellnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
+            mRecyclerViewWellnessFragment.setAdapter(new WellnessFragmentRecyclerViewAdapter(mListWellnessModel));
 
 
-        mRecyclerViewWellnessFragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
-                mRecyclerViewWellnessFragment, new RecyclerTouchListenerStart.ClickListener() {
-            @Override
-            public void onClick(View view, final int position) {
-                if (position == 0) {
-                    if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new DailyHabitsFragment(), true,  getClass().getName());
+            mRecyclerViewWellnessFragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
+                    mRecyclerViewWellnessFragment, new RecyclerTouchListenerStart.ClickListener() {
+                @Override
+                public void onClick(View view, final int position) {
+                    if (position == 0) {
+                        if (null != fragmentInteractionListener) {
+                            fragmentInteractionListener.pushFragment(new DailyHabitsFragment(), true);
+                        }
+                    }
+
+                    if (position == 1) {
+                        if (null != fragmentInteractionListener) {
+                            fragmentInteractionListener.pushFragment(new ProteinPowderGuideFragment(), true);
+                        }
+                    }
+
+                    if (position == 2) {
+                        if (null != fragmentInteractionListener) {
+                            fragmentInteractionListener.pushFragment(new TipsForYourSuccess(), true);
+                        }
                     }
                 }
 
-                if (position == 1) {
-                    if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new ProteinPowderGuideFragment(), true,  getClass().getName());
-                    }
+                @Override
+                public void onLongClick(View view, int position) {
                 }
+            }));
+        }
 
-                if(position == 2){
-                    if (null != fragmentInteractionListener) {
-                        fragmentInteractionListener.pushFragment(new TipsForYourSuccess(), true,  getClass().getName());
-                    }
-                }
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-            }
-        }));
-
-        return rootView;
+        return view;
     }
 }

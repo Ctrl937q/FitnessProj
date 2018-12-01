@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
 import com.example.tituh.fitnessproj.model.ChooseLevelModel;
@@ -57,7 +56,7 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
         ImageView mImageViewStar1;
         ImageView mImageViewStar2;
         ImageView mImageViewStar3;
-        ProgressBar progressBar;
+        ProgressBar mProgressBar;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,10 +65,10 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
             mImageViewStar1 = itemView.findViewById(R.id.image_view_level_choose_star1);
             mImageViewStar2 = itemView.findViewById(R.id.image_view_level_choose_star2);
             mImageViewStar3 = itemView.findViewById(R.id.image_view_level_choose_star3);
-            progressBar = itemView.findViewById(R.id.progress_bar_level_choose_item);
+            mProgressBar = itemView.findViewById(R.id.progress_bar_level_choose_item);
             ProgressBarDrawable bgProgress= new ProgressBarDrawable(6);
-            progressBar.setProgressDrawable(bgProgress);
-            progressBar.setProgress(20);
+            mProgressBar.setProgressDrawable(bgProgress);
+            mProgressBar.setProgress(20);
         }
     }
 }

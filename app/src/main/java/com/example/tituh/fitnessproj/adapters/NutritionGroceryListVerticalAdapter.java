@@ -3,39 +3,23 @@ package com.example.tituh.fitnessproj.adapters;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.ui.fragments.nutrition.GroceryListFragment;
 import com.example.tituh.fitnessproj.ui.fragments.nutrition.SharedPreferencesUtil;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class NutritionGroceryListVerticalAdapter extends RecyclerView.Adapter<NutritionGroceryListVerticalAdapter.ViewHolder> {
 
-    ArrayList<String> mArrayListTitle;
-    SharedPreferences sharedPref;
+    private ArrayList<String> mArrayListTitle;
+    private SharedPreferences mSharedPref;
 
     public NutritionGroceryListVerticalAdapter(ArrayList<String> mArrayListTitle, SharedPreferences sharedPref) {
         this.mArrayListTitle = mArrayListTitle;
-        this.sharedPref = sharedPref;
-    }
-
-    public void titleChange(ArrayList<String> titleArray) {
-        this.mArrayListTitle = titleArray;
-    }
-
-    public void updateReceiptsList(ArrayList<String> newlist) {
-        mArrayListTitle.clear();
-        mArrayListTitle.addAll(newlist);
-        this.notifyDataSetChanged();
+        this.mSharedPref = sharedPref;
     }
 
     @NonNull
@@ -53,10 +37,8 @@ public class NutritionGroceryListVerticalAdapter extends RecyclerView.Adapter<Nu
             public void onClick(View view) {
                 mArrayListTitle.remove(i);
                 notifyDataSetChanged();
-                SharedPreferencesUtil.pushStringList(sharedPref, mArrayListTitle, "key");
-
-                //groceryListFragment.saveArrayString(mArrayListTitle);
-            }
+                SharedPreferencesUtil.pushStringList(mSharedPref, mArrayListTitle, "key");
+                }
         });
 
     }
@@ -71,15 +53,13 @@ public class NutritionGroceryListVerticalAdapter extends RecyclerView.Adapter<Nu
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextView;
-        ImageView mImageViewDeleteItem;
+        private TextView mTextView;
+        private ImageView mImageViewDeleteItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextView = itemView.findViewById(R.id.text_view_week_workout_week);
             mImageViewDeleteItem = itemView.findViewById(R.id.image_view_delete_item_grocery_list);
-
-
         }
     }
 }

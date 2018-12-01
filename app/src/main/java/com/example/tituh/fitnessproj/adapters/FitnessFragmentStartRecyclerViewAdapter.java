@@ -2,22 +2,15 @@ package com.example.tituh.fitnessproj.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.tituh.fitnessproj.model.FitnessStartModel;
 import com.example.tituh.fitnessproj.R;
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
-import mehdi.sakout.fancybuttons.FancyButton;
 
 import static com.example.tituh.fitnessproj.model.FitnessStartModel.ONE_TYPE;
 import static com.example.tituh.fitnessproj.model.FitnessStartModel.TWO_TYPE;
@@ -82,9 +75,9 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
     private class OneViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mImageViewItem;
-        TextView mTextViewHeadline1;
-        Button fancyButton;
+        private ImageView mImageViewItem;
+        private TextView mTextViewHeadline1;
+        private Button fancyButton;
 
         private OneViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -98,8 +91,8 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
     private class TwoViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView mImageViewLastItemIcon;
-        TextView mTextViewHeadline3;
+        private ImageView mImageViewLastItemIcon;
+        private TextView mTextViewHeadline3;
 
         private TwoViewHolder(@NonNull View itemView) {
             super(itemView);

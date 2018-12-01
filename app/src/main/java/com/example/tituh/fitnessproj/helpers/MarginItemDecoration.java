@@ -5,25 +5,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 public class MarginItemDecoration extends RecyclerView.ItemDecoration {
-    private final int columns;
-    private int marginTop;
-    int marginBot;
-    int marginLeft;
-    int marginRight;
+    private int mColumns;
+    private int mMarginTop;
+    private int mMarginBot;
+    private int mMarginLeft;
+    private int mMarginRight;
 
     public MarginItemDecoration(int columns, int marginTop, int marginBot, int marginLeft, int marginRight) {
-        this.columns = columns;
-        this.marginTop = marginTop;
-        this.marginBot = marginBot;
-        this.marginLeft = marginLeft;
-        this.marginRight = marginRight;
+        this.mColumns = columns;
+        this.mMarginTop = marginTop;
+        this.mMarginBot = marginBot;
+        this.mMarginLeft = marginLeft;
+        this.mMarginRight = marginRight;
     }
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        outRect.bottom = marginBot;
-        outRect.top = marginTop;
-        outRect.left = marginLeft;
-        outRect.right = marginRight;
+        outRect.bottom = mMarginBot;
+        outRect.top = mMarginTop;
+        outRect.left = mMarginLeft;
+        outRect.right = mMarginRight;
     }
 }

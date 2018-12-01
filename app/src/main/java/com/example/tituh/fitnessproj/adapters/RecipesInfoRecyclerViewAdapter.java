@@ -1,36 +1,28 @@
 package com.example.tituh.fitnessproj.adapters;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.nutrition.SharedPreferencesUtil;
-
 import java.util.ArrayList;
 
 public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<RecipesInfoRecyclerViewAdapter.ViewHolder> {
 
     private ArrayList<String> mListTitle;
-    SharedPreferences sharedPref;
-    Activity activity;
-    ArrayList<String> arrayListFromPreference;
+    private SharedPreferences mSharedPref;
+    private ArrayList<String> mArrayListFromPreference;
 
 
-    public RecipesInfoRecyclerViewAdapter(ArrayList<String> mListTitle,SharedPreferences sharedPref, Activity activity) {
-        this.sharedPref = sharedPref;
+    public RecipesInfoRecyclerViewAdapter(ArrayList<String> mListTitle,SharedPreferences sharedPref) {
+        this.mSharedPref = sharedPref;
         this.mListTitle = mListTitle;
-        this.activity = activity;
-        arrayListFromPreference = new ArrayList<>();
+        mArrayListFromPreference = new ArrayList<>();
     }
 
     @NonNull
@@ -50,9 +42,9 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
                 String mTitleWithoutNumber = mListTitle.get(i);
                 mTitleWithoutNumber = mTitleWithoutNumber.replaceAll("[^A-Za-z ()]", "");
                 mTitleWithoutNumber = mTitleWithoutNumber.replaceFirst("^ *", "");
-                arrayListFromPreference = (ArrayList<String>) SharedPreferencesUtil.pullStringList(sharedPref, "key");
-                arrayListFromPreference.add(mTitleWithoutNumber);
-                SharedPreferencesUtil.pushStringList(sharedPref, arrayListFromPreference, "key");
+                mArrayListFromPreference = (ArrayList<String>) SharedPreferencesUtil.pullStringList(mSharedPref, "key");
+                mArrayListFromPreference.add(mTitleWithoutNumber);
+                SharedPreferencesUtil.pushStringList(mSharedPref, mArrayListFromPreference, "key");
                 viewHolder.imageViewPlus.setEnabled(false);
                 viewHolder.imageViewPlus.setImageResource(R.drawable.vector_add_grocery_list_empty_small);
             }
@@ -67,8 +59,8 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewTitle;
-        ImageView imageViewPlus;
+        private TextView mTextViewTitle;
+        private ImageView imageViewPlus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +68,5 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
             imageViewPlus = itemView.findViewById(R.id.image_view_add_grocery_list_recipes_info);
         }
     }
-
 
 }

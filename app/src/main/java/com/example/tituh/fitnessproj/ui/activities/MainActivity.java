@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
@@ -13,23 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.AwardFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.DayWorkoutFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.ExersiceDoFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.GetReadyFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
-
-import java.sql.Time;
-import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
@@ -41,11 +31,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewInfo;
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
-    GetReadyFragment getReadyFragment;
-    long sec;
-    CountDownTimer mCountDownTimerGetReady;
-    boolean mTimerRunning;
-
 
     TimerClass timerClass;
 
@@ -65,9 +50,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewBackActionBarGetReady = findViewById(R.id.action_bar_arrow_get_ready);
         setSupportActionBar(toolbar);
         timerClass = new TimerClass();
-        getReadyFragment = new GetReadyFragment();
-        //getSupportActionBar().setTitle("");
-        //mActionBarTitle.setText("ABOUT");
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,37 +62,35 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
             }
         });
-        pushFragment(new MainTabLayoutFragment(), false, getClass().getName());
+        pushFragment(new MainTabLayoutFragment(), false);
     }
+
+    //TODO remove 'name' parameter from method definition, use fragment.getBackStackTag() instead
 
 
     @Override
-    public void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack, String name) {
+    public void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack) {
         if (!isFinishing()) {
-            //String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
+            String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
             //Log.v(tag, tag);
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
             //ft.setCustomAnimations(R.animator.slide_in_left, 0);
-            ft.replace(R.id.fragment_container, fragment, name);
-            if (shouldAddToBackstack) ft.addToBackStack(name);
+            ft.replace(R.id.fragment_container, fragment, tag);
+            if (shouldAddToBackstack) ft.addToBackStack(tag);
             ft.commit();
-            //Log.d("fragmentName233", "" + manager.getBackStackEntryCount());
-            Log.d("fragmentName233", "" + name);
         }
     }
 
     @Override
     public void pushFragmentGlossary(BaseFragment fragment, boolean shouldAddToBackstack) {
         if (!isFinishing()) {
-            //String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
-            //Log.v(tag, tag);
+            String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
             //ft.setCustomAnimations(R.animator.slide_in_left, 0);
-            Log.d("fragmentName233", "" + getClass().getName());
-            ft.replace(R.id.fragment_container_glossary, fragment, getClass().getName());
-            if (shouldAddToBackstack) ft.addToBackStack(getClass().getName());
+            ft.replace(R.id.fragment_container_glossary, fragment, tag);
+            if (shouldAddToBackstack) ft.addToBackStack(tag);
             ft.commit();
         }
     }
@@ -135,6 +115,12 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     public void onBackPressed() {
+        if(timerClass.ismTimerRunningExercise()){
+            stopTimerExerciseDo();
+        }
+        if (timerClass.ismTimerRunningGetReady()) {
+            stopTimerGetReady();
+        }
         popFragment();
     }
 
@@ -197,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         });
     }
 
-
+    //TODO Remove all mistypes
     @Override
     public void goneIconBacktActionBar() {
         mImageViewBackActionBar.setVisibility(View.GONE);
@@ -256,42 +242,48 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     public void goneIconBackGetReadyActionBar() {
         mImageViewBackActionBarGetReady.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void startTimerGetReady(TextView textView, FragmentManager fragmentManager) {
+        timerClass.setmTimerRunningGetReady(true);
+        timerClass.startTimerGetReady(textView, fragmentManager);
+    }
+
+    @Override
+    public void stopTimerGetReady() {
+        timerClass.setmTimerRunningGetReady(false);
+        timerClass.pauseTimerGetReady();
+    }
+
+    @Override
+    public void startTimerExerciseDo(TextView textViewTime,
+                                     ProgressBar progressBarExersice, FragmentManager fragmentManager) {
+
+        timerClass.setmTimeLeftInMills(20000);
+        timerClass.setmTimerRunningExercise(true);
+        timerClass.startTimerExercise(textViewTime,  progressBarExersice, fragmentManager);
+        Log.d("asd1wads", "" + timerClass.getStartTimeInMills()/1000);
 
     }
 
-    public ImageView getImageBackGetReady() {
-        return mImageViewBackActionBarGetReady;
+    @Override
+    public void stopTimerExerciseDo() {
+        timerClass.setmTimerRunningExercise(false);
+        timerClass.pauseTimerExercise();
     }
 
-    //TODO:-----------------------------------------------------------------------------------------------------------
+    @Override
+    public void btnPlayPause(int timerValue, TextView textViewTime,
+                             ProgressBar progressBarExersice, FragmentManager fragmentManager){
 
-/*
-    public void startTimerExerciseDo(final int value, final TextView textView, final ProgressBar progressBar) {
-        timerClass.startTimerExerciseDo(value, textView, progressBar, getSupportFragmentManager());
-    }
-
-    public void startTimerGetReady(TextView textView) {
-        timerClass.startTimerGetReady(textView, getSupportFragmentManager());
-    }
-
-    public void stopTimerDo(final int value, final TextView textView, final ProgressBar progressBar) {
-
-        if (timerClass.ismTimerExerciseDoRunning()) {
-            timerClass.pauseTimer();
+        if (timerClass.ismTimerRunningExercise()) {
+            timerClass.setmTimerRunningExercise(false);
+            stopTimerExerciseDo();
         } else {
-            timerClass.startTimerExerciseDo(value, textView, progressBar, getSupportFragmentManager());
+            timerClass.setmTimerRunningExercise(true);
+            startTimerExerciseDo(textViewTime, progressBarExersice, fragmentManager);
         }
     }
 
-    public void stopTimerGetReady() {
-        timerClass.pauseTimerGetReady();
-    }*/
-
-    public void stopTimerGetReady() {
-        timerClass.pauseTimerGetReady();
-    }
-
-    public void stopTimerExercise() {
-        timerClass.pauseTimerExercise();
-    }
 }

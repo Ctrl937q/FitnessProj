@@ -11,7 +11,6 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.AwardFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.ExersiceDoFragment;
-import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 import java.util.Locale;
 
@@ -20,7 +19,7 @@ public class TimerClass extends BaseFragment {
     private CountDownTimer mCountDownTimerExercise;
     private CountDownTimer mCountDownTimerGetReady;
 
-    private long startTimeInMills = 5000;
+    private long startTimeInMills = 20000;
     private long startTimeInMillsGetReady = 10000;
     private long startTimeInMillsDialog = 10000;
 
@@ -33,15 +32,16 @@ public class TimerClass extends BaseFragment {
 
     //private boolean mTimerRunningDialog;
 
-    public void startTimerExercise(final int value, final TextView textView, final ProgressBar progressBar, final FragmentManager fragmentManager) {
+    public void startTimerExercise(final TextView textView, final ProgressBar progressBar, final FragmentManager fragmentManager) {
+        mTimerRunningExercise = true;
         mCountDownTimerExercise = new CountDownTimer(mTimeLeftInMills, 1000) {
             @Override
             public void onTick(long l) {
                 mTimeLeftInMills = l;
                 updateCountDownText(textView);
-                long valueProgressBar = value - mTimeLeftInMills / 1000;
+                long valueProgressBar = startTimeInMills / 1000 - mTimeLeftInMills / 1000;
                 progressBar.setProgress((int) valueProgressBar);
-                Log.d("ssssssdasd1", "+");
+                Log.d("ssssssdasd1", "" + l);
             }
 
             @Override
@@ -58,6 +58,7 @@ public class TimerClass extends BaseFragment {
     }
 
     public void startTimerGetReady(final TextView textViewTime, final FragmentManager fragmentManager) {
+        mTimerRunningGetReady = true;
         mCountDownTimerGetReady = new CountDownTimer(10000, 1000) {
             public void onTick(long millisUntilFinished) {
                 mTimeLeftInMillsGetReady = millisUntilFinished;
@@ -87,7 +88,6 @@ public class TimerClass extends BaseFragment {
                 mTimeLeftInMillsDialog = l;
                 updateCountDownTextDialog(textView);
             }
-
             @Override
             public void onFinish() {
                 mTimerRunningDialog = false;
@@ -140,5 +140,25 @@ public class TimerClass extends BaseFragment {
 
     public void setmCountDownTimerExercise(CountDownTimer mCountDownTimerExercise) {
         this.mCountDownTimerExercise = mCountDownTimerExercise;
+    }
+
+    public void setmTimerRunningExercise(boolean mTimerRunningExercise) {
+        this.mTimerRunningExercise = mTimerRunningExercise;
+    }
+
+    public void setmTimerRunningGetReady(boolean mTimerRunningGetReady) {
+        this.mTimerRunningGetReady = mTimerRunningGetReady;
+    }
+
+    public long getStartTimeInMills() {
+        return startTimeInMills;
+    }
+
+    public void setStartTimeInMills(long startTimeInMills) {
+        this.startTimeInMills = startTimeInMills;
+    }
+
+    public void setmTimeLeftInMills(long mTimeLeftInMills) {
+        this.mTimeLeftInMills = mTimeLeftInMills;
     }
 }

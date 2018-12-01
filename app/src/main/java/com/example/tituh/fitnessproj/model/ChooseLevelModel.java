@@ -3,28 +3,27 @@ package com.example.tituh.fitnessproj.model;
 
 public class ChooseLevelModel {
 
-    int imageInt;
-    String title;
-
+    private int mImageInt;
+    private String mTitle;
 
     public ChooseLevelModel(int imageInt, String title) {
-        this.imageInt = imageInt;
-        this.title = title;
+        this.mImageInt = imageInt;
+        this.mTitle = title;
     }
 
     public int getImageInt() {
-        return imageInt;
+        return mImageInt;
     }
 
     public void setImageInt(int imageInt) {
-        this.imageInt = imageInt;
+        this.mImageInt = imageInt;
     }
 
     public String getTitle() {
-        return title;
+        return mTitle;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.mTitle = title;
     }
 }

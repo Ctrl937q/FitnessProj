@@ -40,13 +40,11 @@ public class RecipesHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<R
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewHorizontalRecyclerView;
+        private TextView mTextViewHorizontalRecyclerView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextViewHorizontalRecyclerView = itemView.findViewById(R.id.textViewHorizontalRv_recipes);
         }
     }
-
-
 }

@@ -1,13 +1,16 @@
 package com.example.tituh.fitnessproj.ui.interfaces;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public interface OnFragmentInteractionListener {
-    void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack, String name);
+    void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack);
 
     void pushFragmentGlossary(BaseFragment fragment, boolean shouldAddToBackstack);
 
@@ -50,6 +53,18 @@ public interface OnFragmentInteractionListener {
     void goneIconShareActionBar();
 
     void goneIconBackGetReadyActionBar();
+
+    void startTimerGetReady(TextView textView, FragmentManager fragmentManager);
+
+    void stopTimerGetReady();
+
+    void startTimerExerciseDo(TextView textViewTime,
+                              ProgressBar progressBarExersice, FragmentManager fragmentManager);
+
+    void stopTimerExerciseDo();
+
+    void btnPlayPause(int timerValue, TextView textViewTime,
+                      ProgressBar progressBarExersice, FragmentManager fragmentManager);
 
 
 }

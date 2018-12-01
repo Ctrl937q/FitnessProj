@@ -6,20 +6,20 @@ public class NutritionModel {
     public static final int TWO_TYPE = 2;
     private String mTitleText;
     private String mButtonText;
-    private int type;
-    private int drawable;
+    private int mType;
+    private int mDrawable;
 
 
     public NutritionModel(String mTitleText, String mButtonText, int type) {
         this.mTitleText = mTitleText;
         this.mButtonText = mButtonText;
-        this.type = type;
+        this.mType = type;
     }
 
     public NutritionModel(String mTitleText, int type, int drawable) {
-        this.drawable = drawable;
+        this.mDrawable = drawable;
         this.mTitleText = mTitleText;
-        this.type = type;
+        this.mType = type;
 
     }
 
@@ -48,18 +48,18 @@ public class NutritionModel {
     }
 
     public int getType() {
-        return type;
+        return mType;
     }
 
     public void setType(int type) {
-        this.type = type;
+        this.mType = type;
     }
 
     public int getDrawable() {
-        return drawable;
+        return mDrawable;
     }
 
     public void setDrawable(int drawable) {
-        this.drawable = drawable;
+        this.mDrawable = drawable;
     }
 }

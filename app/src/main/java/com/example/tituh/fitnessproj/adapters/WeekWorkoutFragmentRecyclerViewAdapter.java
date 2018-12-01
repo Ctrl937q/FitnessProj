@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
 import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
-
 import java.util.List;
-
 import mehdi.sakout.fancybuttons.FancyButton;
 
 public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -84,9 +81,9 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
 
      private class ItemViewHolder extends RecyclerView.ViewHolder {
 
-        TextView mTextViewWeek;
-        ImageView mImageViewArrow;
-         ProgressBar progressBar;
+        private TextView mTextViewWeek;
+        private ImageView mImageViewArrow;
+        private ProgressBar progressBar;
 
         private ItemViewHolder(@NonNull View itemView) {
             super(itemView);

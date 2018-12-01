@@ -15,58 +15,60 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public class GlossaryFragment extends BaseFragment {
 
-    CardView mCardViewWarmUp;
-    CardView mCardViewWorkouts;
-    CardView mCardViewStretching;
+    private CardView mCardViewWarmUp;
+    private CardView mCardViewWorkouts;
+    private CardView mCardViewStretching;
 
-    ImageView mImageViewStretching;
-    ImageView mImageViewWarmUp;
-    ImageView mImageViewWorkouts;
+    private ImageView mImageViewStretching;
+    private ImageView mImageViewWarmUp;
+    private ImageView mImageViewWorkouts;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.glossary_fragment, container, false);
+        if(view == null) {
 
-        mCardViewWarmUp = (CardView) rootView.findViewById(R.id.card_view_warm_up);
-        mCardViewWorkouts = (CardView) rootView.findViewById(R.id.card_view_workouts);
-        mCardViewStretching = (CardView) rootView.findViewById(R.id.card_view_stretching);
-        mImageViewStretching = (ImageView)rootView.findViewById(R.id.image_view_stretching);
-        mImageViewWarmUp = (ImageView)rootView.findViewById(R.id.image_view_warm_up);
-        mImageViewWorkouts = (ImageView)rootView.findViewById(R.id.image_view_workouts);
+            mCardViewWarmUp = (CardView) rootView.findViewById(R.id.card_view_warm_up);
+            mCardViewWorkouts = (CardView) rootView.findViewById(R.id.card_view_workouts);
+            mCardViewStretching = (CardView) rootView.findViewById(R.id.card_view_stretching);
+            mImageViewStretching = (ImageView) rootView.findViewById(R.id.image_view_stretching);
+            mImageViewWarmUp = (ImageView) rootView.findViewById(R.id.image_view_warm_up);
+            mImageViewWorkouts = (ImageView) rootView.findViewById(R.id.image_view_workouts);
 
-        ((MainActivity)getActivity()).updateActionBarTitle("GLOSSARY");
-        ((MainActivity)getActivity()).goneIconAbouttActionBar();
-        ((MainActivity)getActivity()).visibleIconBacktActionBar();
+            ((MainActivity) getActivity()).updateActionBarTitle("GLOSSARY");
+            ((MainActivity) getActivity()).goneIconAbouttActionBar();
+            ((MainActivity) getActivity()).visibleIconBacktActionBar();
 
-        mCardViewWarmUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickWarmUp();
-            }
-        });
+            mCardViewWarmUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickWarmUp();
+                }
+            });
 
-        mCardViewWorkouts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickWorkouts();
-            }
-        });
+            mCardViewWorkouts.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickWorkouts();
+                }
+            });
 
-        mCardViewStretching.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClickStretching();
-            }
-        });
+            mCardViewStretching.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClickStretching();
+                }
+            });
 
-        return rootView;
+        }
 
+        return view;
     }
 
-    public void onClickWarmUp() {
+    private void onClickWarmUp() {
 
-        ((MainActivity)getActivity()).pushFragmentGlossary(new GlossaryWarmUpFragment(),
+        ((MainActivity) getActivity()).pushFragmentGlossary(new GlossaryWarmUpFragment(),
                 false);
 
         mImageViewWarmUp.setImageDrawable(getResources().
@@ -84,9 +86,9 @@ public class GlossaryFragment extends BaseFragment {
                 .getColor(R.color.color_background_card_view_gloccary));
     }
 
-    public void onClickWorkouts() {
+    private void onClickWorkouts() {
 
-        ((MainActivity)getActivity()).pushFragmentGlossary(new RecyclerViewGlossaryWorkoutFragment(),
+        ((MainActivity) getActivity()).pushFragmentGlossary(new RecyclerViewGlossaryWorkoutFragment(),
                 false);
 
         mImageViewWarmUp.setImageDrawable(getResources().
@@ -104,9 +106,9 @@ public class GlossaryFragment extends BaseFragment {
                 .getColor(R.color.color_background_card_view_gloccary));
     }
 
-    public void onClickStretching() {
+    private void onClickStretching() {
 
-        ((MainActivity)getActivity()).pushFragmentGlossary(new GlossaryStretchingFragment(),
+        ((MainActivity) getActivity()).pushFragmentGlossary(new GlossaryStretchingFragment(),
                 false);
 
         mImageViewWarmUp.setImageDrawable(getResources().
