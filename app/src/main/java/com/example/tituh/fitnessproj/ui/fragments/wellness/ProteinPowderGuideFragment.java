@@ -17,9 +17,15 @@ public class ProteinPowderGuideFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(view == null) {
             view = inflater.inflate(R.layout.protein_powder_guide_fragment, container, false);
-            ((MainActivity) getActivity()).updateActionBarTitle("PROTEIN POWDER GUIDE");
-            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            fragmentInteractionListener.updateActionBarTitle("PROTEIN POWDER GUIDE");
+            fragmentInteractionListener.visibleIconBacktActionBar();
         }
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        fragmentInteractionListener.updateActionBarTitle("WELLNESS");
+        super.onDestroyView();
     }
 }

@@ -35,6 +35,13 @@ public class AwardFragment extends BaseFragment {
             });
 
         }
+
+        fragmentInteractionListener.goneIconAbouttActionBar();
+        fragmentInteractionListener.visibilityIconShareActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.visibleIconBacktActionBar();
+
         return view;
     }
 }

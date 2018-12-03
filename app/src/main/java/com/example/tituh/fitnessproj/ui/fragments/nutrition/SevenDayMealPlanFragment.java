@@ -37,9 +37,9 @@ public class SevenDayMealPlanFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.seven_day_meal_plan_fragment, container, false);
-            ((MainActivity) getActivity()).goneIconAbouttActionBar();
-            ((MainActivity) getActivity()).visibleIconBacktActionBar();
-            ((MainActivity) getActivity()).updateActionBarTitle("PLAN");
+            fragmentInteractionListener.goneIconAbouttActionBar();
+            fragmentInteractionListener.visibleIconBacktActionBar();
+            fragmentInteractionListener.updateActionBarTitle("PLAN");
             mSevenDayMealPlanModel = new SevenDayMealPlanModel();
 
             mEatList = new ArrayList<>();
@@ -204,4 +204,12 @@ public class SevenDayMealPlanFragment extends BaseFragment {
         }
         return view;
     }
+
+
+    @Override
+    public void onDestroyView() {
+        fragmentInteractionListener.updateActionBarTitle("NUTRITION");
+        super.onDestroyView();
+    }
+
 }

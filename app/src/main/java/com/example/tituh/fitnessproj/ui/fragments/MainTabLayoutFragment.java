@@ -51,19 +51,19 @@ public class MainTabLayoutFragment extends BaseFragment {
                 public void onPageSelected(int i) {
                     switch (i) {
                         case 0:
-                            ((MainActivity) getActivity()).updateActionBarTitle("ABOUT");
+                            fragmentInteractionListener.updateActionBarTitle("ABOUT");
                             break;
                         case 1:
-                            ((MainActivity) getActivity()).updateActionBarTitle("TSC BODY");
+                            fragmentInteractionListener.updateActionBarTitle("TSC BODY");
                             break;
                         case 2:
-                            ((MainActivity) getActivity()).updateActionBarTitle("NUTRITION");
+                            fragmentInteractionListener.updateActionBarTitle("NUTRITION");
                             break;
                         case 3:
-                            ((MainActivity) getActivity()).updateActionBarTitle("WELLNESS");
+                            fragmentInteractionListener.updateActionBarTitle("WELLNESS");
                             break;
                         case 4:
-                            ((MainActivity) getActivity()).updateActionBarTitle("COMMUNITY");
+                            fragmentInteractionListener.updateActionBarTitle("COMMUNITY");
                             break;
                     }
 

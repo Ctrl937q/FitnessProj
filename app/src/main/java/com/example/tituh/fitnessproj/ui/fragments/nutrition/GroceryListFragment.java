@@ -22,7 +22,6 @@ import com.example.tituh.fitnessproj.adapters.GroceryHorizontalRecyclerViewAdapt
 import com.example.tituh.fitnessproj.adapters.NutritionGroceryListVerticalAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -45,9 +44,9 @@ public class GroceryListFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.grocery_list_fragment, container, false);
-            ((MainActivity) getActivity()).updateActionBarTitle("GROCERY LIST");
-            ((MainActivity) getActivity()).goneIconAbouttActionBar();
-            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            fragmentInteractionListener.updateActionBarTitle("GROCERY LIST");
+            fragmentInteractionListener.goneIconAbouttActionBar();
+            fragmentInteractionListener.visibleIconBacktActionBar();
             mHorizontalRecyclerView = view.findViewById(R.id.horizontal_recyclerView_grocery_list);
             mVerticalRecyclerViewGrocery = view.findViewById(R.id.recyclerView_grocery_list_vertical);
             mEditTextAdd = view.findViewById(R.id.edit_text_add_grocery_list);
@@ -151,6 +150,15 @@ public class GroceryListFragment extends BaseFragment {
                 }
             }));
         }
+        fragmentInteractionListener.updateActionBarTitle("GROCERY LIST");
+
         return view;
     }
+
+    @Override
+    public void onDestroyView() {
+        fragmentInteractionListener.updateActionBarTitle("NUTRITION");
+        super.onDestroyView();
+    }
+
 }

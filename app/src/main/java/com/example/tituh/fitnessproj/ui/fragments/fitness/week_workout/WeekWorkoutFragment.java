@@ -8,19 +8,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.adapters.WeekWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeekWorkoutFragment extends BaseFragment {
-
 
     private RecyclerView mRecyclerView;
 
@@ -74,6 +70,13 @@ public class WeekWorkoutFragment extends BaseFragment {
                 }
             }));
         }
+
+        fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
+        fragmentInteractionListener.goneIconAbouttActionBar();
+        fragmentInteractionListener.visibleIconBacktActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
 
         return view;
     }

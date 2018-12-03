@@ -14,9 +14,11 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="vector_share" />
+                            <entry key="height" value="32" />
+                            <entry key="outputName" value="vector_recipes_info_decor_top" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\assets\vector_share.svg" />
+                            <entry key="sourceFile" value="C:\assets\vector_recipes_info_decor_top.svg" />
+                            <entry key="width" value="322" />
                           </map>
                         </option>
                       </PersistentState>

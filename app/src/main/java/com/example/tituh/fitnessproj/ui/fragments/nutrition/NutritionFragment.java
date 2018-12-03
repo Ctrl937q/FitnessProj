@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,10 +29,13 @@ public class NutritionFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
+
             view = inflater.inflate(R.layout.nutrition_fragment, container, false);
 
-            ((MainActivity) getActivity()).visibleIconAboutActionBar();
-            ((MainActivity) getActivity()).goneIconBacktActionBar();
+            fragmentInteractionListener.visibleIconAboutActionBar();
+            fragmentInteractionListener.goneIconBacktActionBar();
+            Log.d("asdasdasdsadsa", "NutritionFragment");
+
 
             mRecyclerViewNutritionFragment = view.findViewById(R.id.recycler_view_nutrition);
 
@@ -75,6 +79,8 @@ public class NutritionFragment extends BaseFragment {
             }));
 
         }
+        Log.d("asdasdasdsadsa", "NutritionFragment");
+
         return view;
     }
 }

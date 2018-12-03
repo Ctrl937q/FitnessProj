@@ -66,5 +66,7 @@ public interface OnFragmentInteractionListener {
     void btnPlayPause(int timerValue, TextView textViewTime,
                       ProgressBar progressBarExersice, FragmentManager fragmentManager);
 
+    void btnBackPressed();
+
 
 }

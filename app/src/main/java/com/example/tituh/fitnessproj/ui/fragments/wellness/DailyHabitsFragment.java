@@ -18,9 +18,15 @@ public class DailyHabitsFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.daily_habits_fragment, container, false);
-            ((MainActivity) getActivity()).updateActionBarTitle("DAILY HABITS");
-            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            fragmentInteractionListener.updateActionBarTitle("DAILY HABITS");
+            fragmentInteractionListener.visibleIconBacktActionBar();
         }
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        fragmentInteractionListener.updateActionBarTitle("WELLNESS");
+        super.onDestroyView();
     }
 }

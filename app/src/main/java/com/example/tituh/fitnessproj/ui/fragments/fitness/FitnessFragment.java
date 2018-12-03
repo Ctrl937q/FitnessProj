@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,6 +38,8 @@ public class FitnessFragment extends BaseFragment {
             fragmentInteractionListener.goneIconHomeActionBar();
             fragmentInteractionListener.goneIconShareActionBar();
             fragmentInteractionListener.goneIconInfoActionBar();
+            Log.d("asdasdasdsadsa", "FitnessFramgnet");
+
 
             mRecyclerViewFitnessFragment = view.findViewById(R.id.recycler_view_fitness_fragment);
 
@@ -76,6 +79,13 @@ public class FitnessFragment extends BaseFragment {
                 }
             }));
         }
+        fragmentInteractionListener.visibleIconAboutActionBar();
+        fragmentInteractionListener.goneIconBacktActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+        Log.d("asdasdasdsadsa", "FitnessFramgnet");
+
         return view;
     }
 }

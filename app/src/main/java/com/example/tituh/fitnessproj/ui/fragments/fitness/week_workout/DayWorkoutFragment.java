@@ -61,6 +61,13 @@ public class DayWorkoutFragment extends BaseFragment {
                 }
             }));
         }
+        fragmentInteractionListener.updateActionBarTitle("WEEK 3");
+        fragmentInteractionListener.goneIconAbouttActionBar();
+        fragmentInteractionListener.visibleIconBacktActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
+
         return view;
     }
 }

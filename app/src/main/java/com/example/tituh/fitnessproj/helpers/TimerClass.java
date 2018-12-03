@@ -19,11 +19,11 @@ public class TimerClass extends BaseFragment {
     private CountDownTimer mCountDownTimerExercise;
     private CountDownTimer mCountDownTimerGetReady;
 
-    private long startTimeInMills = 20000;
+    private long startTimeInMills;
     private long startTimeInMillsGetReady = 10000;
     private long startTimeInMillsDialog = 10000;
 
-    private long mTimeLeftInMills = startTimeInMills;
+    private long mTimeLeftInMills;
     private long mTimeLeftInMillsGetReady = startTimeInMillsGetReady;
     private long mTimeLeftInMillsDialog = startTimeInMillsDialog;
 
@@ -32,7 +32,36 @@ public class TimerClass extends BaseFragment {
 
     //private boolean mTimerRunningDialog;
 
-    public void startTimerExercise(final TextView textView, final ProgressBar progressBar, final FragmentManager fragmentManager) {
+    public void startTimerExercise(long startTime,final TextView textView, final ProgressBar progressBar,
+                                   final FragmentManager fragmentManager) {
+        startTimeInMills = startTime;
+        mTimeLeftInMills = startTime;
+        mTimerRunningExercise = true;
+        mCountDownTimerExercise = new CountDownTimer(mTimeLeftInMills, 1000) {
+            @Override
+            public void onTick(long l) {
+                mTimeLeftInMills = l;
+                updateCountDownText(textView);
+                long valueProgressBar = startTimeInMills / 1000 - mTimeLeftInMills / 1000;
+                progressBar.setProgress((int) valueProgressBar);
+                Log.d("ssssssdasd1", "" + l);
+            }
+
+            @Override
+            public void onFinish() {
+                mTimerRunningExercise = false;
+                mCountDownTimerExercise.cancel();
+                FragmentTransaction ft = fragmentManager.beginTransaction();
+                ft.replace(R.id.fragment_container, new AwardFragment(), "awardfragment");
+                ft.addToBackStack("awardfragment");
+                ft.commit();
+            }
+        }.start();
+        mTimerRunningExercise = true;
+    }
+
+    public void startStopTimerExercise(final TextView textView, final ProgressBar progressBar,
+                                       final FragmentManager fragmentManager){
         mTimerRunningExercise = true;
         mCountDownTimerExercise = new CountDownTimer(mTimeLeftInMills, 1000) {
             @Override
@@ -81,20 +110,6 @@ public class TimerClass extends BaseFragment {
 
 
 
-  /*  public void startTimerDialog(final TextView textView) {
-        mCountDownTimer = new CountDownTimer(mTimeLeftInMillsDialog, 1000) {
-            @Override
-            public void onTick(long l) {
-                mTimeLeftInMillsDialog = l;
-                updateCountDownTextDialog(textView);
-            }
-            @Override
-            public void onFinish() {
-                mTimerRunningDialog = false;
-            }
-        }.start();
-        mTimerRunningDialog = true;
-    }*/
 
     public void pauseTimerExercise() {
         mCountDownTimerExercise.cancel();

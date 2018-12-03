@@ -32,8 +32,8 @@ public class TipsForYourSuccess extends BaseFragment {
 
         if(view == null) {
             view = inflater.inflate(R.layout.wellness_tips_tab_layout, container, false);
-            ((MainActivity) getActivity()).updateActionBarTitle("8 TIPS FOR YOUR SUCCESS");
-            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            fragmentInteractionListener.updateActionBarTitle("8 TIPS FOR YOUR SUCCESS");
+            fragmentInteractionListener.visibleIconBacktActionBar();
 
             mViewPager = view.findViewById(R.id.view_pager_tips);
             mTabDotLayout = view.findViewById(R.id.tabDots);
@@ -68,5 +68,11 @@ public class TipsForYourSuccess extends BaseFragment {
         viewPagerAdapter.addFragment(mFirstFragmentTips);
         viewPagerAdapter.addFragment(mSecondFragemntTips);
         viewPager.setAdapter(viewPagerAdapter);
+    }
+
+    @Override
+    public void onDestroyView() {
+        fragmentInteractionListener.updateActionBarTitle("WELLNESS");
+        super.onDestroyView();
     }
 }

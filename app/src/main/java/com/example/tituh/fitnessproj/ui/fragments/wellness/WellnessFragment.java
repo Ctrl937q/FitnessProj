@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,11 @@ public class WellnessFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.wellness_fragment, container, false);
-            ((MainActivity) getActivity()).visibleIconAboutActionBar();
-            ((MainActivity) getActivity()).goneIconBacktActionBar();
+            fragmentInteractionListener.visibleIconAboutActionBar();
+            fragmentInteractionListener.goneIconBacktActionBar();
             mRecyclerViewWellnessFragment = view.findViewById(R.id.recycler_view_wellness);
+            Log.d("asdasdasdsadsa", "WellnessFragment");
+
 
             mListWellnessModel = new ArrayList<>();
             mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits",
@@ -73,6 +76,7 @@ public class WellnessFragment extends BaseFragment {
                 }
             }));
         }
+        Log.d("asdasdasdsadsa", "WellnessFragment");
 
         return view;
     }

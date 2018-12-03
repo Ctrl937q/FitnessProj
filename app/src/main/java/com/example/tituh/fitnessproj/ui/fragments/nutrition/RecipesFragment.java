@@ -31,8 +31,8 @@ public class RecipesFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.recipes_fragment, container, false);
-            ((MainActivity) getActivity()).updateActionBarTitle("RECIPES");
-            ((MainActivity) getActivity()).visibleIconBacktActionBar();
+            fragmentInteractionListener.updateActionBarTitle("RECIPES");
+            fragmentInteractionListener.visibleIconBacktActionBar();
             mHorizontalRecyclerView = view.findViewById(R.id.horizontal_recyclerView_recipes);
             mVerticalRecyclerView = view.findViewById(R.id.vertical_recyclerView_recipes);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),
@@ -92,5 +92,11 @@ public class RecipesFragment extends BaseFragment {
             }));
         }
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        fragmentInteractionListener.updateActionBarTitle("NUTRITION");
+        super.onDestroyView();
     }
 }

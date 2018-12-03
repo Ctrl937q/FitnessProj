@@ -9,12 +9,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
@@ -53,20 +53,25 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (timerClass.ismTimerRunningExercise()) {
+                    stopTimerExerciseDo();
+                }
+                if (timerClass.ismTimerRunningGetReady()) {
+                    stopTimerGetReady();
+                }
                 popFragment();
             }
         });
         mImageHomeActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                onBackPressed();
             }
         });
         pushFragment(new MainTabLayoutFragment(), false);
     }
 
     //TODO remove 'name' parameter from method definition, use fragment.getBackStackTag() instead
-
 
     @Override
     public void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack) {
@@ -115,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     public void onBackPressed() {
-        if(timerClass.ismTimerRunningExercise()){
+        if (timerClass.ismTimerRunningExercise()) {
             stopTimerExerciseDo();
         }
         if (timerClass.ismTimerRunningGetReady()) {
@@ -259,12 +264,14 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     public void startTimerExerciseDo(TextView textViewTime,
                                      ProgressBar progressBarExersice, FragmentManager fragmentManager) {
-
-        timerClass.setmTimeLeftInMills(20000);
         timerClass.setmTimerRunningExercise(true);
-        timerClass.startTimerExercise(textViewTime,  progressBarExersice, fragmentManager);
-        Log.d("asd1wads", "" + timerClass.getStartTimeInMills()/1000);
+        timerClass.startTimerExercise(20000, textViewTime, progressBarExersice, fragmentManager);
+    }
 
+    public void startStopTimerExerciseDo(TextView textViewTime,
+                                         ProgressBar progressBarExersice, FragmentManager fragmentManager) {
+        timerClass.setmTimerRunningExercise(true);
+        timerClass.startStopTimerExercise(textViewTime, progressBarExersice, fragmentManager);
     }
 
     @Override
@@ -275,15 +282,20 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     public void btnPlayPause(int timerValue, TextView textViewTime,
-                             ProgressBar progressBarExersice, FragmentManager fragmentManager){
+                             ProgressBar progressBarExersice, FragmentManager fragmentManager) {
 
         if (timerClass.ismTimerRunningExercise()) {
             timerClass.setmTimerRunningExercise(false);
             stopTimerExerciseDo();
         } else {
             timerClass.setmTimerRunningExercise(true);
-            startTimerExerciseDo(textViewTime, progressBarExersice, fragmentManager);
+            startStopTimerExerciseDo(textViewTime, progressBarExersice, fragmentManager);
         }
+    }
+
+    @Override
+    public void btnBackPressed() {
+        onBackPressed();
     }
 
 }

@@ -69,6 +69,14 @@ public class ExerciseInfoFragment extends BaseFragment {
                 }
             }));
         }
+
+        fragmentInteractionListener.updateActionBarTitle("WEEK 2 - DAY 3");
+        fragmentInteractionListener.goneIconAbouttActionBar();
+        fragmentInteractionListener.visibleIconBacktActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
+
         return view;
     }
 }

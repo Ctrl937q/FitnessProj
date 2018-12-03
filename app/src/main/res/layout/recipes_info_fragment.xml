@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,12 +15,37 @@
             android:layout_height="wrap_content"
             android:src="@drawable/vector_nutrition_breakfast" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:background="@color/color_background_card_view_gloccary">
 
-        </LinearLayout>
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingStart="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bg_test">
+
+            <com.example.tituh.fitnessproj.helpers.SquareImageView
+                android:layout_width="wrap_content"
+                android:src="@drawable/background_item_recipe_test2"
+                android:layout_height="wrap_content" />
+
+        </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
