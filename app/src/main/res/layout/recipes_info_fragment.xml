@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,130 +11,188 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_marginTop="30dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="25dp"
             android:src="@drawable/vector_nutrition_breakfast" />
 
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="300dp">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:paddingEnd="5dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:paddingStart="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/bg_test">
-
-            <com.example.tituh.fitnessproj.helpers.SquareImageView
+            <android.support.constraint.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:src="@drawable/background_item_recipe_test2"
+                android:padding="7dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/vector_arrow_left_black"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="7dp"
+
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/vector_arrow_right_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_test"
+                    android:paddingStart="4dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="4dp">
+
+
+                    <com.example.tituh.fitnessproj.helpers.SquareImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/background_item_recipe_test2" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/recipes_info_decor_top"
                 android:layout_height="wrap_content" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/recipes_info_decor_bot"
+                android:layout_height="wrap_content" />
+            
         </android.support.constraint.ConstraintLayout>
-
-
-        </android.support.constraint.ConstraintLayout>
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
-                android:fontFamily="@font/medium_font"
-                android:textColor="@color/color_bnv_unchecked"
-                android:textSize="20sp"
                 android:layout_height="wrap_content"
-                android:text="GG French Toast" />
+                android:fontFamily="@font/medium_font"
+                android:text="GG French Toast"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="20sp" />
 
             <TextView
-                android:text="Ingredients"
-                android:fontFamily="@font/reg_font"
-                android:textColor="@color/color_light_pink_1"
-                android:textSize="15sp"
-                android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/reg_font"
+                android:text="Ingredients"
+                android:textColor="@color/color_light_pink_1"
+                android:textSize="15sp" />
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_recipes_info"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:clipToPadding="false"
-                android:nestedScrollingEnabled="false"
-                android:id="@+id/recyclerView_recipes_info"
-                android:layout_height="wrap_content">
+                android:nestedScrollingEnabled="false">
 
             </android.support.v7.widget.RecyclerView>
 
 
-
-            <TextView
-                android:text="* optional: berries"
-                android:fontFamily="@font/reg_font"
-                android:textColor="@color/color_light_pink_1"
-                android:textSize="15sp"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
             <TextView
                 android:layout_width="match_parent"
-                android:fontFamily="@font/reg_font"
-                android:lineSpacingExtra="5dp"
-                android:textColor="@color/color_bnv_unchecked"
-                android:textSize="16sp"
-                android:layout_marginTop="20dp"
                 android:layout_height="wrap_content"
-                android:text="1. mix eggs, cinnamon, sweetener, almond milk, &amp; a pinch of salt" />
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/reg_font"
+                android:text="* optional: berries"
+                android:textColor="@color/color_light_pink_1"
+                android:textSize="15sp" />
 
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
+                android:text="1. mix eggs, cinnamon, sweetener, almond milk, &amp; a pinch of salt"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
                 android:text="2. dip GGs into egg mix until absorbed but not soggy"
-                android:fontFamily="@font/reg_font"
-                android:lineSpacingExtra="5dp"
                 android:textColor="@color/color_bnv_unchecked"
-                android:textSize="16sp"
-                android:layout_marginTop="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:fontFamily="@font/reg_font"
+                android:lineSpacingExtra="5dp"
                 android:text="3. place into hot pan and cook until brown"
-                android:fontFamily="@font/reg_font"
-                android:lineSpacingExtra="5dp"
                 android:textColor="@color/color_bnv_unchecked"
-                android:textSize="16sp"
-                android:layout_marginTop="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
 
             <TextView
-                android:text="4. add berries on top for an extra treat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
                 android:fontFamily="@font/reg_font"
                 android:lineSpacingExtra="5dp"
+                android:text="4. add berries on top for an extra treat"
                 android:textColor="@color/color_bnv_unchecked"
-                android:textSize="16sp"
-                android:layout_marginTop="7dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textSize="16sp" />
 
 
         </LinearLayout>
@@ -142,12 +200,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/btn_start_workout"
             android:fontFamily="@font/medium_font"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:text="SHOP INGREDIENTS"
             android:textColor="@color/color_bnv_unchecked"
             android:textStyle="bold" />
