@@ -217,8 +217,8 @@
                     android:layout_marginBottom="7dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_left_shape_exersice_start"
-                    android:fontFamily="@font/reg_font"
                     android:padding="16dp"
+                    android:textColor="@color/color_white"
                     android:text="BACK"
                     android:textStyle="bold" />
 
@@ -231,8 +231,8 @@
                     android:layout_marginBottom="7dp"
                     android:layout_weight="1"
                     android:background="@drawable/btn_right_shape_exersice_start"
-                    android:fontFamily="@font/reg_font"
                     android:padding="16dp"
+                    android:textColor="@color/color_white"
                     android:text="NEXT"
                     android:textStyle="bold" />
 

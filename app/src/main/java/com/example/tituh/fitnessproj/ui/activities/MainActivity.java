@@ -1,26 +1,29 @@
 package com.example.tituh.fitnessproj.ui.activities;
 
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
+import com.example.tituh.fitnessproj.networking.ApiClient;
+import com.example.tituh.fitnessproj.networking.responses.OnGetTrainingResponseListener;
+import com.example.tituh.fitnessproj.networking.responses.TrainingResponse;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
-
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -34,12 +37,34 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     TimerClass timerClass;
 
+    TrainingResponse trainingResponse1 = new TrainingResponse();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.app_bar);
+
+        ApiClient apiClient = new ApiClient();
+        apiClient.getTrainings(new OnGetTrainingResponseListener() {
+            @Override
+            public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
+               // trainingResponse1 = trainingResponse;
+               // trainingResponse1.getResults().get(0).getWorkouts().get(1).getDuration();
+            }
+        });
+
+        apiClient.getTrainings(new OnGetTrainingResponseListener() {
+            @Override
+            public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
+
+            }
+        });
+
+        //Log.d("asd1232432w" , "" + trainingResponse1.getResults().get(0).getWorkouts().get(1).getDuration());
+
+        //TrainingResponse trainingResponse = new TrainingResponse();
 
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
@@ -62,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 popFragment();
             }
         });
+
         mImageHomeActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -268,6 +294,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         timerClass.startTimerExercise(20000, textViewTime, progressBarExersice, fragmentManager);
     }
 
+    @Override
     public void startStopTimerExerciseDo(TextView textViewTime,
                                          ProgressBar progressBarExersice, FragmentManager fragmentManager) {
         timerClass.setmTimerRunningExercise(true);

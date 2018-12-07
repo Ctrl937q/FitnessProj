@@ -30,6 +30,8 @@ public class TimerClass extends BaseFragment {
     private boolean mTimerRunningExercise;
     private boolean mTimerRunningGetReady;
 
+    private boolean mOnPause = false;
+
     //private boolean mTimerRunningDialog;
 
     public void startTimerExercise(long startTime,final TextView textView, final ProgressBar progressBar,
@@ -123,7 +125,7 @@ public class TimerClass extends BaseFragment {
 
     private void updateCountDownText(TextView textView) {
         int seconds = (int) (mTimeLeftInMills / 1000) % 60;
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
+        String timeLeftFormatted = String.format(Locale.getDefault(), "%1d", seconds);
         textView.setText(timeLeftFormatted);
     }
 
@@ -175,5 +177,13 @@ public class TimerClass extends BaseFragment {
 
     public void setmTimeLeftInMills(long mTimeLeftInMills) {
         this.mTimeLeftInMills = mTimeLeftInMills;
+    }
+
+    public boolean ismOnPause() {
+        return mOnPause;
+    }
+
+    public void setmOnPause(boolean mOnPause) {
+        this.mOnPause = mOnPause;
     }
 }

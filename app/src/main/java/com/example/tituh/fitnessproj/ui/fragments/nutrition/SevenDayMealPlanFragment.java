@@ -1,23 +1,20 @@
 package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.model.SevenDayMealPlanModel;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
@@ -26,11 +23,15 @@ public class SevenDayMealPlanFragment extends BaseFragment {
 
     private ArrayList<String> mEatList;
     private ArrayList<String> mDayList;
-    private ArrayList<String> mFromSharedPref;
-    private SevenDayMealPlanModel mSevenDayMealPlanModel;
     private int mCountEat = 0;
     private SharedPreferences mSharedPref;
     private int mCountDay = 0;
+    private String mTextFromEditTextFirst = "";
+    private String mTextFromEditTextSecond = "";
+    private String mTextFromEditTextThird = "";
+    private EditText mEditTextFirst;
+    private EditText mEditTextSecond;
+    private EditText mEditTextThird;
 
     @Nullable
     @Override
@@ -40,19 +41,13 @@ public class SevenDayMealPlanFragment extends BaseFragment {
             fragmentInteractionListener.goneIconAbouttActionBar();
             fragmentInteractionListener.visibleIconBacktActionBar();
             fragmentInteractionListener.updateActionBarTitle("PLAN");
-            mSevenDayMealPlanModel = new SevenDayMealPlanModel();
-
             mEatList = new ArrayList<>();
             mDayList = new ArrayList<>();
-            mFromSharedPref = new ArrayList<>();
-
             mEatList.add("Breakfast");
             mEatList.add("Snack");
             mEatList.add("Lunch");
-            mEatList.add("Snack2");
+            mEatList.add("Snack");
             mEatList.add("Dinner");
-
-
             mDayList.add("Monday");
             mDayList.add("Tuesday");
             mDayList.add("Wednesday");
@@ -69,142 +64,102 @@ public class SevenDayMealPlanFragment extends BaseFragment {
             ImageView mLeftBotArrow = view.findViewById(R.id.arrow_left_week_day);
             ImageView mRightBotArrow = view.findViewById(R.id.arrow_right_week_day);
 
-            final EditText mEditTextFirst = view.findViewById(R.id.edit_text_first);
-            final EditText mEditTextSecond = view.findViewById(R.id.edit_text_second);
-            final EditText mEditTextThird = view.findViewById(R.id.edit_text_third);
+            mEditTextFirst = view.findViewById(R.id.edit_text_first);
+            mEditTextSecond = view.findViewById(R.id.edit_text_second);
+            mEditTextThird = view.findViewById(R.id.edit_text_third);
 
             mTextViewEating.setText(mEatList.get(0));
             mTextViewWeekDay.setText(mDayList.get(0));
 
             mSharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-            mFromSharedPref = (ArrayList<String>) SharedPreferencesUtil.pullStringList(mSharedPref,
-                    mTextViewEating.getText().toString() + mTextViewWeekDay.getText().toString());
 
-            if (mFromSharedPref.size() == 0) {
-                mFromSharedPref.add("");
-                mFromSharedPref.add("");
-                mFromSharedPref.add("");
-            }
-
-            Log.d("dss121sa", "size : " + mFromSharedPref.size());
-
-            mEditTextFirst.setText(mFromSharedPref.get(0));
-            mEditTextSecond.setText(mFromSharedPref.get(1));
-            mEditTextThird.setText(mFromSharedPref.get(2));
-
-
-            mEditTextFirst.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    mFromSharedPref.set(0, "" + charSequence.toString());
-                    SharedPreferencesUtil.pushStringList(mSharedPref, mFromSharedPref,
-                            mTextViewEating.getText().toString() + mTextViewWeekDay.getText().toString());
-                    Log.d("asdszxz", "onTextChangedFirst" + mFromSharedPref.toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                }
-            });
-
-
-            mEditTextSecond.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    mFromSharedPref.set(1, "" + charSequence.toString());
-                    SharedPreferencesUtil.pushStringList(mSharedPref, mFromSharedPref,
-                            mTextViewEating.getText().toString() + mTextViewWeekDay.getText().toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-
-                }
-            });
-
-
-            mEditTextThird.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    mFromSharedPref.set(2, "" + editable.toString());
-                    SharedPreferencesUtil.pushStringList(mSharedPref, mFromSharedPref,
-                            mTextViewEating.getText().toString() + mTextViewWeekDay.getText().toString());
-                }
-            });
-
+            mEditTextFirst.setText(pullFromSharedPreference(mCountEat + mCountDay).get(0));
+            mEditTextSecond.setText(pullFromSharedPreference(mCountEat + mCountDay).get(1));
+            mEditTextThird.setText(pullFromSharedPreference(mCountEat + mCountDay).get(2));
 
             mRightTopArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    mTextFromEditTextFirst = mEditTextFirst.getText().toString();
+                    mTextFromEditTextSecond = mEditTextSecond.getText().toString();
+                    mTextFromEditTextThird = mEditTextThird.getText().toString();
+                    pushToSharedPreference(mTextFromEditTextFirst, mTextFromEditTextSecond,
+                            mTextFromEditTextThird, mCountEat + mCountDay);
                     mCountEat++;
-                    if (mCountEat >= 3) {
+                    if (mCountEat >= 5) {
                         mCountEat = 0;
                     }
                     mTextViewEating.setText("" + mEatList.get(mCountEat));
+                    mEditTextFirst.setText(pullFromSharedPreference(mCountEat + mCountDay).get(0));
+                    mEditTextSecond.setText(pullFromSharedPreference(mCountEat + mCountDay).get(1));
+                    mEditTextThird.setText(pullFromSharedPreference(mCountEat + mCountDay).get(2));
                 }
             });
 
             mLeftTopArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    mTextFromEditTextFirst = mEditTextFirst.getText().toString();
+                    mTextFromEditTextSecond = mEditTextSecond.getText().toString();
+                    mTextFromEditTextThird = mEditTextThird.getText().toString();
+                    pushToSharedPreference(mTextFromEditTextFirst, mTextFromEditTextSecond,
+                            mTextFromEditTextThird, mCountEat + mCountDay);
                     mCountEat--;
                     if (mCountEat < 0) {
-                        mCountEat = 2;
+                        mCountEat = 4;
                     }
+
                     mTextViewEating.setText("" + mEatList.get(mCountEat));
+                    mEditTextFirst.setText(pullFromSharedPreference(mCountEat + mCountDay).get(0));
+                    mEditTextSecond.setText(pullFromSharedPreference(mCountEat + mCountDay).get(1));
+                    mEditTextThird.setText(pullFromSharedPreference(mCountEat + mCountDay).get(2));
+
+
                 }
             });
 
             mRightBotArrow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    mTextFromEditTextFirst = mEditTextFirst.getText().toString();
+                    mTextFromEditTextSecond = mEditTextSecond.getText().toString();
+                    mTextFromEditTextThird = mEditTextThird.getText().toString();
+                    pushToSharedPreference(mTextFromEditTextFirst, mTextFromEditTextSecond,
+                            mTextFromEditTextThird, mCountEat + mCountDay);
                     mCountDay++;
                     if (mCountDay >= 7) {
                         mCountDay = 0;
                     }
                     mTextViewWeekDay.setText("" + mDayList.get(mCountDay));
-
+                    mEditTextFirst.setText(pullFromSharedPreference(mCountEat + mCountDay).get(0));
+                    mEditTextSecond.setText(pullFromSharedPreference(mCountEat + mCountDay).get(1));
+                    mEditTextThird.setText(pullFromSharedPreference(mCountEat + mCountDay).get(2));
                 }
             });
-
 
             mLeftBotArrow.setOnClickListener(new View.OnClickListener() {
 
                 @Override
                 public void onClick(View view) {
+                    mTextFromEditTextFirst = mEditTextFirst.getText().toString();
+                    mTextFromEditTextSecond = mEditTextSecond.getText().toString();
+                    mTextFromEditTextThird = mEditTextThird.getText().toString();
+                    pushToSharedPreference(mTextFromEditTextFirst, mTextFromEditTextSecond,
+                            mTextFromEditTextThird, mCountEat + mCountDay);
                     mCountDay--;
                     if (mCountDay < 0) {
                         mCountDay = 6;
                     }
+
                     mTextViewWeekDay.setText("" + mDayList.get(mCountDay));
+                    mEditTextFirst.setText(pullFromSharedPreference(mCountEat + mCountDay).get(0));
+                    mEditTextSecond.setText(pullFromSharedPreference(mCountEat + mCountDay).get(1));
+                    mEditTextThird.setText(pullFromSharedPreference(mCountEat + mCountDay).get(2));
                 }
             });
         }
         return view;
     }
-
 
     @Override
     public void onDestroyView() {
@@ -212,4 +167,40 @@ public class SevenDayMealPlanFragment extends BaseFragment {
         super.onDestroyView();
     }
 
+    @Override
+    public void onPause() {
+        pushToSharedPreference(mEditTextFirst.getText().toString(), mEditTextSecond.getText().toString(),
+                mEditTextThird.getText().toString(), mCountEat + mCountDay);
+        super.onPause();
+    }
+
+    public void pushToSharedPreference(String fromFirstET, String fromSecondET, String fromThirdED, int key) {
+        ArrayList<String> toSharedPrefArray = new ArrayList<>();
+        toSharedPrefArray.add(0, fromFirstET);
+        toSharedPrefArray.add(1, fromSecondET);
+        toSharedPrefArray.add(2, fromThirdED);
+        SharedPreferencesUtil.pushStringList(mSharedPref, toSharedPrefArray, "" + key);
+        mEditTextFirst.clearFocus();
+        mEditTextSecond.clearFocus();
+        mEditTextThird.clearFocus();
+        if (view != null && getActivity() != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+
+    public ArrayList<String> pullFromSharedPreference(int key) {
+        ArrayList<String> fromSharedPrefArray;
+        fromSharedPrefArray = (ArrayList<String>) SharedPreferencesUtil.pullStringList(mSharedPref,
+                "" + key);
+        if (fromSharedPrefArray.size() == 0) {
+            fromSharedPrefArray.add("");
+            fromSharedPrefArray.add("");
+            fromSharedPrefArray.add("");
+            return fromSharedPrefArray;
+        } else {
+            return fromSharedPrefArray;
+        }
+    }
 }

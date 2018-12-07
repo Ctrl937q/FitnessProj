@@ -3,6 +3,7 @@ package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,6 @@ public class GetReadyFragment extends BaseFragment {
             fragmentInteractionListener.goneIconInfoActionBar();
             fragmentInteractionListener.goneIconShareActionBar();
 
-            fragmentInteractionListener.startTimerGetReady(mTextViewTime, getFragmentManager());
 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -49,5 +49,38 @@ public class GetReadyFragment extends BaseFragment {
         fragmentInteractionListener.goneIconShareActionBar();
 
         return view;
+    }
+
+
+    @Override
+    public void onPause() {
+        fragmentInteractionListener.stopTimerGetReady();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroyView() {
+        Log.d("asdcxcser2", "onDestroyView");
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("asdcxcser2", "onDestroy");
+        super.onDestroy();
+    }
+
+    @Override
+    public void onDetach() {
+        Log.d("asdcxcser2", "onDetach");
+        super.onDetach();
+    }
+
+    @Override
+    public void onResume() {
+        fragmentInteractionListener.startTimerGetReady(mTextViewTime, getFragmentManager());
+
+        Log.d("asdcxcser2", "onResume");
+        super.onResume();
     }
 }

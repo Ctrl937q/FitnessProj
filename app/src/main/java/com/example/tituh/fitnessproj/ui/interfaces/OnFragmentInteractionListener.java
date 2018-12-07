@@ -69,4 +69,7 @@ public interface OnFragmentInteractionListener {
     void btnBackPressed();
 
 
+    void startStopTimerExerciseDo(TextView textViewTime,
+                                         ProgressBar progressBarExersice, FragmentManager fragmentManager);
+
 }

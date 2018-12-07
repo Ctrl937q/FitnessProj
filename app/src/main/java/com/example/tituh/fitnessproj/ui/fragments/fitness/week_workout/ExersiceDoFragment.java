@@ -3,6 +3,7 @@ package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
+import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.ohoussein.playpause.PlayPauseView;
 
@@ -24,6 +27,8 @@ public class ExersiceDoFragment extends BaseFragment {
     private int mTimerValue = 20;
     private ProgressBar mProgressBarAllProgress;
     private ImageView mImageView;
+    private TimerClass timerClass = new TimerClass();
+    private PlayPauseView mButtonPlayPause;
 
     @Nullable
     @Override
@@ -32,7 +37,7 @@ public class ExersiceDoFragment extends BaseFragment {
             view = inflater.inflate(R.layout.workout_start_layout, container, false);
             mImageView = view.findViewById(R.id.image_view_exercise_do);
             mTextViewTime = view.findViewById(R.id.text_view_time);
-            final PlayPauseView buttonPlayPause = view.findViewById(R.id.button_test_start_exercise);
+            mButtonPlayPause = view.findViewById(R.id.button_test_start_exercise);
             mProgressBarExersice = view.findViewById(R.id.progressBar_exersice);
             mButtonBack = view.findViewById(R.id.btn_back_exersice);
             mButtonNext = view.findViewById(R.id.btn_next_exersice);
@@ -49,7 +54,7 @@ public class ExersiceDoFragment extends BaseFragment {
             fragmentInteractionListener.goneIconAbouttActionBar();
             fragmentInteractionListener.goneIconShareActionBar();
 
-            buttonPlayPause.change(false);
+            mButtonPlayPause.change(false);
 
             fragmentInteractionListener.startTimerExerciseDo(mTextViewTime, mProgressBarExersice, getFragmentManager());
 
@@ -60,16 +65,17 @@ public class ExersiceDoFragment extends BaseFragment {
                     //DialogFragmentExersice dialogFragmentExersice = new DialogFragmentExersice(getActivity());
                     //dialogFragmentExersice.show();
                     //dialogFragmentExersice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    buttonPlayPause.change(true);
+                    mButtonPlayPause.change(true);
                     fragmentInteractionListener.stopTimerExerciseDo();
+
                     fragmentInteractionListener.pushFragment(new AwardFragment(), true);
                 }
             });
 
-            buttonPlayPause.setOnClickListener(new View.OnClickListener() {
+            mButtonPlayPause.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    buttonPlayPause.toggle();
+                    mButtonPlayPause.toggle();
                     fragmentInteractionListener.btnPlayPause(mTimerValue, mTextViewTime,
                             mProgressBarExersice, getFragmentManager());
                 }
@@ -78,7 +84,7 @@ public class ExersiceDoFragment extends BaseFragment {
             mButtonBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                fragmentInteractionListener.btnBackPressed();
+                    fragmentInteractionListener.btnBackPressed();
                 }
             });
         }
@@ -89,7 +95,26 @@ public class ExersiceDoFragment extends BaseFragment {
         fragmentInteractionListener.visibilityIconInfoActionBar();
         fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.goneIconShareActionBar();
-
         return view;
+    }
+
+    @Override
+    public void onPause() {
+        if (!timerClass.ismOnPause()) {
+            timerClass.setmOnPause(true);
+            fragmentInteractionListener.stopTimerExerciseDo();
+            mButtonPlayPause.change(true);
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        if (getFragmentManager().getBackStackEntryCount() > 3 && timerClass.ismOnPause()) {
+            timerClass.setmOnPause(false);
+            //fragmentInteractionListener.startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice, getFragmentManager());
+            //mButtonPlayPause.change(false);
+        }
+        super.onResume();
     }
 }
