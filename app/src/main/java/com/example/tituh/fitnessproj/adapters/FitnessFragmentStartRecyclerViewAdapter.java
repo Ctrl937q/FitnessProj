@@ -18,9 +18,11 @@ import static com.example.tituh.fitnessproj.model.FitnessStartModel.TWO_TYPE;
 public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<FitnessStartModel> mListFitnessStartModel;
+    private int countWeek;
 
-    public FitnessFragmentStartRecyclerViewAdapter(List<FitnessStartModel> list) {
+    public FitnessFragmentStartRecyclerViewAdapter(List<FitnessStartModel> list, int countWeek) {
         this.mListFitnessStartModel = list;
+        this.countWeek = countWeek;
     }
 
     @Override
@@ -55,11 +57,13 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
         FitnessStartModel model = mListFitnessStartModel.get(position);
 
-
         switch (model.getType()) {
             case ONE_TYPE:
                 ((OneViewHolder) holder).mImageViewItem.setImageResource(model.getDrawableassive()[position]);
                 ((OneViewHolder) holder).mTextViewHeadline1.setText(model.getHeadline_1());
+                if (position == 1) {
+                    ((OneViewHolder) holder).mTextViewHeadline1.setText("" + countWeek + model.getHeadline_1());
+                }
                 ((OneViewHolder) holder).fancyButton.setText(model.getmTextButton());
                 break;
             case TWO_TYPE:

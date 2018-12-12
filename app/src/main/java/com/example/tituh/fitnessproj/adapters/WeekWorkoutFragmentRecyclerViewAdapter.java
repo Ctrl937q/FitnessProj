@@ -8,20 +8,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
-import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
-import java.util.List;
+
+import java.util.ArrayList;
+
 import mehdi.sakout.fancybuttons.FancyButton;
 
 public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    private List<WeekWorkoutModel> mItemObjects;
+    private ArrayList<String> mWeekArray;
 
-    public WeekWorkoutFragmentRecyclerViewAdapter(List<WeekWorkoutModel> itemObjects) {
-        this.mItemObjects = itemObjects;
+    public WeekWorkoutFragmentRecyclerViewAdapter(ArrayList<String>mWeekArray) {
+        this.mWeekArray = mWeekArray;
     }
 
     @NonNull
@@ -39,19 +41,18 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        WeekWorkoutModel weekWorkoutModel = mItemObjects.get(position);
         if (holder instanceof HeaderViewHolder) {
-            ((HeaderViewHolder) holder).mHeaderTitle1.setText(weekWorkoutModel.getHeader1());
-            ((HeaderViewHolder) holder).mHeaderTitle2.setText(weekWorkoutModel.getHeader2());
-            ((HeaderViewHolder)holder).mButton.setText("RESET");
+            //((HeaderViewHolder) holder).mHeaderTitle1.setText(weekWorkoutModel.getHeader1());
+            ((HeaderViewHolder) holder).mHeaderTitle2.setText("OUT OF " + mWeekArray.size() + " WEEKS");
+            ((HeaderViewHolder) holder).mButton.setText("RESET");
         } else if (holder instanceof ItemViewHolder) {
-            ((ItemViewHolder) holder).mTextViewWeek.setText(weekWorkoutModel.getHeader1());
+            ((ItemViewHolder) holder).mTextViewWeek.setText(mWeekArray.get(position));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mItemObjects.size();
+        return mWeekArray.size();
     }
 
     @Override
@@ -65,7 +66,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
         return position == 0;
     }
 
-     private class HeaderViewHolder extends RecyclerView.ViewHolder {
+    private class HeaderViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mHeaderTitle1;
         private TextView mHeaderTitle2;
@@ -79,7 +80,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
         }
     }
 
-     private class ItemViewHolder extends RecyclerView.ViewHolder {
+    private class ItemViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewWeek;
         private ImageView mImageViewArrow;
@@ -89,9 +90,9 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
             super(itemView);
             //mImageViewProgress = (ImageView)itemView.findViewById(R.id.image_view_week_workout_progress);
             mTextViewWeek = (TextView) itemView.findViewById(R.id.text_view_week_workout_week);
-            mImageViewArrow = (ImageView)itemView.findViewById(R.id.image_view_week_workout_arrow);
-            progressBar = (ProgressBar)itemView.findViewById(R.id.progress_bar_week);
-            ProgressBarDrawable bgProgress= new ProgressBarDrawable(6);
+            mImageViewArrow = (ImageView) itemView.findViewById(R.id.image_view_week_workout_arrow);
+            progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar_week);
+            ProgressBarDrawable bgProgress = new ProgressBarDrawable(6);
             progressBar.setProgressDrawable(bgProgress);
             progressBar.setProgress(40);
         }

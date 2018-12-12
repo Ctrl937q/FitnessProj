@@ -1,5 +1,4 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,64 +7,60 @@
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="30dp"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
 
 
         <ImageView
             android:layout_width="wrap_content"
-            android:src="@drawable/vector_calendar"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_height="wrap_content" />
+            android:src="@drawable/vector_calendar" />
 
         <TextView
             android:id="@+id/text_view_quantity_week"
             android:layout_width="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/reg_font"
-
-            android:textColor="@color/color_bnv_unchecked"
             android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/reg_font"
+            android:textColor="@color/color_bnv_unchecked"
             android:textSize="40sp" />
 
     </android.support.design.widget.CoordinatorLayout>
 
 
-
     <TextView
         android:id="@+id/text_view_all_week"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/reg_font"
-
-        android:layout_height="wrap_content"
         android:textColor="@color/color_bnv_unchecked"
-        android:textSize="20dp"
-        />
+        android:textSize="20dp" />
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/btn_button_rest_workout"
-        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
-        android:paddingBottom="11dp"
 
-        android:fontFamily="@font/medium_font"
-        android:paddingTop="11dp"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
-        fancy:fb_useSystemFont="false"
+        android:text="RESET"
+        android:fontFamily="@font/medium_font"
+        android:paddingStart="16dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="11dp"
         android:textStyle="bold"
         fancy:fb_borderColor="#FFFFFF"
         fancy:fb_borderWidth="1dp"
         fancy:fb_defaultColor="#ffffff"
         fancy:fb_focusColor="#ca838383"
-        fancy:fb_textSize="10sp"
         fancy:fb_radius="7dp"
-        fancy:fb_textColor="#000000" />
+        fancy:fb_textColor="#000000"
+        fancy:fb_textSize="10sp"
+        fancy:fb_useSystemFont="false" />
 
 
 </LinearLayout>

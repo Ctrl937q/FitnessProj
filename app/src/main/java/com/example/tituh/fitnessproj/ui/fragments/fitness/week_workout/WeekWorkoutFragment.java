@@ -1,12 +1,10 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,17 +12,17 @@ import android.view.ViewGroup;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.adapters.WeekWorkoutFragmentRecyclerViewAdapter;
-import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class WeekWorkoutFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
-    ArrayList<ResultsItem> arrayList;
+    private ArrayList<ResultsItem> resultsItemsArrayList;
+    private ArrayList<String> weekArray;
+
 
     @Nullable
     @Override
@@ -32,8 +30,10 @@ public class WeekWorkoutFragment extends BaseFragment {
         if (view == null) {
             view = inflater.inflate(R.layout.week_workout_activity, container, false);
 
-            List<WeekWorkoutModel> mList = new ArrayList<>();
-            mList.add(new WeekWorkoutModel("3", "OUT OF 12 WEEKS"));
+            initialize();
+
+            //List<WeekWorkoutModel> mList = new ArrayList<>();
+            /*mList.add(new WeekWorkoutModel("3", "OUT OF 12 WEEKS"));
             mList.add(new WeekWorkoutModel("WEEK 1"));
             mList.add(new WeekWorkoutModel("WEEK 2"));
             mList.add(new WeekWorkoutModel("WEEK 3"));
@@ -45,25 +45,13 @@ public class WeekWorkoutFragment extends BaseFragment {
             mList.add(new WeekWorkoutModel("WEEK 9"));
             mList.add(new WeekWorkoutModel("WEEK 10"));
             mList.add(new WeekWorkoutModel("WEEK 11"));
-            mList.add(new WeekWorkoutModel("WEEK 12"));
-            arrayList = new ArrayList<>();
-
+            mList.add(new WeekWorkoutModel("WEEK 12"));*/
 
             mRecyclerView = view.findViewById(R.id.recyclerView_workout_week);
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mRecyclerView.setAdapter(new WeekWorkoutFragmentRecyclerViewAdapter(mList));
+            mRecyclerView.setAdapter(new WeekWorkoutFragmentRecyclerViewAdapter(weekArray));
 
-            fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
-            fragmentInteractionListener.goneIconAbouttActionBar();
-            fragmentInteractionListener.visibleIconBacktActionBar();
-            fragmentInteractionListener.goneIconHomeActionBar();
-            fragmentInteractionListener.goneIconInfoActionBar();
-            fragmentInteractionListener.goneIconShareActionBar();
-
-            arrayList = getArguments().getParcelableArrayList("message");
-
-            Log.d("sad32ewsafegrtrs", "" + arrayList.get(0).getWorkouts().get(2).getTitle());
 
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -92,4 +80,21 @@ public class WeekWorkoutFragment extends BaseFragment {
 
         return view;
     }
+
+    private void initialize() {
+        weekArray = new ArrayList<>();
+        resultsItemsArrayList = new ArrayList<>();
+
+        weekArray = getArguments().getStringArrayList("array_weeks_for_week_workout");
+        resultsItemsArrayList = getArguments().getParcelableArrayList("array_trainings_for_week_workout");
+
+        fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
+        fragmentInteractionListener.goneIconAbouttActionBar();
+        fragmentInteractionListener.visibleIconBacktActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
+
+    }
+
 }

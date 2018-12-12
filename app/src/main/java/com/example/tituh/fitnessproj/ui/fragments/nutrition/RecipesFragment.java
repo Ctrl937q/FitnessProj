@@ -25,7 +25,6 @@ import com.example.tituh.fitnessproj.networking.responses.recipes.RecipesRespons
 import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import java.util.ArrayList;
-import java.util.List;
 
 public class RecipesFragment extends BaseFragment {
 

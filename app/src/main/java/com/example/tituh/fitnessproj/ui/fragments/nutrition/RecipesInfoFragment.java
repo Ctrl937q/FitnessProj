@@ -18,6 +18,7 @@ import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapterDire
 import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapterIngredients;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
 import com.example.tituh.fitnessproj.helpers.SquareImageView;
+import com.example.tituh.fitnessproj.networking.ApiClient;
 import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.squareup.picasso.Picasso;

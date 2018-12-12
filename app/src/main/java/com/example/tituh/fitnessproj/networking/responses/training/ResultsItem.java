@@ -3,6 +3,7 @@ package com.example.tituh.fitnessproj.networking.responses.training;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,22 +16,22 @@ public class ResultsItem implements Parcelable {
 	private int complexity;
 
 	@SerializedName("weeks")
-	private List<String> weeks;
+	private ArrayList<String> weeks;
 
 	@SerializedName("date_edited")
 	private String dateEdited;
 
 	@SerializedName("workouts")
-	private List<WorkoutsItem> workouts;
+	private ArrayList<WorkoutsItem> workouts;
 
 	@SerializedName("date_created")
 	private String dateCreated;
 
 	@SerializedName("equipment")
-	private List<EquipmentItem> equipment;
+	private ArrayList<EquipmentItem> equipment;
 
 	@SerializedName("days")
-	private List<String> days;
+	private ArrayList<String> days;
 
 	@SerializedName("id")
 	private int id;
@@ -77,7 +78,7 @@ public class ResultsItem implements Parcelable {
 		this.complexity = complexity;
 	}
 
-	public void setWeeks(List<String> weeks){
+	public void setWeeks(ArrayList<String> weeks){
 		this.weeks = weeks;
 	}
 
@@ -85,7 +86,7 @@ public class ResultsItem implements Parcelable {
 		this.dateEdited = dateEdited;
 	}
 
-	public void setWorkouts(List<WorkoutsItem> workouts){
+	public void setWorkouts(ArrayList<WorkoutsItem> workouts){
 		this.workouts = workouts;
 	}
 
@@ -93,11 +94,11 @@ public class ResultsItem implements Parcelable {
 		this.dateCreated = dateCreated;
 	}
 
-	public void setEquipment(List<EquipmentItem> equipment){
+	public void setEquipment(ArrayList<EquipmentItem> equipment){
 		this.equipment = equipment;
 	}
 
-	public void setDays(List<String> days){
+	public void setDays(ArrayList<String> days){
 		this.days = days;
 	}
 
