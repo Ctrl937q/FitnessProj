@@ -10,34 +10,137 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapter;
+import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapterDirections;
+import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapterIngredients;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
+import com.example.tituh.fitnessproj.helpers.SquareImageView;
+import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class RecipesInfoFragment extends BaseFragment {
 
-    private ArrayList<String> mArrayListTitle;
     private SharedPreferences mSharedPref;
+    private ArrayList<ResultsItem> ingredientsItemArrayList;
+    private int mPosition;
+    private SquareImageView mSquareImageView;
+    private ImageView mNextImageRecipesInfo;
+    private ImageView mPreviousImageRecipesInfo;
+    private RecipesInfoRecyclerViewAdapterIngredients mRecipesInfoRecyclerViewAdapterIngredients;
+    private RecipesInfoRecyclerViewAdapterDirections mRecipesInfoRecyclerViewAdapterDirections;
+    private RecyclerView mRecyclerViewIngredients;
+    private TextView textViewTitle;
+    private RecyclerView mRecyclerViewDirections;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.recipes_info_fragment, container, false);
+            mSquareImageView = view.findViewById(R.id.square_image_view_recipes_info);
+            mNextImageRecipesInfo = view.findViewById(R.id.next_image_recipes_info);
+            mPreviousImageRecipesInfo = view.findViewById(R.id.previous_image_recipes_info);
+            textViewTitle = view.findViewById(R.id.recipes_info_title);
+            mRecyclerViewIngredients = view.findViewById(R.id.recyclerView_recipes_info);
+            mRecyclerViewDirections = view.findViewById(R.id.recyclerView_directions);
+
+            mNextImageRecipesInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    nextItem();
+                }
+            });
+
+            mPreviousImageRecipesInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    previousItem();
+                }
+            });
+
+
             mSharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-            mArrayListTitle = new ArrayList<>();
-            mArrayListTitle.add("4 GG crackers (raisin preferred)");
-            mArrayListTitle.add("2 eggs");
-            mArrayListTitle.add("1 tsp Stevia or whatever sweetener you likes");
-            RecyclerView recyclerView = view.findViewById(R.id.recyclerView_recipes_info);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(new RecipesInfoRecyclerViewAdapter(mArrayListTitle, mSharedPref));
-            recyclerView.addItemDecoration(new MarginItemDecoration(1, 20, 20, 0, 0));
+            Bundle bundle = this.getArguments();
+            ingredientsItemArrayList = new ArrayList<>();
+            ingredientsItemArrayList = bundle.getParcelableArrayList("array_for_recipes_info");
+            mPosition = bundle.getInt("position_for_recipes_info");
+
+            Picasso.get()
+                    .load(ingredientsItemArrayList.get(mPosition).getImage())
+                    .placeholder(R.drawable.wine_placeholder)
+                    .into(mSquareImageView);
+
+            textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
+
+            mRecyclerViewIngredients.setLayoutManager(new LinearLayoutManager(getActivity()));
+            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(ingredientsItemArrayList
+                    .get(mPosition).getIngredients(), mSharedPref);
+
+            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(ingredientsItemArrayList
+            .get(mPosition).getDirections());
+
+            mRecyclerViewIngredients.setAdapter(mRecipesInfoRecyclerViewAdapterIngredients);
+            mRecyclerViewIngredients.addItemDecoration(new MarginItemDecoration(1, 20, 20, 0, 0));
+
+            mRecyclerViewDirections.setLayoutManager(new LinearLayoutManager(getActivity()));
+            mRecyclerViewDirections.setAdapter(mRecipesInfoRecyclerViewAdapterDirections);
         }
         return view;
+    }
+
+    public void nextItem() {
+        mPosition++;
+        if (mPosition >= ingredientsItemArrayList.size()) {
+            Toast.makeText(getActivity(), "no more item", Toast.LENGTH_SHORT).show();
+            mPosition = ingredientsItemArrayList.size() - 1;
+
+        } else {
+            Picasso.get()
+                    .load(ingredientsItemArrayList.get(mPosition).getImage())
+                    .placeholder(R.drawable.wine_placeholder)
+                    .into(mSquareImageView);
+            textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
+
+            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(ingredientsItemArrayList
+                    .get(mPosition).getIngredients(), mSharedPref);
+            mRecyclerViewIngredients.setAdapter(mRecipesInfoRecyclerViewAdapterIngredients);
+            mRecipesInfoRecyclerViewAdapterIngredients.notifyDataSetChanged();
+
+            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(ingredientsItemArrayList
+            .get(mPosition).getDirections());
+            mRecyclerViewDirections.setAdapter(mRecipesInfoRecyclerViewAdapterDirections);
+            mRecipesInfoRecyclerViewAdapterDirections.notifyDataSetChanged();
+
+        }
+    }
+
+    public void previousItem() {
+        mPosition--;
+        if (mPosition < 0) {
+            Toast.makeText(getActivity(), "no more item", Toast.LENGTH_SHORT).show();
+            mPosition = 0;
+        } else {
+            Picasso.get()
+                    .load(ingredientsItemArrayList.get(mPosition).getImage())
+                    .placeholder(R.drawable.wine_placeholder)
+                    .into(mSquareImageView);
+            textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
+            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(ingredientsItemArrayList
+                    .get(mPosition).getIngredients(), mSharedPref);
+            mRecyclerViewIngredients.setAdapter(mRecipesInfoRecyclerViewAdapterIngredients);
+            mRecipesInfoRecyclerViewAdapterIngredients.notifyDataSetChanged();
+
+            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(ingredientsItemArrayList
+                    .get(mPosition).getDirections());
+            mRecyclerViewDirections.setAdapter(mRecipesInfoRecyclerViewAdapterDirections);
+            mRecipesInfoRecyclerViewAdapterDirections.notifyDataSetChanged();
+        }
     }
 }

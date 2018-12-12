@@ -1,6 +1,7 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,12 +13,20 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ChooseLevelRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.model.ChooseLevelModel;
+import com.example.tituh.fitnessproj.networking.ApiClient;
+import com.example.tituh.fitnessproj.networking.responses.OnGetTrainingResponseListener;
+import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
+import com.example.tituh.fitnessproj.networking.responses.training.TrainingResponse;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChooseLevelFragment extends BaseFragment {
 
     private ArrayList<ChooseLevelModel> mModelLevel;
+
+    TrainingResponse trainingResponse1;
+    List<ResultsItem> arrayListResult;
 
     @Nullable
     @Override
@@ -34,6 +43,19 @@ public class ChooseLevelFragment extends BaseFragment {
             fragmentInteractionListener.goneIconInfoActionBar();
             fragmentInteractionListener.goneIconShareActionBar();
 
+            arrayListResult = new ArrayList<>();
+
+            ApiClient apiClient = new ApiClient();
+            apiClient.getTrainings(new OnGetTrainingResponseListener() {
+                @Override
+                public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
+                    trainingResponse1 = trainingResponse;
+                    trainingResponse1.getResults();
+                    arrayListResult = trainingResponse1.getResults();
+                }
+            });
+
+
             mModelLevel = new ArrayList<>();
 
             mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_beginner, "BEGINNER"));
@@ -49,7 +71,11 @@ public class ChooseLevelFragment extends BaseFragment {
                 public void onClick(View view, int position) {
                     if (position == 1) {
                         if (null != fragmentInteractionListener) {
-                            fragmentInteractionListener.pushFragment(new WeekWorkoutFragment(), true);
+                            Bundle bundle = new Bundle();
+                            bundle.putParcelableArrayList("message", (ArrayList<? extends Parcelable>) arrayListResult);
+                            WeekWorkoutFragment weekWorkoutFragment = new WeekWorkoutFragment();
+                            weekWorkoutFragment.setArguments(bundle);
+                            fragmentInteractionListener.pushFragment(weekWorkoutFragment, true);
                         }
                     }
                 }

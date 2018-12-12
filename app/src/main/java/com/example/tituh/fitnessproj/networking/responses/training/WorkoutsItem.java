@@ -1,4 +1,4 @@
-package com.example.tituh.fitnessproj.networking.responses;
+package com.example.tituh.fitnessproj.networking.responses.training;
 
 
 import com.google.gson.annotations.SerializedName;

@@ -1,24 +1,30 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.adapters.WeekWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.model.WeekWorkoutModel;
+import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class WeekWorkoutFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
+    ArrayList<ResultsItem> arrayList;
 
     @Nullable
     @Override
@@ -40,6 +46,8 @@ public class WeekWorkoutFragment extends BaseFragment {
             mList.add(new WeekWorkoutModel("WEEK 10"));
             mList.add(new WeekWorkoutModel("WEEK 11"));
             mList.add(new WeekWorkoutModel("WEEK 12"));
+            arrayList = new ArrayList<>();
+
 
             mRecyclerView = view.findViewById(R.id.recyclerView_workout_week);
 
@@ -52,6 +60,10 @@ public class WeekWorkoutFragment extends BaseFragment {
             fragmentInteractionListener.goneIconHomeActionBar();
             fragmentInteractionListener.goneIconInfoActionBar();
             fragmentInteractionListener.goneIconShareActionBar();
+
+            arrayList = getArguments().getParcelableArrayList("message");
+
+            Log.d("sad32ewsafegrtrs", "" + arrayList.get(0).getWorkouts().get(2).getTitle());
 
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {

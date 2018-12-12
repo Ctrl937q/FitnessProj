@@ -1,6 +1,7 @@
 package com.example.tituh.fitnessproj.ui.activities;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -9,21 +10,25 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.networking.ApiClient;
-import com.example.tituh.fitnessproj.networking.responses.OnGetTrainingResponseListener;
-import com.example.tituh.fitnessproj.networking.responses.TrainingResponse;
+import com.example.tituh.fitnessproj.networking.responses.OnGetRecipesResponseListener;
+import com.example.tituh.fitnessproj.networking.responses.recipes.RecipesResponse;
+import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
+import com.example.tituh.fitnessproj.ui.fragments.nutrition.RecipesFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -34,10 +39,10 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewInfo;
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
+    private TimerClass timerClass;
+    RecipesResponse mRecipesResponse;
+    List<ResultsItem> resultsItemList;
 
-    TimerClass timerClass;
-
-    TrainingResponse trainingResponse1 = new TrainingResponse();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,25 +51,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         Toolbar toolbar = findViewById(R.id.app_bar);
 
-        ApiClient apiClient = new ApiClient();
-        apiClient.getTrainings(new OnGetTrainingResponseListener() {
-            @Override
-            public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
-               // trainingResponse1 = trainingResponse;
-               // trainingResponse1.getResults().get(0).getWorkouts().get(1).getDuration();
-            }
-        });
+        resultsItemList = new ArrayList<>();
 
-        apiClient.getTrainings(new OnGetTrainingResponseListener() {
-            @Override
-            public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
 
-            }
-        });
-
-        //Log.d("asd1232432w" , "" + trainingResponse1.getResults().get(0).getWorkouts().get(1).getDuration());
-
-        //TrainingResponse trainingResponse = new TrainingResponse();
 
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
@@ -97,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         pushFragment(new MainTabLayoutFragment(), false);
     }
 
-    //TODO remove 'name' parameter from method definition, use fragment.getBackStackTag() instead
 
     @Override
     public void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack) {
@@ -320,9 +308,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         }
     }
 
+
     @Override
     public void btnBackPressed() {
         onBackPressed();
     }
+
 
 }

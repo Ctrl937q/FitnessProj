@@ -1,9 +1,12 @@
-package com.example.tituh.fitnessproj.networking.responses;
+package com.example.tituh.fitnessproj.networking.responses.training;
+
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultsItem {
+public class ResultsItem implements Parcelable {
 
 	@SerializedName("duration")
 	private String duration;
@@ -40,6 +43,31 @@ public class ResultsItem {
 
 	@SerializedName("info")
 	private String info;
+
+	protected ResultsItem(Parcel in) {
+		duration = in.readString();
+		complexity = in.readInt();
+		weeks = in.createStringArrayList();
+		dateEdited = in.readString();
+		dateCreated = in.readString();
+		days = in.createStringArrayList();
+		id = in.readInt();
+		title = in.readString();
+		status = in.readInt();
+		info = in.readString();
+	}
+
+	public static final Creator<ResultsItem> CREATOR = new Creator<ResultsItem>() {
+		@Override
+		public ResultsItem createFromParcel(Parcel in) {
+			return new ResultsItem(in);
+		}
+
+		@Override
+		public ResultsItem[] newArray(int size) {
+			return new ResultsItem[size];
+		}
+	};
 
 	public void setDuration(String duration){
 		this.duration = duration;
@@ -155,4 +183,23 @@ public class ResultsItem {
 			",info = '" + info + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel parcel, int i) {
+		parcel.writeString(duration);
+		parcel.writeInt(complexity);
+		parcel.writeStringList(weeks);
+		parcel.writeString(dateEdited);
+		parcel.writeString(dateCreated);
+		parcel.writeStringList(days);
+		parcel.writeInt(id);
+		parcel.writeString(title);
+		parcel.writeInt(status);
+		parcel.writeString(info);
+	}
 }

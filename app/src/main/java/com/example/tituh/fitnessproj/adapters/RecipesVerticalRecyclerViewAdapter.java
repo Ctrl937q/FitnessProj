@@ -2,22 +2,24 @@ package com.example.tituh.fitnessproj.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.model.RecipesModel;
+import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
+import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecipesVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RecipesVerticalRecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<RecipesModel> mArrayListRecipe;
+    private List<ResultsItem> resultsItemArrayList;
 
-    public RecipesVerticalRecyclerViewAdapter(ArrayList<RecipesModel> arrayListRecipe) {
-        this.mArrayListRecipe = arrayListRecipe;
+    public RecipesVerticalRecyclerViewAdapter(List<ResultsItem> resultsItems) {
+        resultsItemArrayList = new ArrayList<>();
+        this.resultsItemArrayList = resultsItems;
     }
 
     @NonNull
@@ -30,15 +32,16 @@ public class RecipesVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Rec
 
     @Override
     public void onBindViewHolder(@NonNull RecipesVerticalRecyclerViewAdapter.ViewHolder viewHolder, int position) {
-        RecipesModel model = mArrayListRecipe.get(position);
-        Log.d("asdsa", " " + mArrayListRecipe.get(position));
-        viewHolder.button.setText(model.getTitleButton());
+        viewHolder.button.setText("" + resultsItemArrayList.get(position).getTitle());
+        Picasso.get().load("" + resultsItemArrayList.get(position).getImage()).placeholder(R.drawable.placeholder_recipes).into(viewHolder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return mArrayListRecipe.size();
+        return resultsItemArrayList.size();
     }
+
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
 

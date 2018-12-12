@@ -1,50 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:src="@drawable/image_for_top_recipes"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/horizontal_recyclerView_recipes"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:clipToPadding="false"
-        android:paddingStart="6dp"
-        android:paddingEnd="16dp"
-        >
+        android:orientation="vertical">
 
-    </android.support.v7.widget.RecyclerView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_view_what_are_you_cravig"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/image_for_top_recipes" />
 
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/horizontal_recyclerView_recipes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image_view_what_are_you_cravig"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:clipToPadding="false"
+                android:paddingStart="6dp"
+                android:paddingEnd="16dp">
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:clipToPadding="false"
-        android:nestedScrollingEnabled="false"
-        android:id="@+id/vertical_recyclerView_recipes"
-        android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
 
-    </android.support.v7.widget.RecyclerView>
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/vertical_recyclerView_recipes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontal_recyclerView_recipes"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+            <ProgressBar
+                android:id="@+id/progressBarRecipes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontal_recyclerView_recipes"
+                android:layout_marginTop="100dp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 

@@ -8,38 +8,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.networking.responses.recipes.IngredientsItem;
 import com.example.tituh.fitnessproj.ui.fragments.nutrition.SharedPreferencesUtil;
+
 import java.util.ArrayList;
 
-public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<RecipesInfoRecyclerViewAdapter.ViewHolder> {
+public class RecipesInfoRecyclerViewAdapterIngredients extends RecyclerView.Adapter<RecipesInfoRecyclerViewAdapterIngredients.ViewHolder> {
 
-    private ArrayList<String> mListTitle;
+    private ArrayList<IngredientsItem> ingredientsItemArrayList;
     private SharedPreferences mSharedPref;
     private ArrayList<String> mArrayListFromPreference;
 
-
-    public RecipesInfoRecyclerViewAdapter(ArrayList<String> mListTitle,SharedPreferences sharedPref) {
+    public RecipesInfoRecyclerViewAdapterIngredients(ArrayList<IngredientsItem> ingredientsItemArrayList, SharedPreferences sharedPref) {
         this.mSharedPref = sharedPref;
-        this.mListTitle = mListTitle;
+        this.ingredientsItemArrayList = ingredientsItemArrayList;
         mArrayListFromPreference = new ArrayList<>();
     }
 
     @NonNull
     @Override
-    public RecipesInfoRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecipesInfoRecyclerViewAdapterIngredients.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipes_info_rv_item,
                 parent, false);
-        return new RecipesInfoRecyclerViewAdapter.ViewHolder(view);
+        return new RecipesInfoRecyclerViewAdapterIngredients.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecipesInfoRecyclerViewAdapter.ViewHolder viewHolder, final int i) {
-        viewHolder.mTextViewTitle.setText("" + mListTitle.get(i));
+    public void onBindViewHolder(@NonNull final RecipesInfoRecyclerViewAdapterIngredients.ViewHolder viewHolder, final int i) {
+        viewHolder.mTextViewTitle.setText(ingredientsItemArrayList.get(i).getDosage() + " " + ingredientsItemArrayList.get(i).getTitle());
         viewHolder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String mTitleWithoutNumber = mListTitle.get(i);
+                String mTitleWithoutNumber = ingredientsItemArrayList.get(i).getTitle();
                 mTitleWithoutNumber = mTitleWithoutNumber.replaceAll("[^A-Za-z ()]", "");
                 mTitleWithoutNumber = mTitleWithoutNumber.replaceFirst("^ *", "");
                 mArrayListFromPreference = (ArrayList<String>) SharedPreferencesUtil.pullStringList(mSharedPref, "key");
@@ -53,9 +55,8 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
 
     @Override
     public int getItemCount() {
-        return mListTitle.size();
+        return ingredientsItemArrayList.size();
     }
-
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -64,9 +65,10 @@ public class RecipesInfoRecyclerViewAdapter extends RecyclerView.Adapter<Recipes
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            mTextViewTitle = itemView.findViewById(R.id.textView_recipes_info_item);
+            mTextViewTitle = itemView.findViewById(R.id.textView_recipes_info_item_text);
             imageViewPlus = itemView.findViewById(R.id.image_view_add_grocery_list_recipes_info);
         }
+
     }
 
 }
