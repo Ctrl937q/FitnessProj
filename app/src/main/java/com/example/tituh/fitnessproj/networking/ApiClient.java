@@ -2,11 +2,15 @@ package com.example.tituh.fitnessproj.networking;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
+
 import com.example.tituh.fitnessproj.networking.responses.OnGetRecipesResponseListener;
 import com.example.tituh.fitnessproj.networking.responses.OnGetTrainingResponseListener;
 import com.example.tituh.fitnessproj.networking.responses.recipes.RecipesResponse;
 import com.example.tituh.fitnessproj.networking.responses.training.TrainingResponse;
+
 import java.net.HttpURLConnection;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -21,6 +25,7 @@ public class ApiClient implements ApiModelInterface {
     private static Retrofit retrofit;
     private ApiRestInterface mApi;
     private int page = 1;
+    private boolean nextPageNull = false;
 
     public ApiClient() {
         if (retrofit == null) {
@@ -62,7 +67,9 @@ public class ApiClient implements ApiModelInterface {
             public void onResponse(Call<RecipesResponse> call, Response<RecipesResponse> response) {
                 if (HttpURLConnection.HTTP_OK == response.code()) {
                     listener.onGetRecipesResponse(null, true, response.body());
-
+                    if (response.body().getNext() == null) {
+                        nextPageNull = true;
+                    }else nextPageNull = false;
                 }
             }
 
@@ -81,5 +88,9 @@ public class ApiClient implements ApiModelInterface {
 
     public int getPage() {
         return page;
+    }
+
+    public boolean isNextPageNull() {
+        return nextPageNull;
     }
 }

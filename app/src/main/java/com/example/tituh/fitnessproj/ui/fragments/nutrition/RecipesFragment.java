@@ -66,12 +66,15 @@ public class RecipesFragment extends BaseFragment {
                 @Override
                 public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                     if (v.getChildAt(v.getChildCount() - 1) != null) {
-                        if ((scrollY + 1500 >= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
+                        if ((scrollY>= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
                                 scrollY > oldScrollY) {
                             mVisibleItemCount = mGridLayoutManager.getChildCount();
                             mTotalItemCount = mGridLayoutManager.getItemCount();
                             mPastVisiblesItems = mGridLayoutManager.findFirstVisibleItemPosition();
                             if ((mVisibleItemCount + mPastVisiblesItems) >= mTotalItemCount) {
+                                if(apiClient.isNextPageNull()){
+                                    return;
+                                }
                                 apiClient.nextPage();
                                 apiClient.getRecipes(new OnGetRecipesResponseListener() {
                                     @Override
