@@ -25,7 +25,7 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="280dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="wrap_content"
@@ -84,16 +84,16 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_test"
                     android:paddingStart="4dp"
-                    android:paddingTop="4dp"
+                    android:paddingTop="3dp"
                     android:paddingEnd="4dp"
                     android:paddingBottom="4dp">
 
 
                     <com.example.tituh.fitnessproj.helpers.SquareImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="250dp"
                         android:id="@+id/square_image_view_recipes_info"
-                        android:layout_height="wrap_content"
-                        android:scaleType="fitXY"
+                        android:layout_height="250dp"
+                        android:scaleType="centerCrop"
                         android:src="@drawable/background_item_recipe_test2" />
 
                 </android.support.constraint.ConstraintLayout>

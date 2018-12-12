@@ -76,11 +76,12 @@ public class RecipesFragment extends BaseFragment {
                                     return;
                                 }
                                 apiClient.nextPage();
+                                Toast.makeText(getActivity(), "loading more", Toast.LENGTH_SHORT).show();
+
                                 apiClient.getRecipes(new OnGetRecipesResponseListener() {
                                     @Override
                                     public void onGetRecipesResponse(@Nullable String message, boolean success,
                                                                      @Nullable RecipesResponse recipesResponse) {
-                                        Toast.makeText(getActivity(), "loading more", Toast.LENGTH_SHORT).show();
                                         mResultsItemArrayListResponse.addAll(recipesResponse.getResults());
                                         recipesVerticalRecyclerViewAdapter.notifyDataSetChanged();
                                     }
