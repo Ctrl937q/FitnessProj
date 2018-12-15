@@ -60,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/reg_font"
+            android:textAllCaps="true"
             android:text="ABOUT"
             android:textAlignment="center"
             android:textColor="#ffffff"

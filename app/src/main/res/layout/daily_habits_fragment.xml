@@ -37,7 +37,7 @@
                 android:lineSpacingExtra="6dp"
                 android:textColor="@color/color_bnv_unchecked"
                 android:gravity="center"
-                android:text="Fill out the Daily Life Chart each day to track your wellness habits!"
+                android:text="@string/daily_habits_header"
                 android:textSize="18sp" />
 
             <Button
@@ -47,7 +47,7 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/btn_start_workout"
                 android:fontFamily="@font/medium_font"
-                android:text="DOWNLOAD YOUR DAILY HABITS CHART"
+                android:text="@string/download_your_daily_habits_chart"
                 android:textColor="@color/color_bnv_unchecked"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
@@ -81,7 +81,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
-                android:text="Breakfast"
+                android:text="@string/breakfast_daily_habits"
                 android:textSize="25sp"
                  />
 
@@ -93,7 +93,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="KIM &amp; LAURYN NEVER SKIP BREAKFAST. Two &amp; half hours later is always a snack. They both love fiber, protein, greens, &amp; LIGHT, healthy fat. Make sure you\'re eating enough to rev up your metabolism. When you go long stretches of time without food, you're slowing down your metabolism. You don't want to train your body to store fat. SO eat. Especially breakfast. It sets the tone of the day."
+                android:text="@string/text_daily_habits_1"
                 android:textSize="19sp" />
 
 
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
-                android:text="Self-Care"
+                android:text="@string/self_care"
                 android:textSize="25sp"
                 />
 
@@ -133,7 +133,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="Lauryn &amp; Kim LOVE SELF-CARE. This can be anything from meditation, chiropractor, acupuncture, cupping, massage, facials, hot bath, aromatherapy, rosé (HAHA), listening podcasts, reading, etc. When you're your best self, you can show up for other's better. Self-care is SO IMPORTANT."
+                android:text="@string/text_daily_habits_2"
                 android:textSize="19sp" />
 
             <TextView
@@ -154,7 +154,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="Lauryn likes to aim for 7 to 9 and Kim likes to get 7 to 8 hours. Sleep is SO IMPORTANT. Get in bed &amp; unplug at least an hour before. Lauryn likes to read a hard-cover book before bed &amp; Kim likes to listen to music or meditate. They both like noise-canceling headphones too (so Lauryn can avoid Michael's 384732 questions)."
+                android:text="@string/text_daily_habits_3"
                 android:textSize="19sp" />
 
         </LinearLayout>
@@ -167,7 +167,6 @@
             android:layout_marginEnd="1dp"
             android:layout_marginTop="25dp"
             android:src="@drawable/picture_daily_habits_3" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -182,7 +181,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
-                android:text="Water"
+                android:text="@string/water"
                 android:textSize="25sp"
                 />
 
@@ -194,9 +193,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="We know, we know- this is what everyone tells you BUT it's important. Aim for half your body weight in ounces. Kim &amp; Lauryn carry around a
-Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep the water cold which is ideal. Get creative with your water- use non-caffeinated tea, add mint, lemon, berries, or basil (Lauryn loves basil in her water, Kim loves basil &amp; strawberries in her water). Even freezing berries in ice &amp; adding them to your water feels special. If you're not into water, set alarms in your phone to remind you to GULPY-GULP. If you're drinking, have a glass of water for every cocktail! ALWAYS. Try for non-bubbly if you're drinking alcohol. Lauryn LOVES PEPPERMINT TEA. Lately she's been doing mint leaves in hot water. This soothes the digestive system. Kim loves a straw because it's easier to drink. The Hydroflask has a straw built in
-&amp; Lauryn loves SoftyStraws too. Water-based foods like cucumber, lettuce, &amp; watermelon are great too."
+                android:text="@string/text_dayly_habits_4"
                 android:textSize="19sp" />
 
             <TextView
@@ -204,7 +201,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
-                android:text="Sex"
+                android:text="@string/sex"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
                 />
@@ -217,9 +214,8 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="Sex is a mood-lifting hormone! Get in sex when you can- HA. It's your feel good hormone. If you can't have sex, 2018 is all about the self-love. Have some fun. We both love coconut oil based lube like
- WOO FOR PLAY."
-                android:textSize="19sp" />     <!--TODO: word-->
+                android:text="@string/text_daily_habits_5"
+                android:textSize="19sp" />
 
         </LinearLayout>
 
@@ -246,7 +242,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
-                android:text="Steps"
+                android:text="@string/steps"
                 android:textSize="25sp"
                 />
 
@@ -258,7 +254,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="Lauryn likes to count her steps on the PACER APP. Kim likes her Apple watch. Both are great. They both like to aim for 10k minimum a day, but 15k is a goal (very ideal!). Lauryn likes to get her steps in on the Treadmill while returning e-mails. Kim likes to park far away from where she has to go. Kim also likes to walk her dog while on a conference call. Be resourceful!"
+                android:text="@string/text_daily_habits_6"
                 android:textSize="19sp" />
 
             <TextView
@@ -266,7 +262,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
-                android:text="Sweat"
+                android:text="@string/sweat"
                 android:layout_marginTop="20dp"
                 android:textSize="25sp"
                 />
@@ -279,7 +275,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
-                android:text="This is obvious. TRY TO BREAK A SWEAT ONCE A DAY. 7 minute workouts count!"
+                android:text="@string/text_daily_habits_7"
                 android:textSize="19sp" />
 
         </LinearLayout>
@@ -301,7 +297,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
                 android:fontFamily="@font/medium_font"
                 android:lineSpacingExtra="6dp"
                 android:textColor="@color/color_bnv_unchecked"
-                android:text="Fill out the Daily Life Chart each day to track your wellness habits!"
+                android:text="@string/text_daily_habits_8"
                 android:textSize="18sp"
                 />
 
@@ -315,7 +311,7 @@ Hydroflask (Lauryn especially loves her pink Starbucks cup). Both of them keep t
             android:layout_marginStart="20dp"
             android:background="@drawable/btn_start_workout"
             android:fontFamily="@font/medium_font"
-            android:text="DOWNLOAD YOUR DAILY HABITS CHART"
+            android:text="@string/text_button_daily_habits_2"
             android:layout_marginBottom="20dp"
             android:textColor="@color/color_bnv_unchecked"
             android:textStyle="bold" />

@@ -2,25 +2,38 @@ package com.example.tituh.fitnessproj.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.model.DayWorkoutModel;
-import java.util.List;
+import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
+
+import java.util.ArrayList;
+
 import mehdi.sakout.fancybuttons.FancyButton;
 
 public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_ITEM = 1;
-    private List<DayWorkoutModel> mItemObjects;
+    private ArrayList<String> dayArrayList;
+    private ArrayList<String> titleArray;
+    private int countWeek;
+    private int currentWeek;
 
-    public DayWorkoutFragmentRecyclerViewAdapter(List<DayWorkoutModel> mItemObjects) {
-        this.mItemObjects = mItemObjects;
+    public DayWorkoutFragmentRecyclerViewAdapter(ArrayList<String> dayArrayList,
+                                                 ArrayList<String> titleArray,
+                                                 int countWeek, int currentWeek) {
+        this.dayArrayList = dayArrayList;
+        this.titleArray = titleArray;
+        this.countWeek = countWeek;
+        this.currentWeek = currentWeek;
     }
+
 
     @NonNull
     @Override
@@ -37,20 +50,21 @@ public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        DayWorkoutModel dayWorkoutModel = mItemObjects.get(position);
         if (holder instanceof DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) {
-            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle1.setText(dayWorkoutModel.getmHeader1());
-            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle2.setText(dayWorkoutModel.getmHeader2());
-            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder)holder).mButton.setText("RESET");
+            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle1.setText("" + currentWeek);
+            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle2.setText("OUT OF " + countWeek + " WEEKS");
+            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mButton.setText("RESET");
         } else if (holder instanceof DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) {
-            ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder).mTextViewDay.setText(dayWorkoutModel.getmHeader1());
-            ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder).mTextViewExercise.setText(dayWorkoutModel.getmHeader2());
+            ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder)
+                    .mTextViewDay.setText(dayArrayList.get(position - 1));
+            ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder)
+                    .mTextViewExercise.setText(titleArray.get(position - 1));
         }
     }
 
     @Override
     public int getItemCount() {
-        return mItemObjects.size();
+        return dayArrayList.size() + 1;
     }
 
     @Override
@@ -87,10 +101,10 @@ public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<
 
         private ItemViewHolder(@NonNull View itemView) {
             super(itemView);
-            mImageViewProgress = (ImageView)itemView.findViewById(R.id.image_view_day_workout_progress);
+            mImageViewProgress = (ImageView) itemView.findViewById(R.id.image_view_day_workout_progress);
             mTextViewDay = (TextView) itemView.findViewById(R.id.text_view_day_workout);
             mTextViewExercise = (TextView) itemView.findViewById(R.id.text_view_what_exersice);
-            mImageViewArrow = (ImageView)itemView.findViewById(R.id.image_view_day_workout_arrow);
+            mImageViewArrow = (ImageView) itemView.findViewById(R.id.image_view_day_workout_arrow);
         }
     }
 }

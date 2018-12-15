@@ -62,14 +62,12 @@ public class ApiClient implements ApiModelInterface {
 
     @Override
     public void getRecipes(@NonNull final OnGetRecipesResponseListener listener) {
-        mApi.getRecipes(page).enqueue(new Callback<RecipesResponse>() {
+        mApi.getRecipes().enqueue(new Callback<RecipesResponse>() {
             @Override
             public void onResponse(Call<RecipesResponse> call, Response<RecipesResponse> response) {
                 if (HttpURLConnection.HTTP_OK == response.code()) {
-                    listener.onGetRecipesResponse(null, true, response.body());
-                    if (response.body().getNext() == null) {
-                        nextPageNull = true;
-                    }else nextPageNull = false;
+                    if (null != listener)
+                        listener.onGetRecipesResponse(null, true, response.body());
                 }
             }
 

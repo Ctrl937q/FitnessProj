@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
@@ -42,9 +41,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="LET'S SWEET" />
+                    android:text="@string/let_s_sweet" />
 
             </LinearLayout>
 
@@ -64,7 +63,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -76,7 +75,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/reg_font"
-                android:text="Your workouts can be invigorating, fun, challenging and rewarding in short amounts of time. Many of you have watched Lauryn’s Instagram &amp; Snapchat stories regarding her weekly workouts. Kim has been training Lauryn for over a year now, and they both understand and relate to BUSY LIVES! We wanted to be able to share these creative, effective workouts with the entire community. NOW, you can do them with her. LET’S DO THIS!"
+                android:text="@string/prepare_text_1"
                 android:textSize="19sp" />
 
 
@@ -90,7 +89,7 @@
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/btn_start_workout"
                 android:fontFamily="@font/medium_font"
-                android:text="START WORKOUT"
+                android:text="@string/start_workout"
                 android:textColor="@color/color_bnv_unchecked"
                 android:textStyle="bold" />
 
@@ -111,7 +110,7 @@
                     android:layout_marginEnd="22dp"
                     android:fontFamily="@font/reg_font"
                     android:justificationMode="inter_word"
-                    android:text="You will workout 3 days a week. There will be 2 different circuits in EACH workout. Each circuit will have a stated number of reps to be done in 7 minutes. TRY NOT TO STOP for breaks during the 7 minutes. You may take 30-60 seconds rest before starting the circuit over again. Move on to Circuit 2 after you have completed Circuit 1 twice."
+                    android:text="@string/prepare_text_2"
                     android:textSize="19sp" />
 
 
@@ -124,7 +123,7 @@
                     android:layout_marginEnd="22dp"
                     android:fontFamily="@font/medium_font"
                     android:justificationMode="inter_word"
-                    android:text="DAY ONE we will focus on Legs &amp; Ass \nDAY TWO we will focus on Arms &amp; Back  \nDAY THREE we will do Full Shebang \n*don’t fret — every workout includes ABS + CARDIO."
+                    android:text="@string/prepare_text_3"
                     android:textSize="19sp" />
 
                 <TextView
@@ -136,7 +135,7 @@
                     android:layout_marginEnd="22dp"
                     android:fontFamily="@font/reg_font"
                     android:justificationMode="inter_word"
-                    android:text="We have also included TWO BONUS MINUTES for every workout. You will have a ONE MINUTE CARDIO burst choice and a ONE MINUTE PLANK VARIATION choice. "
+                    android:text="@string/prepare_text_4"
                     android:textSize="19sp" />
 
 
@@ -149,7 +148,7 @@
                     android:layout_marginEnd="22dp"
                     android:fontFamily="@font/reg_font"
                     android:justificationMode="inter_word"
-                    android:text="These workouts will be 28 minutes in total. You do Circuit One 2X at 7 min each and Circuit Two 2X at 7 min each. THEN, if you take the Cardio &amp; Core challenge it will equal 30 MINUTES."
+                    android:text="@string/prepare_text_5"
                     android:textSize="19sp" />
 
 
@@ -163,7 +162,7 @@
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/reg_font"
                     android:justificationMode="inter_word"
-                    android:text="If you are tight on time on a particular day, we encourage you NOT TO SKIP your workout! You could always do one round of each circuit, which of course would total 14 minutes. We bet you can find at least 14 minutes in your busy day."
+                    android:text="@string/prepare_text_6"
                     android:textSize="19sp" />
 
 
@@ -180,7 +179,7 @@
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/btn_start_workout"
                 android:fontFamily="@font/medium_font"
-                android:text="START WORKOUT"
+                android:text="@string/start_workout"
                 android:textColor="@color/color_bnv_unchecked"
                 android:textStyle="bold" />
 
@@ -210,7 +209,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/medium_font"
                     android:gravity="center"
-                    android:text="WHAT DO I DO ON DAYS I'M NOT DOING TSC WORKOUT?"
+                    android:text="@string/prepare_text_7"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -243,7 +242,7 @@
             android:layout_marginTop="30dp"
             android:fontFamily="@font/medium_font"
             android:gravity="center"
-            android:text="TRACK YOUR PROGRESS"
+            android:text="@string/track_your_progress"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -252,7 +251,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:gravity="center"
-            android:text="HOW &amp; WHEN TO TAKE PHOTOS &amp; MEASUREMENTS"
+            android:text="@string/how_amp_when_to_take_photos_amp_measurements"
             android:textColor="@color/color_bnv_unchecked" />
 
         <TextView
@@ -263,7 +262,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:gravity="center"
-            android:text="Lauryn &amp; Kim recommend taking your photos every 2 weeks. This will help you track your gradual progression." />
+            android:text="@string/prepare_text_8" />
 
 
         <com.loopeer.shadow.ShadowView
@@ -304,7 +303,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:fontFamily="@font/medium_font"
-                        android:text="WHEN TAKING PHOTOS"
+                        android:text="@string/when_taking_photos"
                         android:textColor="@color/color_pink_for_text_prepare"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -315,7 +314,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:justificationMode="inter_word"
-                        android:text="1. Same setting each time and similar lighting" />
+                        android:text="@string/_1_same_setting_each_time_and_similar_lighting" />
 
 
                     <TextView
@@ -324,16 +323,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:justificationMode="inter_word"
-                        android:text="2. Same clothing (either bikini or jog bra and shorts)" />
-
-                    <TextView
-                        style="@style/MyTextViewStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="7dp"
-                        android:layout_marginBottom="5dp"
-                        android:justificationMode="inter_word"
-                        android:text="3. Chin up, chest up &amp; let hands naturally fall to your sides" />
+                        android:text="@string/_2_same_clothing_either_bikini_or_jog_bra_and_shorts" />
 
                     <TextView
                         style="@style/MyTextViewStyle"
@@ -342,7 +332,16 @@
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="5dp"
                         android:justificationMode="inter_word"
-                        android:text="4. Full length body shot" />
+                        android:text="@string/prepare_text_9" />
+
+                    <TextView
+                        style="@style/MyTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginBottom="5dp"
+                        android:justificationMode="inter_word"
+                        android:text="@string/_4_full_length_body_shot" />
 
                     <TextView
                         style="@style/MyTextViewStyle"
@@ -351,7 +350,7 @@
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="12dp"
                         android:justificationMode="inter_word"
-                        android:text="5. Shoot front, side and back (if possible)" />
+                        android:text="@string/_5_shoot_front_side_and_back_if_possible" />
 
 
                 </LinearLayout>
@@ -396,7 +395,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:fontFamily="@font/medium_font"
-                        android:text="WHEN TAKING MEASUREMENTS"
+                        android:text="@string/when_taking_measurements"
                         android:textColor="@color/color_pink_for_text_prepare"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -407,7 +406,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:justificationMode="inter_word"
-                        android:text="*Use a loose measuring tape." />
+                        android:text="@string/use_a_loose_measuring_tape" />
 
                     <TextView
                         style="@style/MyTextViewStyle"
@@ -415,7 +414,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="7dp"
                         android:justificationMode="inter_word"
-                        android:text="1. Wear either super tight fitted tank and leggings or bra and underwear, bathing suit or nothing at all!" />
+                        android:text="@string/_1_wear_either_super_tight_fitted_tank_and_leggings_or_bra_and_underwear_bathing_suit_or_nothing_at_all" />
 
                     <TextView
                         style="@style/MyTextViewStyle"
@@ -424,8 +423,7 @@
                         android:layout_marginTop="7dp"
                         android:layout_marginBottom="12dp"
                         android:justificationMode="inter_word"
-
-                        android:text="2. Stand with feet together, chin up, chest up" />
+                        android:text="@string/_2_stand_with_feet_together_chin_up_chest_up" />
 
 
                 </LinearLayout>
@@ -458,7 +456,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="CHEST"
+                    android:text="@string/chest"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -468,7 +466,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:justificationMode="inter_word"
-                    android:text="Wrap the tape around biggest part of the chest (right at center nipple)." />
+                    android:text="@string/prepare_text_10" />
 
 
                 <TextView
@@ -477,7 +475,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="WAIST"
+                    android:text="@string/waist"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -487,7 +485,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:justificationMode="inter_word"
-                    android:text="Wrap the tape around mid-waist so it wraps over belly button." />
+                    android:text="@string/prepare_text_11" />
 
 
                 <TextView
@@ -496,7 +494,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="HIPS"
+                    android:text="@string/hips"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -506,7 +504,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:justificationMode="inter_word"
-                    android:text="Wrap the tape around the hips so it wraps around center of the buttocks." />
+                    android:text="@string/prepare_text_12" />
 
 
                 <TextView
@@ -515,7 +513,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="THIGHS"
+                    android:text="@string/thighs"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -525,7 +523,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:justificationMode="inter_word"
-                    android:text="You can do just one side. Separate legs apart, let your hands fall naturally at your sides, stand tall. Measure the circumference of your thigh wherever your thumb is naturally hitting your leg" />
+                    android:text="@string/prepare_text_13" />
 
 
             </LinearLayout>
@@ -543,7 +541,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/btn_start_workout"
             android:fontFamily="@font/medium_font"
-            android:text="START WORKOUT"
+            android:text="@string/start_workout"
             android:textColor="@color/color_bnv_unchecked"
             android:textStyle="bold" />
 
@@ -555,7 +553,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/medium_font"
             android:gravity="center"
-            android:text="INCREASE THE BURN"
+            android:text="@string/increase_the_burn"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -567,7 +565,7 @@
             android:layout_marginTop="7dp"
             android:layout_marginEnd="30dp"
             android:gravity="center"
-            android:text="Well, here are some tips to BUMP UP YOUR BURN:" />
+            android:text="@string/well_here_are_some_tips_to_bump_up_your_burn" />
 
         <TextView
             style="@style/MyTextViewStyle"
@@ -577,7 +575,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="30dp"
             android:gravity="center"
-            android:text="Want to make your workout more challenging, or maybe you're in week 3 or 4, feeling darn good and you're ready for more? " />
+            android:text="@string/prepare_text_14" />
 
 
         <LinearLayout
@@ -614,7 +612,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/btn_start_workout"
             android:fontFamily="@font/medium_font"
-            android:text="START WORKOUT"
+            android:text="@string/start_workout"
             android:textColor="@color/color_bnv_unchecked"
             android:textStyle="bold" />
 

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_community_top_first">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="40dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/how_to_use_it"
+            android:textColor="@color/color_commutiny_text_pink"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/textView_top_of_center"
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="@string/post_pictures_after_you_ve_completed_your_workout"
+            android:textSize="19sp" />
+
+
+        <TextView
+            android:id="@+id/textView_center"
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="@string/share_your_progress_and_struggles"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/textView_first_bot_of_center"
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="@string/show_us_what_protein_you_re_eating_post_workout"
+
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/textView_second_bot_of_center"
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="@string/encourage_others_and_find_support_to_quot_get_it_done_quot"
+            android:textSize="19sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

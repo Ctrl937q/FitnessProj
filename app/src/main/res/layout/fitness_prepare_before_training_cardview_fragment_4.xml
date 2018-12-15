@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="+  plank holds — try lifting one leg off ground half the time then switch sides." />
+            android:text="@string/plank_holds_try_lifting_one_leg_off_ground_half_the_time_then_switch_sides" />
 
 
         <TextView
@@ -32,28 +32,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="+ LUNGES — 90 degree angle lunge on every rep." />
+            android:text="@string/lunges_90_degree_angle_lunge_on_every_rep" />
 
         <TextView
             style="@style/MyTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="+ SQUATS —90 degree bend in knee or even lower if knees permit." />
+            android:text="@string/squats_90_degree_bend_in_knee_or_even_lower_if_knees_permit" />
 
         <TextView
             style="@style/MyTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="+ TAKE LESS BREAKS in between sets — CONTINUOUS MOVEMENT!" />
+            android:text="@string/take_less_breaks_in_between_sets_continuous_movement" />
 
         <TextView
             style="@style/MyTextViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="+ gauge your intensity by the ability to answer a question. MOST of this workout you should be able to answer with 1 word MAX! KEEP IT INTENSE!" />
+            android:text="@string/gauge_your_intensity_by_the_ability_to_answer_a_question_most_of_this_workout_you_should_be_able_to_answer_with_1_word_max_keep_it_intense" />
 
         <TextView
             style="@style/MyTextViewStyle"
@@ -67,6 +67,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:text="+ airplane mode for phone. only use technology for timing the workout. take pics and send to Lauryn &amp; Kim AFTER you've finished."/>
+            android:text="@string/airplane_mode_for_phone_only_use_technology_for_timing_the_workout_take_pics_and_send_to_lauryn_amp_kim_after_you_ve_finished"/>
     </LinearLayout>
 </LinearLayout>

@@ -47,7 +47,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="STRETCH!"
+                    android:text="@string/stretch"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:justificationMode="inter_word"
-                    android:text="Stretch! We have provided several stretching options in this guide. Please take 10 minutes 4-6 times per week and choose 4-6 of these stretches (pg. 66). Hold each for minimum of 30 seconds." />
+                    android:text="@string/text_12ewds" />
 
 
                 <ImageView
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="7dp"
                     android:fontFamily="@font/medium_font"
-                    android:text="GET OUTSIDE!"
+                    android:text="@string/get_outside"
                     android:textSize="22sp"
                     android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_marginTop="7dp"
                     android:justificationMode="inter_word"
-                    android:text="If weather permits, outdoor activities of any sort – tennis, volleyball, beach games, dog walking, hiking, cycling, swimming." />
+                    android:text="@string/if_weather_permits_outdoor_activities_of_any_sort_tennis_volleyball_beach_games_dog_walking_hiking_cycling_swimming" />
 
 
             </LinearLayout>

@@ -40,7 +40,6 @@
         android:fontFamily="@font/reg_font"
         android:textColor="@color/color_bnv_unchecked"
         android:layout_marginTop="10dp"
-
         android:textSize="20dp" />
 
     <mehdi.sakout.fancybuttons.FancyButton

@@ -14,5 +14,5 @@ public interface ApiRestInterface {
     Call<TrainingResponse> getTrainigs();
 
     @GET("/api/v1/recipes/")
-    Call<RecipesResponse> getRecipes(@Query("page") Integer numberPage);
+    Call<RecipesResponse> getRecipes();
 }

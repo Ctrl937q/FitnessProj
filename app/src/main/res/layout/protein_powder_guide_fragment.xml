@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
@@ -8,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -50,7 +49,7 @@
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:gravity="center"
-                    android:text="15 BEST PLANT-BASED PROTEIN SOURCES"
+                    android:text="@string/_15_best_plant_based_protein_sources"
                     android:textColor="#FFB2CB"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -62,7 +61,7 @@
                     android:layout_marginTop="14dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="GREEN PEACE"
+                    android:text="@string/green_peace"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -73,7 +72,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="QUINOA"
+                    android:text="@string/quinoa"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -84,7 +83,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="NUTS AND BETTERS"
+                    android:text="@string/nuts_and_betters"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -95,7 +94,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="BEANS"
+                    android:text="@string/beans"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -106,7 +105,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="CHECKPEAS"
+                    android:text="@string/checkpeas"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -117,7 +116,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="TEMPEH AND TOFU"
+                    android:text="@string/tempeh_and_tofu"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -128,7 +127,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="EDAMAME"
+                    android:text="@string/edamame"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -139,7 +138,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="LEAFY GREENS"
+                    android:text="@string/leafy_greens"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -150,7 +149,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="HEMP"
+                    android:text="@string/hemp"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -161,7 +160,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="CHIA SEEDS"
+                    android:text="@string/chia_seeds"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -172,7 +171,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="SESAMR, SUNFLOWER, AND POPPY SEEDS"
+                    android:text="@string/sesamr_sunflower_and_poppy_seeds"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -183,7 +182,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="SEITAN"
+                    android:text="@string/seitan"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -194,7 +193,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="NON-DAIRY MILK"
+                    android:text="@string/non_dairy_milk"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -205,7 +204,7 @@
                     android:layout_marginTop="1dp"
                     android:fontFamily="@font/reg_font"
                     android:gravity="center"
-                    android:text="UNSWEETENED COCOA POWDER"
+                    android:text="@string/unsweetened_cocoa_powder"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -229,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="Avoid"
+                android:text="@string/avoid"
                 android:textSize="25sp" />
 
             <TextView
@@ -239,7 +238,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ soy - full of GOs linked to disease"
+                android:text="@string/soy_full_of_gos_linked_to_disease"
                 android:textSize="19sp" />
 
             <TextView
@@ -249,7 +248,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ dairy,if vegan"
+                android:text="@string/dairy_if_vegan"
                 android:textSize="19sp" />
 
             <TextView
@@ -259,7 +258,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ addivives and processed ingredients"
+                android:text="@string/addivives_and_processed_ingredients"
                 android:textSize="19sp" />
 
             <TextView
@@ -269,7 +268,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ whey that is pasteurized and heat \ntreated - disruptive to health"
+                android:text="@string/whey_that_is_pasteurized_and_heat_ntreated_disruptive_to_health"
                 android:textSize="19sp" />
 
 
@@ -290,7 +289,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="Look for"
+                android:text="@string/look_for"
                 android:textSize="25sp" />
 
             <TextView
@@ -300,7 +299,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ building muscle = whey &amp; whey isolates, BCAAs"
+                android:text="@string/building_muscle_whey_amp_whey_isolates_bcaas"
                 android:textSize="19sp" />
 
             <TextView
@@ -310,7 +309,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ lose weight = no added sugars or maldextrons, no BCAAs"
+                android:text="@string/lose_weight_no_added_sugars_or_maldextrons_no_bcaas"
                 android:textSize="19sp" />
 
             <TextView
@@ -320,7 +319,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ vegan - use plant proteins such as hemp or pea"
+                android:text="@string/vegan_use_plant_proteins_such_as_hemp_or_pea"
                 android:textSize="19sp" />
 
             <TextView
@@ -330,7 +329,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ a brand that tests for level of poisons"
+                android:text="@string/a_brand_that_tests_for_level_of_poisons"
                 android:textSize="19sp" />
 
 
@@ -351,7 +350,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="How &amp; Why"
+                android:text="@string/how_amp_why"
                 android:textSize="25sp" />
 
 
@@ -362,7 +361,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ post workout = consume protein within 30 minutes"
+                android:text="@string/post_workout_consume_protein_within_30_minutes"
                 android:textSize="19sp" />
 
             <TextView
@@ -372,7 +371,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ muscles are most responsive for growth and repair during that time."
+                android:text="@string/muscles_are_most_responsive_for_growth_and_repair_during_that_time"
                 android:textSize="19sp" />
 
             <TextView
@@ -382,7 +381,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ protein keeps body filled longer and doesn’t turn to fat."
+                android:text="@string/protein_keeps_body_filled_longer_and_doesn_t_turn_to_fat"
                 android:textSize="19sp" />
 
             <TextView
@@ -392,7 +391,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center"
-                android:text="+ spread out throughout the day - your body breaks down 25 g per meal"
+                android:text="@string/spread_out_throughout_the_day_your_body_breaks_down_25_g_per_meal"
                 android:textSize="19sp" />
 
         </LinearLayout>
@@ -411,7 +410,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="Example:"
+                android:text="@string/example"
                 android:textSize="22sp" />
 
 
@@ -422,7 +421,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="If you’re beginning to workout &amp; weigh 125 lbs (~60 g protein / day)"
+                android:text="@string/if_you_re_beginning_to_workout_amp_weigh_125_lbs_60_g_protein_day"
                 android:textSize="19sp" />
 
             <TextView
@@ -432,7 +431,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="+ Green smoothie ( 20 g )"
+                android:text="@string/green_smoothie_20_g"
                 android:textSize="19sp" />
 
             <TextView
@@ -442,7 +441,7 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="+ Turkey salad lunch ( 25 g )"
+                android:text="@string/turkey_salad_lunch_25_g"
                 android:textSize="19sp" />
 
             <TextView
@@ -453,7 +452,7 @@
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/medium_font"
                 android:gravity="center"
-                android:text="+ Chicken breast dinner ( 20 g )"
+                android:text="@string/chicken_breast_dinner_20_g"
                 android:textSize="19sp" />
 
         </LinearLayout>

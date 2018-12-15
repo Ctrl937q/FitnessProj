@@ -14,7 +14,6 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.NutritionFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.model.NutritionModel;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
@@ -34,8 +33,7 @@ public class NutritionFragment extends BaseFragment {
 
             fragmentInteractionListener.visibleIconAboutActionBar();
             fragmentInteractionListener.goneIconBacktActionBar();
-            Log.d("asdasdasdsadsa", "NutritionFragment");
-
+            Log.d("asd32wefragt", " + ");
 
             mRecyclerViewNutritionFragment = view.findViewById(R.id.recycler_view_nutrition);
 
@@ -79,7 +77,6 @@ public class NutritionFragment extends BaseFragment {
             }));
 
         }
-        Log.d("asdasdasdsadsa", "NutritionFragment");
 
         return view;
     }

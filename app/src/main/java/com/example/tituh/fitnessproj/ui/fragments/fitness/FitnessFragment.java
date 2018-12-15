@@ -72,7 +72,13 @@ public class FitnessFragment extends BaseFragment {
                 @Override
                 public void onClick(View view, final int position) {
                     if (position == 0) {
-                        fragmentInteractionListener.pushFragment(new PrepareBeforeTrainingFragment(), true);
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelableArrayList("array_trainings",  mResultsItemsArrayList);
+                        bundle.putStringArrayList("array_weeks",  mStringArrayWeek);
+                        bundle.putInt("count_weeks", mStringArrayWeek.size());
+                        PrepareBeforeTrainingFragment prepareBeforeTrainingFragment = new PrepareBeforeTrainingFragment();
+                        prepareBeforeTrainingFragment.setArguments(bundle);
+                        fragmentInteractionListener.pushFragment(prepareBeforeTrainingFragment, true);
                     }
                     if (position == 1) {
                         Bundle bundle = new Bundle();

@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Preparation"
+                        android:text="@string/preparation"
                         android:textSize="25sp" />
 
 
@@ -56,7 +56,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="Have everything ready to go! Try laying out your workout clothes the night before or even sleeping in them for those early mornings. Pack your gym bag and place it by the door. You can even text a friend to see if she can join. Give her the exact time and location. Go REGARDLESS of who else is joining!"
+                        android:text="@string/tips_text_5"
                         android:textSize="19sp" />
                 </LinearLayout>
 
@@ -84,7 +84,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Effort"
+                        android:text="@string/effort"
                         android:textSize="25sp" />
 
 
@@ -95,7 +95,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="OK — this may seem harsh, but you need to get a bit uncomfortable and learn to PUSH yourself! Know good pain vs. bad pain and accept it. Remember that famous quote, “Your mind will quit a thousand times before you body will. Feel the fear and do it anyway.”"
+                        android:text="@string/tips_text_6"
                         android:textSize="19sp" />
 
                 </LinearLayout>
@@ -124,7 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Openness"
+                        android:text="@string/openness"
                         android:textSize="25sp" />
 
 
@@ -135,7 +135,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="There will be MANY obstacles — get ready to hurdle them. Some days you may be exhausted, not feeling so great, upset, sad, anxious... guess what? Skipping the workout or eating a bunch of cookies won’t make those feelings better, most likely it will make them worse."
+                        android:text="@string/tips_text_7"
                         android:textSize="19sp" />
 
 
@@ -166,7 +166,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Realistic"
+                        android:text="@string/realistic"
                         android:textSize="25sp" />
 
 
@@ -177,7 +177,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="Be realistic about your time frame when looking for results. If you are consistently prepared, put in the time and effort, open-minded &amp; committed to this program, it will work. We like to call it “stick and stay.”"
+                        android:text="@string/tips_text_8"
                         android:textSize="19sp" />
 
                 </LinearLayout>

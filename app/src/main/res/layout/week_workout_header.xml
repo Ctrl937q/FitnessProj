@@ -13,6 +13,7 @@
 
         <ImageView
             android:layout_width="wrap_content"
+            android:id="@+id/image_view_medal"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/vector_calendar" />
@@ -43,7 +44,6 @@
         android:id="@+id/btn_button_rest_workout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginTop="15dp"
         android:layout_marginBottom="20dp"
         android:text="RESET"

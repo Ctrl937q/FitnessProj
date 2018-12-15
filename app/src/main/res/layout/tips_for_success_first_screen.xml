@@ -45,7 +45,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Positive Talk"
+                        android:text="@string/positive_talk"
                         android:textSize="25sp" />
 
 
@@ -56,7 +56,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="YES — talking positively to yourself. Celebrate your victories — tiny ones AND large ones. &quot;I feel great! This is going to be awesome! I can’t wait to feel and look even more amazing! I got this!&quot; Keep pushing and FINISH! The way we talk to ourselves matters. MAKE IT ALL INSANELY POSITIVE. Remember your thoughts become your actions!"
+                        android:text="@string/tips_text_1"
                         android:textSize="19sp" />
 
 
@@ -86,7 +86,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Time"
+                        android:text="@string/time"
                         android:textSize="25sp" />
 
 
@@ -97,7 +97,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="Schedule your workout like an appointment! Is it going to be first thing in the morning, during your lunch hour, when your kids are napping, after work? When? Put it in your phone, and DO NOT COMPROMISE!!! You don't miss your hair, nails or lash appointment, so you CERTAINLY are not going to miss your GET FIT appointment."
+                        android:text="@string/tips_text_2"
                         android:textSize="19sp" />
 
 
@@ -127,7 +127,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Consistency"
+                        android:text="@string/consistency"
                         android:textSize="25sp" />
 
 
@@ -138,7 +138,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="Results come from work. True work! This means consistently putting in the effort when working and doing. Honor yourself and your health enough to make it a priority in your everyday life. Stick with the program and you'll see results."
+                        android:text="@string/tips_text_3"
                         android:textSize="19sp" />
 
 
@@ -169,7 +169,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/medium_font"
-                        android:text="Commitment"
+                        android:text="@string/commitment"
                         android:textSize="25sp" />
 
 
@@ -180,7 +180,7 @@
                         android:layout_marginTop="10dp"
                         android:fontFamily="@font/reg_font"
                         android:justificationMode="inter_word"
-                        android:text="What is your WHY? Why are you committing to this program. What do you want from it? Where are you going? There’s got to be something in you that WANTS a change. Some kind of change. It doesn’t have to be physique — wise. Write it down &amp; put it on your mirror. Maybe even make a vision board. VISUALIZE and COMMIT!"
+                        android:text="@string/tips_text_4"
                         android:textSize="19sp" />
 
                 </LinearLayout>

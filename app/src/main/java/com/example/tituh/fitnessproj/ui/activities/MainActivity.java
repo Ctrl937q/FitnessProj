@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
     private TimerClass timerClass;
-    RecipesResponse mRecipesResponse;
-    List<ResultsItem> resultsItemList;
 
 
     @Override
@@ -50,10 +48,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.app_bar);
-
-        resultsItemList = new ArrayList<>();
-
-
 
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);

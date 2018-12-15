@@ -43,6 +43,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/textView_title_exercise_info_fragment"
                                 android:fontFamily="@font/reg_font"
                                 android:text="Ass | Legs  "
                                 android:textColor="@color/color_bnv_unchecked"
@@ -63,6 +64,7 @@
 
                                 <TextView
                                     android:layout_width="wrap_content"
+                                    android:id="@+id/textView_training_info_time"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="4dp"
                                     android:fontFamily="@font/reg_font"

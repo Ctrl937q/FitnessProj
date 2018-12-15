@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/medium_font"
-                android:text="YOGA!"
+                android:text="@string/yoga"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:justificationMode="inter_word"
-                android:text="A nice, relaxing, restorative class can be great  for the mind as well as the body."
+                android:text="@string/a_nice_relaxing_restorative_class_can_be_great_for_the_mind_as_well_as_the_body"
 
                 />
 
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/medium_font"
-                android:text="STEPS!"
+                android:text="@string/steps1"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:justificationMode="inter_word"
-                android:text="Yes it matters! Walking, hiking, jogging and running - it all matters! Kim uses her Apple  Watch and Lauryn uses her phone." />
+                android:text="@string/text_132efwsad" />
 
 
             <ImageView
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:fontFamily="@font/medium_font"
-                android:text="MEDITATION!"
+                android:text="@string/meditation"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -110,7 +110,7 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="5dp"
                 android:justificationMode="inter_word"
-                android:text="Aim for 3-5 times per week. Some do it daily - right on!" />
+                android:text="@string/aim_for_3_5_times_per_week_some_do_it_daily_right_on" />
 
 
         </LinearLayout>

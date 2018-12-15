@@ -1,5 +1,6 @@
 package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -12,8 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecipesHorizontalRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecipesVerticalRecyclerViewAdapter;
@@ -24,6 +27,7 @@ import com.example.tituh.fitnessproj.networking.responses.OnGetRecipesResponseLi
 import com.example.tituh.fitnessproj.networking.responses.recipes.RecipesResponse;
 import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
 
 public class RecipesFragment extends BaseFragment {
@@ -32,6 +36,7 @@ public class RecipesFragment extends BaseFragment {
     private RecyclerView mVerticalRecyclerView;
     private ArrayList<String> mArrayListRecipesCategory;
     private ArrayList<ResultsItem> mResultsItemArrayListResponse;
+    private ArrayList<ResultsItem> mResultsItemArrayListResponseFilter;
     private RecipesVerticalRecyclerViewAdapter recipesVerticalRecyclerViewAdapter;
     private int mPastVisiblesItems;
     private int mVisibleItemCount;
@@ -42,14 +47,20 @@ public class RecipesFragment extends BaseFragment {
     private LinearLayoutManager mLayoutManager;
     private ProgressBar progressBar;
 
+
+    Button button;
+
+    private boolean mBreakfastClick = false;
+    private boolean mSweets = false;
+    private boolean mOntheGo = false;
+    private boolean mNourish = false;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.recipes_fragment, container, false);
-
             initialize();
-
 
             apiClient.getRecipes(new OnGetRecipesResponseListener() {
                 @Override
@@ -61,7 +72,7 @@ public class RecipesFragment extends BaseFragment {
                 }
             });
 
-            mNestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            /*mNestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
                 @Override
                 public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                     if (v.getChildAt(v.getChildCount() - 1) != null) {
@@ -89,7 +100,7 @@ public class RecipesFragment extends BaseFragment {
                         }
                     }
                 }
-            });
+            });*/
 
 
             mHorizontalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
@@ -97,9 +108,12 @@ public class RecipesFragment extends BaseFragment {
                 @Override
                 public void onClick(View view, final int position) {
                     if (null != fragmentInteractionListener) {
+                        progressBar.setVisibility(View.VISIBLE);
+                        filterArray(position);
+                        progressBar.setVisibility(View.GONE);
+
                     }
                 }
-
 
                 @Override
                 public void onLongClick(View view, int position) {
@@ -114,8 +128,13 @@ public class RecipesFragment extends BaseFragment {
                     if (null != fragmentInteractionListener) {
                         RecipesInfoFragment recipesInfoFragment = new RecipesInfoFragment();
                         Bundle bundle = new Bundle();
-                        bundle.putParcelableArrayList("array_for_recipes_info", mResultsItemArrayListResponse);
-                        bundle.putInt("position_for_recipes_info", position);
+                        if (mBreakfastClick || mNourish || mOntheGo || mOntheGo) {
+                            bundle.putParcelableArrayList("array_for_recipes_info", mResultsItemArrayListResponseFilter);
+                            bundle.putInt("position_for_recipes_info", position);
+                        } else {
+                            bundle.putParcelableArrayList("array_for_recipes_info", mResultsItemArrayListResponse);
+                            bundle.putInt("position_for_recipes_info", position);
+                        }
                         recipesInfoFragment.setArguments(bundle);
                         fragmentInteractionListener.pushFragment(recipesInfoFragment, true);
                     }
@@ -150,17 +169,100 @@ public class RecipesFragment extends BaseFragment {
         mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
         mArrayListRecipesCategory = new ArrayList<>();
         mResultsItemArrayListResponse = new ArrayList<>();
+        mResultsItemArrayListResponseFilter = new ArrayList<>();
 
         mArrayListRecipesCategory.add("Breakfast");
-        mArrayListRecipesCategory.add("Mains");
-        mArrayListRecipesCategory.add("Snacks");
         mArrayListRecipesCategory.add("Sweets");
-        mArrayListRecipesCategory.add("Booze");
+        mArrayListRecipesCategory.add("On the Go");
+        mArrayListRecipesCategory.add("Nourish");
 
         mHorizontalRecyclerView.setLayoutManager(mLayoutManager);
         mVerticalRecyclerView.setLayoutManager(mGridLayoutManager);
         mHorizontalRecyclerView.setAdapter(new RecipesHorizontalRecyclerViewAdapter(mArrayListRecipesCategory));
 
         mVerticalRecyclerView.addItemDecoration(new SpacesItemDecoration(getActivity(), R.dimen.column_spacing));
+    }
+
+    private void filterArray(int position) {
+        if (position == 0) {
+
+            if (mBreakfastClick) {
+                mBreakfastClick = false;
+                setAdapter(mResultsItemArrayListResponse);
+                return;
+            }
+            mBreakfastClick = true;
+            mSweets = false;
+            mOntheGo = false;
+            mNourish = false;
+            mResultsItemArrayListResponseFilter.clear();
+            for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
+                if (mResultsItemArrayListResponse.get(i).getType() == 0) {
+
+                    mResultsItemArrayListResponseFilter.add(mResultsItemArrayListResponse.get(i));
+                }
+            }
+            setAdapter(mResultsItemArrayListResponseFilter);
+        }
+        if (position == 1) {
+            if (mSweets) {
+                mSweets = false;
+                setAdapter(mResultsItemArrayListResponse);
+                return;
+            }
+            mBreakfastClick = false;
+            mSweets = true;
+            mOntheGo = false;
+            mNourish = false;
+            mResultsItemArrayListResponseFilter.clear();
+            for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
+                if (mResultsItemArrayListResponse.get(i).getType() == 3) {
+                    mResultsItemArrayListResponseFilter.add(mResultsItemArrayListResponse.get(i));
+                }
+            }
+            setAdapter(mResultsItemArrayListResponseFilter);
+        }
+        if (position == 2) {
+            if (mOntheGo) {
+                mOntheGo = false;
+                setAdapter(mResultsItemArrayListResponse);
+                return;
+            }
+            mBreakfastClick = false;
+            mSweets = false;
+            mOntheGo = true;
+            mNourish = false;
+            mResultsItemArrayListResponseFilter.clear();
+            for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
+                if (mResultsItemArrayListResponse.get(i).getType() == 5) {
+                    mResultsItemArrayListResponseFilter.add(mResultsItemArrayListResponse.get(i));
+                }
+            }
+            setAdapter(mResultsItemArrayListResponseFilter);
+        }
+        if (position == 3) {
+            if (mNourish) {
+                mNourish = false;
+                setAdapter(mResultsItemArrayListResponse);
+                return;
+            }
+            mBreakfastClick = false;
+            mSweets = false;
+            mOntheGo = false;
+            mNourish = true;
+            mResultsItemArrayListResponseFilter.clear();
+            for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
+                if (mResultsItemArrayListResponse.get(i).getType() == 6) {
+                    mResultsItemArrayListResponseFilter.add(mResultsItemArrayListResponse.get(i));
+                }
+            }
+            setAdapter(mResultsItemArrayListResponseFilter);
+        }
+    }
+
+    private void setAdapter(ArrayList<ResultsItem> arrayList) {
+        recipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(arrayList);
+        mVerticalRecyclerView.setAdapter(recipesVerticalRecyclerViewAdapter);
+        recipesVerticalRecyclerViewAdapter.notifyDataSetChanged();
     }
 }

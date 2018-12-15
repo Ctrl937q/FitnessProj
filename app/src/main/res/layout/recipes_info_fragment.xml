@@ -180,12 +180,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:id="@+id/btn_shop_ingredients"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_start_workout"
             android:fontFamily="@font/medium_font"
-            android:text="SHOP INGREDIENTS"
+            android:text="@string/shop_ingredients"
             android:textColor="@color/color_bnv_unchecked"
             android:textStyle="bold" />
 
