@@ -7,9 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.model.FitnessStartModel;
 import com.example.tituh.fitnessproj.R;
+
 import java.util.List;
 
 import static com.example.tituh.fitnessproj.model.FitnessStartModel.ONE_TYPE;
@@ -18,11 +21,9 @@ import static com.example.tituh.fitnessproj.model.FitnessStartModel.TWO_TYPE;
 public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<FitnessStartModel> mListFitnessStartModel;
-    private int countWeek;
 
-    public FitnessFragmentStartRecyclerViewAdapter(List<FitnessStartModel> list, int countWeek) {
+    public FitnessFragmentStartRecyclerViewAdapter(List<FitnessStartModel> list) {
         this.mListFitnessStartModel = list;
-        this.countWeek = countWeek;
     }
 
     @Override
@@ -62,7 +63,7 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
                 ((OneViewHolder) holder).mImageViewItem.setImageResource(model.getDrawableassive()[position]);
                 ((OneViewHolder) holder).mTextViewHeadline1.setText(model.getHeadline_1());
                 if (position == 1) {
-                    ((OneViewHolder) holder).mTextViewHeadline1.setText("" + countWeek + model.getHeadline_1());
+                    //    ((OneViewHolder) holder).mTextViewHeadline1.setText("" + countWeek + model.getHeadline_1());
                 }
                 ((OneViewHolder) holder).fancyButton.setText(model.getmTextButton());
                 break;
@@ -97,12 +98,18 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
         private ImageView mImageViewLastItemIcon;
         private TextView mTextViewHeadline3;
+        private ProgressBar progressBar;
 
         private TwoViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageViewLastItemIcon = itemView.findViewById(R.id.image_view_fitness_start2);
             mTextViewHeadline3 = itemView.findViewById(R.id.text_view_fitness_start_3);
+            progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar_item_start_rv);
         }
+    }
+
+    public void getProgressBar() {
+
     }
 }
 

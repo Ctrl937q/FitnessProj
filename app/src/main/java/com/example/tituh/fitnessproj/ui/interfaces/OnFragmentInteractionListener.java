@@ -4,10 +4,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
+import org.w3c.dom.Text;
 
 public interface OnFragmentInteractionListener {
     void pushFragment(BaseFragment fragment, boolean shouldAddToBackstack);
@@ -70,6 +73,14 @@ public interface OnFragmentInteractionListener {
 
 
     void startStopTimerExerciseDo(TextView textViewTime,
-                                         ProgressBar progressBarExersice, FragmentManager fragmentManager);
+                                  ProgressBar progressBarExersice, FragmentManager fragmentManager);
+
+   // boolean isNetworkConnected();
+
+    boolean isInternetConnectionSnackBarWithProgress(View view, ProgressBar progressBar);
+
+    boolean isInternetConnection();
+
+    boolean isInternetConnectionSnackBar(View view);
 
 }

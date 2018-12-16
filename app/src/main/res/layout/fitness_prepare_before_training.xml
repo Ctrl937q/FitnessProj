@@ -8,6 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/linear_for_prepare"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -92,6 +93,9 @@
                 android:text="@string/start_workout"
                 android:textColor="@color/color_bnv_unchecked"
                 android:textStyle="bold" />
+
+
+
 
 
             <LinearLayout

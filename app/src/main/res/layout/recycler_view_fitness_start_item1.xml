@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -40,7 +40,6 @@
                 android:orientation="vertical">
 
 
-
                 <TextView
                     android:id="@+id/textViewFitnessStartLayout_1"
                     android:layout_width="150dp"
@@ -65,8 +64,19 @@
 
             </LinearLayout>
 
+
         </android.support.v7.widget.CardView>
 
     </com.loopeer.shadow.ShadowView>
 
-</RelativeLayout>
+    <ProgressBar
+        android:layout_width="20dp"
+        android:id="@+id/progress_bar_item_start_rv"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_height="20dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

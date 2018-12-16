@@ -51,36 +51,9 @@ public class GetReadyFragment extends BaseFragment {
         return view;
     }
 
-
-    @Override
-    public void onPause() {
-        fragmentInteractionListener.stopTimerGetReady();
-        super.onPause();
-    }
-
-    @Override
-    public void onDestroyView() {
-        Log.d("asdcxcser2", "onDestroyView");
-        super.onDestroyView();
-    }
-
-    @Override
-    public void onDestroy() {
-        Log.d("asdcxcser2", "onDestroy");
-        super.onDestroy();
-    }
-
-    @Override
-    public void onDetach() {
-        Log.d("asdcxcser2", "onDetach");
-        super.onDetach();
-    }
-
     @Override
     public void onResume() {
         fragmentInteractionListener.startTimerGetReady(mTextViewTime, getFragmentManager());
-
-        Log.d("asdcxcser2", "onResume");
         super.onResume();
     }
 }

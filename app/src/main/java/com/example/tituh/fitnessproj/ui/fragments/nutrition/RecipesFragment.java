@@ -1,11 +1,18 @@
 package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
 import android.graphics.Color;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +20,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,11 +33,11 @@ import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.helpers.SpacesItemDecoration;
 import com.example.tituh.fitnessproj.networking.ApiClient;
 import com.example.tituh.fitnessproj.networking.responses.OnGetRecipesResponseListener;
-import com.example.tituh.fitnessproj.networking.responses.recipes.RecipesResponse;
 import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecipesFragment extends BaseFragment {
 
@@ -38,22 +47,26 @@ public class RecipesFragment extends BaseFragment {
     private ArrayList<ResultsItem> mResultsItemArrayListResponse;
     private ArrayList<ResultsItem> mResultsItemArrayListResponseFilter;
     private RecipesVerticalRecyclerViewAdapter recipesVerticalRecyclerViewAdapter;
+    private Button buttonRetry;
     private int mPastVisiblesItems;
     private int mVisibleItemCount;
     private int mTotalItemCount;
-    private NestedScrollView mNestedScrollView;
+    private CoordinatorLayout coordinatorLayout;
     private ApiClient apiClient;
     private GridLayoutManager mGridLayoutManager;
     private LinearLayoutManager mLayoutManager;
+    private NestedScrollView nestedScrollViewResipes;
     private ProgressBar progressBar;
-
-
-    Button button;
-
+    private CardView cardView;
     private boolean mBreakfastClick = false;
     private boolean mSweets = false;
     private boolean mOntheGo = false;
     private boolean mNourish = false;
+    private boolean mSkinnyDrinks = false;
+    CountDownTimer countDownTimer;
+
+    Handler mHandler = new Handler();
+    boolean isRunning = true;
 
     @Nullable
     @Override
@@ -62,57 +75,26 @@ public class RecipesFragment extends BaseFragment {
             view = inflater.inflate(R.layout.recipes_fragment, container, false);
             initialize();
 
-            apiClient.getRecipes(new OnGetRecipesResponseListener() {
+            tryResponse();
+
+            buttonRetry.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onGetRecipesResponse(@Nullable String message, boolean success, @Nullable RecipesResponse recipesResponse) {
-                    mResultsItemArrayListResponse.addAll(recipesResponse.getResults());
-                    recipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(mResultsItemArrayListResponse);
-                    mVerticalRecyclerView.setAdapter(recipesVerticalRecyclerViewAdapter);
-                    progressBar.setVisibility(View.GONE);
+                public void onClick(View view) {
+                    buttonResponse();
                 }
             });
-
-            /*mNestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-                @Override
-                public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                    if (v.getChildAt(v.getChildCount() - 1) != null) {
-                        if ((scrollY>= (v.getChildAt(v.getChildCount() - 1).getMeasuredHeight() - v.getMeasuredHeight())) &&
-                                scrollY > oldScrollY) {
-                            mVisibleItemCount = mGridLayoutManager.getChildCount();
-                            mTotalItemCount = mGridLayoutManager.getItemCount();
-                            mPastVisiblesItems = mGridLayoutManager.findFirstVisibleItemPosition();
-                            if ((mVisibleItemCount + mPastVisiblesItems) >= mTotalItemCount) {
-                                if(apiClient.isNextPageNull()){
-                                    return;
-                                }
-                                apiClient.nextPage();
-                                Toast.makeText(getActivity(), "loading more", Toast.LENGTH_SHORT).show();
-
-                                apiClient.getRecipes(new OnGetRecipesResponseListener() {
-                                    @Override
-                                    public void onGetRecipesResponse(@Nullable String message, boolean success,
-                                                                     @Nullable RecipesResponse recipesResponse) {
-                                        mResultsItemArrayListResponse.addAll(recipesResponse.getResults());
-                                        recipesVerticalRecyclerViewAdapter.notifyDataSetChanged();
-                                    }
-                                });
-                            }
-                        }
-                    }
-                }
-            });*/
-
 
             mHorizontalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
                 public void onClick(View view, final int position) {
-                    if (null != fragmentInteractionListener) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        filterArray(position);
-                        progressBar.setVisibility(View.GONE);
+                    //final CardView cardView = view.findViewById(R.id.card_view_horizontal_recycler_view_recipes);
+                    //cardView.setCardBackgroundColor(getResources().getColor(R.color.color_grocery_list_card_view_checked));
+                    //Log.d("asdsadsaasdas", "+");
+                    progressBar.setVisibility(View.VISIBLE);
+                    filterArray(position);
+                    progressBar.setVisibility(View.GONE);
 
-                    }
                 }
 
                 @Override
@@ -122,13 +104,14 @@ public class RecipesFragment extends BaseFragment {
 
 
             mVerticalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
-                    mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
+                    mVerticalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
                 public void onClick(View view, final int position) {
                     if (null != fragmentInteractionListener) {
+
                         RecipesInfoFragment recipesInfoFragment = new RecipesInfoFragment();
                         Bundle bundle = new Bundle();
-                        if (mBreakfastClick || mNourish || mOntheGo || mOntheGo) {
+                        if (mBreakfastClick || mNourish || mOntheGo || mSweets || mSkinnyDrinks) {
                             bundle.putParcelableArrayList("array_for_recipes_info", mResultsItemArrayListResponseFilter);
                             bundle.putInt("position_for_recipes_info", position);
                         } else {
@@ -149,6 +132,7 @@ public class RecipesFragment extends BaseFragment {
         return view;
     }
 
+
     @Override
     public void onDestroyView() {
         fragmentInteractionListener.updateActionBarTitle("NUTRITION");
@@ -162,8 +146,12 @@ public class RecipesFragment extends BaseFragment {
         fragmentInteractionListener.visibleIconBacktActionBar();
         mHorizontalRecyclerView = view.findViewById(R.id.horizontal_recyclerView_recipes);
         mVerticalRecyclerView = view.findViewById(R.id.vertical_recyclerView_recipes);
-        mNestedScrollView = view.findViewById(R.id.nestedScrollView);
+        coordinatorLayout = view.findViewById(R.id.nestedScrollView);
+        cardView = view.findViewById(R.id.card_view_horizontal_recycler_view_recipes);
+        buttonRetry = view.findViewById(R.id.btn_retry_recipes);
         progressBar = view.findViewById(R.id.progressBarRecipes);
+        nestedScrollViewResipes = view.findViewById(R.id.nestedViewRecipess);
+        //linearLayout = view.findViewById(R.id.nestedScrollView);
         mLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.HORIZONTAL, false);
         mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
@@ -171,34 +159,29 @@ public class RecipesFragment extends BaseFragment {
         mResultsItemArrayListResponse = new ArrayList<>();
         mResultsItemArrayListResponseFilter = new ArrayList<>();
 
-        mArrayListRecipesCategory.add("Breakfast");
-        mArrayListRecipesCategory.add("Sweets");
-        mArrayListRecipesCategory.add("On the Go");
-        mArrayListRecipesCategory.add("Nourish");
+        mArrayListRecipesCategory.add("BREAKFAST");
+        mArrayListRecipesCategory.add("SWEETS");
+        mArrayListRecipesCategory.add("ON THE GO");
+        mArrayListRecipesCategory.add("NOURISH");
+        mArrayListRecipesCategory.add("SKINNY DRINKS");
 
         mHorizontalRecyclerView.setLayoutManager(mLayoutManager);
         mVerticalRecyclerView.setLayoutManager(mGridLayoutManager);
-        mHorizontalRecyclerView.setAdapter(new RecipesHorizontalRecyclerViewAdapter(mArrayListRecipesCategory));
 
         mVerticalRecyclerView.addItemDecoration(new SpacesItemDecoration(getActivity(), R.dimen.column_spacing));
     }
 
     private void filterArray(int position) {
         if (position == 0) {
-
             if (mBreakfastClick) {
                 mBreakfastClick = false;
                 setAdapter(mResultsItemArrayListResponse);
                 return;
             }
-            mBreakfastClick = true;
-            mSweets = false;
-            mOntheGo = false;
-            mNourish = false;
+            whichPositionClick(true, false, false, false, false);
             mResultsItemArrayListResponseFilter.clear();
             for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
                 if (mResultsItemArrayListResponse.get(i).getType() == 0) {
-
                     mResultsItemArrayListResponseFilter.add(mResultsItemArrayListResponse.get(i));
                 }
             }
@@ -210,10 +193,7 @@ public class RecipesFragment extends BaseFragment {
                 setAdapter(mResultsItemArrayListResponse);
                 return;
             }
-            mBreakfastClick = false;
-            mSweets = true;
-            mOntheGo = false;
-            mNourish = false;
+            whichPositionClick(false, true, false, false, false);
             mResultsItemArrayListResponseFilter.clear();
             for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
                 if (mResultsItemArrayListResponse.get(i).getType() == 3) {
@@ -228,10 +208,7 @@ public class RecipesFragment extends BaseFragment {
                 setAdapter(mResultsItemArrayListResponse);
                 return;
             }
-            mBreakfastClick = false;
-            mSweets = false;
-            mOntheGo = true;
-            mNourish = false;
+            whichPositionClick(false, false, true, false, false);
             mResultsItemArrayListResponseFilter.clear();
             for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
                 if (mResultsItemArrayListResponse.get(i).getType() == 5) {
@@ -246,10 +223,7 @@ public class RecipesFragment extends BaseFragment {
                 setAdapter(mResultsItemArrayListResponse);
                 return;
             }
-            mBreakfastClick = false;
-            mSweets = false;
-            mOntheGo = false;
-            mNourish = true;
+            whichPositionClick(false, false, false, true, false);
             mResultsItemArrayListResponseFilter.clear();
             for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
                 if (mResultsItemArrayListResponse.get(i).getType() == 6) {
@@ -258,11 +232,91 @@ public class RecipesFragment extends BaseFragment {
             }
             setAdapter(mResultsItemArrayListResponseFilter);
         }
+        if (position == 4) {
+            if (mSkinnyDrinks) {
+                mSkinnyDrinks = false;
+                setAdapter(mResultsItemArrayListResponse);
+                return;
+            }
+            whichPositionClick(false, false, false, false, true);
+
+            mResultsItemArrayListResponseFilter.clear();
+            for (int i = 0; i < mResultsItemArrayListResponse.size(); i++) {
+                if (mResultsItemArrayListResponse.get(i).getType() == 7) {
+                    mResultsItemArrayListResponseFilter.add(mResultsItemArrayListResponse.get(i));
+                }
+            }
+            setAdapter(mResultsItemArrayListResponseFilter);
+        }
+    }
+
+    private void whichPositionClick(boolean breakfastClick, boolean sweets,
+                                    boolean ontheGo, boolean nourish, boolean skinnyDrinks) {
+        mBreakfastClick = breakfastClick;
+        mSweets = sweets;
+        mOntheGo = ontheGo;
+        mNourish = nourish;
+        mSkinnyDrinks = skinnyDrinks;
     }
 
     private void setAdapter(ArrayList<ResultsItem> arrayList) {
         recipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(arrayList);
         mVerticalRecyclerView.setAdapter(recipesVerticalRecyclerViewAdapter);
         recipesVerticalRecyclerViewAdapter.notifyDataSetChanged();
+    }
+
+    private void tryResponse() {
+        if (fragmentInteractionListener.isInternetConnection()) {
+            progressBar.setVisibility(View.VISIBLE);
+            apiClient.getRecipes(new OnGetRecipesResponseListener() {
+                @Override
+                public void onGetRecipesResponse(@Nullable String message, boolean success, @NonNull List<ResultsItem> resultsItems) {
+                    mResultsItemArrayListResponse.addAll(resultsItems);
+                    recipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(mResultsItemArrayListResponse);
+                    mVerticalRecyclerView.setAdapter(recipesVerticalRecyclerViewAdapter);
+                    mHorizontalRecyclerView.setAdapter(new RecipesHorizontalRecyclerViewAdapter(mArrayListRecipesCategory));
+                    progressBar.setVisibility(View.GONE);
+                }
+            });
+        } else {
+            Snackbar snackbarNoIntt = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_LONG);
+            snackbarNoIntt.show();
+            buttonRetry.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+    private void buttonResponse() {
+        buttonRetry.setVisibility(View.GONE);
+        final Snackbar snackbarNoInt = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_LONG);
+        final Snackbar snackbarYesInt = Snackbar.make(coordinatorLayout, "Internet Connection Restored", Snackbar.LENGTH_LONG);
+        if (fragmentInteractionListener.isInternetConnection()) {
+            snackbarYesInt.show();
+            tryResponse();
+        } else {
+            progressBar.setVisibility(View.VISIBLE);
+            new CountDownTimer(2000, 500) {
+                @Override
+                public void onTick(long l) {
+                    if (fragmentInteractionListener.isInternetConnection()) {
+                        snackbarYesInt.show();
+                        tryResponse();
+                    }
+                }
+
+                @Override
+                public void onFinish() {
+                    if (fragmentInteractionListener.isInternetConnection()) {
+                        snackbarYesInt.show();
+                        tryResponse();
+                    } else {
+                        snackbarNoInt.show();
+                        progressBar.setVisibility(View.GONE);
+                        buttonRetry.setVisibility(View.VISIBLE);
+                    }
+                    cancel();
+                }
+            }.start();
+        }
     }
 }

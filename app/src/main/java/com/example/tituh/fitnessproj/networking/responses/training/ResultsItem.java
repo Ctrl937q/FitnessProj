@@ -169,7 +169,7 @@ public class ResultsItem implements Parcelable {
 	@Override
  	public String toString(){
 		return 
-			"ResultsItem{" + 
+			"RecipesResponse{" +
 			"duration = '" + duration + '\'' + 
 			",complexity = '" + complexity + '\'' + 
 			",weeks = '" + weeks + '\'' + 

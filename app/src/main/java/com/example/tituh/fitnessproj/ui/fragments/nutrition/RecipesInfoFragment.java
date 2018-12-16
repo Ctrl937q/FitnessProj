@@ -84,7 +84,7 @@ public class RecipesInfoFragment extends BaseFragment {
 
             Picasso.get()
                     .load(ingredientsItemArrayList.get(mPosition).getImage())
-                    .placeholder(R.drawable.wine_placeholder)
+                    .placeholder(R.drawable.placeholder_recipes)
                     .into(mSquareImageView);
 
             textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
@@ -117,7 +117,7 @@ public class RecipesInfoFragment extends BaseFragment {
         } else {
             Picasso.get()
                     .load(ingredientsItemArrayList.get(mPosition).getImage())
-                    .placeholder(R.drawable.wine_placeholder)
+                    .placeholder(R.drawable.placeholder_recipes)
                     .into(mSquareImageView);
             textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
 

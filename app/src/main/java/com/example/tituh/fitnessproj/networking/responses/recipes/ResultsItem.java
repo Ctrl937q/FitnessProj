@@ -4,10 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultsItem implements Parcelable {
+public class ResultsItem  implements Parcelable {
 
 	@SerializedName("image")
 	private String image;

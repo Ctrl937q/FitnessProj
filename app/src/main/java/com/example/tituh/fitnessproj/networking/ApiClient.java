@@ -6,10 +6,11 @@ import android.util.Log;
 
 import com.example.tituh.fitnessproj.networking.responses.OnGetRecipesResponseListener;
 import com.example.tituh.fitnessproj.networking.responses.OnGetTrainingResponseListener;
-import com.example.tituh.fitnessproj.networking.responses.recipes.RecipesResponse;
+import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.networking.responses.training.TrainingResponse;
 
 import java.net.HttpURLConnection;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -62,9 +63,9 @@ public class ApiClient implements ApiModelInterface {
 
     @Override
     public void getRecipes(@NonNull final OnGetRecipesResponseListener listener) {
-        mApi.getRecipes().enqueue(new Callback<RecipesResponse>() {
+        mApi.getRecipes().enqueue(new Callback<List<ResultsItem>>() {
             @Override
-            public void onResponse(Call<RecipesResponse> call, Response<RecipesResponse> response) {
+            public void onResponse(Call<List<ResultsItem>> call, Response<List<ResultsItem>> response) {
                 if (HttpURLConnection.HTTP_OK == response.code()) {
                     if (null != listener)
                         listener.onGetRecipesResponse(null, true, response.body());
@@ -72,23 +73,9 @@ public class ApiClient implements ApiModelInterface {
             }
 
             @Override
-            public void onFailure(Call<RecipesResponse> call, Throwable t) {
-                if (null != listener)
-                    listener.onGetRecipesResponse(t.getMessage(), false, null);
+            public void onFailure(Call<List<ResultsItem>> call, Throwable t) {
 
             }
         });
-    }
-
-    public void nextPage() {
-        page++;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public boolean isNextPageNull() {
-        return nextPageNull;
     }
 }

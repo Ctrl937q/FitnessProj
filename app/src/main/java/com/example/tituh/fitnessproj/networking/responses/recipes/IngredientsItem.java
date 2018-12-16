@@ -18,6 +18,17 @@ public class IngredientsItem implements Parcelable {
 		title = in.readString();
 	}
 
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeString(dosage);
+		dest.writeString(title);
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
 	public static final Creator<IngredientsItem> CREATOR = new Creator<IngredientsItem>() {
 		@Override
 		public IngredientsItem createFromParcel(Parcel in) {
@@ -54,15 +65,4 @@ public class IngredientsItem implements Parcelable {
 			",title = '" + title + '\'' + 
 			"}";
 		}
-
-	@Override
-	public int describeContents() {
-		return 0;
-	}
-
-	@Override
-	public void writeToParcel(Parcel parcel, int i) {
-		parcel.writeString(dosage);
-		parcel.writeString(title);
-	}
 }
