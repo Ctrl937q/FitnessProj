@@ -68,4 +68,6 @@ public interface OnFragmentInteractionListener {
 
     ImageView getInfoButton();
 
+    ImageView getmImageViewAboutActionBar();
+
 }

@@ -11,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.Locale;
 
 public class GetReadyFragment extends BaseFragment {
@@ -111,7 +109,6 @@ public class GetReadyFragment extends BaseFragment {
         bundle.putString("key", key);
         bundle.putInt("week_click", weekClick);
         bundle.putInt("day_click", dayClick);
-
 
         exersiceDoFragment = new ExersiceDoFragment();
         exersiceDoFragment.setArguments(bundle);

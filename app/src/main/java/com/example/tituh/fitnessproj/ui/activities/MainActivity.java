@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = findViewById(R.id.app_bar);
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             //Log.v(tag, tag);
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
-            //ft.setCustomAnimations(R.animator.slide_in_left, 0);
+            ft.setCustomAnimations(R.anim.slide_in_left, 0);
             ft.replace(R.id.fragment_container, fragment, tag);
             if (shouldAddToBackstack) ft.addToBackStack(tag);
             ft.commit();
@@ -357,4 +356,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         return mImageViewInfo;
     }
 
+    @Override
+    public ImageView getmImageViewAboutActionBar() {
+        return mImageViewAboutActionBar;
+    }
 }

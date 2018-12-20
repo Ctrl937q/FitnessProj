@@ -41,6 +41,15 @@ public class MainTabLayoutFragment extends BaseFragment {
 
             mBottomNavigationView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
+
+            fragmentInteractionListener.getmImageViewAboutActionBar().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mViewPager.setCurrentItem(0);
+
+                }
+            });
+
             mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int i, float v, int i1) {
