@@ -1,12 +1,11 @@
 package com.example.tituh.fitnessproj.ui.activities;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -16,15 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.helpers.TimerClass;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
+import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.GetReadyFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
@@ -36,9 +34,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewInfo;
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
-    private TimerClass timerClass;
-    private CountDownTimer countDownTimer;
-
+    private GetReadyFragment getReadyFragment;
+    private boolean pressOnExersiceDoFragment = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.app_bar);
-
         mActionBarTitle = findViewById(R.id.action_bar_text_view);
         mImageViewBackActionBar = findViewById(R.id.action_bar_arrow);
         mImageViewAboutActionBar = findViewById(R.id.action_bar_about);
@@ -55,16 +51,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewShare = findViewById(R.id.action_bar_share);
         mImageViewBackActionBarGetReady = findViewById(R.id.action_bar_arrow_get_ready);
         setSupportActionBar(toolbar);
-        timerClass = new TimerClass();
+        getReadyFragment = new GetReadyFragment();
+
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (timerClass.ismTimerRunningExercise()) {
-                    stopTimerExerciseDo();
-                }
-                if (timerClass.ismTimerRunningGetReady()) {
-                    stopTimerGetReady();
-                }
                 popFragment();
             }
         });
@@ -72,7 +63,10 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageHomeActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                popFragment();
+                popFragment();
+                popFragment();
+                pressOnExersiceDoFragment = false;
             }
         });
         pushFragment(new MainTabLayoutFragment(), false);
@@ -126,13 +120,16 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     public void onBackPressed() {
-        if (timerClass.ismTimerRunningExercise()) {
-            stopTimerExerciseDo();
+        if (pressOnExersiceDoFragment) {
+            popFragment();
+            popFragment();
+            popFragment();
+            pressOnExersiceDoFragment = false;
+            Log.d("asdsad12132132132ads", "" + pressOnExersiceDoFragment);
+        } else {
+            popFragment();
         }
-        if (timerClass.ismTimerRunningGetReady()) {
-            stopTimerGetReady();
-        }
-        popFragment();
+
     }
 
     @Override
@@ -251,38 +248,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public void goneIconBackGetReadyActionBar() {
-        mImageViewBackActionBarGetReady.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void startTimerGetReady(TextView textView, FragmentManager fragmentManager) {
-        timerClass.setmTimerRunningGetReady(true);
-        timerClass.startTimerGetReady(textView, fragmentManager);
-    }
-
-    @Override
-    public void stopTimerGetReady() {
-        timerClass.setmTimerRunningGetReady(false);
-        timerClass.pauseTimerGetReady();
-    }
-
-    @Override
-    public void startTimerExerciseDo(TextView textViewTime,
-                                     ProgressBar progressBarExersice, FragmentManager fragmentManager) {
-        timerClass.setmTimerRunningExercise(true);
-        timerClass.startTimerExercise(20000, textViewTime, progressBarExersice, fragmentManager);
-    }
-
-    @Override
-    public void startStopTimerExerciseDo(TextView textViewTime,
-                                         ProgressBar progressBarExersice, FragmentManager fragmentManager) {
-        timerClass.setmTimerRunningExercise(true);
-        timerClass.startStopTimerExercise(textViewTime, progressBarExersice, fragmentManager);
-    }
-
-
-    @Override
     public boolean isInternetConnectionSnackBarWithProgress(View view, final ProgressBar progressBar) {
         final ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         if (cm.getActiveNetwork() != null) {
@@ -308,7 +273,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                             @Override
                             public void onFinish() {
                                 if (cm.getActiveNetwork() == null) {
-
                                     snackbar.show();
                                 }
                                 cancel();
@@ -379,29 +343,18 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
     @Override
-    public void stopTimerExerciseDo() {
-        timerClass.setmTimerRunningExercise(false);
-        timerClass.pauseTimerExercise();
+    public boolean getPressOnExersiceDoFragment() {
+        return pressOnExersiceDoFragment;
     }
 
     @Override
-    public void btnPlayPause(int timerValue, TextView textViewTime,
-                             ProgressBar progressBarExersice, FragmentManager fragmentManager) {
-
-        if (timerClass.ismTimerRunningExercise()) {
-            timerClass.setmTimerRunningExercise(false);
-            stopTimerExerciseDo();
-        } else {
-            timerClass.setmTimerRunningExercise(true);
-            startStopTimerExerciseDo(textViewTime, progressBarExersice, fragmentManager);
-        }
+    public void setPressOnExersiceDoFragment(boolean value) {
+        pressOnExersiceDoFragment = value;
     }
-
 
     @Override
-    public void btnBackPressed() {
-        onBackPressed();
+    public ImageView getInfoButton() {
+        return mImageViewInfo;
     }
-
 
 }

@@ -5,34 +5,34 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ExerciseRecyclerViewAdapter;
-import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ExerciseInfoFragment extends BaseFragment {
 
     private ArrayList<ResultsItem> resultTraining;
     private ArrayList<WorkoutsItem> resultsItemsCircuitOneThree;
     private ArrayList<WorkoutsItem> resultsItemsCircuitTwoFour;
-    int weekClick;
-    int dayClick;
-    double time;
-    int level;
+    GetReadyFragment getReadyFragment;
+    private int mWeekClick;
+    private int mDayClick;
+    private double mTime;
+    private int mLevel;
+    private String day;
+    private String week;
+    private String keyShared;
 
     @Nullable
     @Override
@@ -48,24 +48,38 @@ public class ExerciseInfoFragment extends BaseFragment {
             resultsItemsCircuitOneThree = new ArrayList<>();
             resultsItemsCircuitTwoFour = new ArrayList<>();
             resultTraining = getArguments().getParcelableArrayList("array_trainings_for_training_info");
-            weekClick = getArguments().getInt("week_click");
-            dayClick = getArguments().getInt("day_click");
-            level = getArguments().getInt("level");
-            time = Double.parseDouble(resultTraining.get(0).getDuration()) / 60;
+            mWeekClick = getArguments().getInt("week_click");
+            mDayClick = getArguments().getInt("day_click");
+            mLevel = getArguments().getInt("level");
+            mTime = Double.parseDouble(resultTraining.get(0).getDuration()) / 60;
+
+            week = getArguments().getString("week");
+            day = getArguments().getString("day");
+            keyShared = mLevel + week + day;
 
             textViewTitle.setText("" + resultTraining.get(0).getTitle());
-            textViewAllTime.setText("" + (int) time + " minutes");
+            textViewAllTime.setText("" + (int) mTime + " minutes");
 
             filterCircuitOneThree(resultTraining);
             filterCircuitTwoFout(resultTraining);
 
-            Log.d("sadfget", "" + resultsItemsCircuitOneThree.size());
-            Log.d("sadfget", "" + resultsItemsCircuitTwoFour.size());
-
             mButtonStart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    fragmentInteractionListener.pushFragment(new GetReadyFragment(), false);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelableArrayList("array_trainings_one_three", resultsItemsCircuitOneThree);
+                    bundle.putParcelableArrayList("array_trainings_two_four", resultsItemsCircuitTwoFour);
+                    bundle.putInt("level", mLevel);
+                    bundle.putString("title", resultTraining.get(0).getTitle());
+                    bundle.putString("week", getArguments().getString("week"));
+                    bundle.putString("day", getArguments().getString("day"));
+                    bundle.putString("key", keyShared);
+                    bundle.putInt("day_click", mDayClick);
+                    bundle.putInt("week_click", mWeekClick);
+                    getReadyFragment = new GetReadyFragment();
+                    getReadyFragment.setArguments(bundle);
+                    fragmentInteractionListener.pushFragment(getReadyFragment, true);
+
                 }
             });
 
@@ -77,25 +91,12 @@ public class ExerciseInfoFragment extends BaseFragment {
             fragmentInteractionListener.goneIconShareActionBar();
 
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(new ExerciseRecyclerViewAdapter(resultsItemsCircuitOneThree, resultsItemsCircuitTwoFour, level));
-            recyclerView.addItemDecoration(new MarginItemDecoration(1, 30, 0, 10, 10));
+            recyclerView.setAdapter(new ExerciseRecyclerViewAdapter(resultsItemsCircuitOneThree, resultsItemsCircuitTwoFour, mLevel, getActivity()));
+            recyclerView.addItemDecoration(new MarginItemDecoration(1, 10, 0, 10, 10));
 
-            recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
-                    recyclerView, new RecyclerTouchListenerStart.ClickListener() {
-                @Override
-                public void onClick(View view, int position) {
-                    if (position == 0) {
-                    }
-                }
-
-                @Override
-                public void onLongClick(View view, int position) {
-
-                }
-            }));
         }
 
-        fragmentInteractionListener.updateActionBarTitle("WEEK " + weekClick + " - Day " + dayClick);
+        fragmentInteractionListener.updateActionBarTitle("WEEK " + mWeekClick + " - Day " + mDayClick);
         fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.visibleIconBacktActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();
@@ -113,10 +114,14 @@ public class ExerciseInfoFragment extends BaseFragment {
                     resultsItemsCircuitOneThree.add(arrayList.get(i).getWorkouts().get(j));
                 }
             }
-
         }
+        Collections.sort(resultsItemsCircuitOneThree, new Comparator<WorkoutsItem>() {
+            @Override
+            public int compare(WorkoutsItem workoutsItem, WorkoutsItem t1) {
+                return workoutsItem.getPosition() - t1.getPosition();
+            }
+        });
     }
-
 
     private void filterCircuitTwoFout(ArrayList<ResultsItem> arrayList) {
         resultsItemsCircuitTwoFour.clear();
@@ -126,7 +131,12 @@ public class ExerciseInfoFragment extends BaseFragment {
                     resultsItemsCircuitTwoFour.add(arrayList.get(i).getWorkouts().get(j));
                 }
             }
-
         }
+        Collections.sort(resultsItemsCircuitTwoFour, new Comparator<WorkoutsItem>() {
+            @Override
+            public int compare(WorkoutsItem workoutsItem, WorkoutsItem t1) {
+                return workoutsItem.getPosition() - t1.getPosition();
+            }
+        });
     }
 }

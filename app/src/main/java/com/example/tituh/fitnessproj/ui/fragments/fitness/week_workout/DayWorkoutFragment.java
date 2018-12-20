@@ -9,18 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.DayWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
 
 public class DayWorkoutFragment extends BaseFragment {
 
@@ -46,17 +40,16 @@ public class DayWorkoutFragment extends BaseFragment {
             resultsTraining = new ArrayList<>();
 
             week = getArguments().getInt("position_week");
+
             resultsItemsArray = getArguments().getParcelableArrayList("array_trainings_for_day_workout");
             mLevel = getArguments().getInt("level");
             mCountWeek = getArguments().getInt("value_week");
             mWeekClick = getArguments().getString("item_click_week");
-
             filterArrayListDay();
 
             RecyclerView recyclerView = view.findViewById(R.id.recyclerView_workout_day);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             recyclerView.setAdapter(new DayWorkoutFragmentRecyclerViewAdapter(dayArrayList, titleArrayList, mCountWeek, week));
-
 
             fragmentInteractionListener.updateActionBarTitle("WEEK " + mCountWeek);
             fragmentInteractionListener.goneIconAbouttActionBar();
@@ -69,18 +62,19 @@ public class DayWorkoutFragment extends BaseFragment {
                     recyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
                 public void onClick(View view, int position) {
-                    if (null != fragmentInteractionListener) {
+                    if(position == 0){
+
+                    }else if (null != fragmentInteractionListener) {
                         day = dayArrayList.get(position - 1);
                         Bundle bundle = new Bundle();
                         bundle.putParcelableArrayList("array_trainings_for_training_info", filterWeekDay(position));
                         bundle.putInt("level", mLevel);
                         bundle.putInt("week_click", week);
                         bundle.putInt("day_click", position);
-                        //bundle.putString("title", title);
-
+                        bundle.putString("week", mWeekClick);
+                        bundle.putString("day", filterWeekDay(position).get(0).getDays().get(0));
                         exerciseInfoFragment = new ExerciseInfoFragment();
                         exerciseInfoFragment.setArguments(bundle);
-
                         fragmentInteractionListener.pushFragment(exerciseInfoFragment, true);
 
                     }

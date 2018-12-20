@@ -2,16 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_marginTop="2dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="2dp"
         android:layout_marginBottom="5dp"
         app:cardCornerRadius="10dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,74 +22,83 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:id="@+id/imageView_exercise_glossary"
-                android:layout_height="wrap_content"
-                android:src="@drawable/image_exercise_glossary" />
+                android:id="@+id/imageView_glossary"
+                android:layout_width="130dp"
+                android:layout_height="110dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test_picture" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/reg_font"
-
-                    android:textColor="@color/color_bnv_unchecked"
-                    android:id="@+id/warm_up_name_glossary"
-                    android:text="Warm Up Name" />
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_marginEnd="55dp"
+                    android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/vector_clock" />
 
                     <TextView
+                        android:id="@+id/warm_up_name_glossary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/reg_font"
+                        android:text="Warm Up Name"
 
-                        android:layout_marginStart="10dp"
-                        android:id="@+id/textView_time_exercise_2_glossary"
-                        android:text="5 MIN"
-                        android:textColor="@color/color_light_pink" />
+                        android:textColor="@color/color_bnv_unchecked"
+                        android:textSize="17sp" />
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:text="#REPS"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/reg_font"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal">
 
-                        android:layout_marginLeft="15dp"
-                        android:textColor="@color/color_light_pink"
-                        android:layout_height="wrap_content" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/vector_clock" />
+
+                        <TextView
+                            android:id="@+id/textView_time_exercise_2_glossary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:fontFamily="@font/reg_font"
+                            android:text="5 MIN"
+                            android:textColor="@color/color_light_pink"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/reps_item_glossary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:fontFamily="@font/reg_font"
+                            android:text="#REPS"
+                            android:textColor="@color/color_light_pink"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:gravity="right|center"
-                android:layout_height="match_parent">
 
                 <ImageView
+                    android:id="@+id/image_view_info_glossary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="25dp"
-                    android:src="@drawable/vector_ic_info" />
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/vector_info_black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </android.support.constraint.ConstraintLayout>
 
-            </LinearLayout>
 
         </LinearLayout>
     </android.support.v7.widget.CardView>

@@ -12,11 +12,10 @@
 
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:id="@+id/image_view_medal"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/vector_calendar" />
+            android:layout_height="80dp"
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/text_view_quantity_week"
@@ -40,27 +39,16 @@
         android:textColor="@color/color_bnv_unchecked"
         android:textSize="20dp" />
 
-    <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/btn_button_rest_workout"
+
+
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
+        android:id="@+id/btn_button_rest_workout"
         android:text="RESET"
-        android:fontFamily="@font/medium_font"
-        android:paddingStart="16dp"
-        android:paddingTop="11dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="11dp"
-        android:textStyle="bold"
-        fancy:fb_borderColor="#FFFFFF"
-        fancy:fb_borderWidth="1dp"
-        fancy:fb_defaultColor="#ffffff"
-        fancy:fb_focusColor="#ca838383"
-        fancy:fb_radius="7dp"
-        fancy:fb_textColor="#000000"
-        fancy:fb_textSize="10sp"
-        fancy:fb_useSystemFont="false" />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn_reset"
+        android:layout_height="30dp" />
 
 
 </LinearLayout>

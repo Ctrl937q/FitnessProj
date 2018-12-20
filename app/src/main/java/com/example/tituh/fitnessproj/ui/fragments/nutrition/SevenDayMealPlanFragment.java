@@ -1,6 +1,5 @@
 package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;

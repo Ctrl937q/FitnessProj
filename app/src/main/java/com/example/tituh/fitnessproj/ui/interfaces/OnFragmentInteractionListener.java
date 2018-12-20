@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -55,32 +56,16 @@ public interface OnFragmentInteractionListener {
 
     void goneIconShareActionBar();
 
-    void goneIconBackGetReadyActionBar();
-
-    void startTimerGetReady(TextView textView, FragmentManager fragmentManager);
-
-    void stopTimerGetReady();
-
-    void startTimerExerciseDo(TextView textViewTime,
-                              ProgressBar progressBarExersice, FragmentManager fragmentManager);
-
-    void stopTimerExerciseDo();
-
-    void btnPlayPause(int timerValue, TextView textViewTime,
-                      ProgressBar progressBarExersice, FragmentManager fragmentManager);
-
-    void btnBackPressed();
-
-
-    void startStopTimerExerciseDo(TextView textViewTime,
-                                  ProgressBar progressBarExersice, FragmentManager fragmentManager);
-
-   // boolean isNetworkConnected();
-
     boolean isInternetConnectionSnackBarWithProgress(View view, ProgressBar progressBar);
 
     boolean isInternetConnection();
 
     boolean isInternetConnectionSnackBar(View view);
+
+    boolean getPressOnExersiceDoFragment();
+
+    void setPressOnExersiceDoFragment(boolean value);
+
+    ImageView getInfoButton();
 
 }

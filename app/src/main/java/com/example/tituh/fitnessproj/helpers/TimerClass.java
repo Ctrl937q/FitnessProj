@@ -18,6 +18,7 @@ public class TimerClass extends BaseFragment {
 
     private CountDownTimer mCountDownTimerExercise;
     private CountDownTimer mCountDownTimerGetReady;
+    private ExersiceDoFragment exersiceDoFragment;
 
     private long startTimeInMills;
     private long startTimeInMillsGetReady = 10000;
@@ -32,9 +33,7 @@ public class TimerClass extends BaseFragment {
 
     private boolean mOnPause = false;
 
-    //private boolean mTimerRunningDialog;
-
-    public void startTimerExercise(long startTime,final TextView textView, final ProgressBar progressBar,
+   /* public void startTimerExercise(long startTime, final TextView textView, final ProgressBar progressBar,
                                    final FragmentManager fragmentManager) {
         startTimeInMills = startTime;
         mTimeLeftInMills = startTime;
@@ -46,23 +45,27 @@ public class TimerClass extends BaseFragment {
                 updateCountDownText(textView);
                 long valueProgressBar = startTimeInMills / 1000 - mTimeLeftInMills / 1000;
                 progressBar.setProgress((int) valueProgressBar);
-                Log.d("ssssssdasd1", "" + l);
             }
 
             @Override
             public void onFinish() {
-                mTimerRunningExercise = false;
-                mCountDownTimerExercise.cancel();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
-                ft.replace(R.id.fragment_container, new AwardFragment(), "awardfragment");
-                ft.addToBackStack("awardfragment");
-                ft.commit();
+                //mTimerRunningExercise = false;
+                //exersiceDoFragment.btnNextClick();
+                //fragmentInteractionListener.testMetod();
+                exersiceDoFragment = new ExersiceDoFragment();
+                pauseTimerExercise();
+                //exersiceDoFragment.btnNextClick();
+                //mCountDownTimerExercise.cancel();
+                //mTimerRunningExercise = false;
+                //mCountDownTimerExercise.cancel();
+
+
             }
         }.start();
         mTimerRunningExercise = true;
-    }
+    }*/
 
-    public void startStopTimerExercise(final TextView textView, final ProgressBar progressBar,
+    /*public void startStopTimerExercise(final TextView textView, final ProgressBar progressBar,
                                        final FragmentManager fragmentManager){
         mTimerRunningExercise = true;
         mCountDownTimerExercise = new CountDownTimer(mTimeLeftInMills, 1000) {
@@ -86,7 +89,7 @@ public class TimerClass extends BaseFragment {
             }
         }.start();
         mTimerRunningExercise = true;
-    }
+    }*/
 
     public void startTimerGetReady(final TextView textViewTime, final FragmentManager fragmentManager) {
         mTimerRunningGetReady = true;
@@ -100,9 +103,9 @@ public class TimerClass extends BaseFragment {
             public void onFinish() {
                 mTimerRunningGetReady = false;
                 mCountDownTimerGetReady.cancel();
-                FragmentTransaction ft = fragmentManager.beginTransaction();
+                /*FragmentTransaction ft = fragmentManager.beginTransaction();
                 ft.replace(R.id.fragment_container, new ExersiceDoFragment(), "exercisedofragment");
-                ft.commit();
+                ft.commit();*/
 
             }
         }.start();
@@ -113,32 +116,24 @@ public class TimerClass extends BaseFragment {
 
 
 
-    public void pauseTimerExercise() {
+    /*public void pauseTimerExercise() {
         mCountDownTimerExercise.cancel();
         mTimerRunningExercise = false;
-    }
+    }*/
 
     public void pauseTimerGetReady() {
         mCountDownTimerGetReady.cancel();
         mTimerRunningExercise = false;
     }
 
-    private void updateCountDownText(TextView textView) {
+   /* private void updateCountDownText(TextView textView) {
         int seconds = (int) (mTimeLeftInMills / 1000) % 60;
         String timeLeftFormatted = String.format(Locale.getDefault(), "%1d", seconds);
         textView.setText(timeLeftFormatted);
-    }
+    }*/
 
     private void updateCountDownGetReady(TextView textView) {
         int seconds = (int) (mTimeLeftInMillsGetReady / 1000) % 60;
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%1d", seconds);
-        textView.setText(timeLeftFormatted);
-    }
-
-    private void updateCountDownTextDialog(TextView textView) {
-        //int minutes = (int) (mTimeLeftInills / 1000) / 60;
-        int seconds = (int) (mTimeLeftInMillsDialog / 1000) % 60;
-        //String timeLeftFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds); - with minutes
         String timeLeftFormatted = String.format(Locale.getDefault(), "%1d", seconds);
         textView.setText(timeLeftFormatted);
     }
@@ -151,32 +146,12 @@ public class TimerClass extends BaseFragment {
         return mTimerRunningGetReady;
     }
 
-    public CountDownTimer getmCountDownTimerExercise() {
-        return mCountDownTimerExercise;
-    }
-
-    public void setmCountDownTimerExercise(CountDownTimer mCountDownTimerExercise) {
-        this.mCountDownTimerExercise = mCountDownTimerExercise;
-    }
-
-    public void setmTimerRunningExercise(boolean mTimerRunningExercise) {
+  /*  public void setmTimerRunningExercise(boolean mTimerRunningExercise) {
         this.mTimerRunningExercise = mTimerRunningExercise;
-    }
+    }*/
 
     public void setmTimerRunningGetReady(boolean mTimerRunningGetReady) {
         this.mTimerRunningGetReady = mTimerRunningGetReady;
-    }
-
-    public long getStartTimeInMills() {
-        return startTimeInMills;
-    }
-
-    public void setStartTimeInMills(long startTimeInMills) {
-        this.startTimeInMills = startTimeInMills;
-    }
-
-    public void setmTimeLeftInMills(long mTimeLeftInMills) {
-        this.mTimeLeftInMills = mTimeLeftInMills;
     }
 
     public boolean ismOnPause() {
@@ -186,4 +161,7 @@ public class TimerClass extends BaseFragment {
     public void setmOnPause(boolean mOnPause) {
         this.mOnPause = mOnPause;
     }
+
+
+
 }

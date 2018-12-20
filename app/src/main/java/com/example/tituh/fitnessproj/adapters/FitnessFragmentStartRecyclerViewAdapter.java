@@ -60,6 +60,7 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
         switch (model.getType()) {
             case ONE_TYPE:
+
                 ((OneViewHolder) holder).mImageViewItem.setImageResource(model.getDrawableassive()[position]);
                 ((OneViewHolder) holder).mTextViewHeadline1.setText(model.getHeadline_1());
                 if (position == 1) {

@@ -11,6 +11,7 @@ import com.example.tituh.fitnessproj.networking.responses.training.TrainingRespo
 
 import java.net.HttpURLConnection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -27,12 +28,15 @@ public class ApiClient implements ApiModelInterface {
     private ApiRestInterface mApi;
     private int page = 1;
     private boolean nextPageNull = false;
+    private Call<TrainingResponse> callCalcel;
 
     public ApiClient() {
         if (retrofit == null) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+            OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).readTimeout(3, TimeUnit.SECONDS)
+                    .connectTimeout(3, TimeUnit.SECONDS)
+                    .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .client(client)
@@ -46,18 +50,25 @@ public class ApiClient implements ApiModelInterface {
     public void getTrainings(@Nullable final OnGetTrainingResponseListener listener) {
         mApi.getTrainigs().enqueue(new Callback<TrainingResponse>() {
             @Override
-            public void onResponse(@NonNull Call<TrainingResponse> call, @NonNull Response<TrainingResponse> response) {
+            public void onResponse(@NonNull final Call<TrainingResponse> call, @NonNull Response<TrainingResponse> response) {
+                callCalcel = call;
                 if (HttpURLConnection.HTTP_OK == response.code()) {
                     if (null != listener)
                         listener.onGetTrainingsResponse(null, true, response.body());
+
+
                 }
             }
+
+
 
             @Override
             public void onFailure(@NonNull Call<TrainingResponse> call, @NonNull Throwable t) {
                 if (null != listener) listener.onGetTrainingsResponse(t.getMessage(), false, null);
             }
         });
+
+
     }
 
 

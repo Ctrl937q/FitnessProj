@@ -1,14 +1,19 @@
 package com.example.tituh.fitnessproj.adapters;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
 
@@ -21,18 +26,40 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     private ArrayList<WorkoutsItem> resultsItemsCircuitOneThree;
     private ArrayList<WorkoutsItem> resultsItemsCircuitTwoFour;
     private ArrayList<WorkoutsItem> allItems;
-    int level;
-    int time;
+    private int level;
+    private int time;
+    private Context context;
+    private AlertDialog.Builder dialogBuilderInfo;
+    private LayoutInflater layoutInflaterInfo;
+    private View promptsViewinfo;
+    private AlertDialog alertDialogInfo;
+    private Button buttonInfoDialog;
+    private TextView textViewInfoDialog;
+
 
     public ExerciseRecyclerViewAdapter(ArrayList<WorkoutsItem> resultsItemsCircuitOneThree,
-                                       ArrayList<WorkoutsItem> resultsItemsCircuitTwoFour, int level) {
+                                       ArrayList<WorkoutsItem> resultsItemsCircuitTwoFour, int level, Context context) {
         this.resultsItemsCircuitOneThree = resultsItemsCircuitOneThree;
         this.resultsItemsCircuitTwoFour = resultsItemsCircuitTwoFour;
+        this.level = level;
+        this.context = context;
         allItems = new ArrayList<>();
         allItems.addAll(resultsItemsCircuitOneThree);
         allItems.addAll(resultsItemsCircuitTwoFour);
-        this.level = level;
-
+        dialogBuilderInfo = new AlertDialog.Builder(context);
+        layoutInflaterInfo = LayoutInflater.from(context);
+        promptsViewinfo = layoutInflaterInfo.inflate(R.layout.dialog_info, null);
+        dialogBuilderInfo.setView(promptsViewinfo);
+        dialogBuilderInfo.setCancelable(false);
+        buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
+        textViewInfoDialog = promptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
+        alertDialogInfo = dialogBuilderInfo.create();
+        buttonInfoDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogInfo.dismiss();
+            }
+        });
     }
 
     @NonNull
@@ -52,40 +79,70 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ItemViewHolder) {
+            ((ItemViewHolder) holder).imageViewInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (position > 0 && position <= resultsItemsCircuitOneThree.size()) {
+                        if (!allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
+                            textViewInfoDialog.setText(allItems.get(position-1).getInfo());
+                            alertDialogInfo.show();
+                        }
+                    }
+                    if (position > resultsItemsCircuitOneThree.size() + 1) {
+                        if (!allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
+                            textViewInfoDialog.setText(allItems.get(position-2).getInfo());
+                            alertDialogInfo.show();
+                        }
+                    }
+                }
+            });
+
             if (position > 0 && position <= resultsItemsCircuitOneThree.size()) {
-                time = (int)allItems.get(position - 1).getDuration();
+                time = (int) allItems.get(position - 1).getDuration();
+                Glide.with(context)
+                        .load(allItems.get(position - 1).getImage())
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.placeholder_recipes))
+                        .into(((ItemViewHolder) holder).imageViewTraining);
                 ((ItemViewHolder) holder).textViewWarmUpName.setText(allItems.get(position - 1).getTitle());
                 ((ItemViewHolder) holder).textViewTime.setText("" + time);
                 if (level == 0) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 1)
-                            .getRepetitions().getBeginner() + " #REPS");
+                            .getRepetitions().getBeginner() + " REPS");
                 }
                 if (level == 1) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 1)
-                            .getRepetitions().getIntermediate() + " #REPS");
+                            .getRepetitions().getIntermediate() + " REPS");
                 }
                 if (level == 2) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 1)
-                            .getRepetitions().getAdvanced() + " #REPS");
+                            .getRepetitions().getAdvanced() + " REPS");
                 }
-
             }
             if (position > resultsItemsCircuitOneThree.size() + 1) {
-                time = (int)allItems.get(position - 2).getDuration();
+                textViewInfoDialog.setText(allItems.get(position - 2).getInfo());
+
+                time = (int) allItems.get(position - 2).getDuration();
+
+                Glide.with(context)
+                        .load(allItems.get(position - 2).getImage())
+                        .apply(new RequestOptions()
+                                .placeholder(R.drawable.placeholder_recipes))
+                        .into(((ItemViewHolder) holder).imageViewTraining);
                 ((ItemViewHolder) holder).textViewWarmUpName.setText(allItems.get(position - 2).getTitle());
                 ((ItemViewHolder) holder).textViewTime.setText("" + time);
 
                 if (level == 0) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 2)
-                            .getRepetitions().getBeginner() + " #REPS");
+                            .getRepetitions().getBeginner() + " REPS");
                 }
                 if (level == 1) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 2)
-                            .getRepetitions().getIntermediate() + " #REPS");
+                            .getRepetitions().getIntermediate() + " REPS");
                 }
                 if (level == 2) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 2)
-                            .getRepetitions().getAdvanced() + " #REPS");
+                            .getRepetitions().getAdvanced() + " REPS");
                 }
             }
         }

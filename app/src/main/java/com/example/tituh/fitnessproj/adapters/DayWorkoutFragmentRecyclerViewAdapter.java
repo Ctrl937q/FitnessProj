@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -54,6 +55,12 @@ public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<
             ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle1.setText("" + currentWeek);
             ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mHeaderTitle2.setText("OUT OF " + countWeek + " WEEKS");
             ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mButton.setText("RESET");
+            ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //TODO: Click reset on DayWorkoutFragment
+                }
+            });
         } else if (holder instanceof DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) {
             ((DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) holder)
                     .mTextViewDay.setText(dayArrayList.get(position - 1));
@@ -82,13 +89,13 @@ public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<
 
         private TextView mHeaderTitle1;
         private TextView mHeaderTitle2;
-        private FancyButton mButton;
+        private Button mButton;
 
         private HeaderViewHolder(@NonNull View itemView) {
             super(itemView);
             mHeaderTitle1 = (TextView) itemView.findViewById(R.id.text_view_quantity_day);
             mHeaderTitle2 = (TextView) itemView.findViewById(R.id.text_view_all_day);
-            mButton = (FancyButton) itemView.findViewById(R.id.btn_button_rest_day);
+            mButton = (Button) itemView.findViewById(R.id.btn_button_rest_day);
         }
     }
 

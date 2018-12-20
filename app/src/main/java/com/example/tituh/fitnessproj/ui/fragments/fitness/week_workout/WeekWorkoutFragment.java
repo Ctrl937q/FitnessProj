@@ -1,20 +1,28 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.adapters.WeekWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+import com.example.tituh.fitnessproj.ui.fragments.nutrition.SharedPreferencesUtil;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class WeekWorkoutFragment extends BaseFragment {
 
@@ -38,25 +46,29 @@ public class WeekWorkoutFragment extends BaseFragment {
             mRecyclerView = view.findViewById(R.id.recyclerView_workout_week);
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mRecyclerView.setAdapter(new WeekWorkoutFragmentRecyclerViewAdapter(weekArray, mLevel));
+            mRecyclerView.setAdapter(new WeekWorkoutFragmentRecyclerViewAdapter(weekArray, mLevel, getActivity()));
 
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
                 public void onClick(View view, int position) {
                     if (null != fragmentInteractionListener) {
+                        if (position == 0) {
 
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelableArrayList("array_trainings_for_day_workout",
-                                filterWeek(resultsItemsArrayList, position));
-                        bundle.putInt("level", mLevel);
-                        bundle.putInt("position_week", position);
-                        bundle.putInt("value_week", weekArray.size());
-                        bundle.putString("item_click_week", weekArray.get(position-1));
-                        dayWorkoutFragment = new DayWorkoutFragment();
-                        dayWorkoutFragment.setArguments(bundle);
+                        } else {
+                            Bundle bundle = new Bundle();
+                            bundle.putParcelableArrayList("array_trainings_for_day_workout",
+                                    filterWeek(resultsItemsArrayList, position));
+                            bundle.putInt("level", mLevel);
+                            bundle.putInt("position_week", position);
+                            bundle.putInt("value_week", weekArray.size());
+                            bundle.putString("item_click_week", weekArray.get(position - 1));
 
-                        fragmentInteractionListener.pushFragment(dayWorkoutFragment, true);
+                            dayWorkoutFragment = new DayWorkoutFragment();
+                            dayWorkoutFragment.setArguments(bundle);
+                            fragmentInteractionListener.pushFragment(dayWorkoutFragment, true);
+                        }
+
                     }
                 }
 
@@ -81,7 +93,6 @@ public class WeekWorkoutFragment extends BaseFragment {
         weekArray = new ArrayList<>();
         resultsItemsArrayList = new ArrayList<>();
         filterWeekItemArray = new ArrayList<>();
-        //mDatArray = new ArrayList<>();
 
         weekArray = getArguments().getStringArrayList("array_weeks_for_week_workout");
         resultsItemsArrayList = getArguments().getParcelableArrayList("array_trainings_for_week_workout");
@@ -107,4 +118,6 @@ public class WeekWorkoutFragment extends BaseFragment {
         }
         return filterWeekItemArray;
     }
+
+
 }

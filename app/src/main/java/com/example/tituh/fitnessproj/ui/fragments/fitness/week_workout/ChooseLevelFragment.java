@@ -23,7 +23,7 @@ public class ChooseLevelFragment extends BaseFragment {
     private ArrayList<String> mWeekArray;
     private int mCountWeek;
     private RecyclerView mRecyclerView;
-    WeekWorkoutFragment weekWorkoutFragment;
+    private WeekWorkoutFragment mWeekWorkoutFragment;
 
     @Nullable
     @Override
@@ -32,7 +32,6 @@ public class ChooseLevelFragment extends BaseFragment {
             view = inflater.inflate(R.layout.week_workout_choose_level_fragment, container, false);
 
             initialize();
-
 
             mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_beginner, "BEGINNER"));
             mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_intermediate, "INTERMEDIATE"));
@@ -52,9 +51,9 @@ public class ChooseLevelFragment extends BaseFragment {
                             bundle.putParcelableArrayList("array_trainings_for_week_workout", mArrayListResult);
                             bundle.putStringArrayList("array_weeks_for_week_workout", mWeekArray);
                             bundle.putInt("level", levelBeginner);
-                            weekWorkoutFragment = new WeekWorkoutFragment();
-                            weekWorkoutFragment.setArguments(bundle);
-                            fragmentInteractionListener.pushFragment(weekWorkoutFragment, true);
+                            mWeekWorkoutFragment = new WeekWorkoutFragment();
+                            mWeekWorkoutFragment.setArguments(bundle);
+                            fragmentInteractionListener.pushFragment(mWeekWorkoutFragment, true);
                         }
                     }
                     if (position == 1) {
@@ -64,9 +63,9 @@ public class ChooseLevelFragment extends BaseFragment {
                             bundle.putParcelableArrayList("array_trainings_for_week_workout", mArrayListResult);
                             bundle.putStringArrayList("array_weeks_for_week_workout", mWeekArray);
                             bundle.putInt("level", levelIntermediate);
-                            weekWorkoutFragment = new WeekWorkoutFragment();
-                            weekWorkoutFragment.setArguments(bundle);
-                            fragmentInteractionListener.pushFragment(weekWorkoutFragment, true);
+                            mWeekWorkoutFragment = new WeekWorkoutFragment();
+                            mWeekWorkoutFragment.setArguments(bundle);
+                            fragmentInteractionListener.pushFragment(mWeekWorkoutFragment, true);
                         }
                     }
 
@@ -77,9 +76,9 @@ public class ChooseLevelFragment extends BaseFragment {
                             bundle.putParcelableArrayList("array_trainings_for_week_workout", mArrayListResult);
                             bundle.putStringArrayList("array_weeks_for_week_workout", mWeekArray);
                             bundle.putInt("level", levelAdvanced);
-                            weekWorkoutFragment = new WeekWorkoutFragment();
-                            weekWorkoutFragment.setArguments(bundle);
-                            fragmentInteractionListener.pushFragment(weekWorkoutFragment, true);
+                            mWeekWorkoutFragment = new WeekWorkoutFragment();
+                            mWeekWorkoutFragment.setArguments(bundle);
+                            fragmentInteractionListener.pushFragment(mWeekWorkoutFragment, true);
                         }
 
                     }
@@ -112,7 +111,6 @@ public class ChooseLevelFragment extends BaseFragment {
         mArrayListResult = new ArrayList<>();
         mWeekArray = new ArrayList<>();
         mModelLevel = new ArrayList<>();
-
         mWeekArray = getArguments().getStringArrayList("array_weeks");
         mArrayListResult = getArguments().getParcelableArrayList("array_trainings");
         mCountWeek = getArguments().getInt("count_weeks");

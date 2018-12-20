@@ -1,6 +1,8 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -11,7 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.FitnessFragmentStartRecyclerViewAdapter;
@@ -25,7 +29,6 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.glossary.GlossaryFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.prepare.PrepareBeforeTrainingFragment;
 import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.ChooseLevelFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.WeekWorkoutFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,9 +44,15 @@ public class FitnessFragment extends BaseFragment {
     private ArrayList<ResultsItem> mResultsItemsArrayList;
     private HashSet<String> mArrayWithoutDuplicates;
     private ArrayList<String> mStringArrayWeek;
-    // private ProgressBar mProgressBar;
-    ApiClient apiClient;
-    ProgressBar progressBar;
+    private ApiClient mApiClient;
+    private ProgressBar mProgressBar;
+    private TextView mTextViewWeek;
+    private AlertDialog.Builder mDialogBuilderInfo;
+    private LayoutInflater mLayoutInflaterInfo;
+    private AlertDialog mAlertDialogInfo;
+    private CountDownTimer mCountDownTimer;
+    private boolean isTimerCalcel;
+    private CoordinatorLayout mCoordinatorLayout;
 
     @Nullable
     @Override
@@ -52,35 +61,38 @@ public class FitnessFragment extends BaseFragment {
             view = inflater.inflate(R.layout.fitness_fragment, container, false);
             initialize();
 
-            apiClient = new ApiClient();
+            mListFitStarModel.add(new FitnessStartModel("PREPARE",
+                    "ABOUT WORKOUT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
+            mListFitStarModel.add(new FitnessStartModel("WEEK WORKOUT GUIDE FOR TONING & STRETCHING",
+                    "LET'S's SWEAT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
+            mListFitStarModel.add(new FitnessStartModel("WORKOUT GLOSSARY",
+                    FitnessStartModel.TWO_TYPE));
+            mRecyclerViewFitnessFragment.setAdapter(new FitnessFragmentStartRecyclerViewAdapter(mListFitStarModel));
+
+
             if (fragmentInteractionListener.isInternetConnection()) {
-                apiClient.getTrainings(new OnGetTrainingResponseListener() {
+                mApiClient.getTrainings(new OnGetTrainingResponseListener() {
                     @Override
                     public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
-                        mResultsItemsArrayList.addAll(trainingResponse.getResults());
-                        sortDeleteDuplicates(mResultsItemsArrayList);
-                        mRecyclerViewFitnessFragment.setAdapter(new FitnessFragmentStartRecyclerViewAdapter(mListFitStarModel));
-                        mListFitStarModel.add(new FitnessStartModel("PREPARE",
-                                "ABOUT WORKOUT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
-                        mListFitStarModel.add(new FitnessStartModel(mArrayWithoutDuplicates.size() + " " + "WEEK WORKOUT GUIDE FOR TONING & STRETCHING",
-                                "LET'S's SWEAT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
-                        mListFitStarModel.add(new FitnessStartModel("WORKOUT GLOSSARY",
-                                FitnessStartModel.TWO_TYPE));
+                        if (trainingResponse != null) {
+                            mResultsItemsArrayList.addAll(trainingResponse.getResults());
+                            sortDeleteDuplicates(mResultsItemsArrayList);
+                            if (mArrayWithoutDuplicates.size() != 0) {
+                                mListFitStarModel.clear();
+                                mListFitStarModel.add(new FitnessStartModel("PREPARE",
+                                        "ABOUT WORKOUT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
+                                mListFitStarModel.add(new FitnessStartModel(mArrayWithoutDuplicates.size() + " " + "WEEK WORKOUT GUIDE FOR TONING & STRETCHING",
+                                        "LET'S's SWEAT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
+                                mListFitStarModel.add(new FitnessStartModel("WORKOUT GLOSSARY",
+                                        FitnessStartModel.TWO_TYPE));
+                                mRecyclerViewFitnessFragment.setAdapter(new FitnessFragmentStartRecyclerViewAdapter(mListFitStarModel));
+                            }
+                        }
                     }
                 });
-            } else {
-                mListFitStarModel.add(new FitnessStartModel("PREPARE",
-                        "ABOUT WORKOUT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
-                mListFitStarModel.add(new FitnessStartModel("WEEK WORKOUT GUIDE FOR TONING & STRETCHING",
-                        "LET'S's SWEAT", FitnessStartModel.ONE_TYPE, mDrawableMassive));
-                mListFitStarModel.add(new FitnessStartModel("WORKOUT GLOSSARY",
-                        FitnessStartModel.TWO_TYPE));
-                mRecyclerViewFitnessFragment.setAdapter(new FitnessFragmentStartRecyclerViewAdapter(mListFitStarModel));
             }
 
-
-            final CoordinatorLayout coordinatorLayout = view.findViewById(R.id.fitness_l_snackbar);
-
+            mCoordinatorLayout = view.findViewById(R.id.fitness_l_snackbar);
             mRecyclerViewFitnessFragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerViewFitnessFragment, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
@@ -89,16 +101,23 @@ public class FitnessFragment extends BaseFragment {
                         fragmentInteractionListener.pushFragment(new PrepareBeforeTrainingFragment(), true);
                     }
                     if (position == 1) {
-                        progressBar = view.findViewById(R.id.progress_bar_item_start_rv);
-                        if (fragmentInteractionListener.isInternetConnectionSnackBarWithProgress(coordinatorLayout, progressBar)) {
-                            progressBar.setVisibility(View.VISIBLE);
-                            apiClient.getTrainings(new OnGetTrainingResponseListener() {
+                        mTextViewWeek = view.findViewById(R.id.textViewFitnessStartLayout_1);
+                        mProgressBar = view.findViewById(R.id.progress_bar_item_start_rv);
+                        if (fragmentInteractionListener.isInternetConnectionSnackBarWithProgress(mCoordinatorLayout, mProgressBar)) {
+                            mAlertDialogInfo.show();
+                            mProgressBar.setVisibility(View.VISIBLE);
+                            timer();
+                            mApiClient.getTrainings(new OnGetTrainingResponseListener() {
                                 @Override
                                 public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
-                                    try {
-                                        mResultsItemsArrayList.clear();
+                                    mResultsItemsArrayList.clear();
+                                    if (trainingResponse != null) {
                                         mResultsItemsArrayList.addAll(trainingResponse.getResults());
                                         sortDeleteDuplicates(mResultsItemsArrayList);
+                                        if (!isTimerCalcel) {
+                                            mCountDownTimer.cancel();
+                                        }
+                                        mTextViewWeek.setText(mStringArrayWeek.size() + " WEEK WORKOUT GUIDE FOR TONING & STRETCHING");
                                         Bundle bundle = new Bundle();
                                         bundle.putParcelableArrayList("array_trainings", mResultsItemsArrayList);
                                         bundle.putStringArrayList("array_weeks", mStringArrayWeek);
@@ -106,9 +125,8 @@ public class FitnessFragment extends BaseFragment {
                                         ChooseLevelFragment chooseLevelFragment = new ChooseLevelFragment();
                                         chooseLevelFragment.setArguments(bundle);
                                         fragmentInteractionListener.pushFragment(chooseLevelFragment, true);
-                                        progressBar.setVisibility(View.GONE);
-                                    } catch (NullPointerException e) {
-                                        e.printStackTrace();
+                                        mProgressBar.setVisibility(View.GONE);
+                                        mAlertDialogInfo.dismiss();
                                     }
                                 }
                             });
@@ -134,7 +152,6 @@ public class FitnessFragment extends BaseFragment {
         fragmentInteractionListener.goneIconHomeActionBar();
         fragmentInteractionListener.goneIconShareActionBar();
         fragmentInteractionListener.goneIconInfoActionBar();
-
         return view;
     }
 
@@ -145,14 +162,18 @@ public class FitnessFragment extends BaseFragment {
     }
 
     private void initialize() {
+        mApiClient = new ApiClient();
         mRecyclerViewFitnessFragment = view.findViewById(R.id.recycler_view_fitness_fragment);
-        // mProgressBar = view.findViewById(R.id.progress_bar_fitness_fragment);
         mListFitStarModel = new ArrayList<>();
         mResultsItemsArrayList = new ArrayList<>();
         mDrawableMassive = new int[]{R.drawable.prepare_image, R.drawable.image_week_workout};
         mArrayWithoutDuplicates = new HashSet<>();
         mStringArrayWeek = new ArrayList<>();
         mRecyclerViewFitnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mDialogBuilderInfo = new AlertDialog.Builder(getActivity());
+        mLayoutInflaterInfo = LayoutInflater.from(getActivity());
+        mDialogBuilderInfo.setCancelable(false);
+        mAlertDialogInfo = mDialogBuilderInfo.create();
         fragmentInteractionListener.visibleIconAboutActionBar();
         fragmentInteractionListener.goneIconBacktActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();
@@ -180,5 +201,30 @@ public class FitnessFragment extends BaseFragment {
 
         return mStringArrayWeek;
     }
+
+
+    private void timer() {
+        isTimerCalcel = false;
+        mCountDownTimer = new CountDownTimer(4500, 500) {
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                final Snackbar snackbar = Snackbar.make(view, "Cant get data, try again", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+                mProgressBar.setVisibility(View.GONE);
+                mAlertDialogInfo.dismiss();
+
+                if (!isTimerCalcel) {
+                    mCountDownTimer.cancel();
+                    isTimerCalcel = true;
+                }
+            }
+        }.start();
+    }
+
 
 }

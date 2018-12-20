@@ -76,8 +76,11 @@ public class WellnessFragment extends BaseFragment {
                 }
             }));
         }
-        Log.d("asdasdasdsadsa", "WellnessFragment");
-
+        fragmentInteractionListener.visibleIconAboutActionBar();
+        fragmentInteractionListener.goneIconBacktActionBar();
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
         return view;
     }
 }

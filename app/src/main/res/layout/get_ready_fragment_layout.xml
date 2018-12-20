@@ -33,7 +33,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/reg_font"
             android:gravity="center_horizontal"
-            android:text="Gready warm up"
+            android:text="Get ready to training"
             android:textColor="@color/color_bnv_unchecked"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/text_view_start_in" />
@@ -72,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:visibility="gone"
             android:fontFamily="@font/reg_font"
             android:gravity="center_horizontal"
             android:text="You got this"
@@ -93,6 +94,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/reg_font"
                 android:gravity="center_horizontal"
+                android:visibility="gone"
                 android:paddingBottom="11dp"
                 android:paddingEnd="12dp"
                 android:paddingStart="12dp"
@@ -126,7 +128,7 @@
                 android:layout_marginTop="40dp"
                 android:background="@drawable/btn_start_circuit"
                 android:fontFamily="@font/reg_font"
-                android:text="START WARM UP"
+                android:text="START WORKOUT"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 />

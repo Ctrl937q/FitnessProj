@@ -11,30 +11,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/colorBackground"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_exersice_top"
+
             android:gravity="center"
             android:orientation="vertical">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:id="@+id/image_view_exercise_do"
-                android:layout_height="wrap_content"
-                android:src="@drawable/background_image_exersice_top" />
-
+                android:scaleType="centerCrop"
+                android:layout_height="320dp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <ProgressBar
-                android:id="@+id/progress_bar_do_exercise"
+                android:id="@+id/progress_bar_circuit_progress"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -74,6 +73,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:id="@+id/textView_value_circuit"
                         android:fontFamily="@font/reg_font"
                         android:text="1/4"
                         android:textColor="@color/color_bnv_unchecked"
@@ -94,12 +94,14 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
+                        android:visibility="gone"
                         android:layout_height="wrap_content"
                         android:src="@drawable/vector_sound" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginStart="7dp"
                         android:src="@drawable/vector_note" />
                 </LinearLayout>
@@ -126,6 +128,7 @@
 
                     <TextView
                         android:layout_width="wrap_content"
+                        android:id="@+id/text_view_reps"
                         android:layout_height="wrap_content"
                         android:layout_gravity="end"
                         android:fontFamily="@font/reg_font"
@@ -218,7 +221,7 @@
                     android:layout_marginEnd="1dp"
                     android:layout_marginBottom="7dp"
                     android:layout_weight="1"
-                    android:background="@drawable/btn_left_shape_exersice_start"
+                    android:background="@drawable/test_selector"
                     android:padding="16dp"
                     android:textColor="@color/color_white"
                     android:text="BACK"

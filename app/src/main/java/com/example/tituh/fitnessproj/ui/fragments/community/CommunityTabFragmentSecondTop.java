@@ -6,15 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public class CommunityTabFragmentSecondTop extends BaseFragment {
-
-
-
 
     @Nullable
     @Override

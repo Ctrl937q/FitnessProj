@@ -1,31 +1,19 @@
 package com.example.tituh.fitnessproj.ui.fragments.nutrition;
 
-import android.graphics.Color;
-import android.graphics.LightingColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecipesHorizontalRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecipesVerticalRecyclerViewAdapter;
@@ -35,7 +23,6 @@ import com.example.tituh.fitnessproj.networking.ApiClient;
 import com.example.tituh.fitnessproj.networking.responses.OnGetRecipesResponseListener;
 import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,18 +42,13 @@ public class RecipesFragment extends BaseFragment {
     private ApiClient apiClient;
     private GridLayoutManager mGridLayoutManager;
     private LinearLayoutManager mLayoutManager;
-    private NestedScrollView nestedScrollViewResipes;
     private ProgressBar progressBar;
-    private CardView cardView;
     private boolean mBreakfastClick = false;
     private boolean mSweets = false;
     private boolean mOntheGo = false;
     private boolean mNourish = false;
     private boolean mSkinnyDrinks = false;
-    CountDownTimer countDownTimer;
 
-    Handler mHandler = new Handler();
-    boolean isRunning = true;
 
     @Nullable
     @Override
@@ -88,9 +70,6 @@ public class RecipesFragment extends BaseFragment {
                     mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
                 public void onClick(View view, final int position) {
-                    //final CardView cardView = view.findViewById(R.id.card_view_horizontal_recycler_view_recipes);
-                    //cardView.setCardBackgroundColor(getResources().getColor(R.color.color_grocery_list_card_view_checked));
-                    //Log.d("asdsadsaasdas", "+");
                     progressBar.setVisibility(View.VISIBLE);
                     filterArray(position);
                     progressBar.setVisibility(View.GONE);
@@ -147,11 +126,8 @@ public class RecipesFragment extends BaseFragment {
         mHorizontalRecyclerView = view.findViewById(R.id.horizontal_recyclerView_recipes);
         mVerticalRecyclerView = view.findViewById(R.id.vertical_recyclerView_recipes);
         coordinatorLayout = view.findViewById(R.id.nestedScrollView);
-        cardView = view.findViewById(R.id.card_view_horizontal_recycler_view_recipes);
         buttonRetry = view.findViewById(R.id.btn_retry_recipes);
         progressBar = view.findViewById(R.id.progressBarRecipes);
-        nestedScrollViewResipes = view.findViewById(R.id.nestedViewRecipess);
-        //linearLayout = view.findViewById(R.id.nestedScrollView);
         mLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.HORIZONTAL, false);
         mGridLayoutManager = new GridLayoutManager(getActivity(), 2);

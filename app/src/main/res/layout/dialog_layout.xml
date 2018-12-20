@@ -1,23 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/asdsadasdasdsadas"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="40dp"
-    android:paddingTop="30dp"
-    android:background="@drawable/dialog_background">
+    android:orientation="vertical"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:paddingBottom="15dp"
+    android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background_dialog"
+        android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/reg_font"
-        android:layout_marginBottom="35dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="35dp"
+        android:fontFamily="@font/reg_font"
         android:text="Next Workout start in"
+        android:layout_gravity="center"
         android:textColor="@color/color_bnv_unchecked"
         android:textSize="19dp"
         app:layout_constraintBottom_toTopOf="@+id/text_view_seconds_left"
@@ -31,11 +38,12 @@
         android:id="@+id/text_view_seconds_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/color_bnv_unchecked"
-        android:textSize="64sp"
         android:fontFamily="@font/reg_font"
         android:maxLength="2"
+        android:textColor="@color/color_bnv_unchecked"
+        android:textSize="64sp"
+        android:layout_gravity="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -45,8 +53,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Seconds"
+        android:layout_gravity="center"
         android:textColor="@color/color_bnv_unchecked"
         android:textSize="19sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -54,28 +62,22 @@
         app:layout_constraintTop_toBottomOf="@+id/text_view_seconds_left" />
 
 
-    <mehdi.sakout.fancybuttons.FancyButton
+    <Button
         android:id="@+id/btn_skip_workout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/reg_font"
-        android:layout_marginBottom="20dp"
-        android:paddingBottom="10dp"
-        android:paddingEnd="12dp"
-        android:paddingStart="12dp"
-        android:paddingTop="10dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        fancy:fb_text="SKIP START NEXT WORKOUT"
-        fancy:fb_borderColor="#FFFFFF"
-        fancy:fb_borderWidth="1dp"
-        fancy:fb_defaultColor="@color/pink_for_button"
-        fancy:fb_focusColor="#ca838383"
-        fancy:fb_radius="7dp"
-        fancy:fb_textColor="#000000"
-        fancy:fb_textSize="10sp"
-        fancy:fb_useSystemFont="false" />
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_start_workout"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:layout_gravity="center"
+        android:paddingEnd="10dp"
+        android:text="@string/skip_timer_start_workout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-</android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

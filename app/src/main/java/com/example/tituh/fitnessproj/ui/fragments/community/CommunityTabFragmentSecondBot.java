@@ -39,7 +39,6 @@ public class CommunityTabFragmentSecondBot extends BaseFragment {
 
                     if (openlinkIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                         startActivity(openlinkIntent);
-                    } else {
                     }
                 }
             });
@@ -49,10 +48,8 @@ public class CommunityTabFragmentSecondBot extends BaseFragment {
                 public void onClick(View view) {
                     Uri address = Uri.parse("https://www.instagram.com/kimkellyfit/");
                     Intent openlinkIntent = new Intent(Intent.ACTION_VIEW, address);
-
                     if (openlinkIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                         startActivity(openlinkIntent);
-                    } else {
                     }
                 }
             });
