@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             //Log.v(tag, tag);
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
-            ft.setCustomAnimations(R.anim.slide_in_left, 0);
+            ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             ft.replace(R.id.fragment_container, fragment, tag);
             if (shouldAddToBackstack) ft.addToBackStack(tag);
             ft.commit();
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             String tag = String.format("%s:%s", fragment.getBackStackTag(), String.valueOf(System.currentTimeMillis()));
             FragmentManager manager = getSupportFragmentManager();
             FragmentTransaction ft = manager.beginTransaction();
-            //ft.setCustomAnimations(R.animator.slide_in_left, 0);
+            ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             ft.replace(R.id.fragment_container_glossary, fragment, tag);
             if (shouldAddToBackstack) ft.addToBackStack(tag);
             ft.commit();
