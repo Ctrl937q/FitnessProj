@@ -4,13 +4,9 @@
 
     package="com.example.tituh.fitnessproj">
 
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
-
-
-
 
     <application
         android:allowBackup="true"
@@ -22,12 +18,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
 
-
-
         <activity android:name=".ui.activities.MainActivity"
             android:screenOrientation="portrait">
-
-
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

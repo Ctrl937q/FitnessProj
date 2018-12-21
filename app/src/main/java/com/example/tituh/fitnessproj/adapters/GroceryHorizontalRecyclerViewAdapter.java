@@ -22,7 +22,7 @@ public class GroceryHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<G
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.grocery_horizontal_item,
                 parent, false);
-        return new GroceryHorizontalRecyclerViewAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override

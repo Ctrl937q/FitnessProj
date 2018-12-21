@@ -23,14 +23,14 @@ public class RecipesInfoRecyclerViewAdapterDirections extends RecyclerView.Adapt
 
     @NonNull
     @Override
-    public RecipesInfoRecyclerViewAdapterDirections.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycle_view_directions,
                 parent, false);
-        return new RecipesInfoRecyclerViewAdapterDirections.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipesInfoRecyclerViewAdapterDirections.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         viewHolder.mTextViewText.setText("" + directionsItems.get(i).getPosition() + ". " + directionsItems.get(i).getText());
         Log.d("ASDfw32t4", "" + directionsItems.get(i).getPosition() + ". " + directionsItems.get(i).getText());
 

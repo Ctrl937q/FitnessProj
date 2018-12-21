@@ -13,60 +13,84 @@
         android:paddingBottom="30dp">
 
 
-        <android.support.constraint.ConstraintLayout
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="295dp"
-            android:layout_marginTop="10dp">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            tools:context=".MainActivity">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="280dp">
+
 
                 <ImageView
-                    android:id="@+id/prepare_image_top"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/about_top_image" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/image_laurin_kitchen" />
 
-                <TextView
-                    style="@style/MyTextViewStyle"
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/sadsadasda"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="18dp"
-                    android:fontFamily="@font/medium_font"
-                    android:text="@string/let_s_sweet" />
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
 
+                    android:layout_marginStart="10dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/rect_top_about" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/vector_top_right_pink" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="120dp"
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/prepare_swimsuit1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/about_tsc_body" />
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="wrap_content">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/medium_font"
+                        android:textColor="@color/color_bnv_unchecked"
+                        android:text="@string/let_s_sweet" />
 
-            </LinearLayout>
+                    <ImageView
+                        android:id="@+id/eqwfdsds"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="13dp"
+                        android:src="@drawable/about_tsc_body" />
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
 
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/prepare_swimsuit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
-
-
-        </android.support.constraint.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:orientation="vertical">
 
 
@@ -97,10 +121,10 @@
 
 
             <TextView
+                android:id="@+id/big_text_about"
                 style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/big_text_about"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="20dp"
@@ -123,8 +147,8 @@
                 style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/reg_font"
                 android:text="@string/yessss_you_can_have_it_all" />
@@ -133,8 +157,8 @@
                 style="@style/MyTextViewStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/reg_font"
                 android:text="@string/ok_let_s_do_this_it_s_kale_champagne_squat_time" />
@@ -145,9 +169,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
                 android:fontFamily="@font/reg_font"
-                android:layout_marginTop="20dp"
                 android:text="LOVE YOU ALL," />
 
 
@@ -162,12 +186,37 @@
                 android:text="@string/x_lauryn_amp_kim_let_s_sweat" />
 
 
-            <ImageView
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/laurin_about" />
+                tools:context=".MainActivity">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/laurin_about" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/rect_about_1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="50dp"
+                    android:src="@drawable/vector_about_pink_1" />
+            </RelativeLayout>
 
             <TextView
                 style="@style/MyTextViewStyle"
@@ -175,12 +224,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
-                android:textColor="#FFA9C6"
                 android:fontFamily="@font/reg_font"
-                android:text="@string/meet_your_workout_partner" />
+                android:text="@string/meet_your_workout_partner"
+                android:textColor="#FFA9C6"
+                android:textSize="18sp" />
 
 
             <TextView
@@ -189,10 +238,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textSize="20sp"
                 android:layout_marginBottom="15dp"
                 android:fontFamily="@font/medium_font"
-                android:text="@string/lauryn_evarts_bosstick" />
+                android:text="@string/lauryn_evarts_bosstick"
+                android:textSize="20sp" />
 
 
             <TextView
@@ -207,40 +256,78 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="25dp"
-                android:layout_height="wrap_content">
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/vector_insta_community"
                     android:id="@+id/image_about_skinny"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/vector_insta_community" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/text_view_insta_sninny"
-                    android:layout_marginStart="7dp"
-                    android:text=""
-                    android:fontFamily="@font/medium_font"
-                    android:textColor="@color/color_bnv_unchecked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginStart="7dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text=""
+                    android:textColor="@color/color_bnv_unchecked" />
 
 
             </LinearLayout>
 
 
-
-            <ImageView
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
-                android:src="@drawable/kim_about" />
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                tools:context=".MainActivity">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="11dp"
+                        android:layout_marginTop="9dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/kim_bot" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginStart="7dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/rectangle_bot" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="50dp"
+                        android:src="@drawable/vector_top_right_pink" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
 
 
             <TextView
@@ -249,12 +336,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="6dp"
-                android:textColor="#FFA9C6"
                 android:fontFamily="@font/reg_font"
-                android:text="@string/meet_your_trainer" />
+                android:text="@string/meet_your_trainer"
+                android:textColor="#FFA9C6"
+                android:textSize="18sp" />
 
 
             <TextView
@@ -263,10 +350,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:textSize="20sp"
                 android:layout_marginBottom="20dp"
                 android:fontFamily="@font/medium_font"
-                android:text="@string/kim_kelly" />
+                android:text="@string/kim_kelly"
+                android:textSize="20sp" />
 
 
             <TextView
@@ -275,33 +362,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:text="@string/text_about_kim"
-                android:fontFamily="@font/reg_font"/>
+                android:fontFamily="@font/reg_font"
+                android:text="@string/text_about_kim" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="25dp"
-                android:layout_height="wrap_content">
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:src="@drawable/vector_insta_community"
                     android:id="@+id/image_about_kim"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/vector_insta_community" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_marginStart="7dp"
                     android:id="@+id/text_view_insta_kim"
-                    android:text=""
-                    android:fontFamily="@font/medium_font"
-                    android:textColor="@color/color_bnv_unchecked"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginStart="7dp"
+                    android:fontFamily="@font/medium_font"
+                    android:text=""
+                    android:textColor="@color/color_bnv_unchecked" />
 
             </LinearLayout>
         </LinearLayout>

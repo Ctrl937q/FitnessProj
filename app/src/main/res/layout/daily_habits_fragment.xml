@@ -28,34 +28,52 @@
 
         </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/medium_font"
-                android:lineSpacingExtra="6dp"
-                android:textColor="@color/color_bnv_unchecked"
-                android:gravity="center"
-                android:text="@string/daily_habits_header"
-                android:textSize="18sp" />
-
-
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/medium_font"
+            android:lineSpacingExtra="6dp"
+            android:textColor="@color/color_bnv_unchecked"
+            android:gravity="center"
+            android:text="@string/daily_habits_header"
+            android:textSize="18sp" />
+
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".MainActivity">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/daily_habits_top_image" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/picture_daily_habits_1" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/rect_daily_top" />
 
-        </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="50dp"
+                android:src="@drawable/vector_about_pink_1" />
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -73,7 +91,7 @@
                 android:fontFamily="@font/medium_font"
                 android:text="@string/breakfast_daily_habits"
                 android:textSize="25sp"
-                 />
+                />
 
 
             <TextView
@@ -81,6 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+
                 android:fontFamily="@font/reg_font"
                 android:justificationMode="inter_word"
                 android:text="@string/text_daily_habits_1"
@@ -89,13 +108,41 @@
 
         </LinearLayout>
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:layout_marginEnd="1dp"
-            android:layout_marginTop="25dp"
-            android:src="@drawable/picture_daily_habits_2" />
+            android:layout_marginTop="15dp"
+            android:layout_height="280dp">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="9dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/daily_two_girl" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="7dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/rect_daily_two_girl" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="50dp"
+                android:src="@drawable/vector_top_right_pink" />
+
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -210,13 +257,41 @@
         </LinearLayout>
 
 
-        <ImageView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:layout_marginEnd="1dp"
-            android:layout_marginTop="25dp"
-            android:src="@drawable/picture_daily_habits_4" />
+            android:layout_marginTop="15dp"
+            android:layout_height="280dp">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="11dp"
+                android:layout_marginTop="14dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/daily_beach" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="7dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/rect_beach" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="50dp"
+                android:src="@drawable/vector_top_right_pink" />
+
+        </RelativeLayout>
 
 
         <LinearLayout
@@ -224,7 +299,6 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <TextView

@@ -24,14 +24,14 @@ public class RecipesVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Rec
 
     @NonNull
     @Override
-    public RecipesVerticalRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_vertical_rv_item,
                 parent, false);
-        return new RecipesVerticalRecyclerViewAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecipesVerticalRecyclerViewAdapter.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.button.setText("" + resultsItemArrayList.get(position).getTitle());
         Picasso.get().load("" + resultsItemArrayList.get(position).getImage()).placeholder(R.drawable.placeholder_recipes).into(viewHolder.imageView);
     }

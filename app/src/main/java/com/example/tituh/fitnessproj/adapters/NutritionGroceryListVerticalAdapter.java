@@ -24,13 +24,13 @@ public class NutritionGroceryListVerticalAdapter extends RecyclerView.Adapter<Nu
 
     @NonNull
     @Override
-    public NutritionGroceryListVerticalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.nutrition_grocery_list_item, parent, false);
-        return new NutritionGroceryListVerticalAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NutritionGroceryListVerticalAdapter.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
         viewHolder.mTextView.setText("" + mArrayListTitle.get(i));
         viewHolder.mImageViewDeleteItem.setOnClickListener(new View.OnClickListener() {
             @Override

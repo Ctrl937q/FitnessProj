@@ -44,7 +44,7 @@ public class BaseFragment extends Fragment {
             @Override
             public void run() {
                 //TODO add progress layout to every fragment if needed
-               // view.findViewById(R.id.progress_layout).setVisibility(View.GONE);
+                // view.findViewById(R.id.progress_layout).setVisibility(View.GONE);
             }
         });
     }

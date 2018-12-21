@@ -29,14 +29,14 @@ public class RecipesInfoRecyclerViewAdapterIngredients extends RecyclerView.Adap
 
     @NonNull
     @Override
-    public RecipesInfoRecyclerViewAdapterIngredients.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipes_info_rv_item,
                 parent, false);
-        return new RecipesInfoRecyclerViewAdapterIngredients.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final RecipesInfoRecyclerViewAdapterIngredients.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         viewHolder.mTextViewTitle.setText(ingredientsItemArrayList.get(i).getDosage() + " " + ingredientsItemArrayList.get(i).getTitle());
         viewHolder.imageViewPlus.setOnClickListener(new View.OnClickListener() {
             @Override

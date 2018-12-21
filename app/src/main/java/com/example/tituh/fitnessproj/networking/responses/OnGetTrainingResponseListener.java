@@ -6,6 +6,6 @@ import com.example.tituh.fitnessproj.networking.responses.training.TrainingRespo
 
 public interface OnGetTrainingResponseListener {
 
-    void onGetTrainingsResponse(@Nullable String message, boolean success,@Nullable TrainingResponse trainingResponse);
+    void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse);
 
 }
