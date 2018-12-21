@@ -34,6 +34,8 @@ public class TipsForYourSuccess extends BaseFragment {
             view = inflater.inflate(R.layout.wellness_tips_tab_layout, container, false);
             fragmentInteractionListener.updateActionBarTitle("8 TIPS FOR YOUR SUCCESS");
             fragmentInteractionListener.visibleIconBacktActionBar();
+            fragmentInteractionListener.goneIconAbouttActionBar();
+
 
             mViewPager = view.findViewById(R.id.view_pager_tips);
             mTabDotLayout = view.findViewById(R.id.tabDots);

@@ -33,7 +33,7 @@ public class WeekWorkoutFragment extends BaseFragment {
     private int mLevel;
     private DayWorkoutFragment dayWorkoutFragment;
     private String weekClick;
-
+    private WeekWorkoutFragmentRecyclerViewAdapter weekWorkoutFragmentRecyclerViewAdapter;
 
     @Nullable
     @Override
@@ -46,7 +46,10 @@ public class WeekWorkoutFragment extends BaseFragment {
             mRecyclerView = view.findViewById(R.id.recyclerView_workout_week);
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mRecyclerView.setAdapter(new WeekWorkoutFragmentRecyclerViewAdapter(weekArray, mLevel, getActivity()));
+
+            weekWorkoutFragmentRecyclerViewAdapter = new WeekWorkoutFragmentRecyclerViewAdapter(weekArray,
+                    mLevel, getActivity(), fragmentInteractionListener);
+            mRecyclerView.setAdapter(weekWorkoutFragmentRecyclerViewAdapter);
 
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -79,8 +82,18 @@ public class WeekWorkoutFragment extends BaseFragment {
             }));
         }
 
-        fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
-        fragmentInteractionListener.goneIconAbouttActionBar();
+
+        weekWorkoutFragmentRecyclerViewAdapter.notifyDataSetChanged();
+
+        Log.d("dasdasd1231da", "" + mLevel);
+
+        if(mLevel == 0){
+            fragmentInteractionListener.updateActionBarTitle("BEGINNER");
+        }if(mLevel == 1){
+            fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
+        }if(mLevel == 2) {
+            fragmentInteractionListener.updateActionBarTitle("ADVANCED");
+        }        fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.visibleIconBacktActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();
         fragmentInteractionListener.goneIconInfoActionBar();
@@ -98,7 +111,6 @@ public class WeekWorkoutFragment extends BaseFragment {
         resultsItemsArrayList = getArguments().getParcelableArrayList("array_trainings_for_week_workout");
         mLevel = getArguments().getInt("level");
 
-        fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
         fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.visibleIconBacktActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();

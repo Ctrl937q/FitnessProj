@@ -61,22 +61,10 @@
                     android:textSize="10sp"
                     android:textStyle="bold" />
 
-
             </LinearLayout>
-
 
         </android.support.v7.widget.CardView>
 
     </com.loopeer.shadow.ShadowView>
-
-    <ProgressBar
-        android:layout_width="20dp"
-        android:id="@+id/progress_bar_item_start_rv"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="30dp"
-        android:layout_height="20dp"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

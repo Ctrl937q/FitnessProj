@@ -56,7 +56,6 @@ public interface OnFragmentInteractionListener {
 
     void goneIconShareActionBar();
 
-    boolean isInternetConnectionSnackBarWithProgress(View view, ProgressBar progressBar);
 
     boolean isInternetConnection();
 

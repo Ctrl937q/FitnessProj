@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
+import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
 
 import java.util.ArrayList;
 
@@ -58,7 +59,14 @@ public class DayWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter<
             ((DayWorkoutFragmentRecyclerViewAdapter.HeaderViewHolder) holder).mButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: Click reset on DayWorkoutFragment
+                    ExecutorsPool.runCommonBgTask(new Runnable() {
+                        @Override
+                        public void run() {
+                            //TODO:
+                            // TrainingRepository trainingRepository = new TrainingRepository(context)
+                            //trainingRepository.resetByWeek(TrainingRepository.COMPLEXITY_ARR[level]);
+                        }
+                    });
                 }
             });
         } else if (holder instanceof DayWorkoutFragmentRecyclerViewAdapter.ItemViewHolder) {

@@ -1,7 +1,6 @@
 package com.example.tituh.fitnessproj.ui.activities;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -12,17 +11,13 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
-import com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout.GetReadyFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
@@ -34,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewInfo;
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
-    private GetReadyFragment getReadyFragment;
     private boolean pressOnExersiceDoFragment = false;
 
     @Override
@@ -50,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewShare = findViewById(R.id.action_bar_share);
         mImageViewBackActionBarGetReady = findViewById(R.id.action_bar_arrow_get_ready);
         setSupportActionBar(toolbar);
-        getReadyFragment = new GetReadyFragment();
 
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             popFragment();
             popFragment();
             pressOnExersiceDoFragment = false;
-            Log.d("asdsad12132132132ads", "" + pressOnExersiceDoFragment);
         } else {
             popFragment();
         }
@@ -137,8 +129,10 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setView(view);
             final AlertDialog dialog = builder.create();
-            if (atBottom) dialog.getWindow().setGravity(Gravity.BOTTOM);
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_transparent);
+            if (atBottom)
+                if (dialog.getWindow() != null) dialog.getWindow().setGravity(Gravity.BOTTOM);
+            if (dialog.getWindow() != null)
+                dialog.getWindow().setBackgroundDrawableResource(R.drawable.bg_transparent);
             dialog.show();
         }
     }
@@ -246,55 +240,15 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewShare.setVisibility(View.GONE);
     }
 
-    @Override
-    public boolean isInternetConnectionSnackBarWithProgress(View view, final ProgressBar progressBar) {
-        final ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm.getActiveNetwork() != null) {
-            return true;
-        } else {
-            final Snackbar snackbar = Snackbar.make(view, "No Internet Connection", Snackbar.LENGTH_LONG);
-            final Snackbar snackbar2 = Snackbar.make(view, "Internet Connection Restored !", Snackbar.LENGTH_LONG);
-            snackbar.setAction("Retry", new View.OnClickListener() {
-                @Override
-                public void onClick(final View view) {
-                    if (cm.getActiveNetwork() == null) {
-                        progressBar.setVisibility(View.VISIBLE);
-                        new CountDownTimer(3500, 500) {
-                            @Override
-                            public void onTick(long l) {
-                                if (cm.getActiveNetwork() != null) {
-                                    snackbar2.show();
-                                    progressBar.setVisibility(View.GONE);
 
-                                }
-                            }
-
-                            @Override
-                            public void onFinish() {
-                                if (cm.getActiveNetwork() == null) {
-                                    snackbar.show();
-                                }
-                                cancel();
-                                progressBar.setVisibility(View.GONE);
-                            }
-                        }.start();
-
-                    } else {
-                        snackbar2.show();
-
-                    }
-                }
-            });
-            snackbar.show();
-            return false;
-        }
-    }
 
     @Override
     public boolean isInternetConnection() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm.getActiveNetwork() != null) {
-            return true;
+        if (cm != null) {
+            if (cm.getActiveNetwork() != null) {
+                return true;
+            }
         }
         return false;
     }
@@ -303,7 +257,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     public boolean isInternetConnectionSnackBar(View view) {
         final ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (cm.getActiveNetwork() != null) {
+        if (cm != null && cm.getActiveNetwork() != null) {
             return true;
         } else {
             final Snackbar snackbar = Snackbar.make(view, "No Internet Connection", Snackbar.LENGTH_LONG);
@@ -311,7 +265,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             snackbar.setAction("Retry", new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {
-                    if (cm.getActiveNetwork() == null) {
+                    if (cm != null && cm.getActiveNetwork() == null) {
                         new CountDownTimer(1500, 500) {
                             @Override
                             public void onTick(long l) {

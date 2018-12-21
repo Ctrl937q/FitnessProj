@@ -14,6 +14,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
+import com.example.tituh.fitnessproj.model.db.GetWeekProgressListener;
+import com.example.tituh.fitnessproj.model.db.TrainingRepository;
+import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
+import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +30,16 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
     private static final int TYPE_ITEM = 1;
     private int level;
     private ArrayList<String> mWeekArray;
+    private TrainingRepository trainingRepository;
+    private OnFragmentInteractionListener fragmentInteractionListener;
     private Context context;
 
-    public WeekWorkoutFragmentRecyclerViewAdapter(ArrayList<String> mWeekArray, int level, Context context) {
+    public WeekWorkoutFragmentRecyclerViewAdapter(ArrayList<String> mWeekArray, int level, Context context, OnFragmentInteractionListener fragmentInteractionListener) {
         this.mWeekArray = mWeekArray;
         this.level = level;
         this.context = context;
+        this.trainingRepository = new TrainingRepository(context);
+        this.fragmentInteractionListener = fragmentInteractionListener;
     }
 
     @NonNull
@@ -48,7 +56,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof HeaderViewHolder) {
             if (level == 0) {
                 ((HeaderViewHolder) holder).mImageViewedal.setImageResource(R.drawable.vector_medal_beginner);
@@ -68,12 +76,34 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
             ((HeaderViewHolder) holder).mButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //TODO: Click reset on ChooseLevelFragment
+                    ExecutorsPool.runCommonBgTask(new Runnable() {
+                        @Override
+                        public void run() {
+                            trainingRepository.resetByComplexity(TrainingRepository.COMPLEXITY_ARR[level]);
+                            fragmentInteractionListener.runUiTask(new Runnable() {
+                                @Override
+                                public void run() {
+                                    notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    });
                 }
             });
 
         } else if (holder instanceof ItemViewHolder) {
             ((ItemViewHolder) holder).mTextViewWeek.setText(mWeekArray.get(position - 1));
+            trainingRepository.getWeekProgress(mWeekArray.get(position - 1), TrainingRepository.COMPLEXITY_ARR[level], new GetWeekProgressListener() {
+                @Override
+                public void onGetWeekProgress(final int progress) {
+                    if (fragmentInteractionListener != null) fragmentInteractionListener.runUiTask(new Runnable() {
+                        @Override
+                        public void run() {
+                            ((ItemViewHolder) holder).progressBar.setProgress(progress);
+                        }
+                    });
+                }
+            });
             //((ItemViewHolder) holder).progressBar.setProgress((int) arrayListProgress.get(position -1).getProgress());
         }
     }

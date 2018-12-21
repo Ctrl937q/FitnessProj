@@ -1,6 +1,8 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
@@ -45,14 +47,15 @@ public class FitnessFragment extends BaseFragment {
     private HashSet<String> mArrayWithoutDuplicates;
     private ArrayList<String> mStringArrayWeek;
     private ApiClient mApiClient;
-    private ProgressBar mProgressBar;
     private TextView mTextViewWeek;
     private AlertDialog.Builder mDialogBuilderInfo;
-    private LayoutInflater mLayoutInflaterInfo;
     private AlertDialog mAlertDialogInfo;
+    private View prompstView;
+    private LayoutInflater layoutInflater;
     private CountDownTimer mCountDownTimer;
     private boolean isTimerCalcel;
     private CoordinatorLayout mCoordinatorLayout;
+    private boolean flag;
 
     @Nullable
     @Override
@@ -102,10 +105,10 @@ public class FitnessFragment extends BaseFragment {
                     }
                     if (position == 1) {
                         mTextViewWeek = view.findViewById(R.id.textViewFitnessStartLayout_1);
-                        mProgressBar = view.findViewById(R.id.progress_bar_item_start_rv);
-                        if (fragmentInteractionListener.isInternetConnectionSnackBarWithProgress(mCoordinatorLayout, mProgressBar)) {
+                        if (fragmentInteractionListener.isInternetConnectionSnackBar(mCoordinatorLayout)) {
                             mAlertDialogInfo.show();
-                            mProgressBar.setVisibility(View.VISIBLE);
+                            mAlertDialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            //mProgressBar.setVisibility(View.VISIBLE);
                             timer();
                             mApiClient.getTrainings(new OnGetTrainingResponseListener() {
                                 @Override
@@ -118,15 +121,18 @@ public class FitnessFragment extends BaseFragment {
                                             mCountDownTimer.cancel();
                                         }
                                         mTextViewWeek.setText(mStringArrayWeek.size() + " WEEK WORKOUT GUIDE FOR TONING & STRETCHING");
-                                        Bundle bundle = new Bundle();
-                                        bundle.putParcelableArrayList("array_trainings", mResultsItemsArrayList);
-                                        bundle.putStringArrayList("array_weeks", mStringArrayWeek);
-                                        bundle.putInt("count_weeks", mStringArrayWeek.size());
-                                        ChooseLevelFragment chooseLevelFragment = new ChooseLevelFragment();
-                                        chooseLevelFragment.setArguments(bundle);
-                                        fragmentInteractionListener.pushFragment(chooseLevelFragment, true);
-                                        mProgressBar.setVisibility(View.GONE);
-                                        mAlertDialogInfo.dismiss();
+                                        if(!flag){
+                                            mAlertDialogInfo.dismiss();
+                                        }else {
+                                            Bundle bundle = new Bundle();
+                                            bundle.putParcelableArrayList("array_trainings", mResultsItemsArrayList);
+                                            bundle.putStringArrayList("array_weeks", mStringArrayWeek);
+                                            bundle.putInt("count_weeks", mStringArrayWeek.size());
+                                            ChooseLevelFragment chooseLevelFragment = new ChooseLevelFragment();
+                                            chooseLevelFragment.setArguments(bundle);
+                                            fragmentInteractionListener.pushFragment(chooseLevelFragment, true);
+                                            mAlertDialogInfo.dismiss();
+                                        }
                                     }
                                 }
                             });
@@ -171,7 +177,9 @@ public class FitnessFragment extends BaseFragment {
         mStringArrayWeek = new ArrayList<>();
         mRecyclerViewFitnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
         mDialogBuilderInfo = new AlertDialog.Builder(getActivity());
-        mLayoutInflaterInfo = LayoutInflater.from(getActivity());
+        layoutInflater = LayoutInflater.from(getActivity());
+        prompstView = layoutInflater.inflate(R.layout.dialog_prepare, null);
+        mDialogBuilderInfo.setView(prompstView);
         mDialogBuilderInfo.setCancelable(false);
         mAlertDialogInfo = mDialogBuilderInfo.create();
         fragmentInteractionListener.visibleIconAboutActionBar();
@@ -205,6 +213,7 @@ public class FitnessFragment extends BaseFragment {
 
     private void timer() {
         isTimerCalcel = false;
+        flag = true;
         mCountDownTimer = new CountDownTimer(4500, 500) {
             @Override
             public void onTick(long l) {
@@ -215,9 +224,8 @@ public class FitnessFragment extends BaseFragment {
             public void onFinish() {
                 final Snackbar snackbar = Snackbar.make(view, "Cant get data, try again", Snackbar.LENGTH_SHORT);
                 snackbar.show();
-                mProgressBar.setVisibility(View.GONE);
                 mAlertDialogInfo.dismiss();
-
+                flag = false;
                 if (!isTimerCalcel) {
                     mCountDownTimer.cancel();
                     isTimerCalcel = true;

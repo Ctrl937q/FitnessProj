@@ -99,13 +99,11 @@ public class FitnessFragmentStartRecyclerViewAdapter extends RecyclerView.Adapte
 
         private ImageView mImageViewLastItemIcon;
         private TextView mTextViewHeadline3;
-        private ProgressBar progressBar;
 
         private TwoViewHolder(@NonNull View itemView) {
             super(itemView);
             mImageViewLastItemIcon = itemView.findViewById(R.id.image_view_fitness_start2);
             mTextViewHeadline3 = itemView.findViewById(R.id.text_view_fitness_start_3);
-            progressBar = (ProgressBar) itemView.findViewById(R.id.progress_bar_item_start_rv);
         }
     }
 

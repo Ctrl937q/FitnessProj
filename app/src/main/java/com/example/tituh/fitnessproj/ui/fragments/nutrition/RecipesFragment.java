@@ -35,9 +35,6 @@ public class RecipesFragment extends BaseFragment {
     private ArrayList<ResultsItem> mResultsItemArrayListResponseFilter;
     private RecipesVerticalRecyclerViewAdapter recipesVerticalRecyclerViewAdapter;
     private Button buttonRetry;
-    private int mPastVisiblesItems;
-    private int mVisibleItemCount;
-    private int mTotalItemCount;
     private CoordinatorLayout coordinatorLayout;
     private ApiClient apiClient;
     private GridLayoutManager mGridLayoutManager;
@@ -108,6 +105,7 @@ public class RecipesFragment extends BaseFragment {
                 }
             }));
         }
+        fragmentInteractionListener.goneIconAbouttActionBar();
         return view;
     }
 

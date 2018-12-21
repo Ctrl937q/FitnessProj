@@ -199,6 +199,7 @@ public class ExersiceDoFragment extends BaseFragment {
         mProgressBarCircuitProgress = view.findViewById(R.id.progress_bar_circuit_progress);
         mTextViewValueCircuit = view.findViewById(R.id.textView_value_circuit);
         mTextViewReps = view.findViewById(R.id.text_view_reps);
+
         dialogBuilder = new AlertDialog.Builder(getActivity());
         dialogBuilderInfo = new AlertDialog.Builder(getActivity());
         layoutInflater = LayoutInflater.from(getActivity());
@@ -209,6 +210,7 @@ public class ExersiceDoFragment extends BaseFragment {
         dialogBuilderInfo.setView(promptsViewinfo);
         dialogBuilder.setCancelable(false);
         dialogBuilderInfo.setCancelable(false);
+
         buttonDialog = promptsView.findViewById(R.id.btn_skip_workout);
         textViewDialog = promptsView.findViewById(R.id.text_view_seconds_left);
         buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);

@@ -34,6 +34,7 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
         ChooseLevelModel model = mArrayListChooseLevelModel.get(position);
         holder.mImageViewLevel.setImageResource(model.getImageInt());
         holder.mTextViewTitle.setText("" + model.getTitle());
+        holder.mProgressBar.setProgress(model.getProgress());
         if(position == 0){
             holder.mImageViewStar2.setVisibility(View.GONE);
             holder.mImageViewStar3.setVisibility(View.GONE);
@@ -68,7 +69,6 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
             mProgressBar = itemView.findViewById(R.id.progress_bar_level_choose_item);
             ProgressBarDrawable bgProgress= new ProgressBarDrawable(6);
             mProgressBar.setProgressDrawable(bgProgress);
-            mProgressBar.setProgress(20);
         }
     }
 }

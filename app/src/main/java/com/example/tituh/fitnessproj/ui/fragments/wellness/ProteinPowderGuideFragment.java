@@ -19,6 +19,8 @@ public class ProteinPowderGuideFragment extends BaseFragment {
             view = inflater.inflate(R.layout.protein_powder_guide_fragment, container, false);
             fragmentInteractionListener.updateActionBarTitle("PROTEIN POWDER GUIDE");
             fragmentInteractionListener.visibleIconBacktActionBar();
+            fragmentInteractionListener.goneIconAbouttActionBar();
+
         }
         return view;
     }

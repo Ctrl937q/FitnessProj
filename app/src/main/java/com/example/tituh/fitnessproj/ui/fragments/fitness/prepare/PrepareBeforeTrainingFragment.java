@@ -1,8 +1,13 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.prepare;
 
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.dd.CircularProgressButton;
 import com.example.tituh.fitnessproj.R;
@@ -35,6 +41,13 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
     private FitnessPrepareTabFragmentIncreaseTheBurn1 mFirstIncreaseTheBurnFragment;
     private FitnessPrepareTabFragmentIncreaseTheBurn2 mSecondIncreaseTheBurnFragment;
 
+    private AlertDialog.Builder mDialogBuilderInfo;
+    private AlertDialog mAlertDialogInfo;
+    private CountDownTimer mCountDownTimer;
+
+    private boolean isTimerCalcel;
+    private boolean flag;
+
     private Button mButton1StartWorkout;
     private Button mButton2StartWorkout;
     private Button mButton3StartWorkout;
@@ -46,6 +59,9 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
     private TabLayout tabLayoutSecond;
 
     ApiClient apiClient;
+    private LayoutInflater layoutInflater;
+    private View promptsView;
+    private ProgressBar progressBar;
 
     private ArrayList<ChooseLevelModel> mModelLevel;
     private ArrayList<ResultsItem> mArrayListResult; //need
@@ -87,16 +103,16 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button1_start_workout:
-                clickBtnResponse(mButton1StartWorkout);
+                clickBtnResponse();
                 break;
             case R.id.button2_start_workout:
-                clickBtnResponse(mButton2StartWorkout);
+                clickBtnResponse();
                 break;
             case R.id.button3_start_workout:
-                clickBtnResponse(mButton3StartWorkout);
+                clickBtnResponse();
                 break;
             case R.id.button4_start_workout:
-                clickBtnResponse(mButton4StartWorkout);
+                clickBtnResponse();
                 break;
         }
     }
@@ -120,6 +136,16 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
         mModelLevel = new ArrayList<>();
         mArrayWithoutDuplicates = new HashSet<>();
 
+        mDialogBuilderInfo = new AlertDialog.Builder(getActivity());
+        layoutInflater = LayoutInflater.from(getActivity());
+        promptsView = layoutInflater.inflate(R.layout.dialog_prepare, null);
+
+        mDialogBuilderInfo.setView(promptsView);
+        progressBar = promptsView.findViewById(R.id.progress_bar_prepare);
+        mDialogBuilderInfo.setCancelable(false);
+
+        mAlertDialogInfo = mDialogBuilderInfo.create();
+
         mButton1StartWorkout = view.findViewById(R.id.button1_start_workout);
         mButton2StartWorkout = view.findViewById(R.id.button2_start_workout);
         mButton3StartWorkout = view.findViewById(R.id.button3_start_workout);
@@ -137,24 +163,56 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
         setupViewPagerSecond(mViewPagerSecond);
     }
 
-    private void clickBtnResponse(final Button button){
+    private void clickBtnResponse() {
         if (fragmentInteractionListener.isInternetConnectionSnackBar(linearLayout)) {
-            button.setEnabled(false);
+            mAlertDialogInfo.show();
+            mAlertDialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            timer();
             apiClient.getTrainings(new OnGetTrainingResponseListener() {
                 @Override
                 public void onGetTrainingsResponse(@Nullable String message, boolean success, @Nullable TrainingResponse trainingResponse) {
-                    try {
+                    if (trainingResponse != null) {
                         mArrayListResult.clear();
                         mArrayListResult.addAll(trainingResponse.getResults());
-                        pushFragmentWithBundle();
-                        button.setEnabled(true);
-                    } catch (NullPointerException e) {
-                        e.printStackTrace();
+                        if (!isTimerCalcel) {
+                            mCountDownTimer.cancel();
+                        }
+                        if (!flag) {
+                            mAlertDialogInfo.dismiss();
+                        } else {
+                            pushFragmentWithBundle();
+                        }
+
                     }
                 }
             });
         }
     }
+
+    private void timer() {
+        isTimerCalcel = false;
+        flag = true;
+
+        mCountDownTimer = new CountDownTimer(4500, 500) {
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                final Snackbar snackbar = Snackbar.make(view, "Cant get data, try again", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+                mAlertDialogInfo.dismiss();
+                flag = false;
+                if (!isTimerCalcel) {
+                    mCountDownTimer.cancel();
+                    isTimerCalcel = true;
+                }
+            }
+        }.start();
+    }
+
 
     private void pushFragmentWithBundle() {
         sortDeleteDuplicates(mArrayListResult);
@@ -164,9 +222,9 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
         bundle.putInt("count_weeks", mWeekArray.size());
         ChooseLevelFragment chooseLevelFragment = new ChooseLevelFragment();
         chooseLevelFragment.setArguments(bundle);
+        mAlertDialogInfo.dismiss();
         fragmentInteractionListener.pushFragment(chooseLevelFragment, true);
     }
-
 
 
     private ArrayList<String> sortDeleteDuplicates(ArrayList<ResultsItem> resultsItemsArrayList) {

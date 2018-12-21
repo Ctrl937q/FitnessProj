@@ -26,9 +26,6 @@ public class ApiClient implements ApiModelInterface {
     private static final String BASE_URL = "http://18.215.141.14:8000/";
     private static Retrofit retrofit;
     private ApiRestInterface mApi;
-    private int page = 1;
-    private boolean nextPageNull = false;
-    private Call<TrainingResponse> callCalcel;
 
     public ApiClient() {
         if (retrofit == null) {
@@ -51,7 +48,6 @@ public class ApiClient implements ApiModelInterface {
         mApi.getTrainigs().enqueue(new Callback<TrainingResponse>() {
             @Override
             public void onResponse(@NonNull final Call<TrainingResponse> call, @NonNull Response<TrainingResponse> response) {
-                callCalcel = call;
                 if (HttpURLConnection.HTTP_OK == response.code()) {
                     if (null != listener)
                         listener.onGetTrainingsResponse(null, true, response.body());

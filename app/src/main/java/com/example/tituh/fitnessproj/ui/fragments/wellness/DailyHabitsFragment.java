@@ -20,6 +20,8 @@ public class DailyHabitsFragment extends BaseFragment {
             view = inflater.inflate(R.layout.daily_habits_fragment, container, false);
             fragmentInteractionListener.updateActionBarTitle("DAILY HABITS");
             fragmentInteractionListener.visibleIconBacktActionBar();
+            fragmentInteractionListener.goneIconAbouttActionBar();
+
         }
         return view;
     }

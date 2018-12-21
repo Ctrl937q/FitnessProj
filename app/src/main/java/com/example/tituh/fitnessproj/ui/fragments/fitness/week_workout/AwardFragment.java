@@ -1,6 +1,5 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,11 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
+import com.example.tituh.fitnessproj.model.db.TrainingRepository;
+import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class AwardFragment extends BaseFragment {
 
@@ -25,6 +23,7 @@ public class AwardFragment extends BaseFragment {
     int position;
     int dayClick;
     ArrayList<Integer>arrayListProgressWeek;
+    String week;
 
     @Nullable
     @Override
@@ -43,16 +42,14 @@ public class AwardFragment extends BaseFragment {
             weekclick = getArguments().getInt("week_click");
             dayClick = getArguments().getInt("day_click");
             position = weekclick - 1;
+            week = getArguments().getString("week");
 
-
-
-
-
-
-
-
-
-
+            final TrainingRepository trainingRepository = new TrainingRepository(getContext());
+            ExecutorsPool.runCommonBgTask(new Runnable() {
+                public void run() {
+                    trainingRepository.addTraining(week, TrainingRepository.COMPLEXITY_ARR[level], 36);
+                }
+            });
 
             textViewAwardCompleted.setText("You have competed \n" + getArguments().getString("week") + " - " + getArguments().getString("day"));
             Button buttonMainMenu = view.findViewById(R.id.button_main_manu_award);

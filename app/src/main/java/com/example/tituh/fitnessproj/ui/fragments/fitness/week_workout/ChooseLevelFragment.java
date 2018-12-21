@@ -8,12 +8,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ChooseLevelRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.model.ChooseLevelModel;
+import com.example.tituh.fitnessproj.model.db.GetComplexityProgressListener;
+import com.example.tituh.fitnessproj.model.db.TrainingRepository;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
 
 public class ChooseLevelFragment extends BaseFragment {
@@ -24,6 +28,9 @@ public class ChooseLevelFragment extends BaseFragment {
     private int mCountWeek;
     private RecyclerView mRecyclerView;
     private WeekWorkoutFragment mWeekWorkoutFragment;
+    private ChooseLevelRecyclerViewAdapter chooseLevelRecyclerViewAdapter;
+    private TrainingRepository trainingRepository;
+    private boolean flag;
 
     @Nullable
     @Override
@@ -33,12 +40,9 @@ public class ChooseLevelFragment extends BaseFragment {
 
             initialize();
 
-            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_beginner, "BEGINNER"));
-            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_intermediate, "INTERMEDIATE"));
-            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_advanced, "ADVANCED"));
+            trainingRepository = new TrainingRepository(getContext());
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mRecyclerView.setAdapter(new ChooseLevelRecyclerViewAdapter(mModelLevel));
 
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -90,9 +94,11 @@ public class ChooseLevelFragment extends BaseFragment {
                 }
             }));
         }
+        setAdapter();
+
         fragmentInteractionListener.updateActionBarTitle("12 WEEK");
         fragmentInteractionListener.visibleIconBacktActionBar();
-        fragmentInteractionListener.visibleIconAboutActionBar();
+        fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();
         fragmentInteractionListener.goneIconInfoActionBar();
         fragmentInteractionListener.goneIconShareActionBar();
@@ -103,6 +109,30 @@ public class ChooseLevelFragment extends BaseFragment {
     public void onDestroyView() {
         fragmentInteractionListener.updateActionBarTitle("TSC BODY");
         super.onDestroyView();
+    }
+
+
+    private void setAdapter(){
+        trainingRepository.getComplexityProgress(new GetComplexityProgressListener() {
+            @Override
+            public void onGetComplexityProgress(final int[] complexities) {
+                if (fragmentInteractionListener != null) {
+                    fragmentInteractionListener.runUiTask(new Runnable() {
+                        @Override
+                        public void run() {
+                            mModelLevel.clear();
+                            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_beginner, "BEGINNER", complexities[0]));
+                            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_intermediate, "INTERMEDIATE", complexities[1]));
+                            mModelLevel.add(new ChooseLevelModel(R.drawable.vector_medal_advanced, "ADVANCED", complexities[2]));
+                            chooseLevelRecyclerViewAdapter = new ChooseLevelRecyclerViewAdapter(mModelLevel);
+                            mRecyclerView.setAdapter(chooseLevelRecyclerViewAdapter);
+                            chooseLevelRecyclerViewAdapter.notifyDataSetChanged();
+
+                        }
+                    });
+                }
+            }
+        });
     }
 
 
@@ -121,5 +151,4 @@ public class ChooseLevelFragment extends BaseFragment {
         fragmentInteractionListener.goneIconInfoActionBar();
         fragmentInteractionListener.goneIconShareActionBar();
     }
-
 }

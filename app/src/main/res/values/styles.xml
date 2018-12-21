@@ -19,7 +19,7 @@
     </style>
 
 
-
-
-
+    <style name="AppTheme.Dialog">
+        <item name="colorAccent">#ff37de</item> <!-- Whatever color you want-->
+    </style>
 </resources>
