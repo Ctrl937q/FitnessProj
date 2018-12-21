@@ -53,6 +53,7 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         dialogBuilderInfo.setCancelable(false);
         buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
         textViewInfoDialog = promptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
+
         alertDialogInfo = dialogBuilderInfo.create();
         buttonInfoDialog.setOnClickListener(new View.OnClickListener() {
             @Override

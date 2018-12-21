@@ -49,7 +49,7 @@ public class DayWorkoutFragment extends BaseFragment {
 
             RecyclerView recyclerView = view.findViewById(R.id.recyclerView_workout_day);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(new DayWorkoutFragmentRecyclerViewAdapter(dayArrayList, titleArrayList, mCountWeek, week));
+            recyclerView.setAdapter(new DayWorkoutFragmentRecyclerViewAdapter(dayArrayList, titleArrayList, mCountWeek, week, getActivity(), mLevel,mWeekClick));
 
             fragmentInteractionListener.updateActionBarTitle("WEEK " + mCountWeek);
             fragmentInteractionListener.goneIconAbouttActionBar();

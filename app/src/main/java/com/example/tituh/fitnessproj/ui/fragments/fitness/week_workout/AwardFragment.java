@@ -1,8 +1,10 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,15 +18,16 @@ import java.util.ArrayList;
 
 public class AwardFragment extends BaseFragment {
 
-    TextView textViewAwardCompleted;
-    String key;
-    int level;
-    int weekclick;
-    int position;
-    int dayClick;
-    ArrayList<Integer>arrayListProgressWeek;
-    String week;
+    private TextView textViewAwardCompleted;
+    private String key;
+    private int level;
+    private int weekclick;
+    private int position;
+    private int dayClick;
+    private ArrayList<Integer>arrayListProgressWeek;
+    private String week;
 
+    @SuppressLint("SetTextI18n")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class AwardFragment extends BaseFragment {
             ExecutorsPool.runCommonBgTask(new Runnable() {
                 public void run() {
                     trainingRepository.addTraining(week, TrainingRepository.COMPLEXITY_ARR[level], 36);
+
                 }
             });
 

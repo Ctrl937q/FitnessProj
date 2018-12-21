@@ -1,5 +1,6 @@
 package com.example.tituh.fitnessproj.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -33,6 +34,13 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
     private TrainingRepository trainingRepository;
     private OnFragmentInteractionListener fragmentInteractionListener;
     private Context context;
+    private AlertDialog.Builder dialogBuilderInfo;
+    private LayoutInflater layoutInflaterInfo;
+    private View promptsViewinfo;
+    private AlertDialog alertDialogInfo;
+    private Button buttonDialogOk;
+    private Button buttonDialogNo;
+    private TextView textViewDialog;
 
     public WeekWorkoutFragmentRecyclerViewAdapter(ArrayList<String> mWeekArray, int level, Context context, OnFragmentInteractionListener fragmentInteractionListener) {
         this.mWeekArray = mWeekArray;
@@ -40,6 +48,16 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
         this.context = context;
         this.trainingRepository = new TrainingRepository(context);
         this.fragmentInteractionListener = fragmentInteractionListener;
+        dialogBuilderInfo = new AlertDialog.Builder(context);
+        layoutInflaterInfo = LayoutInflater.from(context);
+        promptsViewinfo = layoutInflaterInfo.inflate(R.layout.dialog_reset, null);
+        dialogBuilderInfo.setView(promptsViewinfo);
+        dialogBuilderInfo.setCancelable(false);
+        buttonDialogOk = promptsViewinfo.findViewById(R.id.btn_reset_ok);
+        buttonDialogNo = promptsViewinfo.findViewById(R.id.btn_reset_no);
+        textViewDialog = promptsViewinfo.findViewById(R.id.textView_dialog_reset);
+        textViewDialog.setText("Are you sure, you want to reset the progress of all weeks passed?");
+        alertDialogInfo = dialogBuilderInfo.create();
     }
 
     @NonNull
@@ -76,18 +94,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
             ((HeaderViewHolder) holder).mButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ExecutorsPool.runCommonBgTask(new Runnable() {
-                        @Override
-                        public void run() {
-                            trainingRepository.resetByComplexity(TrainingRepository.COMPLEXITY_ARR[level]);
-                            fragmentInteractionListener.runUiTask(new Runnable() {
-                                @Override
-                                public void run() {
-                                    notifyDataSetChanged();
-                                }
-                            });
-                        }
-                    });
+                    alertDialogInfo.show();
                 }
             });
 
@@ -104,8 +111,32 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
                     });
                 }
             });
-            //((ItemViewHolder) holder).progressBar.setProgress((int) arrayListProgress.get(position -1).getProgress());
         }
+
+        buttonDialogNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogInfo.dismiss();
+            }
+        });
+
+        buttonDialogOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ExecutorsPool.runCommonBgTask(new Runnable() {
+                    @Override
+                    public void run() {
+                        trainingRepository.resetByComplexity(TrainingRepository.COMPLEXITY_ARR[level]);
+                        fragmentInteractionListener.runUiTask(new Runnable() {
+                            @Override
+                            public void run() {
+                                notifyDataSetChanged();
+                            }
+                        });
+                    }
+                });
+            }
+        });
     }
 
     @Override
