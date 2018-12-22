@@ -80,18 +80,31 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ItemViewHolder) {
+            if (position > 0 && position <= resultsItemsCircuitOneThree.size()) {
+                if (!allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
+                    ((ItemViewHolder) holder).imageViewInfo.setVisibility(View.VISIBLE);
+                }
+            }
+
+            if (position > resultsItemsCircuitOneThree.size() + 1) {
+                if (!allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
+                    ((ItemViewHolder) holder).imageViewInfo.setVisibility(View.VISIBLE);
+                }
+            }
+
+
             ((ItemViewHolder) holder).imageViewInfo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if (position > 0 && position <= resultsItemsCircuitOneThree.size()) {
                         if (!allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
-                            textViewInfoDialog.setText(allItems.get(position-1).getInfo());
+                            textViewInfoDialog.setText(allItems.get(position - 1).getInfo());
                             alertDialogInfo.show();
                         }
                     }
                     if (position > resultsItemsCircuitOneThree.size() + 1) {
                         if (!allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
-                            textViewInfoDialog.setText(allItems.get(position-2).getInfo());
+                            textViewInfoDialog.setText(allItems.get(position - 2).getInfo());
                             alertDialogInfo.show();
                         }
                     }

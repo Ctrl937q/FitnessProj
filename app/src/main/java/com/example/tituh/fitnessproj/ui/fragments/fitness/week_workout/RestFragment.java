@@ -30,6 +30,7 @@ public class RestFragment extends BaseFragment {
     private int circuit;
     private int curentCircuit;
     private ExersiceDoFragment exersiceDoFragment;
+    private boolean isTimerActive;
 
 
     @Nullable
@@ -55,18 +56,7 @@ public class RestFragment extends BaseFragment {
             mTextViewCircuit.setText(curentCircuit + " out of 4 circuits");
             mButton.setText("skip timer start circuit " + circuit);
 
-            mCountDownTimer = new CountDownTimer(60000, 1000) {
-                public void onTick(long millisUntilFinished) {
-                    mSec = (millisUntilFinished / 1000) % 60;
-                    mTextViewTimer.setText("" + mSec);
-                }
-
-                public void onFinish() {
-                    mCountDownTimer.cancel();
-                    exersiceDoFragment.setContent();
-                    fragmentInteractionListener.popFragment();
-                }
-            }.start();
+            startTimer();
 
             mButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -78,5 +68,38 @@ public class RestFragment extends BaseFragment {
             });
         }
         return view;
+    }
+
+
+    private void startTimer() {
+        isTimerActive = true;
+        mCountDownTimer = new CountDownTimer(60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mSec = (millisUntilFinished / 1000) % 60;
+                mTextViewTimer.setText("" + mSec);
+            }
+
+            public void onFinish() {
+                isTimerActive = false;
+                mCountDownTimer.cancel();
+                exersiceDoFragment.setContent();
+                fragmentInteractionListener.popFragment();
+            }
+        }.start();
+    }
+
+    @Override
+    public void onPause() {
+        mCountDownTimer.cancel();
+        isTimerActive = false;
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        if (!isTimerActive) {
+            startTimer();
+        }
+        super.onResume();
     }
 }

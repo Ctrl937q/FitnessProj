@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.model.db.TrainingRepository;
 import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
 
 public class AwardFragment extends BaseFragment {
@@ -24,8 +26,10 @@ public class AwardFragment extends BaseFragment {
     private int weekclick;
     private int position;
     private int dayClick;
-    private ArrayList<Integer>arrayListProgressWeek;
+    private ArrayList<Integer> arrayListProgressWeek;
     private String week;
+    private int id;
+    private String day;
 
     @SuppressLint("SetTextI18n")
     @Nullable
@@ -46,12 +50,13 @@ public class AwardFragment extends BaseFragment {
             dayClick = getArguments().getInt("day_click");
             position = weekclick - 1;
             week = getArguments().getString("week");
+            id = getArguments().getInt("trainingId");
+            day = getArguments().getString("day");
 
             final TrainingRepository trainingRepository = new TrainingRepository(getContext());
             ExecutorsPool.runCommonBgTask(new Runnable() {
                 public void run() {
-                    trainingRepository.addTraining(week, TrainingRepository.COMPLEXITY_ARR[level], 36);
-
+                    trainingRepository.addTraining(week, TrainingRepository.COMPLEXITY_ARR[level], 36, id);
                 }
             });
 

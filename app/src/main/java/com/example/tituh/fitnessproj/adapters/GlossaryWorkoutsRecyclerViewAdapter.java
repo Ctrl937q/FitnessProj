@@ -1,11 +1,14 @@
 package com.example.tituh.fitnessproj.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,10 +25,37 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
 
     private List <WorkoutsItem> mList;
     private Context context;
+    private AlertDialog.Builder dialogBuilderInfo;
+    private LayoutInflater layoutInflaterInfo;
+    private View promptsViewinfo;
+    private AlertDialog alertDialogInfo;
+    private Button buttonInfoDialog;
+    private TextView textViewInfoDialog;
 
     public GlossaryWorkoutsRecyclerViewAdapter(List<WorkoutsItem>mList, Context context) {
         this.context = context;
         this.mList = mList;
+
+        dialogBuilderInfo = new AlertDialog.Builder(context);
+        layoutInflaterInfo = LayoutInflater.from(context);
+        promptsViewinfo = layoutInflaterInfo.inflate(R.layout.dialog_info, null);
+        dialogBuilderInfo.setView(promptsViewinfo);
+        dialogBuilderInfo.setCancelable(false);
+
+        buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
+        textViewInfoDialog = promptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
+        alertDialogInfo = dialogBuilderInfo.create();
+
+
+
+        buttonInfoDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialogInfo.dismiss();
+            }
+        });
+
+
     }
 
     @NonNull
@@ -36,16 +66,34 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GlossaryWorkoutsRecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GlossaryWorkoutsRecyclerViewAdapter.ViewHolder holder, final int position) {
+
         Glide.with(context)
+                .asBitmap()
                 .load(mList.get(position).getImage())
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.placeholder_recipes))
                 .into(holder.imageViewGlossary);
 
-        //Picasso.get().load(mList.get(position).getImage()).placeholder(R.drawable.placeholder_recipes);
+
+
         holder.mTextViewWarmUpNameGlossary.setText(mList.get(position).getTitle());
         holder.mTextViewWarmUpDurationGlossary.setText("" + mList.get(position).getDuration());
+        if(mList.get(position).getInfo().equalsIgnoreCase("-")){
+            holder.imageViewInfoGlossary.setVisibility(View.GONE);
+        }else {
+            holder.imageViewInfoGlossary.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    textViewInfoDialog.setText(mList.get(position).getInfo());
+                    alertDialogInfo.show();
+                }
+            });
+        }
+
+
+
+
     }
 
     @Override
@@ -58,12 +106,14 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
         private TextView mTextViewWarmUpNameGlossary;
         private TextView mTextViewWarmUpDurationGlossary;
         private ImageView imageViewGlossary;
+        private ImageView imageViewInfoGlossary;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             mTextViewWarmUpNameGlossary = itemView.findViewById(R.id.warm_up_name_glossary);
             mTextViewWarmUpDurationGlossary = itemView.findViewById(R.id.textView_time_exercise_2_glossary);
             imageViewGlossary = itemView.findViewById(R.id.imageView_glossary);
+            imageViewInfoGlossary = itemView.findViewById(R.id.image_view_info_glossary);
         }
     }
 }

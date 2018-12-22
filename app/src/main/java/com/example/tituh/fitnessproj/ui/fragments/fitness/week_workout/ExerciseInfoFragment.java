@@ -5,17 +5,20 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ExerciseRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -53,6 +56,7 @@ public class ExerciseInfoFragment extends BaseFragment {
             mLevel = getArguments().getInt("level");
             mTime = Double.parseDouble(resultTraining.get(0).getDuration()) / 60;
 
+
             week = getArguments().getString("week");
             day = getArguments().getString("day");
             keyShared = mLevel + week + day;
@@ -76,6 +80,7 @@ public class ExerciseInfoFragment extends BaseFragment {
                     bundle.putString("key", keyShared);
                     bundle.putInt("day_click", mDayClick);
                     bundle.putInt("week_click", mWeekClick);
+                    bundle.putInt("trainingId", resultTraining.get(0).getId());
                     getReadyFragment = new GetReadyFragment();
                     getReadyFragment.setArguments(bundle);
                     fragmentInteractionListener.pushFragment(getReadyFragment, true);
@@ -83,7 +88,6 @@ public class ExerciseInfoFragment extends BaseFragment {
                 }
             });
 
-            fragmentInteractionListener.updateActionBarTitle("WEEK 2 - DAY 3");
             fragmentInteractionListener.goneIconAbouttActionBar();
             fragmentInteractionListener.visibleIconBacktActionBar();
             fragmentInteractionListener.goneIconHomeActionBar();

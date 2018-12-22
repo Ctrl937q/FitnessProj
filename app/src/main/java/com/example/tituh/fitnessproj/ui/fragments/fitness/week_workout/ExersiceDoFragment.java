@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tituh.fitnessproj.R;
@@ -23,6 +25,7 @@ import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.ohoussein.playpause.PlayPauseView;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -57,22 +60,24 @@ public class ExersiceDoFragment extends BaseFragment {
     private boolean mTimerRunningExercise;
     private CountDownTimer mCountDownTimerExercise;
     private CountDownTimer mCountDownDialog;
+    private AlertDialog.Builder dialogBuilderInfo;
+    private LayoutInflater layoutInflaterInfo;
+    private View promptsViewinfo;
+    private AlertDialog alertDialogInfo;
+    private Button buttonInfoDialog;
+    private TextView textViewInfoDialog;
     private Button buttonDialog;
     private TextView textViewDialog;
     private AlertDialog.Builder dialogBuilder;
-    private AlertDialog.Builder dialogBuilderInfo;
     private LayoutInflater layoutInflater;
-    private LayoutInflater layoutInflaterInfo;
     private View promptsView;
-    private View promptsViewinfo;
     private AlertDialog alertDialog;
-    private AlertDialog alertDialogInfo;
     private String key;
     private int weekClick;
     private int dayClick;
-    private Button buttonInfoDialog;
-    private TextView textViewInfoDialog;
-
+    private String day;
+    private boolean mTimerRunningDialog = false;
+    private boolean dialogShow = false;
 
     @Nullable
     @Override
@@ -81,6 +86,7 @@ public class ExersiceDoFragment extends BaseFragment {
             view = inflater.inflate(R.layout.workout_start_layout, container, false);
             fragmentInteractionListener.setPressOnExersiceDoFragment(true);
             initialize();
+
             concatContent();
             setContent();
             mButtonBack.setEnabled(false);
@@ -88,14 +94,9 @@ public class ExersiceDoFragment extends BaseFragment {
                 @Override
                 public void onClick(View view) {
                     if (!mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
-                    mButtonPlayPause.toggle();
-                    if (ismTimerRunningExercise()) {
-                        mTimerRunningExercise = false;
-                        pauseTimerExercise();
-                    } else {
-                        mTimerRunningExercise = true;
-                        startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice, getFragmentManager());
-                    }
+                        if (ismTimerRunningExercise()) {
+                            pauseTimerExercise();
+                        }
                         showDialogInfo();
                         textViewInfoDialog.setText(mAllWorkout.get(mCurrentTraining).getInfo());
                     }
@@ -105,14 +106,7 @@ public class ExersiceDoFragment extends BaseFragment {
             buttonInfoDialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mButtonPlayPause.toggle();
-                    if (ismTimerRunningExercise()) {
-                        mTimerRunningExercise = false;
-                        pauseTimerExercise();
-                    } else {
-                        mTimerRunningExercise = true;
-                        startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice, getFragmentManager());
-                    }
+                    startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice);
                     alertDialogInfo.dismiss();
                 }
             });
@@ -120,6 +114,7 @@ public class ExersiceDoFragment extends BaseFragment {
             buttonDialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    mTimerRunningDialog = false;
                     setContent();
                     pauseTimeDialog();
                     alertDialog.dismiss();
@@ -152,13 +147,12 @@ public class ExersiceDoFragment extends BaseFragment {
             mButtonPlayPause.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mButtonPlayPause.toggle();
                     if (ismTimerRunningExercise()) {
                         mTimerRunningExercise = false;
                         pauseTimerExercise();
                     } else {
                         mTimerRunningExercise = true;
-                        startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice, getFragmentManager());
+                        startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice);
                     }
                 }
             });
@@ -181,7 +175,6 @@ public class ExersiceDoFragment extends BaseFragment {
 
         fragmentInteractionListener.visibilityIconHomeActionBar();
         fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.visibilityIconInfoActionBar();
         fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.goneIconShareActionBar();
 
@@ -189,70 +182,21 @@ public class ExersiceDoFragment extends BaseFragment {
     }
 
 
-    private void initialize() {
-        mImageView = view.findViewById(R.id.image_view_exercise_do);
-        mTextViewTime = view.findViewById(R.id.text_view_time);
-        mButtonPlayPause = view.findViewById(R.id.button_test_start_exercise);
-        mProgressBarExersice = view.findViewById(R.id.progressBar_exersice);
-        mButtonBack = view.findViewById(R.id.btn_back_exersice);
-        mButtonNext = view.findViewById(R.id.btn_next_exersice);
-        mProgressBarCircuitProgress = view.findViewById(R.id.progress_bar_circuit_progress);
-        mTextViewValueCircuit = view.findViewById(R.id.textView_value_circuit);
-        mTextViewReps = view.findViewById(R.id.text_view_reps);
-
-        dialogBuilder = new AlertDialog.Builder(getActivity());
-        dialogBuilderInfo = new AlertDialog.Builder(getActivity());
-        layoutInflater = LayoutInflater.from(getActivity());
-        layoutInflaterInfo = LayoutInflater.from(getActivity());
-        promptsView = layoutInflater.inflate(R.layout.dialog_layout, null);
-        promptsViewinfo = layoutInflaterInfo.inflate(R.layout.dialog_info, null);
-        dialogBuilder.setView(promptsView);
-        dialogBuilderInfo.setView(promptsViewinfo);
-        dialogBuilder.setCancelable(false);
-        dialogBuilderInfo.setCancelable(false);
-
-        buttonDialog = promptsView.findViewById(R.id.btn_skip_workout);
-        textViewDialog = promptsView.findViewById(R.id.text_view_seconds_left);
-        buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
-        textViewInfoDialog = promptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
-        alertDialog = dialogBuilder.create();
-        alertDialogInfo = dialogBuilderInfo.create();
-        mResultsItemsCircuitOneThree = new ArrayList<>();
-        mResultsItemsCircuitTwoFour = new ArrayList<>();
-        mAllWorkout = new ArrayList<>();
-        mResultsItemsCircuitOneThree = getArguments().getParcelableArrayList("array_trainings_one_three_workout");
-        mResultsItemsCircuitTwoFour = getArguments().getParcelableArrayList("array_trainings_two_four_workout");
-        mLevel = getArguments().getInt("level");
-        mTitle = getArguments().getString("title");
-        key = getArguments().getString("key");
-        weekClick = getArguments().getInt("week_click");
-        dayClick = getArguments().getInt("day_click");
-        mFirstRest = mResultsItemsCircuitOneThree.size();
-        mSecondRest = mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size();
-        mThirdRest = mResultsItemsCircuitOneThree.size() * 2 + mResultsItemsCircuitTwoFour.size();
-        mFourRest = (mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size()) * 2;
-        fragmentInteractionListener.visibilityIconHomeActionBar();
-        fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.visibilityIconInfoActionBar();
-        fragmentInteractionListener.goneIconAbouttActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-
-    }
-
     @SuppressLint("SetTextI18n")
     public void setContent() {
+        Log.d("saddsa12eadsadssa", "setContent");
+
         if (mCurrentTraining == 0 || mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
             mButtonBack.setEnabled(false);
         } else mButtonBack.setEnabled(true);
         mTextViewValueCircuit.setText(mCurrentCircuit + "/" + 4);
-        if(getActivity()!=null) {
+        if (getActivity() != null) {
             Glide.with(getActivity())
                     .load(mAllWorkout.get(mCurrentTraining).getImage())
                     .apply(new RequestOptions()
                             .placeholder(R.drawable.placeholder_recipes))
                     .into(mImageView);
         }
-        fragmentInteractionListener.visibilityIconHomeActionBar();
         fragmentInteractionListener.updateActionBarTitle(mAllWorkout.get(mCurrentTraining).getTitle());
         mBgProgress = new ProgressBarDrawable(mResultsItemsCircuitOneThree.size());
         mProgressBarCircuitProgress.setMax(mResultsItemsCircuitOneThree.size());
@@ -269,6 +213,11 @@ public class ExersiceDoFragment extends BaseFragment {
         if (mLevel == 2) {
             mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getAdvanced() + " Reps");
         }
+
+        Log.d("sadasd123defwasz", "" + mAllWorkout.get(mCurrentTraining).getInfo());
+        if (!mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
+            fragmentInteractionListener.visibilityIconInfoActionBar();
+        } else fragmentInteractionListener.goneIconInfoActionBar();
         startTimerExercise((int) mAllWorkout.get(mCurrentTraining).getDuration() * 1000, mTextViewTime, //
                 mProgressBarExersice);
     }
@@ -294,6 +243,8 @@ public class ExersiceDoFragment extends BaseFragment {
         bundle.putInt("level", mLevel);
         bundle.putInt("week_click", weekClick);
         bundle.putInt("day_click", dayClick);
+        bundle.putInt("trainingId", getArguments().getInt("trainingId"));
+        bundle.putString(day, "day");
         mAwardFragment = new AwardFragment();
         mAwardFragment.setArguments(bundle);
         fragmentInteractionListener.pushFragment(mAwardFragment, true);
@@ -305,7 +256,7 @@ public class ExersiceDoFragment extends BaseFragment {
     }
 
     public void startTimerExercise(long startTime, final TextView textView, final ProgressBar progressBar) {
-
+        Log.d("saddsa12eadsadssa", "startTimerExercise");
         mStartTimeInMills = startTime;
         mTimeLeftInMills = startTime;
         mTimerRunningExercise = true;
@@ -321,12 +272,17 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onFinish() {
                 mCurrentTraining++;
-                pauseTimerExercise();
+                mTimerRunningExercise = false;
+                if (ismTimerRunningExercise()) {
+                    pauseTimerExercise();
+                }
                 if (mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
+                    mCurrentCircuit++;
                     goToRest();
                     return;
                 }
                 if (mCurrentTraining == mFourRest) {
+                    fragmentInteractionListener.setPressOnExersiceDoFragment(false);
                     gotoAward();
                     return;
                 }
@@ -337,8 +293,8 @@ public class ExersiceDoFragment extends BaseFragment {
         }.start();
     }
 
-    public void startStopTimerExercise(final TextView textView, final ProgressBar progressBar,
-                                       final FragmentManager fragmentManager) {
+    public void startStopTimerExercise(final TextView textView, final ProgressBar progressBar) {
+        Log.d("saddsa12eadsadssa", "startStopTimerExercise");
 
         mTimerRunningExercise = true;
         mCountDownTimerExercise = new CountDownTimer(mTimeLeftInMills, 1000) {
@@ -352,16 +308,39 @@ public class ExersiceDoFragment extends BaseFragment {
 
             @Override
             public void onFinish() {
-                pauseTimerExercise();
-                showDialog();
+                mCurrentTraining++;
+                mTimerRunningExercise = false;
+                if (ismTimerRunningExercise()) {
+                    pauseTimerExercise();
+                }
+                if (mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
+                    mCurrentCircuit++;
+                    goToRest();
+                    return;
+                }
+                if (mCurrentTraining == mFourRest) {
+                    fragmentInteractionListener.setPressOnExersiceDoFragment(false);
+                    gotoAward();
+                    return;
+                }
+                if (mCurrentTraining < mAllWorkout.size()) {
+                    showDialog();
+                }
             }
         }.start();
-        mTimerRunningExercise = true;
+        // mTimerRunningExercise = true;
     }
 
     public void showDialog() {
         alertDialog.show();
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        startDimerDialog();
+    }
+
+
+    public void startDimerDialog() {
+        mTimerRunningDialog = true;
+        mButtonPlayPause.change(false);
         mCountDownDialog = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long l) {
@@ -371,12 +350,72 @@ public class ExersiceDoFragment extends BaseFragment {
 
             @Override
             public void onFinish() {
+                Log.d("saddsa12eadsadssa", "+");
+                mTimerRunningDialog = false;
                 setContent();
                 pauseTimeDialog();
                 alertDialog.dismiss();
             }
         }.start();
     }
+
+
+    public void startStopTimerExerciseDo(TextView textViewTime,
+                                         ProgressBar progressBarExersice) {
+
+        mButtonPlayPause.change(false);
+
+        startStopTimerExercise(textViewTime, progressBarExersice);
+    }
+
+    public boolean ismTimerRunningExercise() {
+        return mTimerRunningExercise;
+    }
+
+    public void pauseTimerExercise() {
+        Log.d("233321sadsadsaa", "+");
+        mButtonPlayPause.change(true);
+        mCountDownTimerExercise.cancel();
+        mTimerRunningExercise = false;
+    }
+
+    public void pauseTimeDialog() {
+        Log.d("233321sadsadsaa", "+");
+        mCountDownDialog.cancel();
+    }
+
+    @Override
+    public void onPause() {
+        if (ismTimerRunningExercise()) {
+            pauseTimerExercise();
+        }
+        if (mTimerRunningDialog) {
+            dialogShow = true;
+            pauseTimeDialog();
+        }
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        if (dialogShow) {
+            startDimerDialog();
+            dialogShow = false;
+        }
+        if (!mTimerRunningExercise && !mTimerRunningDialog) {
+            startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice);
+        }
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        pauseTimerExercise();
+        super.onDestroy();
+    }
+
+
+    //------------------------------------------------------------------------------------------
 
 
     public void showDialogInfo() {
@@ -390,11 +429,16 @@ public class ExersiceDoFragment extends BaseFragment {
         mAllWorkout.addAll(mResultsItemsCircuitTwoFour);
     }
 
-
     private void updateCountDownText(TextView textView) {
+        int minutes = (int) (mTimeLeftInMills / 1000) / 60;
         int seconds = (int) (mTimeLeftInMills / 1000) % 60;
+        String timeLeftWithinutes = String.format(Locale.getDefault(), "%2d:%02d", minutes, seconds);
         String timeLeftFormatted = String.format(Locale.getDefault(), "%1d", seconds);
-        textView.setText(timeLeftFormatted);
+        if (mTimeLeftInMills / 1000 >= 60) {
+            textView.setText(timeLeftWithinutes);
+        } else {
+            textView.setText(timeLeftFormatted);
+        }
     }
 
     private void updateCountDownTextDialog(TextView textView) {
@@ -403,33 +447,58 @@ public class ExersiceDoFragment extends BaseFragment {
         textView.setText(timeLeftFormatted);
     }
 
-    public void startStopTimerExerciseDo(TextView textViewTime,
-                                         ProgressBar progressBarExersice, FragmentManager fragmentManager) {
-        mTimerRunningExercise = true;
-        startStopTimerExercise(textViewTime, progressBarExersice, fragmentManager);
-    }
 
-    public boolean ismTimerRunningExercise() {
-        return mTimerRunningExercise;
-    }
+    private void initialize() {
+        mImageView = view.findViewById(R.id.image_view_exercise_do);
+        mTextViewTime = view.findViewById(R.id.text_view_time);
+        mButtonPlayPause = view.findViewById(R.id.button_test_start_exercise);
+        mProgressBarExersice = view.findViewById(R.id.progressBar_exersice);
+        mButtonBack = view.findViewById(R.id.btn_back_exersice);
+        mButtonNext = view.findViewById(R.id.btn_next_exersice);
+        mProgressBarCircuitProgress = view.findViewById(R.id.progress_bar_circuit_progress);
+        mTextViewValueCircuit = view.findViewById(R.id.textView_value_circuit);
+        mTextViewReps = view.findViewById(R.id.text_view_reps);
 
-    public void pauseTimerExercise() {
-        mCountDownTimerExercise.cancel();
-        mTimerRunningExercise = false;
-    }
 
-    public void pauseTimeDialog() {
-        mCountDownDialog.cancel();
-    }
+        dialogBuilderInfo = new AlertDialog.Builder(getActivity());
+        layoutInflaterInfo = LayoutInflater.from(getActivity());
+        promptsViewinfo = layoutInflaterInfo.inflate(R.layout.dialog_info, null);
+        dialogBuilderInfo.setView(promptsViewinfo);
+        dialogBuilderInfo.setCancelable(false);
+        buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
+        textViewInfoDialog = promptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
+        alertDialogInfo = dialogBuilderInfo.create();
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
+        dialogBuilder = new AlertDialog.Builder(getActivity());
+        layoutInflater = LayoutInflater.from(getActivity());
+        promptsView = layoutInflater.inflate(R.layout.dialog_layout, null);
+        dialogBuilder.setView(promptsView);
+        dialogBuilder.setCancelable(false);
+        dialogBuilderInfo.setCancelable(false);
 
-    @Override
-    public void onDestroy() {
-        pauseTimerExercise();
-        super.onDestroy();
+        buttonDialog = promptsView.findViewById(R.id.btn_skip_workout);
+        textViewDialog = promptsView.findViewById(R.id.text_view_seconds_left);
+        alertDialog = dialogBuilder.create();
+        mResultsItemsCircuitOneThree = new ArrayList<>();
+        mResultsItemsCircuitTwoFour = new ArrayList<>();
+        mAllWorkout = new ArrayList<>();
+        mResultsItemsCircuitOneThree = getArguments().getParcelableArrayList("array_trainings_one_three_workout");
+        mResultsItemsCircuitTwoFour = getArguments().getParcelableArrayList("array_trainings_two_four_workout");
+        mLevel = getArguments().getInt("level");
+        mTitle = getArguments().getString("title");
+        key = getArguments().getString("key");
+        weekClick = getArguments().getInt("week_click");
+        dayClick = getArguments().getInt("day_click");
+        day = getArguments().getString("day");
+        mFirstRest = mResultsItemsCircuitOneThree.size();
+        mSecondRest = mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size();
+        mThirdRest = mResultsItemsCircuitOneThree.size() * 2 + mResultsItemsCircuitTwoFour.size();
+        mFourRest = (mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size()) * 2;
+        fragmentInteractionListener.visibilityIconHomeActionBar();
+        fragmentInteractionListener.goneIconBacktActionBar();
+        fragmentInteractionListener.goneIconAbouttActionBar();
+        fragmentInteractionListener.goneIconShareActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
+
     }
 }

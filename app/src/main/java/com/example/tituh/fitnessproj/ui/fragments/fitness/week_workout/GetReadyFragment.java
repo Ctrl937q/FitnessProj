@@ -22,7 +22,7 @@ public class GetReadyFragment extends BaseFragment {
     private ExersiceDoFragment exersiceDoFragment;
     private CountDownTimer countDownTimer;
     private long mTimeLeftInMills;
-    private boolean isTimerRunning = false;
+    private boolean isTimerRunning;
     String key;
     int dayClick;
     int weekClick;
@@ -44,7 +44,6 @@ public class GetReadyFragment extends BaseFragment {
             fragmentInteractionListener.goneIconHomeActionBar();
             fragmentInteractionListener.goneIconInfoActionBar();
             fragmentInteractionListener.goneIconShareActionBar();
-            isTimerRunning = true;
             startStopTimerExercise();
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,12 +62,10 @@ public class GetReadyFragment extends BaseFragment {
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
+
 
     public void startStopTimerExercise() {
+        isTimerRunning = true;
         countDownTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long l) {
@@ -84,9 +81,26 @@ public class GetReadyFragment extends BaseFragment {
         }.start();
     }
 
-
     public void pauseTimer() {
-        countDownTimer.cancel();
+        if(isTimerRunning) {
+            countDownTimer.cancel();
+            isTimerRunning = false;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        if(!isTimerRunning)
+        startStopTimerExercise();
+        super.onResume();
+    }
+
+
+
+    @Override
+    public void onPause() {
+        pauseTimer();
+        super.onPause();
     }
 
     private void updateCountDownText(TextView textView) {
@@ -109,12 +123,14 @@ public class GetReadyFragment extends BaseFragment {
         bundle.putString("key", key);
         bundle.putInt("week_click", weekClick);
         bundle.putInt("day_click", dayClick);
+        bundle.putInt("trainingId", getArguments().getInt("trainingId"));
 
         exersiceDoFragment = new ExersiceDoFragment();
         exersiceDoFragment.setArguments(bundle);
         FragmentManager manager = getFragmentManager();
         if (manager != null) {
             FragmentTransaction ft = manager.beginTransaction();
+            ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
             ft.replace(R.id.fragment_container, exersiceDoFragment, "fragment_if_you_need");
             ft.addToBackStack("fragment_if_you_need");
             ft.commit();

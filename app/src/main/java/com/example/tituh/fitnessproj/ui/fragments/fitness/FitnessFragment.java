@@ -186,7 +186,7 @@ public class FitnessFragment extends BaseFragment {
         fragmentInteractionListener.goneIconBacktActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();
         fragmentInteractionListener.goneIconShareActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
+
     }
 
     private ArrayList<String> sortDeleteDuplicates(ArrayList<ResultsItem> resultsItemsArrayList) {

@@ -15,10 +15,12 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.crashlytics.android.Crashlytics;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.app_bar);
         mActionBarTitle = findViewById(R.id.action_bar_text_view);

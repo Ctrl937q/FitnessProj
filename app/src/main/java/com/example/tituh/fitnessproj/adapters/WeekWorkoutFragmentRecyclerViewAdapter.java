@@ -130,6 +130,7 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
                         fragmentInteractionListener.runUiTask(new Runnable() {
                             @Override
                             public void run() {
+                                alertDialogInfo.dismiss();
                                 notifyDataSetChanged();
                             }
                         });

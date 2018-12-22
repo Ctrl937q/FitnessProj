@@ -6,7 +6,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class TrainingEntity {
-    @PrimaryKey(autoGenerate = true)
+
+    @PrimaryKey
     private int id;
 
     @ColumnInfo(name = "complexity")
@@ -18,10 +19,11 @@ public class TrainingEntity {
     @ColumnInfo(name = "week")
     private String week;
 
-    public TrainingEntity(String complexity, int repetitionCount, String week) {
+    public TrainingEntity(String complexity, int repetitionCount, String week, int id) {
         this.complexity = complexity;
         this.repetitionCount = repetitionCount;
         this.week = week;
+        this.id = id;
     }
 
     public String getComplexity() {

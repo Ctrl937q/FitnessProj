@@ -9,7 +9,7 @@ import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
 import java.util.List;
 
 public class TrainingRepository {
-    public static final String [] COMPLEXITY_ARR = {"beginner", "middle", "advanced"};
+    public static final String[] COMPLEXITY_ARR = {"beginner", "middle", "advanced"};
 
     private String DB_NAME = "db_training";
 
@@ -19,9 +19,9 @@ public class TrainingRepository {
         noteDatabase = Room.databaseBuilder(context, TrainingDatabase.class, DB_NAME).build();
     }
 
-    public void addTraining(String week, String complexity, int repsCount) {
-        Log.v("Add Training", week + " " + complexity + " "+ repsCount);
-        noteDatabase.trainingDao().addTraining(new TrainingEntity(complexity,repsCount, week));
+    public void addTraining(String week, String complexity, int repsCount, int id) {
+        Log.v("Add Training", week + " " + complexity + " " + repsCount);
+        noteDatabase.trainingDao().addTraining(new TrainingEntity(complexity, repsCount, week, id));
     }
 
     private int getWeekProgress(String week, String complexity) {
@@ -56,7 +56,7 @@ public class TrainingRepository {
                 int intermediateProgress = getComplexityProgress(TrainingRepository.COMPLEXITY_ARR[1]);
                 int advancedProgress = getComplexityProgress(TrainingRepository.COMPLEXITY_ARR[2]);
 
-                int [] complexities = {beginnerProgress, intermediateProgress, advancedProgress};
+                int[] complexities = {beginnerProgress, intermediateProgress, advancedProgress};
                 listener.onGetComplexityProgress(complexities);
             }
         });
@@ -66,7 +66,9 @@ public class TrainingRepository {
         noteDatabase.trainingDao().resetByWeek(week, complexity);
     }
 
-    public void resetByComplexity(String complexity){
+    public void resetByComplexity(String complexity) {
         noteDatabase.trainingDao().resetByComplexity(complexity);
-    };
+    }
+
+    ;
 }

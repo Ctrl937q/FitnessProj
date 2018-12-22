@@ -2,13 +2,13 @@ package com.example.tituh.fitnessproj.model.db;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
-
 import java.util.List;
 
 @Dao
 public interface TrainingDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void addTraining(TrainingEntity trainingEntity);
 
     @Query("DELETE FROM TrainingEntity WHERE week =:week AND complexity =:complexity")
