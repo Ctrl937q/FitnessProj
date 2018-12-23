@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,30 +17,30 @@ import java.util.ArrayList;
 
 public class DayWorkoutFragment extends BaseFragment {
 
-    private int week;
-    private ArrayList<ResultsItem> resultsItemsArray;
-    private ArrayList<ResultsItem> resultsTraining;
-    private ArrayList<String> dayArrayList;
-    private ArrayList<String> titleArrayList;
+    private int mWeek;
+    private ArrayList<ResultsItem> mResultsItemsArray;
+    private ArrayList<ResultsItem> mResultsTraining;
+    private ArrayList<String> mDayArrayList;
+    private ArrayList<String> mTitleArrayList;
     private int mLevel;
     private int mCountWeek;
     private String mWeekClick;
-    private ExerciseInfoFragment exerciseInfoFragment;
-    private String day;
+    private ExerciseInfoFragment mExerciseInfoFragment;
+    private String mDay;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.day_workout_layout, container, false);
-            resultsItemsArray = new ArrayList<>();
-            dayArrayList = new ArrayList<>();
-            titleArrayList = new ArrayList<>();
-            resultsTraining = new ArrayList<>();
+            mResultsItemsArray = new ArrayList<>();
+            mDayArrayList = new ArrayList<>();
+            mTitleArrayList = new ArrayList<>();
+            mResultsTraining = new ArrayList<>();
 
-            week = getArguments().getInt("position_week");
+            mWeek = getArguments().getInt("position_week");
 
-            resultsItemsArray = getArguments().getParcelableArrayList("array_trainings_for_day_workout");
+            mResultsItemsArray = getArguments().getParcelableArrayList("array_trainings_for_day_workout");
             mLevel = getArguments().getInt("level");
             mCountWeek = getArguments().getInt("value_week");
             mWeekClick = getArguments().getString("item_click_week");
@@ -49,14 +48,7 @@ public class DayWorkoutFragment extends BaseFragment {
 
             RecyclerView recyclerView = view.findViewById(R.id.recyclerView_workout_day);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(new DayWorkoutFragmentRecyclerViewAdapter(dayArrayList, titleArrayList, mCountWeek, week, getActivity(), mLevel,mWeekClick));
-
-            fragmentInteractionListener.updateActionBarTitle("WEEK " + mCountWeek);
-            fragmentInteractionListener.goneIconAbouttActionBar();
-            fragmentInteractionListener.visibleIconBacktActionBar();
-            fragmentInteractionListener.goneIconHomeActionBar();
-            fragmentInteractionListener.goneIconInfoActionBar();
-            fragmentInteractionListener.goneIconShareActionBar();
+            recyclerView.setAdapter(new DayWorkoutFragmentRecyclerViewAdapter(mDayArrayList, mTitleArrayList, mCountWeek, mWeek, getActivity(), mLevel,mWeekClick));
 
             recyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     recyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -65,17 +57,18 @@ public class DayWorkoutFragment extends BaseFragment {
                     if(position == 0){
 
                     }else if (null != fragmentInteractionListener) {
-                        day = dayArrayList.get(position - 1);
+                        mDay = mDayArrayList.get(position - 1);
                         Bundle bundle = new Bundle();
                         bundle.putParcelableArrayList("array_trainings_for_training_info", filterWeekDay(position));
                         bundle.putInt("level", mLevel);
-                        bundle.putInt("week_click", week);
+                        bundle.putInt("week_click", mWeek);
                         bundle.putInt("day_click", position);
                         bundle.putString("week", mWeekClick);
                         bundle.putString("day", filterWeekDay(position).get(0).getDays().get(0));
-                        exerciseInfoFragment = new ExerciseInfoFragment();
-                        exerciseInfoFragment.setArguments(bundle);
-                        fragmentInteractionListener.pushFragment(exerciseInfoFragment, true);
+                        mExerciseInfoFragment = new ExerciseInfoFragment();
+
+                        mExerciseInfoFragment.setArguments(bundle);
+                        fragmentInteractionListener.pushFragment(mExerciseInfoFragment, true);
 
                     }
                 }
@@ -98,26 +91,26 @@ public class DayWorkoutFragment extends BaseFragment {
 
 
     private void filterArrayListDay() {
-        dayArrayList.clear();
-        titleArrayList.clear();
-        for (int i = 0; i < resultsItemsArray.size(); i++) {
-            for (int j = 0; j < resultsItemsArray.get(i).getDays().size(); j++) {
-                dayArrayList.add(resultsItemsArray.get(i).getDays().get(j));
-                titleArrayList.add(resultsItemsArray.get(i).getTitle());
+        mDayArrayList.clear();
+        mTitleArrayList.clear();
+        for (int i = 0; i < mResultsItemsArray.size(); i++) {
+            for (int j = 0; j < mResultsItemsArray.get(i).getDays().size(); j++) {
+                mDayArrayList.add(mResultsItemsArray.get(i).getDays().get(j));
+                mTitleArrayList.add(mResultsItemsArray.get(i).getTitle());
             }
         }
     }
 
     private ArrayList<ResultsItem> filterWeekDay(int position) {
-        resultsTraining.clear();
-        day = dayArrayList.get(position-1);
-        for (int i = 0; i < resultsItemsArray.size(); i++) {
-            for (int j = 0; j < resultsItemsArray.get(i).getDays().size(); j++) {
-                if (resultsItemsArray.get(i).getDays().get(j).equalsIgnoreCase(day)) {
-                    resultsTraining.add(resultsItemsArray.get(i));
+        mResultsTraining.clear();
+        mDay = mDayArrayList.get(position-1);
+        for (int i = 0; i < mResultsItemsArray.size(); i++) {
+            for (int j = 0; j < mResultsItemsArray.get(i).getDays().size(); j++) {
+                if (mResultsItemsArray.get(i).getDays().get(j).equalsIgnoreCase(mDay)) {
+                    mResultsTraining.add(mResultsItemsArray.get(i));
                 }
             }
         }
-        return resultsTraining;
+        return mResultsTraining;
     }
 }

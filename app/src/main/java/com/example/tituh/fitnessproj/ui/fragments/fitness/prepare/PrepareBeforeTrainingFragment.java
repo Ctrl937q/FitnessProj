@@ -9,19 +9,14 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-
-import com.dd.CircularProgressButton;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ViewPagerAdapter;
-import com.example.tituh.fitnessproj.model.ChooseLevelModel;
 import com.example.tituh.fitnessproj.networking.ApiClient;
 import com.example.tituh.fitnessproj.networking.responses.OnGetTrainingResponseListener;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
@@ -58,18 +53,15 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
     private TabLayout tabLayoutFirst;
     private TabLayout tabLayoutSecond;
 
-    ApiClient apiClient;
+    private ApiClient apiClient;
     private LayoutInflater layoutInflater;
     private View promptsView;
-    private ProgressBar progressBar;
 
-    private ArrayList<ChooseLevelModel> mModelLevel;
-    private ArrayList<ResultsItem> mArrayListResult; //need
+    private ArrayList<ResultsItem> mArrayListResult;
     private HashSet<String> mArrayWithoutDuplicates;
 
-    private ArrayList<String> mWeekArray;//need
-    private int mCountWeek;
-    LinearLayout linearLayout;
+    private ArrayList<String> mWeekArray;
+    private LinearLayout linearLayout;
 
     @Nullable
     @Override
@@ -133,7 +125,6 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
 
         mArrayListResult = new ArrayList<>();
         mWeekArray = new ArrayList<>();
-        mModelLevel = new ArrayList<>();
         mArrayWithoutDuplicates = new HashSet<>();
 
         mDialogBuilderInfo = new AlertDialog.Builder(getActivity());
@@ -141,7 +132,6 @@ public class PrepareBeforeTrainingFragment extends BaseFragment implements View.
         promptsView = layoutInflater.inflate(R.layout.dialog_prepare, null);
 
         mDialogBuilderInfo.setView(promptsView);
-        progressBar = promptsView.findViewById(R.id.progress_bar_prepare);
         mDialogBuilderInfo.setCancelable(false);
 
         mAlertDialogInfo = mDialogBuilderInfo.create();

@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
@@ -18,13 +17,8 @@ public class GlossaryFragment extends BaseFragment {
     private CardView mCardViewWarmUp;
     private CardView mCardViewWorkouts;
     private CardView mCardViewStretching;
-
-    private ImageView mImageViewStretching;
-    private ImageView mImageViewWarmUp;
-    private ImageView mImageViewWorkouts;
-
-    private TextView textViewWarmup;
-    private TextView textViewStretching;
+    private TextView mTextViewWarmup;
+    private TextView mTextViewStretching;
     private TextView textViewWorkouts;
 
     @Nullable
@@ -35,12 +29,9 @@ public class GlossaryFragment extends BaseFragment {
             mCardViewWarmUp = view.findViewById(R.id.card_view_warm_up);
             mCardViewWorkouts = view.findViewById(R.id.card_view_workouts);
             mCardViewStretching = view.findViewById(R.id.card_view_stretching);
-            mImageViewStretching = view.findViewById(R.id.image_view_stretching);
-            mImageViewWarmUp = view.findViewById(R.id.image_view_warm_up);
-            mImageViewWorkouts = view.findViewById(R.id.image_view_workouts);
 
-            textViewWarmup = view.findViewById(R.id.textView_warm_up_glossary);
-            textViewStretching = view.findViewById(R.id.textView_stretching_glossary);
+            mTextViewWarmup = view.findViewById(R.id.textView_warm_up_glossary);
+            mTextViewStretching = view.findViewById(R.id.textView_stretching_glossary);
             textViewWorkouts = view.findViewById(R.id.textView_workouts_glossary);
 
             fragmentInteractionListener.updateActionBarTitle("GLOSSARY");
@@ -78,8 +69,8 @@ public class GlossaryFragment extends BaseFragment {
         fragmentInteractionListener.pushFragmentGlossary(new GlossaryWarmUpFragment(),
                 false);
 
-        textViewWarmup.setTextColor(ContextCompat.getColor(getActivity(), R.color.pink_for_button));
-        textViewStretching.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
+        mTextViewWarmup.setTextColor(ContextCompat.getColor(getActivity(), R.color.pink_for_button));
+        mTextViewStretching.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
         textViewWorkouts.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
 
         mCardViewWarmUp.setCardBackgroundColor(getResources()
@@ -95,8 +86,8 @@ public class GlossaryFragment extends BaseFragment {
         fragmentInteractionListener.pushFragmentGlossary(new RecyclerViewGlossaryWorkoutFragment(),
                 false);
 
-        textViewWarmup.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
-        textViewStretching.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
+        mTextViewWarmup.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
+        mTextViewStretching.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
         textViewWorkouts.setTextColor(ContextCompat.getColor(getActivity(), R.color.pink_for_button));
 
         mCardViewWorkouts.setCardBackgroundColor(getResources()
@@ -112,8 +103,8 @@ public class GlossaryFragment extends BaseFragment {
         fragmentInteractionListener.pushFragmentGlossary(new GlossaryStretchingFragment(),
                 false);
 
-        textViewWarmup.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
-        textViewStretching.setTextColor(ContextCompat.getColor(getActivity(), R.color.pink_for_button));
+        mTextViewWarmup.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
+        mTextViewStretching.setTextColor(ContextCompat.getColor(getActivity(), R.color.pink_for_button));
         textViewWorkouts.setTextColor(ContextCompat.getColor(getActivity(), R.color.color_card_view_glossary_1));
 
         mCardViewWorkouts.setCardBackgroundColor(getResources()

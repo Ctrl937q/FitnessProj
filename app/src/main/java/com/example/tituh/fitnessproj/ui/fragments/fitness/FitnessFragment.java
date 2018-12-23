@@ -15,10 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.FitnessFragmentStartRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
@@ -108,7 +105,6 @@ public class FitnessFragment extends BaseFragment {
                         if (fragmentInteractionListener.isInternetConnectionSnackBar(mCoordinatorLayout)) {
                             mAlertDialogInfo.show();
                             mAlertDialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            //mProgressBar.setVisibility(View.VISIBLE);
                             timer();
                             mApiClient.getTrainings(new OnGetTrainingResponseListener() {
                                 @Override
@@ -155,9 +151,6 @@ public class FitnessFragment extends BaseFragment {
         }
         fragmentInteractionListener.visibleIconAboutActionBar();
         fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.goneIconHomeActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
         return view;
     }
 
@@ -184,9 +177,6 @@ public class FitnessFragment extends BaseFragment {
         mAlertDialogInfo = mDialogBuilderInfo.create();
         fragmentInteractionListener.visibleIconAboutActionBar();
         fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.goneIconHomeActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-
     }
 
     private ArrayList<String> sortDeleteDuplicates(ArrayList<ResultsItem> resultsItemsArrayList) {

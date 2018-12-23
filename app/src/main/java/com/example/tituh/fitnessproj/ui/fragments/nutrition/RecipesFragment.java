@@ -33,13 +33,13 @@ public class RecipesFragment extends BaseFragment {
     private ArrayList<String> mArrayListRecipesCategory;
     private ArrayList<ResultsItem> mResultsItemArrayListResponse;
     private ArrayList<ResultsItem> mResultsItemArrayListResponseFilter;
-    private RecipesVerticalRecyclerViewAdapter recipesVerticalRecyclerViewAdapter;
-    private Button buttonRetry;
-    private CoordinatorLayout coordinatorLayout;
-    private ApiClient apiClient;
+    private RecipesVerticalRecyclerViewAdapter mRecipesVerticalRecyclerViewAdapter;
+    private Button mButtonRetry;
+    private CoordinatorLayout mCoordinatorLayout;
+    private ApiClient mApiClient;
     private GridLayoutManager mGridLayoutManager;
     private LinearLayoutManager mLayoutManager;
-    private ProgressBar progressBar;
+    private ProgressBar mProgressBar;
     private boolean mBreakfastClick = false;
     private boolean mSweets = false;
     private boolean mOntheGo = false;
@@ -56,7 +56,7 @@ public class RecipesFragment extends BaseFragment {
 
             tryResponse();
 
-            buttonRetry.setOnClickListener(new View.OnClickListener() {
+            mButtonRetry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     buttonResponse();
@@ -67,9 +67,9 @@ public class RecipesFragment extends BaseFragment {
                     mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
                 public void onClick(View view, final int position) {
-                    progressBar.setVisibility(View.VISIBLE);
+                    mProgressBar.setVisibility(View.VISIBLE);
                     filterArray(position);
-                    progressBar.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
 
                 }
 
@@ -105,7 +105,6 @@ public class RecipesFragment extends BaseFragment {
                 }
             }));
         }
-        fragmentInteractionListener.goneIconAbouttActionBar();
         return view;
     }
 
@@ -118,14 +117,15 @@ public class RecipesFragment extends BaseFragment {
 
 
     private void initialize() {
-        apiClient = new ApiClient();
+        mApiClient = new ApiClient();
         fragmentInteractionListener.updateActionBarTitle("RECIPES");
         fragmentInteractionListener.visibleIconBacktActionBar();
+        fragmentInteractionListener.goneIconAbouttActionBar();
         mHorizontalRecyclerView = view.findViewById(R.id.horizontal_recyclerView_recipes);
         mVerticalRecyclerView = view.findViewById(R.id.vertical_recyclerView_recipes);
-        coordinatorLayout = view.findViewById(R.id.nestedScrollView);
-        buttonRetry = view.findViewById(R.id.btn_retry_recipes);
-        progressBar = view.findViewById(R.id.progressBarRecipes);
+        mCoordinatorLayout = view.findViewById(R.id.nestedScrollView);
+        mButtonRetry = view.findViewById(R.id.btn_retry_recipes);
+        mProgressBar = view.findViewById(R.id.progressBarRecipes);
         mLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.HORIZONTAL, false);
         mGridLayoutManager = new GridLayoutManager(getActivity(), 2);
@@ -234,41 +234,42 @@ public class RecipesFragment extends BaseFragment {
     }
 
     private void setAdapter(ArrayList<ResultsItem> arrayList) {
-        recipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(arrayList);
-        mVerticalRecyclerView.setAdapter(recipesVerticalRecyclerViewAdapter);
-        recipesVerticalRecyclerViewAdapter.notifyDataSetChanged();
+        mRecipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(arrayList);
+        mVerticalRecyclerView.setAdapter(mRecipesVerticalRecyclerViewAdapter);
+        mRecipesVerticalRecyclerViewAdapter.notifyDataSetChanged();
     }
 
     private void tryResponse() {
         if (fragmentInteractionListener.isInternetConnection()) {
-            progressBar.setVisibility(View.VISIBLE);
-            apiClient.getRecipes(new OnGetRecipesResponseListener() {
+            mProgressBar.setVisibility(View.VISIBLE);
+            mApiClient.getRecipes(new OnGetRecipesResponseListener() {
                 @Override
                 public void onGetRecipesResponse(@Nullable String message, boolean success, @NonNull List<ResultsItem> resultsItems) {
+                    mResultsItemArrayListResponse.clear();
                     mResultsItemArrayListResponse.addAll(resultsItems);
-                    recipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(mResultsItemArrayListResponse);
-                    mVerticalRecyclerView.setAdapter(recipesVerticalRecyclerViewAdapter);
+                    mRecipesVerticalRecyclerViewAdapter = new RecipesVerticalRecyclerViewAdapter(mResultsItemArrayListResponse);
+                    mVerticalRecyclerView.setAdapter(mRecipesVerticalRecyclerViewAdapter);
                     mHorizontalRecyclerView.setAdapter(new RecipesHorizontalRecyclerViewAdapter(mArrayListRecipesCategory));
-                    progressBar.setVisibility(View.GONE);
+                    mProgressBar.setVisibility(View.GONE);
                 }
             });
         } else {
-            Snackbar snackbarNoIntt = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_LONG);
+            Snackbar snackbarNoIntt = Snackbar.make(mCoordinatorLayout, "No Internet Connection", Snackbar.LENGTH_LONG);
             snackbarNoIntt.show();
-            buttonRetry.setVisibility(View.VISIBLE);
+            mButtonRetry.setVisibility(View.VISIBLE);
 
         }
     }
 
     private void buttonResponse() {
-        buttonRetry.setVisibility(View.GONE);
-        final Snackbar snackbarNoInt = Snackbar.make(coordinatorLayout, "No Internet Connection", Snackbar.LENGTH_LONG);
-        final Snackbar snackbarYesInt = Snackbar.make(coordinatorLayout, "Internet Connection Restored", Snackbar.LENGTH_LONG);
+        mButtonRetry.setVisibility(View.GONE);
+        final Snackbar snackbarNoInt = Snackbar.make(mCoordinatorLayout, "No Internet Connection", Snackbar.LENGTH_LONG);
+        final Snackbar snackbarYesInt = Snackbar.make(mCoordinatorLayout, "Internet Connection Restored", Snackbar.LENGTH_LONG);
         if (fragmentInteractionListener.isInternetConnection()) {
             snackbarYesInt.show();
             tryResponse();
         } else {
-            progressBar.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.VISIBLE);
             new CountDownTimer(2000, 500) {
                 @Override
                 public void onTick(long l) {
@@ -285,8 +286,8 @@ public class RecipesFragment extends BaseFragment {
                         tryResponse();
                     } else {
                         snackbarNoInt.show();
-                        progressBar.setVisibility(View.GONE);
-                        buttonRetry.setVisibility(View.VISIBLE);
+                        mProgressBar.setVisibility(View.GONE);
+                        mButtonRetry.setVisibility(View.VISIBLE);
                     }
                     cancel();
                 }

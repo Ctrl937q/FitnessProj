@@ -62,11 +62,9 @@ public class GroceryListFragment extends BaseFragment {
             mVerticalRecyclerViewGrocery.setAdapter(mAdapter);
             mVerticalRecyclerViewGrocery.addItemDecoration(new MarginItemDecoration(1, 40, 40, 0, 0));
 
-
             DividerItemDecoration divider = new DividerItemDecoration(mVerticalRecyclerViewGrocery.getContext(), DividerItemDecoration.VERTICAL);
             divider.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.horizontal_divider));
             mVerticalRecyclerViewGrocery.addItemDecoration(divider);
-
 
             mAdapter.notifyDataSetChanged();
 

@@ -38,10 +38,6 @@ public class AwardFragment extends BaseFragment {
         if (view == null) {
             view = inflater.inflate(R.layout.award_fragment, container, false);
             textViewAwardCompleted = view.findViewById(R.id.text_view_completed_award);
-            fragmentInteractionListener.goneIconAbouttActionBar();
-            fragmentInteractionListener.visibilityIconShareActionBar();
-            fragmentInteractionListener.goneIconInfoActionBar();
-            fragmentInteractionListener.goneIconHomeActionBar();
             fragmentInteractionListener.updateActionBarTitle(getArguments().getString("title"));
             arrayListProgressWeek = new ArrayList<>();
             level = getArguments().getInt("level");
@@ -73,7 +69,6 @@ public class AwardFragment extends BaseFragment {
             });
         }
 
-        fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.visibilityIconShareActionBar();
         fragmentInteractionListener.goneIconInfoActionBar();
         fragmentInteractionListener.goneIconHomeActionBar();

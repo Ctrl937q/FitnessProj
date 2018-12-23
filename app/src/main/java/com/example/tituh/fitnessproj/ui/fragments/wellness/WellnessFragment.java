@@ -30,8 +30,6 @@ public class WellnessFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.wellness_fragment, container, false);
-            fragmentInteractionListener.visibleIconAboutActionBar();
-            fragmentInteractionListener.goneIconBacktActionBar();
             mRecyclerViewWellnessFragment = view.findViewById(R.id.recycler_view_wellness);
             Log.d("asdasdasdsadsa", "WellnessFragment");
 
@@ -78,9 +76,6 @@ public class WellnessFragment extends BaseFragment {
         }
         fragmentInteractionListener.visibleIconAboutActionBar();
         fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.goneIconHomeActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
         return view;
     }
 }

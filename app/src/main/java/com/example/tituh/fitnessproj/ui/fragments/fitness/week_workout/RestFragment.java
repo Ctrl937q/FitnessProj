@@ -5,17 +5,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
-import com.example.tituh.fitnessproj.ui.activities.MainActivity;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 @SuppressLint("ValidFragment")
@@ -32,7 +28,6 @@ public class RestFragment extends BaseFragment {
     private ExersiceDoFragment exersiceDoFragment;
     private boolean isTimerActive;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,11 +36,7 @@ public class RestFragment extends BaseFragment {
             mTextViewTimer = view.findViewById(R.id.text_view_timer_rest);
             mTextViewCircuit = view.findViewById(R.id.text_view_circuit);
             mButton = view.findViewById(R.id.button_start_circuit);
-            fragmentInteractionListener.goneIconAbouttActionBar();
-            fragmentInteractionListener.goneIconBacktActionBar();
-            fragmentInteractionListener.goneIconHomeActionBar();
-            fragmentInteractionListener.goneIconInfoActionBar();
-            fragmentInteractionListener.goneIconShareActionBar();
+
             circuit = getArguments().getInt("circuit");
             title = getArguments().getString("title");
             curentCircuit = circuit - 1;
@@ -67,6 +58,8 @@ public class RestFragment extends BaseFragment {
                 }
             });
         }
+        fragmentInteractionListener.goneIconHomeActionBar();
+        fragmentInteractionListener.goneIconInfoActionBar();
         return view;
     }
 

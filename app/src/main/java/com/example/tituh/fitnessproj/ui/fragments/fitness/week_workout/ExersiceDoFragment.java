@@ -60,24 +60,24 @@ public class ExersiceDoFragment extends BaseFragment {
     private boolean mTimerRunningExercise;
     private CountDownTimer mCountDownTimerExercise;
     private CountDownTimer mCountDownDialog;
-    private AlertDialog.Builder dialogBuilderInfo;
-    private LayoutInflater layoutInflaterInfo;
-    private View promptsViewinfo;
-    private AlertDialog alertDialogInfo;
-    private Button buttonInfoDialog;
-    private TextView textViewInfoDialog;
-    private Button buttonDialog;
-    private TextView textViewDialog;
-    private AlertDialog.Builder dialogBuilder;
-    private LayoutInflater layoutInflater;
-    private View promptsView;
-    private AlertDialog alertDialog;
-    private String key;
-    private int weekClick;
-    private int dayClick;
-    private String day;
+    private AlertDialog.Builder mDialogBuilderInfo;
+    private LayoutInflater mLayoutInflaterInfo;
+    private View mPromptsViewinfo;
+    private AlertDialog mAlertDialogInfo;
+    private Button mButtonInfoDialog;
+    private TextView mTextViewInfoDialog;
+    private Button mButtonDialog;
+    private TextView mTextViewDialog;
+    private AlertDialog.Builder mDalogBuilder;
+    private LayoutInflater mLayoutInflater;
+    private View mPromptsView;
+    private AlertDialog mAlertDialog;
+    private String mKey;
+    private int mWeekClick;
+    private int mDayClick;
+    private String mDay;
     private boolean mTimerRunningDialog = false;
-    private boolean dialogShow = false;
+    private boolean mDialogShow = false;
 
     @Nullable
     @Override
@@ -98,26 +98,26 @@ public class ExersiceDoFragment extends BaseFragment {
                             pauseTimerExercise();
                         }
                         showDialogInfo();
-                        textViewInfoDialog.setText(mAllWorkout.get(mCurrentTraining).getInfo());
+                        mTextViewInfoDialog.setText(mAllWorkout.get(mCurrentTraining).getInfo());
                     }
                 }
             });
 
-            buttonInfoDialog.setOnClickListener(new View.OnClickListener() {
+            mButtonInfoDialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice);
-                    alertDialogInfo.dismiss();
+                    mAlertDialogInfo.dismiss();
                 }
             });
 
-            buttonDialog.setOnClickListener(new View.OnClickListener() {
+            mButtonDialog.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     mTimerRunningDialog = false;
                     setContent();
                     pauseTimeDialog();
-                    alertDialog.dismiss();
+                    mAlertDialog.dismiss();
                 }
             });
 
@@ -175,17 +175,12 @@ public class ExersiceDoFragment extends BaseFragment {
 
         fragmentInteractionListener.visibilityIconHomeActionBar();
         fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.goneIconAbouttActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-
         return view;
     }
 
 
     @SuppressLint("SetTextI18n")
     public void setContent() {
-        Log.d("saddsa12eadsadssa", "setContent");
-
         if (mCurrentTraining == 0 || mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
             mButtonBack.setEnabled(false);
         } else mButtonBack.setEnabled(true);
@@ -214,7 +209,6 @@ public class ExersiceDoFragment extends BaseFragment {
             mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getAdvanced() + " Reps");
         }
 
-        Log.d("sadasd123defwasz", "" + mAllWorkout.get(mCurrentTraining).getInfo());
         if (!mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
             fragmentInteractionListener.visibilityIconInfoActionBar();
         } else fragmentInteractionListener.goneIconInfoActionBar();
@@ -239,12 +233,12 @@ public class ExersiceDoFragment extends BaseFragment {
         bundle.putString("title", mTitle);
         bundle.putString("week", getArguments().getString("week"));
         bundle.putString("day", getArguments().getString("day"));
-        bundle.putString("key", key);
+        bundle.putString("key", mKey);
         bundle.putInt("level", mLevel);
-        bundle.putInt("week_click", weekClick);
-        bundle.putInt("day_click", dayClick);
+        bundle.putInt("week_click", mWeekClick);
+        bundle.putInt("day_click", mDayClick);
         bundle.putInt("trainingId", getArguments().getInt("trainingId"));
-        bundle.putString(day, "day");
+        bundle.putString(mDay, "day");
         mAwardFragment = new AwardFragment();
         mAwardFragment.setArguments(bundle);
         fragmentInteractionListener.pushFragment(mAwardFragment, true);
@@ -256,7 +250,6 @@ public class ExersiceDoFragment extends BaseFragment {
     }
 
     public void startTimerExercise(long startTime, final TextView textView, final ProgressBar progressBar) {
-        Log.d("saddsa12eadsadssa", "startTimerExercise");
         mStartTimeInMills = startTime;
         mTimeLeftInMills = startTime;
         mTimerRunningExercise = true;
@@ -294,7 +287,6 @@ public class ExersiceDoFragment extends BaseFragment {
     }
 
     public void startStopTimerExercise(final TextView textView, final ProgressBar progressBar) {
-        Log.d("saddsa12eadsadssa", "startStopTimerExercise");
 
         mTimerRunningExercise = true;
         mCountDownTimerExercise = new CountDownTimer(mTimeLeftInMills, 1000) {
@@ -328,12 +320,11 @@ public class ExersiceDoFragment extends BaseFragment {
                 }
             }
         }.start();
-        // mTimerRunningExercise = true;
     }
 
     public void showDialog() {
-        alertDialog.show();
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        mAlertDialog.show();
+        mAlertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         startDimerDialog();
     }
 
@@ -345,16 +336,15 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onTick(long l) {
                 mTimeLeftInMillsDialog = l;
-                updateCountDownTextDialog(textViewDialog);
+                updateCountDownTextDialog(mTextViewDialog);
             }
 
             @Override
             public void onFinish() {
-                Log.d("saddsa12eadsadssa", "+");
                 mTimerRunningDialog = false;
                 setContent();
                 pauseTimeDialog();
-                alertDialog.dismiss();
+                mAlertDialog.dismiss();
             }
         }.start();
     }
@@ -373,14 +363,12 @@ public class ExersiceDoFragment extends BaseFragment {
     }
 
     public void pauseTimerExercise() {
-        Log.d("233321sadsadsaa", "+");
         mButtonPlayPause.change(true);
         mCountDownTimerExercise.cancel();
         mTimerRunningExercise = false;
     }
 
     public void pauseTimeDialog() {
-        Log.d("233321sadsadsaa", "+");
         mCountDownDialog.cancel();
     }
 
@@ -390,7 +378,7 @@ public class ExersiceDoFragment extends BaseFragment {
             pauseTimerExercise();
         }
         if (mTimerRunningDialog) {
-            dialogShow = true;
+            mDialogShow = true;
             pauseTimeDialog();
         }
         super.onPause();
@@ -398,9 +386,9 @@ public class ExersiceDoFragment extends BaseFragment {
 
     @Override
     public void onResume() {
-        if (dialogShow) {
+        if (mDialogShow) {
             startDimerDialog();
-            dialogShow = false;
+            mDialogShow = false;
         }
         if (!mTimerRunningExercise && !mTimerRunningDialog) {
             startStopTimerExerciseDo(mTextViewTime, mProgressBarExersice);
@@ -413,13 +401,10 @@ public class ExersiceDoFragment extends BaseFragment {
         pauseTimerExercise();
         super.onDestroy();
     }
-
-
-    //------------------------------------------------------------------------------------------
-
+    
 
     public void showDialogInfo() {
-        alertDialogInfo.show();
+        mAlertDialogInfo.show();
     }
 
     private void concatContent() {
@@ -460,25 +445,25 @@ public class ExersiceDoFragment extends BaseFragment {
         mTextViewReps = view.findViewById(R.id.text_view_reps);
 
 
-        dialogBuilderInfo = new AlertDialog.Builder(getActivity());
-        layoutInflaterInfo = LayoutInflater.from(getActivity());
-        promptsViewinfo = layoutInflaterInfo.inflate(R.layout.dialog_info, null);
-        dialogBuilderInfo.setView(promptsViewinfo);
-        dialogBuilderInfo.setCancelable(false);
-        buttonInfoDialog = promptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
-        textViewInfoDialog = promptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
-        alertDialogInfo = dialogBuilderInfo.create();
+        mDialogBuilderInfo = new AlertDialog.Builder(getActivity());
+        mLayoutInflaterInfo = LayoutInflater.from(getActivity());
+        mPromptsViewinfo = mLayoutInflaterInfo.inflate(R.layout.dialog_info, null);
+        mDialogBuilderInfo.setView(mPromptsViewinfo);
+        mDialogBuilderInfo.setCancelable(false);
+        mButtonInfoDialog = mPromptsViewinfo.findViewById(R.id.btn_ok_dialog_info);
+        mTextViewInfoDialog = mPromptsViewinfo.findViewById(R.id.text_info_dialog_exercise_do);
+        mAlertDialogInfo = mDialogBuilderInfo.create();
 
-        dialogBuilder = new AlertDialog.Builder(getActivity());
-        layoutInflater = LayoutInflater.from(getActivity());
-        promptsView = layoutInflater.inflate(R.layout.dialog_layout, null);
-        dialogBuilder.setView(promptsView);
-        dialogBuilder.setCancelable(false);
-        dialogBuilderInfo.setCancelable(false);
+        mDalogBuilder = new AlertDialog.Builder(getActivity());
+        mLayoutInflater = LayoutInflater.from(getActivity());
+        mPromptsView = mLayoutInflater.inflate(R.layout.dialog_layout, null);
+        mDalogBuilder.setView(mPromptsView);
+        mDalogBuilder.setCancelable(false);
+        mDialogBuilderInfo.setCancelable(false);
 
-        buttonDialog = promptsView.findViewById(R.id.btn_skip_workout);
-        textViewDialog = promptsView.findViewById(R.id.text_view_seconds_left);
-        alertDialog = dialogBuilder.create();
+        mButtonDialog = mPromptsView.findViewById(R.id.btn_skip_workout);
+        mTextViewDialog = mPromptsView.findViewById(R.id.text_view_seconds_left);
+        mAlertDialog = mDalogBuilder.create();
         mResultsItemsCircuitOneThree = new ArrayList<>();
         mResultsItemsCircuitTwoFour = new ArrayList<>();
         mAllWorkout = new ArrayList<>();
@@ -486,19 +471,14 @@ public class ExersiceDoFragment extends BaseFragment {
         mResultsItemsCircuitTwoFour = getArguments().getParcelableArrayList("array_trainings_two_four_workout");
         mLevel = getArguments().getInt("level");
         mTitle = getArguments().getString("title");
-        key = getArguments().getString("key");
-        weekClick = getArguments().getInt("week_click");
-        dayClick = getArguments().getInt("day_click");
-        day = getArguments().getString("day");
+        mKey = getArguments().getString("key");
+        mWeekClick = getArguments().getInt("week_click");
+        mDayClick = getArguments().getInt("day_click");
+        mDay = getArguments().getString("day");
         mFirstRest = mResultsItemsCircuitOneThree.size();
         mSecondRest = mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size();
         mThirdRest = mResultsItemsCircuitOneThree.size() * 2 + mResultsItemsCircuitTwoFour.size();
         mFourRest = (mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size()) * 2;
-        fragmentInteractionListener.visibilityIconHomeActionBar();
-        fragmentInteractionListener.goneIconBacktActionBar();
-        fragmentInteractionListener.goneIconAbouttActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
 
     }
 }

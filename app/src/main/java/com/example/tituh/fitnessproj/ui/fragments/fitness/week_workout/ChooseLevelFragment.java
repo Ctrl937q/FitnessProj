@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ChooseLevelRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
@@ -17,7 +16,6 @@ import com.example.tituh.fitnessproj.model.db.GetComplexityProgressListener;
 import com.example.tituh.fitnessproj.model.db.TrainingRepository;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-
 import java.util.ArrayList;
 
 public class ChooseLevelFragment extends BaseFragment {
@@ -30,7 +28,6 @@ public class ChooseLevelFragment extends BaseFragment {
     private WeekWorkoutFragment mWeekWorkoutFragment;
     private ChooseLevelRecyclerViewAdapter chooseLevelRecyclerViewAdapter;
     private TrainingRepository trainingRepository;
-    private boolean flag;
 
     @Nullable
     @Override
@@ -96,12 +93,9 @@ public class ChooseLevelFragment extends BaseFragment {
         }
         setAdapter();
 
-        fragmentInteractionListener.updateActionBarTitle("12 WEEK");
-        fragmentInteractionListener.visibleIconBacktActionBar();
+        fragmentInteractionListener.updateActionBarTitle(mCountWeek + " WEEK");
         fragmentInteractionListener.goneIconAbouttActionBar();
-        fragmentInteractionListener.goneIconHomeActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
+        fragmentInteractionListener.visibleIconBacktActionBar();
         return view;
     }
 

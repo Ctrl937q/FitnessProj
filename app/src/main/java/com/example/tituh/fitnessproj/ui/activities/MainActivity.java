@@ -15,11 +15,13 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.crashlytics.android.Crashlytics;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
+
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
@@ -244,7 +246,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
 
-
     @Override
     public boolean isInternetConnection() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -263,8 +264,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         if (cm != null && cm.getActiveNetwork() != null) {
             return true;
         } else {
-            final Snackbar snackbar = Snackbar.make(view, "No Internet Connection", Snackbar.LENGTH_LONG);
-            final Snackbar snackbar2 = Snackbar.make(view, "Internet Connection Restored", Snackbar.LENGTH_LONG);
+            final View v = this.findViewById(android.R.id.content);
+            final Snackbar snackbar = Snackbar.make(v, "No Internet Connection", Snackbar.LENGTH_LONG);
+            final Snackbar snackbar2 = Snackbar.make(v, "Internet Connection Restored", Snackbar.LENGTH_LONG);
             snackbar.setAction("Retry", new View.OnClickListener() {
                 @Override
                 public void onClick(final View view) {

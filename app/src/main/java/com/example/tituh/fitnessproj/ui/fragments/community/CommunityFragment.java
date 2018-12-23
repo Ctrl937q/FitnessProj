@@ -32,7 +32,7 @@ public class CommunityFragment extends BaseFragment implements View.OnClickListe
 
         if (view == null) {
             view = inflater.inflate(R.layout.community_fragment, container, false);
-            fragmentInteractionListener.updateActionBarTitle("WELLNESS");
+            //fragmentInteractionListener.updateActionBarTitle("WELLNESS");
 
             ViewPager mViewPagerFirst = view.findViewById(R.id.commutity_view_pager_1);
             TabLayout tabLayoutFirst = view.findViewById(R.id.community_tabDots_1);
@@ -50,8 +50,9 @@ public class CommunityFragment extends BaseFragment implements View.OnClickListe
 
             setupViewPagerFirst(mViewPagerFirst);
             setupViewPagerSecond(mViewPagerSecond);
-
         }
+        fragmentInteractionListener.visibleIconAboutActionBar();
+        fragmentInteractionListener.goneIconBacktActionBar();
         return view;
     }
 

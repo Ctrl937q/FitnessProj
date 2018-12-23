@@ -31,10 +31,6 @@ public class NutritionFragment extends BaseFragment {
 
             view = inflater.inflate(R.layout.nutrition_fragment, container, false);
 
-            fragmentInteractionListener.visibleIconAboutActionBar();
-            fragmentInteractionListener.goneIconBacktActionBar();
-            Log.d("asd32wefragt", " + ");
-
             mRecyclerViewNutritionFragment = view.findViewById(R.id.recycler_view_nutrition);
 
             mListNutritionModel = new ArrayList<>();
@@ -77,6 +73,8 @@ public class NutritionFragment extends BaseFragment {
             }));
 
         }
+        fragmentInteractionListener.visibleIconAboutActionBar();
+        fragmentInteractionListener.goneIconBacktActionBar();
 
         return view;
     }

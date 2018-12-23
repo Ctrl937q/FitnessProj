@@ -16,11 +16,10 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 
 public class AboutFragment extends BaseFragment {
 
-    TextView textViewBigTextAbout;
-    TextView textViewBigTextInstaSkinny;
-    TextView textViewBigTextInstaKim;
-    ImageView imageViewInstaSkinny;
-    ImageView imageViewInstaKim;
+    private TextView mTextViewBigTextInstaSkinny;
+    private TextView mTextViewBigTextInstaKim;
+    private ImageView mImageViewInstaSkinny;
+    private ImageView imageViewInstaKim;
 
     @Nullable
     @Override
@@ -28,13 +27,12 @@ public class AboutFragment extends BaseFragment {
 
         if (view == null) {
             view = inflater.inflate(R.layout.about_fragment, container, false);
-            // textViewBigTextAbout = view.findViewById(R.id.big_text_about);
-            imageViewInstaSkinny = view.findViewById(R.id.image_about_skinny);
+            mImageViewInstaSkinny = view.findViewById(R.id.image_about_skinny);
             imageViewInstaKim = view.findViewById(R.id.image_about_kim);
-            textViewBigTextInstaSkinny = view.findViewById(R.id.text_view_insta_sninny);
-            textViewBigTextInstaKim = view.findViewById(R.id.text_view_insta_kim);
-            textViewBigTextInstaKim.setText("@KIMKELLYFIT");
-            textViewBigTextInstaSkinny.setText("@THESKINNYCONFIDENTIAL");
+            mTextViewBigTextInstaSkinny = view.findViewById(R.id.text_view_insta_sninny);
+            mTextViewBigTextInstaKim = view.findViewById(R.id.text_view_insta_kim);
+            mTextViewBigTextInstaKim.setText("@KIMKELLYFIT");
+            mTextViewBigTextInstaSkinny.setText("@THESKINNYCONFIDENTIAL");
 
 
             imageViewInstaKim.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +48,7 @@ public class AboutFragment extends BaseFragment {
                 }
             });
 
-            imageViewInstaSkinny.setOnClickListener(new View.OnClickListener() {
+            mImageViewInstaSkinny.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Uri address = Uri.parse("https://www.instagram.com/theskinnyconfidential/");
@@ -63,7 +61,7 @@ public class AboutFragment extends BaseFragment {
                 }
             });
 
-            textViewBigTextInstaSkinny.setOnClickListener(new View.OnClickListener() {
+            mTextViewBigTextInstaSkinny.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Uri address = Uri.parse("https://www.instagram.com/theskinnyconfidential/");
@@ -76,7 +74,7 @@ public class AboutFragment extends BaseFragment {
                 }
             });
 
-            textViewBigTextInstaKim.setOnClickListener(new View.OnClickListener() {
+            mTextViewBigTextInstaKim.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Uri address = Uri.parse("https://www.instagram.com/kimkellyfit/");
@@ -89,6 +87,9 @@ public class AboutFragment extends BaseFragment {
                 }
             });
         }
+
+        fragmentInteractionListener.visibleIconAboutActionBar();
+        fragmentInteractionListener.goneIconBacktActionBar();
 
         return view;
     }

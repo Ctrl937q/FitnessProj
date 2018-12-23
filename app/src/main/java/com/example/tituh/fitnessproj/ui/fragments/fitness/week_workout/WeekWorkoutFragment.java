@@ -1,39 +1,30 @@
 package com.example.tituh.fitnessproj.ui.fragments.fitness.week_workout;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.adapters.WeekWorkoutFragmentRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
-import com.example.tituh.fitnessproj.ui.fragments.nutrition.SharedPreferencesUtil;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class WeekWorkoutFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
-    private ArrayList<ResultsItem> resultsItemsArrayList;
-    private ArrayList<ResultsItem> filterWeekItemArray;
-    private ArrayList<String> weekArray;
+    private ArrayList<ResultsItem> mResultsItemsArrayList;
+    private ArrayList<ResultsItem> mFilterWeekItemArray;
+    private ArrayList<String> mWeekArray;
     private int mLevel;
-    private DayWorkoutFragment dayWorkoutFragment;
-    private String weekClick;
-    private WeekWorkoutFragmentRecyclerViewAdapter weekWorkoutFragmentRecyclerViewAdapter;
+    private DayWorkoutFragment mDayWorkoutFragment;
+    private String mWeekClick;
+    private WeekWorkoutFragmentRecyclerViewAdapter mWeekWorkoutFragmentRecyclerViewAdapter;
 
     @Nullable
     @Override
@@ -47,9 +38,9 @@ public class WeekWorkoutFragment extends BaseFragment {
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-            weekWorkoutFragmentRecyclerViewAdapter = new WeekWorkoutFragmentRecyclerViewAdapter(weekArray,
+            mWeekWorkoutFragmentRecyclerViewAdapter = new WeekWorkoutFragmentRecyclerViewAdapter(mWeekArray,
                     mLevel, getActivity(), fragmentInteractionListener);
-            mRecyclerView.setAdapter(weekWorkoutFragmentRecyclerViewAdapter);
+            mRecyclerView.setAdapter(mWeekWorkoutFragmentRecyclerViewAdapter);
 
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -61,15 +52,15 @@ public class WeekWorkoutFragment extends BaseFragment {
                         } else {
                             Bundle bundle = new Bundle();
                             bundle.putParcelableArrayList("array_trainings_for_day_workout",
-                                    filterWeek(resultsItemsArrayList, position));
+                                    filterWeek(mResultsItemsArrayList, position));
                             bundle.putInt("level", mLevel);
                             bundle.putInt("position_week", position);
-                            bundle.putInt("value_week", weekArray.size());
-                            bundle.putString("item_click_week", weekArray.get(position - 1));
+                            bundle.putInt("value_week", mWeekArray.size());
+                            bundle.putString("item_click_week", mWeekArray.get(position - 1));
 
-                            dayWorkoutFragment = new DayWorkoutFragment();
-                            dayWorkoutFragment.setArguments(bundle);
-                            fragmentInteractionListener.pushFragment(dayWorkoutFragment, true);
+                            mDayWorkoutFragment = new DayWorkoutFragment();
+                            mDayWorkoutFragment.setArguments(bundle);
+                            fragmentInteractionListener.pushFragment(mDayWorkoutFragment, true);
                         }
 
                     }
@@ -83,52 +74,43 @@ public class WeekWorkoutFragment extends BaseFragment {
         }
 
 
-        weekWorkoutFragmentRecyclerViewAdapter.notifyDataSetChanged();
+        mWeekWorkoutFragmentRecyclerViewAdapter.notifyDataSetChanged();
 
-        Log.d("dasdasd1231da", "" + mLevel);
-
-        if(mLevel == 0){
+        if (mLevel == 0) {
             fragmentInteractionListener.updateActionBarTitle("BEGINNER");
-        }if(mLevel == 1){
+        }
+        if (mLevel == 1) {
             fragmentInteractionListener.updateActionBarTitle("INTERMEDIATE");
-        }if(mLevel == 2) {
+        }
+        if (mLevel == 2) {
             fragmentInteractionListener.updateActionBarTitle("ADVANCED");
-        }        fragmentInteractionListener.goneIconAbouttActionBar();
+        }
+        fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.visibleIconBacktActionBar();
-        fragmentInteractionListener.goneIconHomeActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
-
         return view;
     }
 
     private void initialize() {
-        weekArray = new ArrayList<>();
-        resultsItemsArrayList = new ArrayList<>();
-        filterWeekItemArray = new ArrayList<>();
+        mWeekArray = new ArrayList<>();
+        mResultsItemsArrayList = new ArrayList<>();
+        mFilterWeekItemArray = new ArrayList<>();
 
-        weekArray = getArguments().getStringArrayList("array_weeks_for_week_workout");
-        resultsItemsArrayList = getArguments().getParcelableArrayList("array_trainings_for_week_workout");
+        mWeekArray = getArguments().getStringArrayList("array_weeks_for_week_workout");
+        mResultsItemsArrayList = getArguments().getParcelableArrayList("array_trainings_for_week_workout");
         mLevel = getArguments().getInt("level");
-
-        fragmentInteractionListener.goneIconAbouttActionBar();
-        fragmentInteractionListener.visibleIconBacktActionBar();
-        fragmentInteractionListener.goneIconHomeActionBar();
-        fragmentInteractionListener.goneIconInfoActionBar();
-        fragmentInteractionListener.goneIconShareActionBar();
     }
 
     private ArrayList<ResultsItem> filterWeek(ArrayList<ResultsItem> allResultArray, int position) {
-        weekClick = weekArray.get(position - 1);
-        filterWeekItemArray.clear();
+        mWeekClick = mWeekArray.get(position - 1);
+        mFilterWeekItemArray.clear();
         for (int i = 0; i < allResultArray.size(); i++) {
             for (int j = 0; j < allResultArray.get(i).getWeeks().size(); j++) {
-                if (allResultArray.get(i).getWeeks().get(j).equalsIgnoreCase(weekClick)) {
-                    filterWeekItemArray.add(allResultArray.get(i));
+                if (allResultArray.get(i).getWeeks().get(j).equalsIgnoreCase(mWeekClick)) {
+                    mFilterWeekItemArray.add(allResultArray.get(i));
                 }
             }
         }
-        return filterWeekItemArray;
+        return mFilterWeekItemArray;
     }
 
 

@@ -39,6 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="55dp"
+                    android:layout_marginStart="10dp"
                     android:orientation="vertical">
 
 
@@ -73,7 +74,7 @@
                             android:textColor="@color/color_light_pink"
                             android:textSize="12sp" />
 
-                        <TextView
+                       <!-- <TextView
                             android:id="@+id/reps_item_glossary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -81,7 +82,7 @@
                             android:fontFamily="@font/reg_font"
                             android:text="#REPS"
                             android:textColor="@color/color_light_pink"
-                            android:textSize="12sp" />
+                            android:textSize="12sp" />-->
 
 
                     </LinearLayout>
@@ -94,6 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
+                    android:padding="5dp"
                     android:src="@drawable/vector_info_black"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
