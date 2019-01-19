@@ -22,7 +22,7 @@
 
             <ImageView
                 android:id="@+id/imageView_exercise"
-                android:layout_width="130dp"
+                android:layout_width="110dp"
                 android:scaleType="centerCrop"
                 android:layout_height="110dp"
                 android:src="@drawable/test_picture" />
@@ -65,7 +65,7 @@
                             android:id="@+id/textView_time_exercise_2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
+                            android:layout_marginStart="5dp"
                             android:fontFamily="@font/reg_font"
                             android:text="5 MIN"
                             android:textColor="@color/color_light_pink"

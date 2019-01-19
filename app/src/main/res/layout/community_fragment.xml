@@ -147,12 +147,6 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
-                android:id="@+id/commutity_view_pager_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/community_tabDots_1"
@@ -162,8 +156,14 @@
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp" />
 
-        </LinearLayout>
+            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
+                android:id="@+id/commutity_view_pager_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
+
+        </LinearLayout>
 
         <Button
             android:layout_width="match_parent"
@@ -179,19 +179,12 @@
             android:textColor="@color/color_bnv_unchecked"
             android:textStyle="bold" />
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
-
-            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
-                android:id="@+id/commutity_view_pager_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
 
             <android.support.design.widget.TabLayout
                 android:id="@+id/community_tabDots_2"
@@ -200,6 +193,14 @@
                 app:tabBackground="@drawable/tab_selector"
                 app:tabGravity="center"
                 app:tabIndicatorHeight="0dp" />
+
+            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
+                android:id="@+id/commutity_view_pager_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
+
 
         </LinearLayout>
 

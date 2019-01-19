@@ -60,7 +60,7 @@ public class MainTabLayoutFragment extends BaseFragment {
                 public void onPageSelected(int i) {
                     switch (i) {
                         case 0:
-                            fragmentInteractionListener.updateActionBarTitle("ABOUT");
+                            fragmentInteractionListener.updateActionBarTitle("ABOUT TSC BODY");
                             break;
                         case 1:
                             fragmentInteractionListener.updateActionBarTitle("TSC BODY");

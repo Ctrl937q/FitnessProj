@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.helpers.ProgressBarDrawable;
 import com.example.tituh.fitnessproj.model.db.GetWeekProgressListener;
@@ -103,12 +104,18 @@ public class WeekWorkoutFragmentRecyclerViewAdapter extends RecyclerView.Adapter
             trainingRepository.getWeekProgress(mWeekArray.get(position - 1), TrainingRepository.COMPLEXITY_ARR[level], new GetWeekProgressListener() {
                 @Override
                 public void onGetWeekProgress(final int progress) {
-                    if (fragmentInteractionListener != null) fragmentInteractionListener.runUiTask(new Runnable() {
-                        @Override
-                        public void run() {
-                            ((ItemViewHolder) holder).progressBar.setProgress(progress);
-                        }
-                    });
+                    if (fragmentInteractionListener != null)
+                        fragmentInteractionListener.runUiTask(new Runnable() {
+                            @Override
+                            public void run() {
+                                ((ItemViewHolder) holder).progressBar.setProgress(progress);
+                                if (progress >= 99) {
+                                    ((ItemViewHolder) holder).mImageViewArrow.setImageResource(R.drawable.completed_vector);
+                                }else {
+                                    ((ItemViewHolder) holder).mImageViewArrow.setImageResource(R.drawable.vector_arrow_right_black);
+                                }
+                            }
+                        });
                 }
             });
         }

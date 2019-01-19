@@ -3,8 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="?android:attr/colorBackground"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -18,133 +18,199 @@
 
             <com.loopeer.shadow.ShadowView
                 android:layout_width="wrap_content"
-                app:shadowMarginBottom="5dp"
+                android:layout_height="wrap_content"
                 app:shadowColor="#42000000"
-                app:shadowRadius="8dp"
-                android:layout_height="wrap_content">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:shadowMarginBottom="5dp"
+                app:shadowRadius="8dp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
 
-                    <RelativeLayout
-                        android:id="@+id/relativeLayout2"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@drawable/background_select_exersice">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        <LinearLayout
+
+                        <RelativeLayout
+                            android:id="@+id/relativeLayout2"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:orientation="vertical">
+                            android:layout_height="200dp"
+                            android:background="@drawable/bg_info_start">
 
-                            <TextView
+                            <ImageView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/textView_title_exercise_info_fragment"
-                                android:fontFamily="@font/reg_font"
-                                android:text="Ass | Legs  "
-                                android:textColor="@color/color_bnv_unchecked"
-                                android:textSize="17sp" />
+                                android:src="@drawable/girl_bg_info_start"
+                                android:scaleType="centerCrop"
+                                android:layout_marginStart="58dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_height="wrap_content" />
 
                             <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginEnd="5dp"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/vector_clock_black" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:id="@+id/textView_training_info_time"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="4dp"
-                                    android:fontFamily="@font/reg_font"
-                                    android:text="28 minutes"
-                                    android:textColor="@color/color_bnv_unchecked" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/vector_lightning_black" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="4dp"
-                                    android:fontFamily="@font/reg_font"
-                                    android:text="4 circuits"
-                                    android:textColor="@color/color_bnv_unchecked" />
-
-                            </LinearLayout>
-
-
-                            <android.support.constraint.ConstraintLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginBottom="5dp">
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="20dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/textView_title_exercise_info_fragment"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/reg_font"
+                                    android:text="Ass | Legs  "
+                                    android:textColor="@color/color_bnv_unchecked"
+                                    android:textSize="17sp" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="17dp"
+                                    android:layout_marginEnd="5dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/vector_clock_black" />
+
+                                    <TextView
+                                        android:id="@+id/textView_training_info_time"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="4dp"
+                                        android:fontFamily="@font/reg_font"
+                                        android:textColor="@color/color_bnv_unchecked" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center"
+                                    android:layout_marginTop="4dp"
+                                    android:orientation="horizontal">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/vector_lightning_black" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:id="@+id/textViewCircuit_info_fragment"
+                                        android:layout_height="wrap_content"
+                                        android:text="4 circuits"
+                                        android:layout_marginLeft="4dp"
+                                        android:fontFamily="@font/reg_font"
+                                        android:textColor="@color/color_bnv_unchecked" />
+
+                                </LinearLayout>
+
+
+                                <android.support.constraint.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginBottom="5dp">
+
+                                </android.support.constraint.ConstraintLayout>
+
+                            </LinearLayout>
+
+                            <android.support.constraint.ConstraintLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="20dp">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginEnd="5dp"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintRight_toLeftOf="@+id/lllll"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:id="@+id/image_4_info"
+                                        android:visibility="gone"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/image_four_training_need1" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:visibility="gone"
+                                        android:id="@+id/image_5_info"
+                                        android:layout_marginTop="3dp"
+                                        android:src="@drawable/image_five_training_need1" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:visibility="gone"
+                                        android:id="@+id/image_6_info"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="3dp"
+                                        android:src="@drawable/image_six_training_need1" />
+
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:id="@+id/lllll"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    android:orientation="vertical"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:id="@+id/image_1_info"
+                                        android:visibility="gone"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/image_one_training_need1" />
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/image_2_info"
+                                        android:visibility="gone"
+
+                                        android:layout_marginTop="3dp"
+                                        android:src="@drawable/image_two_training_need1" />
+
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:id="@+id/image_3_info"
+                                        android:visibility="gone"
+
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="3dp"
+                                        android:src="@drawable/image_three_training_need1" />
+
+                                </LinearLayout>
+
 
                             </android.support.constraint.ConstraintLayout>
 
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="20dp"
-                            android:orientation="vertical">
+                        </RelativeLayout>
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:src="@drawable/image_one_training_need"
-                                android:layout_height="wrap_content"/>
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/image_two_training_need"
-                                android:layout_marginTop="3dp"/>
-
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/image_three_training_need"
-                                android:layout_marginTop="3dp"/>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
-
-            </LinearLayout>
 
 
             </com.loopeer.shadow.ShadowView>

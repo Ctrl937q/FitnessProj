@@ -40,7 +40,6 @@ public class ChooseLevelFragment extends BaseFragment {
             trainingRepository = new TrainingRepository(getContext());
 
             mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
             mRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
                 @Override
@@ -93,7 +92,7 @@ public class ChooseLevelFragment extends BaseFragment {
         }
         setAdapter();
 
-        fragmentInteractionListener.updateActionBarTitle(mCountWeek + " WEEK");
+        fragmentInteractionListener.updateActionBarTitle(mCountWeek + " WEEK WORKOUT GUIDE");
         fragmentInteractionListener.goneIconAbouttActionBar();
         fragmentInteractionListener.visibleIconBacktActionBar();
         return view;
@@ -104,7 +103,6 @@ public class ChooseLevelFragment extends BaseFragment {
         fragmentInteractionListener.updateActionBarTitle("TSC BODY");
         super.onDestroyView();
     }
-
 
     private void setAdapter(){
         trainingRepository.getComplexityProgress(new GetComplexityProgressListener() {
@@ -121,7 +119,6 @@ public class ChooseLevelFragment extends BaseFragment {
                             chooseLevelRecyclerViewAdapter = new ChooseLevelRecyclerViewAdapter(mModelLevel);
                             mRecyclerView.setAdapter(chooseLevelRecyclerViewAdapter);
                             chooseLevelRecyclerViewAdapter.notifyDataSetChanged();
-
                         }
                     });
                 }

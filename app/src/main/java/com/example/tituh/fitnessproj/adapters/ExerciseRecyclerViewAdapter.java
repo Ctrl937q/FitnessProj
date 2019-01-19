@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -81,13 +83,13 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ItemViewHolder) {
             if (position > 0 && position <= resultsItemsCircuitOneThree.size()) {
-                if (!allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
+                if (level == 0 && !allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
                     ((ItemViewHolder) holder).imageViewInfo.setVisibility(View.VISIBLE);
                 }
             }
 
             if (position > resultsItemsCircuitOneThree.size() + 1) {
-                if (!allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
+                if (level == 0 && !allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
                     ((ItemViewHolder) holder).imageViewInfo.setVisibility(View.VISIBLE);
                 }
             }
@@ -97,13 +99,13 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
                 @Override
                 public void onClick(View view) {
                     if (position > 0 && position <= resultsItemsCircuitOneThree.size()) {
-                        if (!allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
+                        if (level == 0 && !allItems.get(position - 1).getInfo().equalsIgnoreCase("-")) {
                             textViewInfoDialog.setText(allItems.get(position - 1).getInfo());
                             alertDialogInfo.show();
                         }
                     }
                     if (position > resultsItemsCircuitOneThree.size() + 1) {
-                        if (!allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
+                        if (level == 0 && !allItems.get(position - 2).getInfo().equalsIgnoreCase("-")) {
                             textViewInfoDialog.setText(allItems.get(position - 2).getInfo());
                             alertDialogInfo.show();
                         }
@@ -119,7 +121,7 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
                                 .placeholder(R.drawable.placeholder_recipes))
                         .into(((ItemViewHolder) holder).imageViewTraining);
                 ((ItemViewHolder) holder).textViewWarmUpName.setText(allItems.get(position - 1).getTitle());
-                ((ItemViewHolder) holder).textViewTime.setText("" + time);
+                ((ItemViewHolder) holder).textViewTime.setText("" + secondsToString(time));
                 if (level == 0) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 1)
                             .getRepetitions().getBeginner() + " REPS");
@@ -144,7 +146,7 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
                                 .placeholder(R.drawable.placeholder_recipes))
                         .into(((ItemViewHolder) holder).imageViewTraining);
                 ((ItemViewHolder) holder).textViewWarmUpName.setText(allItems.get(position - 2).getTitle());
-                ((ItemViewHolder) holder).textViewTime.setText("" + time);
+                ((ItemViewHolder) holder).textViewTime.setText("" + secondsToString(time));
 
                 if (level == 0) {
                     ((ItemViewHolder) holder).textViewReps.setText("" + allItems.get(position - 2)
@@ -168,6 +170,22 @@ public class ExerciseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
             if (position == resultsItemsCircuitOneThree.size() + 1) {
                 ((HeaderViewHolder) holder).textViewHeader.setText("CIRCUIT #2 & CIRCUIT #4");
 
+            }
+        }
+    }
+
+    private String secondsToString(int pTime) {
+        if (pTime < 60) {
+            String time = String.valueOf(pTime) + " sec";
+            return time;
+        } else {
+            String timeMin = String.valueOf(pTime / 60);
+            String timeSec = String.valueOf(pTime % 60);
+            if (timeSec.equals("0")) {
+                return timeMin + " min";
+            }else {
+                String time = timeMin + " min " + timeSec + " sec";
+                return time;
             }
         }
     }

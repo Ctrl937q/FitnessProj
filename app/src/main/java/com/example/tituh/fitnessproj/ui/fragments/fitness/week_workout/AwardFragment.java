@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.model.db.TrainingRepository;
 import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
@@ -53,6 +52,7 @@ public class AwardFragment extends BaseFragment {
             ExecutorsPool.runCommonBgTask(new Runnable() {
                 public void run() {
                     trainingRepository.addTraining(week, TrainingRepository.COMPLEXITY_ARR[level], 36, id);
+                    Log.d("sadsadasdasd12edfsa", "" + id);
                 }
             });
 

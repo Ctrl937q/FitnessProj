@@ -10,15 +10,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
+
 import java.util.List;
 
 public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<GlossaryWorkoutsRecyclerViewAdapter.ViewHolder> {
 
-    private List <WorkoutsItem> mList;
+    private List<WorkoutsItem> mList;
     private Context context;
     private AlertDialog.Builder dialogBuilderInfo;
     private LayoutInflater layoutInflaterInfo;
@@ -27,7 +29,7 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
     private Button buttonInfoDialog;
     private TextView textViewInfoDialog;
 
-    public GlossaryWorkoutsRecyclerViewAdapter(List<WorkoutsItem>mList, Context context) {
+    public GlossaryWorkoutsRecyclerViewAdapter(List<WorkoutsItem> mList, Context context) {
         this.context = context;
         this.mList = mList;
     }
@@ -50,14 +52,14 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
                 .into(holder.imageViewGlossary);
 
         holder.mTextViewWarmUpNameGlossary.setText(mList.get(position).getTitle());
-        holder.mTextViewWarmUpDurationGlossary.setText("" + mList.get(position).getDuration());
-        if(mList.get(position).getInfo().equalsIgnoreCase("-")){
+        holder.mTextViewWarmUpDurationGlossary.setText("" + secondsToString(mList.get(position).getDuration()));
+        if (mList.get(position).getInfo().equalsIgnoreCase("-")) {
             holder.imageViewInfoGlossary.setVisibility(View.GONE);
-        }else {
+        } else {
             holder.imageViewInfoGlossary.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(textViewInfoDialog!=null && mList !=null) {
+                    if (textViewInfoDialog != null && mList != null) {
                         textViewInfoDialog.setText(mList.get(position).getInfo());
                         alertDialogInfo.show();
                     }
@@ -100,6 +102,24 @@ public class GlossaryWorkoutsRecyclerViewAdapter extends RecyclerView.Adapter<Gl
             mTextViewWarmUpDurationGlossary = itemView.findViewById(R.id.textView_time_exercise_2_glossary);
             imageViewGlossary = itemView.findViewById(R.id.imageView_glossary);
             imageViewInfoGlossary = itemView.findViewById(R.id.image_view_info_glossary);
+        }
+    }
+
+
+    private String secondsToString(double pTimee) {
+        int pTime = (int) pTimee;
+        if (pTime < 60) {
+            String time = String.valueOf(pTime) + " sec";
+            return time;
+        } else {
+            String timeMin = String.valueOf(pTime / 60);
+            String timeSec = String.valueOf(pTime % 60);
+            if (timeSec.equals("0")) {
+                return timeMin + " min";
+            } else {
+                String time = timeMin + " min " + timeSec + " sec";
+                return time;
+            }
         }
     }
 }

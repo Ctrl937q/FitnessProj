@@ -34,12 +34,14 @@ public class NutritionFragment extends BaseFragment {
             mRecyclerViewNutritionFragment = view.findViewById(R.id.recycler_view_nutrition);
 
             mListNutritionModel = new ArrayList<>();
-            mListNutritionModel.add(new NutritionModel("Recipes", "About Daily Recipes",
+            mListNutritionModel.add(new NutritionModel("RECIPES", "ABOUT RECIPES",
                     NutritionModel.ONE_TYPE));
-            mListNutritionModel.add(new NutritionModel("Grocery List", NutritionModel.TWO_TYPE,
+            mListNutritionModel.add(new NutritionModel("GROCERY LIST", NutritionModel.TWO_TYPE,
                     R.drawable.vector_orange_grocery_list));
-            mListNutritionModel.add(new NutritionModel("7 Day Meal Plan", NutritionModel.TWO_TYPE,
+            mListNutritionModel.add(new NutritionModel("7 DAY MEAL PLAN", NutritionModel.TWO_TYPE,
                     R.drawable.vector_seven_day_meel_plan));
+            mListNutritionModel.add(new NutritionModel("SKINNY HACKS", NutritionModel.TWO_TYPE,
+                    R.drawable.love_vector));
 
             mRecyclerViewNutritionFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRecyclerViewNutritionFragment.setAdapter(new NutritionFragmentRecyclerViewAdapter(mListNutritionModel));
@@ -63,6 +65,12 @@ public class NutritionFragment extends BaseFragment {
                     if (position == 2) {
                         if (null != fragmentInteractionListener) {
                             fragmentInteractionListener.pushFragment(new SevenDayMealPlanFragment(), true);
+                        }
+                    }
+
+                    if (position == 3) {
+                        if (null != fragmentInteractionListener) {
+                            fragmentInteractionListener.pushFragment(new SkinnyHacksFragment(), true);
                         }
                     }
                 }

@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/skinny_hacks_top_image" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/reg_font"
+                android:gravity="center"
+                android:lineSpacingExtra="6dp"
+                android:text="@string/skinny_top_title"
+                android:textColor="@color/color_bnv_unchecked"
+                android:textSize="18sp" />
+
+
+            <TextView
+                style="@style/MyTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:text="@string/nutrition_tips"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+
+                <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
+                    android:id="@+id/view_pager_tips"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabDots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:tabBackground="@drawable/tab_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_skinny_hacks_top"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="70dp"
+                android:layout_marginEnd="45dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_font"
+                    android:text="@string/food_time_when_to_eat"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/yep_skinny_hacks"
+                    android:textSize="19sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_skinny_hacks_top_2"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/MyTextViewStyleForBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/medium_font"
+                android:gravity="center"
+                android:text="@string/breakfast_within_40_minutes_of_waking_up_high_protein"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/MyTextViewStyleForBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/medium_font"
+                android:gravity="center"
+                android:text="@string/snack_2_5_3_hours_later"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/MyTextViewStyleForBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/medium_font"
+                android:gravity="center"
+                android:text="@string/lunch_2_5_3_hours_later"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/MyTextViewStyleForBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/medium_font"
+                android:gravity="center"
+                android:text="@string/snack_2_5_3_hours_later"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/MyTextViewStyleForBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="40dp"
+                android:fontFamily="@font/medium_font"
+                android:gravity="center"
+                android:text="@string/dinner_2_5_3_hours_later"
+                android:textSize="18sp" />
+
+            <TextView
+                style="@style/MyTextViewStyleForBlack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/medium_font"
+                android:gravity="center"
+                android:text="@string/light_snack_1_5_2_hours_later"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_ckinny_hacks_bot"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="45dp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/this_pattern_is_so_easy_to_maintain_if_you_are_prepared_preparation_is_key_so_we_aren_t_left_starving_and_making_poor_choices_that_s_when_we_pull_up_to_convenient_stores_and_buy_packaged_foods_or_perhaps_make_an_even_worse_decision"
+                    android:textSize="19sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/medium_font"
+                    android:text="@string/tips"
+                    android:textSize="20sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/boil_several_eggs_at_once_and_store_for_hard_boiled_egg_snacks"
+                    android:textSize="19sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/chop_up_lots_of_veggies_and_pack_them_in_containers_in_fridge"
+                    android:textSize="19sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/have_salsas_hummus_mustards_etc_on_hand"
+                    android:textSize="19sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/make_small_snack_size_bags_of_almonds"
+                    android:textSize="19sp" />
+
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/trader_joes_has_great_pre_made_salads_but_we_suggest_ditching_the_dressing_included_and_using_fresh_lemon_and_a_drizzle_of_olive_oil"
+                    android:textSize="19sp" />
+
+                <TextView
+                    style="@style/MyTextViewStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/reg_font"
+                    android:justificationMode="inter_word"
+                    android:text="@string/cook_several_chicken_breasts_at_a_time_and_cut_them_into_3_4_inch_slices_add_them_to_salads_almond_flour_tortillas_or_a_spinach_and_quinoa_bowl"
+                    android:textSize="19sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_go_to_recipes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/btn_start_workout"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/go_to_recipes"
+            android:textColor="@color/color_bnv_unchecked"
+            android:textStyle="bold" />
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            tools:context=".MainActivity">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/laurin_kim_hacks" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/rect_hacks" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="50dp"
+                android:src="@drawable/vector_about_pink_1" />
+        </RelativeLayout>
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/can_i_drink_alcohol"
+            android:textSize="20sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:justificationMode="inter_word"
+            android:text="@string/ok_probably_skinny_hacks"
+            android:textSize="19sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/limit_drinking_alcohol_to_2_3_nights_a_week"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/if_you_drinking"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/we_suggest"
+            android:textSize="18sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/drink_vodka"
+            android:textSize="18sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/consume_1_glass"
+            android:textSize="18sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/you_ll_find_some_great_skinny_drink_recipes_in_our_food_drink_guide"
+            android:textSize="18sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/can_i_eat_fruit"
+            android:textSize="20sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/fruit_better"
+            android:textSize="18sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/why_is_fiber_so_good_for_me_how_much_fiber_should_i_eat_per_day"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/fiber_helps_you_lose_weight_while_staying_full_how"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/fiber_is_not_digested_and_does_not_increase_blood_sugar_levels"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/fiber_is_the_zero_calorie_non_digestible_part_of_a_carbohydrate"
+            android:textSize="20sp" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/this_means_it_takes_your_body_a_longer_time_to_process_the_food_which_keeps_you_satisfied_longer_aka_less_hungry"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/plus_you_can_subtract_fiber_from_carbohydrate_content_when_counting_carbs_yay"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/fiber_goal_25_30_g_fiber_per_day"
+            android:textSize="20sp" />
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch
+                android:id="@+id/view_pager_bot_hacks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.example.tituh.fitnessproj.helpers.PrepareCustomViewPagerStretch>
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tabDots_hack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+        </LinearLayout>
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="45dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="@string/let_s_get_real_with_portions"
+            android:textSize="20sp" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/lets_get_real_with_portionsss" />
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="45dp"
+            android:fontFamily="@font/medium_font"
+            android:gravity="center"
+            android:text="@string/supplements_spices"
+            android:textSize="20sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/exp_recyclerView_hacks"
+            android:layout_marginStart="20dp"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginEnd="20dp"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+</ScrollView>

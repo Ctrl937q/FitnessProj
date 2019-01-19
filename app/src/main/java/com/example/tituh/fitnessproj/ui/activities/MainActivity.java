@@ -15,13 +15,11 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.crashlytics.android.Crashlytics;
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.example.tituh.fitnessproj.ui.fragments.MainTabLayoutFragment;
 import com.example.tituh.fitnessproj.ui.interfaces.OnFragmentInteractionListener;
-
 import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private ImageView mImageViewShare;
     private ImageView mImageViewBackActionBarGetReady;
     private boolean pressOnExersiceDoFragment = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         mImageViewShare = findViewById(R.id.action_bar_share);
         mImageViewBackActionBarGetReady = findViewById(R.id.action_bar_arrow_get_ready);
         setSupportActionBar(toolbar);
+
 
         mImageViewBackActionBar.setOnClickListener(new View.OnClickListener() {
             @Override

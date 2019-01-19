@@ -18,6 +18,15 @@
         <item name="android:letterSpacing">0.025</item>
     </style>
 
+    <style name="MyTextViewStyleForBlack"
+        parent="android:Widget.TextView">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:fontFamily">@font/reg_font</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">6dp</item>
+        <item name="android:letterSpacing">0.025</item>
+    </style>
+
 
     <style name="AppTheme.Dialog">
         <item name="colorAccent">#ff37de</item> <!-- Whatever color you want-->

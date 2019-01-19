@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/prepare_increase_the_burn_background"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/habits"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/don_t_fall_for_cocktail_mixes_make_your_own"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/don_t_fall_for_paleo_vegan_gluten_free_always_check_ingredients_we_look_at_ingredients_and_carb_counts"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/herbs_spices_are_your_friend"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/be_prepared"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/start_with_a_soup_or_leafy_green_salad"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/start_every_morning_with_lemon_water"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/apple_cider_vinegar_shots_are_amazing_in_the_morning_2_3_apple_cider_vinegar_shots_are_great_throughout_the_day"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:layout_marginBottom="115dp"
+            android:text="@string/start_the_day_with_a_protein_green_smoothie_with_berries_add_spirulina"
+            android:textSize="19sp" />
+
+
+    </LinearLayout>
+</LinearLayout>

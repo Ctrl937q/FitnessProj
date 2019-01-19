@@ -52,7 +52,7 @@ public class RestFragment extends BaseFragment {
             mButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    exersiceDoFragment.setContent();
+                    exersiceDoFragment.setContentNext(true);
                     mCountDownTimer.cancel();
                     fragmentInteractionListener.popFragment();
                 }
@@ -75,7 +75,7 @@ public class RestFragment extends BaseFragment {
             public void onFinish() {
                 isTimerActive = false;
                 mCountDownTimer.cancel();
-                exersiceDoFragment.setContent();
+                exersiceDoFragment.setContentNext(true);
                 fragmentInteractionListener.popFragment();
             }
         }.start();

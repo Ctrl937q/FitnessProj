@@ -12,19 +12,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.GroceryHorizontalRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.adapters.NutritionGroceryListVerticalAdapter;
 import com.example.tituh.fitnessproj.adapters.RecyclerTouchListenerStart;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class GroceryListFragment extends BaseFragment {
 
@@ -38,6 +43,12 @@ public class GroceryListFragment extends BaseFragment {
     private NutritionGroceryListVerticalAdapter mAdapter;
     private ArrayList<String> mArrayListHorRecyclerView;
     private SharedPreferences mSharedPref;
+    private boolean isFirstClick = false;
+    private boolean isSecondClick = false;
+    private boolean isThirdClick = false;
+    private boolean isFourthClick = false;
+    private boolean isFiveClick = false;
+    private Set<String> deleteDuplArray;
 
     @Nullable
     @Override
@@ -74,9 +85,13 @@ public class GroceryListFragment extends BaseFragment {
                 mArrayListGroceryList = new ArrayList<>();
             }
 
-            mArrayListCategory.add("Fruits and veggies");
-            mArrayListCategory.add("Nuts,sweet and snuck");
-            mArrayListCategory.add("Proteins");
+            mArrayListCategory.add("Breakfast");
+            mArrayListCategory.add("Mains");
+            mArrayListCategory.add("Snacks");
+            mArrayListCategory.add("Sweets");
+            mArrayListCategory.add("Booze");
+            mArrayListHorRecyclerView = new ArrayList<>();
+            deleteDuplArray = new HashSet<>();
 
 
             mImageViewAdd.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +136,6 @@ public class GroceryListFragment extends BaseFragment {
                 }
             });
 
-
             mHorizontalRecyclerView.setAdapter(new GroceryHorizontalRecyclerViewAdapter(mArrayListCategory));
             mHorizontalRecyclerView.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mHorizontalRecyclerView, new RecyclerTouchListenerStart.ClickListener() {
@@ -131,14 +145,92 @@ public class GroceryListFragment extends BaseFragment {
                         final CardView cardView = view.findViewById(R.id.card_view_horizontal_recycler_view_grocery_list);
                         cardView.setCardBackgroundColor(getResources().getColor(R.color.color_grocery_list_card_view_checked));
                         if (position == 0) {
-                            mArrayListHorRecyclerView = new ArrayList<>();
-                            mArrayListHorRecyclerView.add("Apple");
-                            mArrayListHorRecyclerView.add("Cheese");
-                            mArrayListHorRecyclerView.add("Chips");
-                            mArrayListGroceryList.addAll(mArrayListHorRecyclerView);
-                            Collections.sort(mArrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
-                            mAdapter.notifyDataSetChanged();
-                            SharedPreferencesUtil.pushStringList(mSharedPref, mArrayListGroceryList, "key");
+                            if(isFirstClick){
+                                return;
+                            }else {
+                                isFirstClick = true;
+                                mArrayListHorRecyclerView.add("eggs");
+                                mArrayListHorRecyclerView.add("almond milk");
+                                mArrayListHorRecyclerView.add("oats");
+                                mArrayListHorRecyclerView.add("berries");
+                                mArrayListGroceryList.addAll(mArrayListHorRecyclerView);
+                                Collections.sort(mArrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
+                                mAdapter.notifyDataSetChanged();
+                                mArrayListHorRecyclerView.clear();
+                            }
+                        }
+                        if (position == 1) {
+                            if(isSecondClick){
+                                return;
+                            }else {
+                                isSecondClick = true;
+                                mArrayListHorRecyclerView.add("tuna");
+                                mArrayListHorRecyclerView.add("kale");
+                                mArrayListHorRecyclerView.add("avocado");
+                                mArrayListHorRecyclerView.add("arugula");
+                                mArrayListHorRecyclerView.add("sliced turkey");
+                                mArrayListHorRecyclerView.add("eggs");
+                                mArrayListHorRecyclerView.add("riced cauliflower");
+                                mArrayListHorRecyclerView.add("lemon");
+                                mArrayListHorRecyclerView.add("lentil pasta");
+                                mArrayListHorRecyclerView.add("kimchi");
+                                mArrayListGroceryList.addAll(mArrayListHorRecyclerView);
+                                Collections.sort(mArrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
+                                mAdapter.notifyDataSetChanged();
+                                mArrayListHorRecyclerView.clear();
+                            }
+                        }
+                        if(position == 2){
+                            if(isThirdClick){
+                                return;
+                            }else {
+                                isThirdClick = true;
+                                mArrayListHorRecyclerView.add("hummus");
+                                mArrayListHorRecyclerView.add("sliced turkey");
+                                mArrayListHorRecyclerView.add("popcorn");
+                                mArrayListGroceryList.addAll(mArrayListHorRecyclerView);
+                                Collections.sort(mArrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
+                                mAdapter.notifyDataSetChanged();
+                                mArrayListHorRecyclerView.clear();
+
+                            }
+                        }
+                        if(position == 3){
+                            if(isFourthClick){
+                                return;
+                            }else {
+                                isFourthClick = true;
+                                mArrayListHorRecyclerView.add("popcorn");
+                                mArrayListHorRecyclerView.add("stevia");
+                                mArrayListHorRecyclerView.add("peanut butter");
+                                mArrayListHorRecyclerView.add("almond butter");
+                                mArrayListHorRecyclerView.add("eggs");
+                                mArrayListHorRecyclerView.add("almond milk");
+                                mArrayListGroceryList.addAll(mArrayListHorRecyclerView);
+                                Collections.sort(mArrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
+                                mAdapter.notifyDataSetChanged();
+                                mArrayListHorRecyclerView.clear();
+                            }
+                        }
+                        if(position == 4){
+                            if(isFiveClick){
+                                return;
+                            }else {
+                                isFiveClick = true;
+                                mArrayListHorRecyclerView.add("tequila");
+                                mArrayListHorRecyclerView.add("orange liqueur");
+                                mArrayListHorRecyclerView.add("sparkling water");
+                                mArrayListHorRecyclerView.add("rose wine");
+                                mArrayListHorRecyclerView.add("lemon");
+                                mArrayListHorRecyclerView.add("lime");
+                                mArrayListHorRecyclerView.add("vodka");
+                                mArrayListHorRecyclerView.add("club soda");
+                                mArrayListGroceryList.addAll(mArrayListHorRecyclerView);
+                                Collections.sort(mArrayListGroceryList, String.CASE_INSENSITIVE_ORDER);
+                                mAdapter.notifyDataSetChanged();
+                                mArrayListHorRecyclerView.clear();
+
+                            }
                         }
                     }
                 }
@@ -159,4 +251,9 @@ public class GroceryListFragment extends BaseFragment {
         super.onDestroyView();
     }
 
+    @Override
+    public void onDestroy() {
+        SharedPreferencesUtil.pushStringList(mSharedPref, mArrayListGroceryList, "key");
+        super.onDestroy();
+    }
 }

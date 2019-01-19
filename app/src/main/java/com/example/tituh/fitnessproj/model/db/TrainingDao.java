@@ -8,6 +8,7 @@ import java.util.List;
 
 @Dao
 public interface TrainingDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void addTraining(TrainingEntity trainingEntity);
 
@@ -22,4 +23,7 @@ public interface TrainingDao {
 
     @Query("SELECT * FROM TrainingEntity WHERE complexity =:complexity")
     List<TrainingEntity> getTrainingsByComplexity(String complexity);
+
+    @Query("SELECT * FROM TrainingEntity WHERE week =:week AND complexity =:complexity AND trainingId =:trainingId ")
+    List<TrainingEntity> getTrainingById(String week, String complexity, int trainingId);
 }

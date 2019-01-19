@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.tituh.fitnessproj.R;
@@ -74,7 +75,7 @@ public class NutritionFragmentRecyclerViewAdapter extends RecyclerView.Adapter<R
     private class OneViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTextViewHeadline1;
-        private FancyButton fancyButton;
+        private Button fancyButton;
 
         private OneViewHolder(@NonNull View itemView) {
             super(itemView);

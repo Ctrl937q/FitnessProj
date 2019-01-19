@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,6 +77,8 @@ public class ExersiceDoFragment extends BaseFragment {
     private String mDay;
     private boolean mTimerRunningDialog = false;
     private boolean mDialogShow = false;
+    private int workProgressOneThree = 0;
+    private int workProgressTwoFour = 0;
 
     @Nullable
     @Override
@@ -115,7 +116,7 @@ public class ExersiceDoFragment extends BaseFragment {
                 @Override
                 public void onClick(View view) {
                     mTimerRunningDialog = false;
-                    setContent();
+                    setContentNext(false);
                     pauseTimeDialog();
                     mAlertDialog.dismiss();
                 }
@@ -147,6 +148,7 @@ public class ExersiceDoFragment extends BaseFragment {
             mButtonPlayPause.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    mButtonPlayPause.toggle();
                     if (ismTimerRunningExercise()) {
                         mTimerRunningExercise = false;
                         pauseTimerExercise();
@@ -164,7 +166,6 @@ public class ExersiceDoFragment extends BaseFragment {
                         mTimerRunningExercise = false;
                         pauseTimerExercise();
                         fragmentInteractionListener.popFragment();
-
                     } else {
                         pauseTimerExercise();
                         btnBackClick();
@@ -178,12 +179,8 @@ public class ExersiceDoFragment extends BaseFragment {
         return view;
     }
 
-
     @SuppressLint("SetTextI18n")
     public void setContent() {
-        if (mCurrentTraining == 0 || mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
-            mButtonBack.setEnabled(false);
-        } else mButtonBack.setEnabled(true);
         mTextViewValueCircuit.setText(mCurrentCircuit + "/" + 4);
         if (getActivity() != null) {
             Glide.with(getActivity())
@@ -196,7 +193,7 @@ public class ExersiceDoFragment extends BaseFragment {
         mBgProgress = new ProgressBarDrawable(mResultsItemsCircuitOneThree.size());
         mProgressBarCircuitProgress.setMax(mResultsItemsCircuitOneThree.size());
         mProgressBarCircuitProgress.setProgressDrawable(mBgProgress);
-        mProgressBarCircuitProgress.setProgress(mCurrentTraining % mResultsItemsCircuitOneThree.size());
+        mProgressBarCircuitProgress.setProgress(0);
         mProgressBarExersice.setMax((int) mAllWorkout.get(mCurrentTraining).getDuration());
         mButtonPlayPause.change(false);
         if (mLevel == 0) {
@@ -209,7 +206,115 @@ public class ExersiceDoFragment extends BaseFragment {
             mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getAdvanced() + " Reps");
         }
 
-        if (!mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
+        if (mLevel == 0 && !mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
+            fragmentInteractionListener.visibilityIconInfoActionBar();
+        } else fragmentInteractionListener.goneIconInfoActionBar();
+        startTimerExercise((int) mAllWorkout.get(mCurrentTraining).getDuration() * 1000, mTextViewTime, //
+                mProgressBarExersice);
+    }
+
+
+    private void setContentBackPress() {
+        if (mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
+            mButtonBack.setEnabled(false);
+        } else mButtonBack.setEnabled(true);
+        if (mCurrentTraining < mFirstRest || mCurrentTraining >= mSecondRest && mCurrentTraining < mThirdRest) {
+            workProgressOneThree--;
+            mBgProgress = new ProgressBarDrawable(mResultsItemsCircuitOneThree.size());
+            mProgressBarCircuitProgress.setMax(mResultsItemsCircuitOneThree.size());
+            mProgressBarCircuitProgress.setProgressDrawable(mBgProgress);
+            mProgressBarCircuitProgress.setProgress(workProgressOneThree);
+        }
+        if (mCurrentTraining >= mFirstRest && mCurrentTraining < mSecondRest || mCurrentTraining >= mThirdRest && mCurrentTraining < mFourRest) {
+            workProgressTwoFour--;
+            mBgProgress = new ProgressBarDrawable(mResultsItemsCircuitTwoFour.size());
+            mProgressBarCircuitProgress.setMax(mResultsItemsCircuitTwoFour.size());
+            mProgressBarCircuitProgress.setProgressDrawable(mBgProgress);
+            mProgressBarCircuitProgress.setProgress(workProgressTwoFour);
+        }
+
+        if (mCurrentTraining == 0 || mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
+            mButtonBack.setEnabled(false);
+        } else mButtonBack.setEnabled(true);
+
+        mTextViewValueCircuit.setText(mCurrentCircuit + "/" + 4);
+        if (getActivity() != null) {
+            Glide.with(getActivity())
+                    .load(mAllWorkout.get(mCurrentTraining).getImage())
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.placeholder_recipes))
+                    .into(mImageView);
+        }
+        fragmentInteractionListener.updateActionBarTitle(mAllWorkout.get(mCurrentTraining).getTitle());
+        mProgressBarExersice.setMax((int) mAllWorkout.get(mCurrentTraining).getDuration());
+        mButtonPlayPause.change(false);
+        if (mLevel == 0) {
+            mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getBeginner() + " Reps");
+        }
+        if (mLevel == 1) {
+            mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getIntermediate() + " Reps");
+        }
+        if (mLevel == 2) {
+            mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getAdvanced() + " Reps");
+        }
+
+        if (mLevel == 0 && !mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
+            fragmentInteractionListener.visibilityIconInfoActionBar();
+        } else fragmentInteractionListener.goneIconInfoActionBar();
+        startTimerExercise((int) mAllWorkout.get(mCurrentTraining).getDuration() * 1000, mTextViewTime, //
+                mProgressBarExersice);
+    }
+
+    public void setContentNext(boolean isRest) {
+        if (mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
+            mButtonBack.setEnabled(false);
+        } else mButtonBack.setEnabled(true);
+        if (mCurrentTraining < mFirstRest || mCurrentTraining >= mSecondRest && mCurrentTraining < mThirdRest) {
+            if (!isRest) {
+                workProgressOneThree++;
+            }
+            mBgProgress = new ProgressBarDrawable(mResultsItemsCircuitOneThree.size());
+            mProgressBarCircuitProgress.setMax(mResultsItemsCircuitOneThree.size());
+            mProgressBarCircuitProgress.setProgressDrawable(mBgProgress);
+            mProgressBarCircuitProgress.setProgress(workProgressOneThree);
+        }
+        if (mCurrentTraining >= mFirstRest && mCurrentTraining < mSecondRest || mCurrentTraining >= mThirdRest && mCurrentTraining < mFourRest) {
+            if (!isRest) {
+                workProgressTwoFour++;
+            }
+            mBgProgress = new ProgressBarDrawable(mResultsItemsCircuitTwoFour.size());
+            mProgressBarCircuitProgress.setMax(mResultsItemsCircuitTwoFour.size());
+            mProgressBarCircuitProgress.setProgressDrawable(mBgProgress);
+            mProgressBarCircuitProgress.setProgress(workProgressTwoFour);
+        }
+
+
+        if (mCurrentTraining == 0 || mCurrentTraining == mFirstRest || mCurrentTraining == mSecondRest || mCurrentTraining == mThirdRest) {
+            mButtonBack.setEnabled(false);
+        } else mButtonBack.setEnabled(true);
+
+        mTextViewValueCircuit.setText(mCurrentCircuit + "/" + 4);
+        if (getActivity() != null) {
+            Glide.with(getActivity())
+                    .load(mAllWorkout.get(mCurrentTraining).getImage())
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.placeholder_recipes))
+                    .into(mImageView);
+        }
+        fragmentInteractionListener.updateActionBarTitle(mAllWorkout.get(mCurrentTraining).getTitle());
+        mProgressBarExersice.setMax((int) mAllWorkout.get(mCurrentTraining).getDuration());
+        mButtonPlayPause.change(false);
+        if (mLevel == 0) {
+            mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getBeginner() + " Reps");
+        }
+        if (mLevel == 1) {
+            mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getIntermediate() + " Reps");
+        }
+        if (mLevel == 2) {
+            mTextViewReps.setText(mAllWorkout.get(mCurrentTraining).getRepetitions().getAdvanced() + " Reps");
+        }
+
+        if (mLevel == 0 && !mAllWorkout.get(mCurrentTraining).getInfo().equalsIgnoreCase("-")) {
             fragmentInteractionListener.visibilityIconInfoActionBar();
         } else fragmentInteractionListener.goneIconInfoActionBar();
         startTimerExercise((int) mAllWorkout.get(mCurrentTraining).getDuration() * 1000, mTextViewTime, //
@@ -220,13 +325,14 @@ public class ExersiceDoFragment extends BaseFragment {
     private void goToRest() {
         Bundle bundle = new Bundle();
         mProgressBarCircuitProgress.setProgress(0);
+        workProgressOneThree = 0;
+        workProgressTwoFour = 0;
         bundle.putInt("circuit", mCurrentCircuit);
         bundle.putString("title", mTitle);
         mRestFragment = new RestFragment();
         mRestFragment.setArguments(bundle);
         fragmentInteractionListener.pushFragment(mRestFragment, true);
     }
-
 
     private void gotoAward() {
         Bundle bundle = new Bundle();
@@ -246,7 +352,7 @@ public class ExersiceDoFragment extends BaseFragment {
 
     public void btnBackClick() {
         mCurrentTraining--;
-        setContent();
+        setContentBackPress();
     }
 
     public void startTimerExercise(long startTime, final TextView textView, final ProgressBar progressBar) {
@@ -342,7 +448,8 @@ public class ExersiceDoFragment extends BaseFragment {
             @Override
             public void onFinish() {
                 mTimerRunningDialog = false;
-                setContent();
+                //setContent();
+                setContentNext(false);
                 pauseTimeDialog();
                 mAlertDialog.dismiss();
             }
@@ -401,7 +508,7 @@ public class ExersiceDoFragment extends BaseFragment {
         pauseTimerExercise();
         super.onDestroy();
     }
-    
+
 
     public void showDialogInfo() {
         mAlertDialogInfo.show();
@@ -444,7 +551,6 @@ public class ExersiceDoFragment extends BaseFragment {
         mTextViewValueCircuit = view.findViewById(R.id.textView_value_circuit);
         mTextViewReps = view.findViewById(R.id.text_view_reps);
 
-
         mDialogBuilderInfo = new AlertDialog.Builder(getActivity());
         mLayoutInflaterInfo = LayoutInflater.from(getActivity());
         mPromptsViewinfo = mLayoutInflaterInfo.inflate(R.layout.dialog_info, null);
@@ -479,6 +585,5 @@ public class ExersiceDoFragment extends BaseFragment {
         mSecondRest = mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size();
         mThirdRest = mResultsItemsCircuitOneThree.size() * 2 + mResultsItemsCircuitTwoFour.size();
         mFourRest = (mResultsItemsCircuitOneThree.size() + mResultsItemsCircuitTwoFour.size()) * 2;
-
     }
 }

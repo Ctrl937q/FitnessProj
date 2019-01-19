@@ -33,8 +33,13 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChooseLevelModel model = mArrayListChooseLevelModel.get(position);
         holder.mImageViewLevel.setImageResource(model.getImageInt());
-        holder.mTextViewTitle.setText("" + model.getTitle());
+        holder.mTextViewTitle.setText(String.valueOf(model.getTitle()));
         holder.mProgressBar.setProgress(model.getProgress());
+        if(model.getProgress()>=99){
+            holder.mImageViewArrow.setImageResource(R.drawable.completed_vector);
+        }else {
+            holder.mImageViewArrow.setImageResource(R.drawable.vector_arrow_right_pink_);
+        }
         if(position == 0){
             holder.mImageViewStar2.setVisibility(View.GONE);
             holder.mImageViewStar3.setVisibility(View.GONE);
@@ -58,6 +63,7 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
         ImageView mImageViewStar2;
         ImageView mImageViewStar3;
         ProgressBar mProgressBar;
+        ImageView mImageViewArrow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +73,7 @@ public class ChooseLevelRecyclerViewAdapter extends RecyclerView.Adapter<ChooseL
             mImageViewStar2 = itemView.findViewById(R.id.image_view_level_choose_star2);
             mImageViewStar3 = itemView.findViewById(R.id.image_view_level_choose_star3);
             mProgressBar = itemView.findViewById(R.id.progress_bar_level_choose_item);
+            mImageViewArrow = itemView.findViewById(R.id.image_view_level_workout_arrow);
             ProgressBarDrawable bgProgress= new ProgressBarDrawable(6);
             mProgressBar.setProgressDrawable(bgProgress);
         }

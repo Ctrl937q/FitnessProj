@@ -34,7 +34,6 @@ public class AboutFragment extends BaseFragment {
             mTextViewBigTextInstaKim.setText("@KIMKELLYFIT");
             mTextViewBigTextInstaSkinny.setText("@THESKINNYCONFIDENTIAL");
 
-
             imageViewInstaKim.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

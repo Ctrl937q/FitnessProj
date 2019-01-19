@@ -103,7 +103,7 @@
                         android:gravity="right">
 
                         <ImageView
-                            android:id="@+id/image_view_week_workout_arrow"
+                            android:id="@+id/image_view_level_workout_arrow"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/vector_arrow_right_pink_" />

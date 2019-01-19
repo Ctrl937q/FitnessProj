@@ -31,20 +31,17 @@ public class WellnessFragment extends BaseFragment {
         if (view == null) {
             view = inflater.inflate(R.layout.wellness_fragment, container, false);
             mRecyclerViewWellnessFragment = view.findViewById(R.id.recycler_view_wellness);
-            Log.d("asdasdasdsadsa", "WellnessFragment");
-
 
             mListWellnessModel = new ArrayList<>();
-            mListWellnessModel.add(new WellnessModel("Daily Habits", "About Daily Habits",
+            mListWellnessModel.add(new WellnessModel("DAILY HABITS", "ABOUT DAILY HABITS",
                     WellnessModel.ONE_TYPE));
-            mListWellnessModel.add(new WellnessModel("Protein Powder Guide", WellnessModel.TWO_TYPE,
+            mListWellnessModel.add(new WellnessModel("PROTEIN POWDER GUIDE", WellnessModel.TWO_TYPE,
                     R.drawable.vector_wellness_protein));
-            mListWellnessModel.add(new WellnessModel("8 Tips for your success", WellnessModel.TWO_TYPE,
+            mListWellnessModel.add(new WellnessModel("8 TIPS FOR YOUR SUCCESS", WellnessModel.TWO_TYPE,
                     R.drawable.vector_wellness_tips));
 
             mRecyclerViewWellnessFragment.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRecyclerViewWellnessFragment.setAdapter(new WellnessFragmentRecyclerViewAdapter(mListWellnessModel));
-
 
             mRecyclerViewWellnessFragment.addOnItemTouchListener(new RecyclerTouchListenerStart(getActivity(),
                     mRecyclerViewWellnessFragment, new RecyclerTouchListenerStart.ClickListener() {

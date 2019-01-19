@@ -23,7 +23,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="280dp">
+                android:layout_height="290dp">
 
 
                 <ImageView
@@ -71,7 +71,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="18sp"
+                        android:textSize="20sp"
                         android:fontFamily="@font/medium_font"
                         android:textColor="@color/color_bnv_unchecked"
                         android:text="@string/let_s_sweet" />

@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapterDirections;
 import com.example.tituh.fitnessproj.adapters.RecipesInfoRecyclerViewAdapterIngredients;
@@ -23,13 +22,12 @@ import com.example.tituh.fitnessproj.helpers.SquareImageView;
 import com.example.tituh.fitnessproj.networking.responses.recipes.ResultsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
 public class RecipesInfoFragment extends BaseFragment {
 
     private SharedPreferences mSharedPref;
-    private ArrayList<ResultsItem> ingredientsItemArrayList;
+    private ArrayList<ResultsItem> mIngredientsItemArrayList;
     private int mPosition;
     private SquareImageView mSquareImageView;
     private ImageView mNextImageRecipesInfo;
@@ -39,8 +37,8 @@ public class RecipesInfoFragment extends BaseFragment {
     private RecyclerView mRecyclerViewIngredients;
     private TextView textViewTitle;
     private RecyclerView mRecyclerViewDirections;
-    private Toast toast;
-    private Button buttonShop;
+    private Toast mToast;
+    private Button mButtonShop;
 
     @Nullable
     @Override
@@ -53,9 +51,9 @@ public class RecipesInfoFragment extends BaseFragment {
             textViewTitle = view.findViewById(R.id.recipes_info_title);
             mRecyclerViewIngredients = view.findViewById(R.id.recyclerView_recipes_info);
             mRecyclerViewDirections = view.findViewById(R.id.recyclerView_directions);
-            buttonShop = view.findViewById(R.id.btn_shop_ingredients);
+            mButtonShop = view.findViewById(R.id.btn_shop_ingredients);
 
-            buttonShop.setOnClickListener(new View.OnClickListener() {
+            mButtonShop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     fragmentInteractionListener.pushFragment(new GroceryListFragment(), true);
@@ -78,22 +76,22 @@ public class RecipesInfoFragment extends BaseFragment {
 
             mSharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
             Bundle bundle = this.getArguments();
-            ingredientsItemArrayList = new ArrayList<>();
-            ingredientsItemArrayList = bundle.getParcelableArrayList("array_for_recipes_info");
+            mIngredientsItemArrayList = new ArrayList<>();
+            mIngredientsItemArrayList = bundle.getParcelableArrayList("array_for_recipes_info");
             mPosition = bundle.getInt("position_for_recipes_info");
 
             Picasso.get()
-                    .load(ingredientsItemArrayList.get(mPosition).getImage())
+                    .load(mIngredientsItemArrayList.get(mPosition).getImage())
                     .placeholder(R.drawable.placeholder_recipes)
                     .into(mSquareImageView);
 
-            textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
+            textViewTitle.setText(mIngredientsItemArrayList.get(mPosition).getTitle());
 
             mRecyclerViewIngredients.setLayoutManager(new LinearLayoutManager(getActivity()));
-            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(ingredientsItemArrayList
+            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(mIngredientsItemArrayList
                     .get(mPosition).getIngredients(), mSharedPref);
 
-            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(ingredientsItemArrayList
+            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(mIngredientsItemArrayList
                     .get(mPosition).getDirections());
 
             mRecyclerViewIngredients.setAdapter(mRecipesInfoRecyclerViewAdapterIngredients);
@@ -102,59 +100,60 @@ public class RecipesInfoFragment extends BaseFragment {
             mRecyclerViewDirections.setLayoutManager(new LinearLayoutManager(getActivity()));
             mRecyclerViewDirections.setAdapter(mRecipesInfoRecyclerViewAdapterDirections);
         }
+        fragmentInteractionListener.updateActionBarTitle("RECIPES");
+
         return view;
     }
 
     public void nextItem() {
         mPosition++;
-        if (mPosition >= ingredientsItemArrayList.size()) {
-            if (toast != null) toast.cancel();
-            toast = Toast.makeText(getActivity(),
+        if (mPosition >= mIngredientsItemArrayList.size()) {
+            if (mToast != null) mToast.cancel();
+            mToast = Toast.makeText(getActivity(),
                     "no more item",
                     Toast.LENGTH_SHORT);
-            toast.show();
-            mPosition = ingredientsItemArrayList.size() - 1;
+            mToast.show();
+            mPosition = mIngredientsItemArrayList.size() - 1;
         } else {
             Picasso.get()
-                    .load(ingredientsItemArrayList.get(mPosition).getImage())
+                    .load(mIngredientsItemArrayList.get(mPosition).getImage())
                     .placeholder(R.drawable.placeholder_recipes)
                     .into(mSquareImageView);
-            textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
+            textViewTitle.setText(mIngredientsItemArrayList.get(mPosition).getTitle());
 
-            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(ingredientsItemArrayList
+            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(mIngredientsItemArrayList
                     .get(mPosition).getIngredients(), mSharedPref);
             mRecyclerViewIngredients.setAdapter(mRecipesInfoRecyclerViewAdapterIngredients);
             mRecipesInfoRecyclerViewAdapterIngredients.notifyDataSetChanged();
 
-            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(ingredientsItemArrayList
+            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(mIngredientsItemArrayList
                     .get(mPosition).getDirections());
             mRecyclerViewDirections.setAdapter(mRecipesInfoRecyclerViewAdapterDirections);
             mRecipesInfoRecyclerViewAdapterDirections.notifyDataSetChanged();
-
         }
     }
 
     public void previousItem() {
         mPosition--;
         if (mPosition < 0) {
-            if (toast != null) toast.cancel();
-            toast = Toast.makeText(getActivity(),
+            if (mToast != null) mToast.cancel();
+            mToast = Toast.makeText(getActivity(),
                     "no more item",
                     Toast.LENGTH_SHORT);
-            toast.show();
+            mToast.show();
             mPosition = 0;
         } else {
             Picasso.get()
-                    .load(ingredientsItemArrayList.get(mPosition).getImage())
+                    .load(mIngredientsItemArrayList.get(mPosition).getImage())
                     .placeholder(R.drawable.placeholder_recipes)
                     .into(mSquareImageView);
-            textViewTitle.setText("" + ingredientsItemArrayList.get(mPosition).getTitle());
-            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(ingredientsItemArrayList
+            textViewTitle.setText(mIngredientsItemArrayList.get(mPosition).getTitle());
+            mRecipesInfoRecyclerViewAdapterIngredients = new RecipesInfoRecyclerViewAdapterIngredients(mIngredientsItemArrayList
                     .get(mPosition).getIngredients(), mSharedPref);
             mRecyclerViewIngredients.setAdapter(mRecipesInfoRecyclerViewAdapterIngredients);
             mRecipesInfoRecyclerViewAdapterIngredients.notifyDataSetChanged();
 
-            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(ingredientsItemArrayList
+            mRecipesInfoRecyclerViewAdapterDirections = new RecipesInfoRecyclerViewAdapterDirections(mIngredientsItemArrayList
                     .get(mPosition).getDirections());
             mRecyclerViewDirections.setAdapter(mRecipesInfoRecyclerViewAdapterDirections);
             mRecipesInfoRecyclerViewAdapterDirections.notifyDataSetChanged();

@@ -2,7 +2,6 @@ package com.example.tituh.fitnessproj.model.db;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
-import android.util.Log;
 
 import com.example.tituh.fitnessproj.networking.threads.ExecutorsPool;
 
@@ -20,8 +19,18 @@ public class TrainingRepository {
     }
 
     public void addTraining(String week, String complexity, int repsCount, int id) {
-        Log.v("Add Training", week + " " + complexity + " " + repsCount);
-        noteDatabase.trainingDao().addTraining(new TrainingEntity(complexity, repsCount, week, id));
+        List<TrainingEntity> trainingEntities = noteDatabase.trainingDao().getTrainingById(week, complexity, id);
+        if (trainingEntities.isEmpty())
+            noteDatabase.trainingDao().addTraining(new TrainingEntity(complexity, repsCount, week, id));
+    }
+
+    public boolean getDay(String week, String complexity, int repsCount, int id) {
+        List<TrainingEntity> trainingEntities = noteDatabase.trainingDao().getTrainingById(week, complexity, id);
+        if (trainingEntities.isEmpty()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private int getWeekProgress(String week, String complexity) {

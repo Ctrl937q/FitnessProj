@@ -5,15 +5,18 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tituh.fitnessproj.R;
 import com.example.tituh.fitnessproj.adapters.ExerciseRecyclerViewAdapter;
 import com.example.tituh.fitnessproj.helpers.MarginItemDecoration;
+import com.example.tituh.fitnessproj.networking.responses.training.EquipmentItem;
 import com.example.tituh.fitnessproj.networking.responses.training.ResultsItem;
 import com.example.tituh.fitnessproj.networking.responses.training.WorkoutsItem;
 import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
@@ -21,13 +24,17 @@ import com.example.tituh.fitnessproj.ui.fragments.BaseFragment;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class ExerciseInfoFragment extends BaseFragment {
 
     private ArrayList<ResultsItem> mResultTraining;
     private ArrayList<WorkoutsItem> mResultsItemsCircuitOneThree;
     private ArrayList<WorkoutsItem> mResultsItemsCircuitTwoFour;
-    GetReadyFragment mGetReadyFragment;
+    private List<EquipmentItem> equipmentItems;
+    private ArrayList<Integer> idEquipmentArray;
+    private GetReadyFragment mGetReadyFragment;
+    private TextView textViewCircuit;
     private int mWeekClick;
     private int mDayClick;
     private double mTime;
@@ -35,6 +42,13 @@ public class ExerciseInfoFragment extends BaseFragment {
     private String mDay;
     private String mWeek;
     private String mKeyShared;
+    private ImageView imageViewEquip1;
+    private ImageView imageViewEquip2;
+    private ImageView imageViewEquip3;
+    private ImageView imageViewEquip4;
+    private ImageView imageViewEquip5;
+    private ImageView imageViewEquip6;
+
 
     @Nullable
     @Override
@@ -46,15 +60,28 @@ public class ExerciseInfoFragment extends BaseFragment {
             TextView textViewTitle = view.findViewById(R.id.textView_title_exercise_info_fragment);
             Button mButtonStart = view.findViewById(R.id.button_start_workout);
             TextView textViewAllTime = view.findViewById(R.id.textView_training_info_time);
+            imageViewEquip1 = view.findViewById(R.id.image_1_info);
+            imageViewEquip2 = view.findViewById(R.id.image_2_info);
+            imageViewEquip3 = view.findViewById(R.id.image_3_info);
+            imageViewEquip4 = view.findViewById(R.id.image_4_info);
+            imageViewEquip5 = view.findViewById(R.id.image_5_info);
+            imageViewEquip6 = view.findViewById(R.id.image_6_info);
+            textViewCircuit = view.findViewById(R.id.textViewCircuit_info_fragment);
+
+            ImageView[] imageViewsArray = {imageViewEquip1, imageViewEquip2,
+                    imageViewEquip3, imageViewEquip4, imageViewEquip5, imageViewEquip6};
+
             mResultTraining = new ArrayList<>();
             mResultsItemsCircuitOneThree = new ArrayList<>();
             mResultsItemsCircuitTwoFour = new ArrayList<>();
+            idEquipmentArray = new ArrayList<>();
+
             mResultTraining = getArguments().getParcelableArrayList("array_trainings_for_training_info");
+
             mWeekClick = getArguments().getInt("week_click");
             mDayClick = getArguments().getInt("day_click");
             mLevel = getArguments().getInt("level");
             mTime = Double.parseDouble(mResultTraining.get(0).getDuration()) / 60;
-
             mWeek = getArguments().getString("week");
             mDay = getArguments().getString("day");
             mKeyShared = mLevel + mWeek + mDay;
@@ -64,6 +91,43 @@ public class ExerciseInfoFragment extends BaseFragment {
 
             filterCircuitOneThree(mResultTraining);
             filterCircuitTwoFout(mResultTraining);
+
+
+
+            for (int i = 0; i < mResultTraining.get(0).getEquipment().size(); i++) {
+                idEquipmentArray.add(mResultTraining.get(0).getEquipment().get(i).getId());
+            }
+
+            for (int i = 0; i < idEquipmentArray.size(); i++) {
+                if (idEquipmentArray.get(i) == 1) {
+                    imageViewsArray[i].setImageDrawable(getResources().getDrawable(R.drawable.image_one_training_need1));
+                    imageViewsArray[i].setVisibility(View.VISIBLE);
+                }
+                if (idEquipmentArray.get(i) == 2) {
+                    imageViewsArray[i].setImageDrawable(getResources().getDrawable(R.drawable.image_two_training_need1));
+                    imageViewsArray[i].setVisibility(View.VISIBLE);
+
+                }
+                if (idEquipmentArray.get(i) == 3 || idEquipmentArray.get(i) == 7) {
+                    imageViewsArray[i].setImageDrawable(getResources().getDrawable(R.drawable.image_three_training_need1));
+                    imageViewsArray[i].setVisibility(View.VISIBLE);
+                }
+                if (idEquipmentArray.get(i) == 4) {
+                    imageViewsArray[i].setImageDrawable(getResources().getDrawable(R.drawable.image_four_training_need1));
+                    imageViewsArray[i].setVisibility(View.VISIBLE);
+                }
+                if (idEquipmentArray.get(i) == 5) {
+                    imageViewsArray[i].setImageDrawable(getResources().getDrawable(R.drawable.image_five_training_need1));
+                    imageViewsArray[i].setVisibility(View.VISIBLE);
+
+                }
+                if (idEquipmentArray.get(i) == 6) {
+                    imageViewsArray[i].setImageDrawable(getResources().getDrawable(R.drawable.image_six_training_need1));
+                    imageViewsArray[i].setVisibility(View.VISIBLE);
+
+                }
+            }
+
 
             mButtonStart.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -95,7 +159,7 @@ public class ExerciseInfoFragment extends BaseFragment {
         return view;
     }
 
-    private void filterCircuitOneThree(ArrayList<ResultsItem> arrayList) {
+    private void filterCircuitOneThree(List<ResultsItem> arrayList) {
         mResultsItemsCircuitOneThree.clear();
         for (int i = 0; i < arrayList.size(); i++) {
             for (int j = 0; j < arrayList.get(i).getWorkouts().size(); j++) {
@@ -112,7 +176,7 @@ public class ExerciseInfoFragment extends BaseFragment {
         });
     }
 
-    private void filterCircuitTwoFout(ArrayList<ResultsItem> arrayList) {
+    private void filterCircuitTwoFout(List<ResultsItem> arrayList) {
         mResultsItemsCircuitTwoFour.clear();
         for (int i = 0; i < arrayList.size(); i++) {
             for (int j = 0; j < arrayList.get(i).getWorkouts().size(); j++) {

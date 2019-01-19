@@ -153,26 +153,24 @@
                     android:fontFamily="@font/reg_font"
                     android:text="45"
                     android:textColor="@color/color_bnv_unchecked"
-                    android:textSize="64sp" />
+                    android:textSize="55sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/reg_font"
                     android:text="Seconds"
-
                     android:textColor="@color/color_bnv_unchecked"
                     android:textSize="19sp" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp">
+            android:layout_marginTop="10dp">
 
             <ProgressBar
                 android:id="@+id/progressBar_exersice"

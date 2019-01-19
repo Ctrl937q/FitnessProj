@@ -37,25 +37,27 @@ public class GlossaryFragment extends BaseFragment {
             fragmentInteractionListener.updateActionBarTitle("GLOSSARY");
             fragmentInteractionListener.goneIconAbouttActionBar();
             fragmentInteractionListener.visibleIconBacktActionBar();
+            onClickWorkouts();
 
             mCardViewWarmUp.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickWarmUp();
+                  //  onClickWarmUp();
                 }
             });
 
             mCardViewWorkouts.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickWorkouts();
+                    //onClickWorkouts();
+
                 }
             });
 
             mCardViewStretching.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickStretching();
+                  //  onClickStretching();
                 }
             });
 

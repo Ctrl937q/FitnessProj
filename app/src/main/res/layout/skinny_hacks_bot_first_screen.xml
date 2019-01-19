@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/prepare_increase_the_burn_background"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/medium_font"
+            android:layout_marginTop="20dp"
+            android:text="@string/substitutes"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/mushrooms_as_chips_use_them_to_dip_in_hummus_dressings_sauces"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/english_cucumber_or_jicama_as_dippers_too"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/endive_lettuce_for_chips_with_guacamole"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/hearts_of_palm_pasta_is_fab_zoodles_are_good_too"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/cauliflower_rice_cauliflower_crust_pizza_is_so_good_we_re_about_this"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/purple_cabbage_as_taco_shells"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/cauliflower_mashed_potatoes_taste_pretty_damn_good"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/use_nutritional_yeast_instead_of_parmesan_cheese"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/use_coconut_aminos_instead_of_soy_we_re_not_big_soy_fans"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/wrap_your_sushi_in_cucumber_it_s_so_good"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/use_gg_crackers_as_a_vehicle"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:layout_marginBottom="30dp"
+            android:text="@string/order_tacos_or_burgers_wrapped_in_lettuce_instead_of_a_tortilla_or_bun"
+            android:textSize="19sp" />
+
+
+    </LinearLayout>
+</LinearLayout>

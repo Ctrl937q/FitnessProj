@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/prepare_increase_the_burn_background"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:id="@+id/ll_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="60dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/dining_out"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/when_you_order_ask_for_no_salt"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/always_modify_ask_for_veggies_instead_of_chips"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/make_your_own_dressing_at_restaurants_olive_oil_lemon_red_wine_vinegar"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/salsa_over_ketchup"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/ask_for_an_oil_free_pan_ask_them_to_spray_the_pan_instead"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/drink_a_full_glass_of_water_in_between_any_alcoholic_drinks"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/medium_font"
+            android:text="@string/habits"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/bone_broth_4_x_a_week_lots_of_lemon"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/protein_fiber_at_every_meal"
+            android:textSize="19sp" />
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/carry_ggs_in_your_purse_they_re_fab"
+            android:textSize="19sp" />
+
+
+
+        <TextView
+            style="@style/MyTextViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/reg_font"
+            android:text="@string/use_portion_controlled_bowls_at_home_try_not_to_eat_out_of_the_bag_try_inside_out_bowls_from_anthropologie_or_snack_sized_ziplock_bags_they_re_fab"
+            android:textSize="19sp" />
+
+    </LinearLayout>
+</LinearLayout>

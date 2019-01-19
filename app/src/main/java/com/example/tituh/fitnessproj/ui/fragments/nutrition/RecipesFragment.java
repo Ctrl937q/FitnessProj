@@ -105,6 +105,8 @@ public class RecipesFragment extends BaseFragment {
                 }
             }));
         }
+        fragmentInteractionListener.updateActionBarTitle("RECIPES");
+
         return view;
     }
 
@@ -118,7 +120,6 @@ public class RecipesFragment extends BaseFragment {
 
     private void initialize() {
         mApiClient = new ApiClient();
-        fragmentInteractionListener.updateActionBarTitle("RECIPES");
         fragmentInteractionListener.visibleIconBacktActionBar();
         fragmentInteractionListener.goneIconAbouttActionBar();
         mHorizontalRecyclerView = view.findViewById(R.id.horizontal_recyclerView_recipes);
@@ -133,11 +134,11 @@ public class RecipesFragment extends BaseFragment {
         mResultsItemArrayListResponse = new ArrayList<>();
         mResultsItemArrayListResponseFilter = new ArrayList<>();
 
-        mArrayListRecipesCategory.add("BREAKFAST");
-        mArrayListRecipesCategory.add("SWEETS");
-        mArrayListRecipesCategory.add("ON THE GO");
-        mArrayListRecipesCategory.add("NOURISH");
-        mArrayListRecipesCategory.add("SKINNY DRINKS");
+        mArrayListRecipesCategory.add("Breakfast");
+        mArrayListRecipesCategory.add("Sweets");
+        mArrayListRecipesCategory.add("On the Go");
+        mArrayListRecipesCategory.add("Nourish");
+        mArrayListRecipesCategory.add("Drinks");
 
         mHorizontalRecyclerView.setLayoutManager(mLayoutManager);
         mVerticalRecyclerView.setLayoutManager(mGridLayoutManager);
